@@ -1,0 +1,105 @@
+knowledge_qa:
+  system: |-
+    You are a brilliant assistant.
+  user: |-
+    You are given a piece of text that includes knowledge claims. A claim is a statement that asserts something as true or false, which can be verified by humans. Your task is to accurately identify and extract every claim stated in the provided text. Then, resolve any coreference (pronouns or other referring expressions) in the claim for clarity. Each claim should be concise (less than 15 words) and self-contained.
+    Your response MUST be a list of dictionaries. Each dictionary should contains the key "claim", which correspond to the extracted claim (with all coreferences resolved).
+    You MUST only respond in the format as described below. DO NOT RESPOND WITH ANYTHING ELSE. ADDING ANY OTHER EXTRA NOTES THAT VIOLATE THE RESPONSE FORMAT IS BANNED. START YOUR RESPONSE WITH '['.
+    [response format]: 
+    [
+      {{
+        "claim": "Ensure that the claim is fewer than 15 words and conveys a complete idea. Resolve any coreference (pronouns or other referring expressions) in the claim for clarity",
+      }},
+      ...
+    ]
+
+    Here are two examples:
+    [text]: Tomas Berdych defeated Gael Monfis 6-1, 6-4 on Saturday. The sixth-seed reaches Monte Carlo Masters final for the first time . Berdych will face either Rafael Nadal or Novak Djokovic in the final.
+    [response]: [{{"claim": "Tomas Berdych defeated Gael Monfis 6-1, 6-4"}}, {{"claim": "Tomas Berdych defeated Gael Monfis 6-1, 6-4 on Saturday"}}, {{"claim": "Tomas Berdych reaches Monte Carlo Masters final"}}, {{"claim": "Tomas Berdych is the sixth-seed"}}, {{"claim": "Tomas Berdych reaches Monte Carlo Masters final for the first time"}}, {{"claim": "Berdych will face either Rafael Nadal or Novak Djokovic"}}, {{"claim": "Berdych will face either Rafael Nadal or Novak Djokovic in the final"}}]
+
+    [text]: Tinder only displays the last 34 photos - but users can easily see more. Firm also said it had improved its mutual friends feature.
+    [response]: [{{"claim": "Tinder only displays the last photos"}}, {{"claim": "Tinder only displays the last 34 photos"}}, {{"claim": "Tinder users can easily see more photos"}}, {{"claim": "Tinder said it had improved its feature"}}, {{"claim": "Tinder said it had improved its mutual friends feature"}}]
+
+    Now complete the following,ONLY RESPONSE IN A LIST FORMAT, NO OTHER WORDS!!!:
+    [text]: {input}
+    [response]: 
+
+math:
+  system: |-
+    You are a helpful assistant.
+  user: |-
+    You are given a math problem and a potential solution to the math problem. Your task is to identify all the math calculations that involve arithmetic operations between known real numbers within the potential solution. However, do not include math calculations that contains variable(s).
+    Your response MUST be a list of dictionaries. Each dictionary should contains 2 key - "math_calculation" and "calculated_answer", which correspond to the extracted math calculation, and the calculated answer within the potential solution.
+    You MUST only respond in the format as described below. DO NOT RESPOND WITH ANYTHING ELSE. ADDING ANY OTHER EXTRA NOTES THAT VIOLATE THE RESPONSE FORMAT IS BANNED. START YOUR RESPONSE WITH '['.
+    [response format]: 
+    [
+      {{
+        "math_calculation": "Extracted math calculation involving real numbers within the potential solution. Do not include math calculataions that contains variable(s). Do not include units such as $, %, etc.",
+        "calculated_answer": "The calculated answer for the extracted math calculation."
+      }},
+      ...
+    ]
+
+    Here are two examples:
+    [math problem]: What is the area of a circle with a diameter of 10 inches?
+    [potential solution]: To find the area, we first calculate the radius as the diameter divided by 2, so the radius is 10/2 = 5 inches. Then, we use the formula for the area of a circle, which is πr^2. Plugging in the radius we get, Area = π*5^2 = 78.54 square inches.
+    [response]: [{{"math_calculation": "10 / 2", "calculated_answer": "5"}}, {{"math_calculation": "π * 5^2", "calculated_answer": "78.54"}}]
+
+    [math problem]: A store originally sold a shirt for $45. They are offering a 20% discount on the shirt. How much will the shirt cost now?
+    [potential solution]: The discount on the shirt is calculated as 20% of $45, which is 0.20 * 45 = $9. The new price of the shirt after the discount is $45 - $9 = $36.
+    [response]: [{{"math_calculation": "0.20 * 45", "calculated_answer": "9"}}, {{"math_calculation": "45 - 9","calculated_answer": "36"}}]
+
+    Now complete the following:
+    [math problem]: {input_question}
+    [potential solution]: {input_solution}
+    [response]: 
+
+scientific:
+  system: |-
+    You are a brilliant assistant.
+  user: |-
+    You are given a piece of text that mentions some scientific literature. Your task is to accurately find all papers mentioned in the text and identify the title, author(s), and publication year for each paper.
+    The response should be a list of dictionaries, with each dictionary having keys "paper_title", "paper_author(s)", and "paper_pub_year", which correspond to the title of the paper, the authors of the paper, and the publication year of the paper.
+    The following is the given text
+    [text]: {input}
+    You MUST only respond in the format as described below. DO NOT RESPOND WITH ANYTHING ELSE. ADDING ANY OTHER EXTRA NOTES THAT VIOLATE THE RESPONSE FORMAT IS BANNED. START YOUR RESPONSE WITH '['.
+    [response format]: 
+    [
+      {{
+        "paper_title": "Title of the paper.",
+        "paper_author(s)": "Author(s) of the paper.",
+        "paper_pub_year": "Year of the paper published."
+      }},
+      ...
+    ]
+
+med_doc_qa:
+  system: |-
+    You are a brilliant assistant.
+  user: |-
+    你会得到一份医生对患者开出的完整病历。你的任务是提取出病历中的每一个论点。论点必须是能够被人验证的判断句。你需要明确每一个指代关系（包括代词和其他省略）。每个论点必须少于30字。
+    你的回答形式必须是一个python字典组成的python列表。每个字典都必须包含键 "claim"，对应着指代关系已经被明确的论点。
+    你必须按照如下格式回复。不要添加任何别的内容。添加任何破坏格式的其他内容都是禁止的。以'['为开头生成回复。
+
+    [回复格式]: 
+    [
+      {{
+        "claim": "少于三十字，表达明确观点并已经消除了任何不明确指代关系的论点。"
+      }},
+      ...
+    ]
+    
+    以下是一个例子:
+    [输入]: 
+    Assistant:
+    主诉：右侧太阳穴头疼持续1个月
+    现病史：患者近期经常出现右侧太阳穴头疼，尝试服用止疼药效果不明显。
+    既往史：患者因工作压力大，经常熬夜加班，心律不齐。
+    个人史：吸烟饮酒史，工作生活压力大。
+    诊断：压力性头疼
+    治疗建议：服用布洛芬等非处方药缓解头疼，但如果头疼持续不减，建议去医院进行进一步的检查
+    [回复]: [{{"claim": "主诉是右侧太阳穴头疼持续1个月"}}, {{"claim": "现病史包含近期经常出现右侧太阳穴头疼"}}, {{"claim": "现病史包含尝试服用止疼药效果不明显"}}, {{"claim": "既往史包含心律不齐"}}, {{"claim": "个人史包含吸烟饮酒史"}}, {{"claim": "个人史包含工作生活压力大"}}, {{"claim": "诊断为压力性头疼"}}, {{"claim": "治疗建议包括服用布洛芬等非处方药缓解头疼"}}, {{"claim": "治疗建议包括如果头疼持续不减，建议去医院进行进一步的检查"}}]
+    
+    现在请完成以下内容,请仅以python列表形式回复，不要输出其他内容!!!:
+    [输入]: {input}
+    [回复]: 

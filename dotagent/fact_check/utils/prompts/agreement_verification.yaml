@@ -1,0 +1,99 @@
+knowledge_qa:
+  system: |-
+    You are a brilliant assistant.
+  user: |-
+    You are given a piece of text. Your task is to identify whether there are any factual errors within the text.
+    When you are judging the factuality of the given text, you could reference the provided evidences if needed. The provided evidences may be helpful. Some evidences may contradict to each other. You must be careful when using the evidences to judge the factuality of the given text.
+    The response should be a dictionary with three keys - "reasoning", "factuality", "error", and "correction", which correspond to the reasoning, whether the given text is factual or not (Boolean - True or False), the factual error present in the text, and the corrected text.
+    The following is the given text
+    [text]: {claim}
+    The following is the provided evidences
+    [evidences]: {evidence}
+    You should only respond in format as described below. DO NOT RETURN ANYTHING ELSE. START YOUR RESPONSE WITH '{{'.
+    [response format]: 
+    {{
+      "reasoning": "Why is the given text factual or non-factual? Be careful when you said something is non-factual. When you said something is non-factual, you must provide multiple evidences to support your decision.",
+      "error": "None if the text is factual; otherwise, describe the error.",
+      "correction": "The corrected text if there is an error.",
+      "factuality": True if the given text is factual, False otherwise.
+    }}
+
+scientific:
+  system: |-
+    You are a brilliant assistant.
+  user: |-
+    You are provided with two inputs, a string (string1) containing several names, and a list (list1) also containing names. Your task is to assess whether all the last names mentioned in string1 are included in list1.
+    
+    You should only respond in format as described below. DO NOT RETURN ANYTHING ELSE. START YOUR RESPONSE WITH '{{'.
+    [response format]: 
+    {{
+      "reasoning": "Explanation on whether all the last names in string1 are found within list1",
+      "factuality": This will be True if all last names from string1 are present in list1, and False otherwise.
+    }}
+
+    Example 1: 
+    [string1]: "J. Devlin and M. Chang"
+    [list1]: ["Devlin", "M Chang", "Kristina Toutanova"]
+    [response]: {{"reasoning": "string1 contains 2 last names 'Devlin' and 'Chang'. Both of these last names are present in list1.", "factuality": True}}
+
+    Example 2: 
+    [string1]: "Tom Brown et. al"
+    [list1]: ["Y. Lecun", "G. Hinton"]
+    [response]: {{"reasoning": "string 1 contains 1 last name 'Brown'. Brown is not present in list1.", "factuality": False}}
+
+    Complete the following:
+    [string1]: {string1}
+    [list1]: {list2}
+    [response]: 
+
+med_doc_qa_english:
+  system: |-
+    You are a brilliant assistant.
+  user: |-
+    You are given a piece of text. Your task is to identify whether there are any factual errors within the text.
+    When you are judging the factuality of the given text, you could reference the provided evidences if needed. The provided evidences may be helpful. Some evidences may contradict to each other. You must be careful when using the evidences to judge the factuality of the given text.
+    The response should be a dictionary with three keys - "reasoning", "factuality", "error", and "correction", which correspond to the reasoning, whether the given text is factual or not (Boolean - True or False), the factual error present in the text, and the corrected text.
+    The following is the given text
+    [text]: {claim}
+    The following is the provided evidences
+    [evidences]: {evidence}
+    You should only respond in format as described below. DO NOT RETURN ANYTHING ELSE. START YOUR RESPONSE WITH '{{'. please response in Chinese.
+    [response format]: 
+    {{
+      "reasoning": "Why is the given text factual or non-factual? Be careful when you said something is non-factual. When you said something is non-factual, you must provide multiple evidences to support your decision.",
+      "error": "None if the text is factual; otherwise, describe the error.",
+      "correction": "The corrected text if there is an error.",
+      "factuality": True if the given text is factual, False otherwise.
+    }}
+
+med_doc_qa:
+  system: |-
+    You are a brilliant assistant.
+  user: |-
+    你会收到一个文本片段。你的任务是找出文本中的事实性错误。请不要将任何先验知识用于推理，任何证据无法直接支持的内容都应该被认为是错误的。
+    当你在判断文本中是否有事实性错误时，你可以参考提供的证据。这些证据有可能有用，也有可能相互矛盾。在判断文本的事实性时，你必须小心谨慎。
+    当文本中出现年份时，不要默认年份信息或者妄加年份判断，时间与对话严格保持一致即可，对话发生时的日期不一定是2020年
+    你的回答必须是一个含有四个键值的字典，这四个键值是-"reasoning", "factuality", "error", and "correction", 分别对应着论证过程,给定文本的事实性（True / False）,文本中的事实性错误以及纠正后的文本。
+    以下是给定的文本
+    [文本]: {claim}
+    以下是你可以参考的证据
+    [证据]: {evidence}
+    请严格按照以下格式回复，严格返回一个python字典。不要返回其他任何内容。以”{{“开始你的回答。
+    [回复格式]: 
+    {{
+      "reasoning": "为什么给定的文本是事实的或者非事实？当你说某个文本是非事实的时候，你必须提供多个证据来支持你的判断。",
+      "error": "如果文本是事实性的，那么返回"None"；否则，描述错误。",
+      "correction": "如果文本的错误是修改了对话中信息，那么返回纠正后的文本。如果文本的错误是擅自增加了对话中没出现的信息，直接返回删去多余信息的文本无需修改。如果文本正确，返回"None"。",
+      "factuality": 如果给定的文本是事实，那么返回"true"；否则，返回"false"。
+    }}
+  evidence_extraction: |-
+    你会收到一个文本片段和一组证据。你的任务是找出证据中与文本最相关的三条证据。你的任务是找出这些证据，不需要修改任何证据的内容
+    你的回答必须是一个python列表，请严格按照格式输出，不需要输出其他任何内容，这个列表应当是给定证据的子集
+    以下是给定的文本
+    [文本]: {claim}
+    以下是给定的证据
+    [证据]: {evidence}
+    请严格按照以下格式回复，严格返回一个python字典。不要返回其他任何内容。以"["开始你的回答。
+    [回复格式]: 
+    ["证据1","证据2","证据3"]
+   

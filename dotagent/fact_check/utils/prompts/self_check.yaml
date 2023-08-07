@@ -1,0 +1,204 @@
+knowledge_qa:
+  system: |-
+    You are a brilliant assistant.
+  user_zero_shot_CoT: |-
+    You are given a claim. Your task is to identify whether there are any factual errors within the claim.
+    The response must be a dictionary with 4 keys - "reasoning", "error", "corrected_claim", and "factuality", which correspond to the reasoning about whether the claim is factual, the factual error present in the claim (if any), the corrected claim (if needed), and whether the claim is factual or not (Boolean - True or False).
+    The following is the given claim - 
+    [claim]: {claim}
+    You MUST only respond in the format as described below. DO NOT RESPOND WITH ANYTHING ELSE. ADDING ANY OTHER EXTRA NOTES THAT VIOLATE THE RESPONSE FORMAT IS BANNED. START YOUR RESPONSE WITH '{{'.
+    [response format]: 
+    {{
+      "reasoning": "Reason about whether the claim is factual. Think step by step.",
+      "error": "None if the claim is factual; otherwise, describe the error.",
+      "corrected_claim": "None if the claim is factual; otherwise, write the corrected claim.",
+      "factuality": "True if the claim is factual, False otherwise."
+    }}
+  user_3_shot_CoT: |-
+    You are given a claim. Your task is to identify whether there are any factual errors within the claim.
+    The response must be a dictionary with 4 keys - "reasoning", "error", "corrected_claim", and "factuality", which correspond to the reasoning about whether the claim is factual, the factual error present in the claim (if any), the corrected claim (if needed), and whether the claim is factual or not (Boolean - True or False).
+    You MUST only respond in the format as described below. DO NOT RESPOND WITH ANYTHING ELSE. ADDING ANY OTHER EXTRA NOTES THAT VIOLATE THE RESPONSE FORMAT IS BANNED. START YOUR RESPONSE WITH '{{'.
+    [response format]: 
+    {{
+      "reasoning": "Reason about whether the claim is factual. Think step by step.",
+      "error": "None if the claim is factual; otherwise, describe the error.",
+      "corrected_claim": "None if the claim is factual; otherwise, write the corrected claim.",
+      "factuality": "True if the claim is factual, False otherwise."
+    }}
+
+    Here are three examples:
+    [claim]: Albert Einstein was awarded the Nobel Prize in Physics in 1921 for his theory of relativity.
+    [response]: {{"reasoning": "Although Albert Einstein was indeed awarded the Nobel Prize in Physics in 1921, it was not for his theory of relativity, but rather for his discovery of the law of the photoelectric effect.", "error": "The claim incorrectly states that Einstein won the Nobel Prize for his theory of relativity.", "corrected_claim": "Albert Einstein was awarded the Nobel Prize in Physics in 1921 for his discovery of the law of the photoelectric effect.", "factuality": False}}
+
+    [claim]: The Titanic sank on its maiden voyage in 1912 after hitting an iceberg.
+    [response]: {{"reasoning": "This claim is accurate. The RMS Titanic, a British luxury passenger liner, did indeed sink during its maiden voyage in 1912 after colliding with an iceberg in the North Atlantic Ocean.", "error": "None", "corrected_claim": "None", "factuality": True}}
+
+    [claim]: The capital of Australia is Sydney.
+    [response]: {{"reasoning": "Despite Sydney being one of the most recognized and populated cities in Australia, it is not the capital. The capital of Australia is Canberra.", "error": "The claim incorrectly states that Sydney is the capital of Australia.", "corrected_claim": "The capital of Australia is Canberra.", "factuality": False}}
+
+    Now complete the following:
+    [claim]: {claim}
+    [response]: 
+
+code:
+  system: |-
+    You are a brilliant assistant.
+  user_zero_shot_CoT: |-
+    You are given a coding question and a potential solution to the coding question. Your task is to identify whether the potential solution solves the coding question correctly or not. You should check the potential solution line-by-line to see if the solution includes errors, such as syntax, logic, or runtime errors.
+    Your response must be a dictionary with four keys - "reasoning", "error", "corrected_solution", and "factuality", which correspond to the line-by-line reasoning about whether the potential solution contains errors, the coding error present in the potential solution (if any), the corrected solution (if necessary), and whether the potential solution solves the coding question correctly or not (a Boolean value of True or False).
+    The following is the given coding question and potential solution - 
+    [coding question]: {input_question}
+    [potential solution]: {input_solution}
+    You MUST only respond in the format as described below. DO NOT RESPOND WITH ANYTHING ELSE. ADDING ANY OTHER EXTRA NOTES THAT VIOLATE THE RESPONSE FORMAT IS BANNED. START YOUR RESPONSE WITH '{{'.
+    [response format]: 
+    {{
+      "reasoning": "line-by-line reasoning about whether the potential solution contains errors.",
+      "error": "None if the potential solution correctly solves the coding question; otherwise, describe the error.",
+      "corrected_solution": "None if the potential solution is correct; otherwise, write the correct solution that correctly solves the coding question.",
+      "factuality": "True if the potential solution is correct, False otherwise."
+    }}
+  user_3_shot_CoT: |-
+    You are given a coding question and a potential solution to the coding question. Your task is to identify whether the potential solution solves the coding question correctly or not. You should check the potential solution line-by-line to see if the solution includes errors, such as syntax, logic, or runtime errors.
+    Your response must be a dictionary with four keys - "reasoning", "error", "corrected_solution", and "factuality", which correspond to the line-by-line reasoning about whether the potential solution contains errors, the coding error present in the potential solution (if any), the corrected solution (if necessary), and whether the potential solution solves the coding question correctly or not (a Boolean value of True or False).
+    You MUST only respond in the format as described below. DO NOT RESPOND WITH ANYTHING ELSE. ADDING ANY OTHER EXTRA NOTES THAT VIOLATE THE RESPONSE FORMAT IS BANNED. START YOUR RESPONSE WITH '{{'.
+    [response format]: 
+    {{
+      "reasoning": "line-by-line reasoning about whether the potential solution contains errors.",
+      "error": "None if the potential solution correctly solves the coding question; otherwise, describe the error.",
+      "corrected_solution": "None if the potential solution is correct; otherwise, write the correct solution that correctly solves the coding question.",
+      "factuality": "True if the potential solution is correct, False otherwise."
+    }}
+
+    Here are three examples:
+    [coding question]: Write a Python function that takes a list of integers as input and returns the sum of all the elements in the list.
+    [potential solution]: "def sum_list(input_list):\n    sum = 0\n    for i in input_list:\n        sum += i\n    return sum"
+    [response]: {{"reasoning": "The function correctly iterates over each element in the list and adds it to a running sum, which is then returned.", "error": "None", "corrected_solution": "None", "factuality": True}}
+
+    [coding question]: Write a Python function that checks if a given string is a palindrome or not. A palindrome is a word, phrase, number, or other sequence of characters that reads the same forward or backward, allowing for adjustments to punctuation and spaces.
+    [potential solution]: "def is_palindrome(input_string):\n    reversed_string = input_string[::-1]\n    if input_string == reversed_string:\n        return True\n    else:\n        return False"
+    [response]: {{"reasoning": "The function correctly reverses the input string and compares it with the original string to check if it's a palindrome. However, it doesn't account for possible spaces and punctuation, which are supposed to be ignored while checking for palindromes.", "error": "The function does not ignore spaces and punctuation while checking for palindromes.", "corrected_solution": "def is_palindrome(input_string):\n    input_string = ''.join(c for c in input_string if c.isalnum()).lower()\n    reversed_string = input_string[::-1]\n    if input_string == reversed_string:\n        return True\n    else:\n        return False", "factuality": False}}
+
+    [coding question]: Write a Python function that takes a list of integers as input and returns the average of all the elements in the list.
+    [potential solution]: "def average(input_list):\n    sum = 0\n    for i in input_list:\n        sum += i\n    return sum"
+    [response]: {{"reasoning": "The function correctly calculates the sum of all elements in the list, but it does not divide this sum by the number of elements in the list, which is necessary for finding the average.", "error": "The function does not calculate the average correctly because it does not divide the sum by the number of elements.", "corrected_solution": "def average(input_list):\n    sum = 0\n    for i in input_list:\n        sum += i\n    return sum / len(input_list)", "factuality": False}}
+
+    Now complete the following:
+    [coding question]: {input_question}
+    [potential solution]: {input_solution}
+    [response]: 
+
+math:
+  system: |-
+    You are a brilliant assistant.
+  user_zero_shot_CoT: |-
+    You are given a math calculation and a proposed calculated answer to this calculation. Your task is to verify whether the calculated answer solves the math calculation correctly or not.
+    Your response must be a dictionary with three keys - "reasoning", "corrected_answer", and "factuality", which correspond to the reasoning about whether the calculated answer is correct, the corrected calculated answer (if necessary), and whether the calculated answer correctly solves the math calculation or not (a Boolean value of True or False).
+    The following is the given math calculation and proposed calculated answer - 
+    [math calculation]: {input_calculation}
+    [proposed calculated answer]: {input_calculated_answer}
+    You MUST only respond in the format as described below. DO NOT RESPOND WITH ANYTHING ELSE. ADDING ANY OTHER EXTRA NOTES THAT VIOLATE THE RESPONSE FORMAT IS PROHIBITED. START YOUR RESPONSE WITH '{{'.
+    [response format]: 
+    {{
+      "reasoning": "Reason about whether the calculated answer is correct.",
+      "corrected_answer": "None if the calculated answer is correct; otherwise, write the corrected answer that correctly solves the math problem.",
+      "factuality": "True if the calculated answer is correct, False otherwise."
+    }}
+  user_3_shot_CoT: |-
+    You are given a math calculation and a proposed calculated answer to this calculation. Your task is to verify whether the calculated answer solves the math calculation correctly or not.
+    Your response must be a dictionary with three keys - "reasoning", "corrected_answer", and "factuality", which correspond to the reasoning about whether the calculated answer is correct, the corrected calculated answer (if necessary), and whether the calculated answer correctly solves the math calculation or not (a Boolean value of True or False).
+    You MUST only respond in the format as described below. DO NOT RESPOND WITH ANYTHING ELSE. ADDING ANY OTHER EXTRA NOTES THAT VIOLATE THE RESPONSE FORMAT IS PROHIBITED. START YOUR RESPONSE WITH '{{'.
+    [response format]: 
+    {{
+      "reasoning": "Reason about whether the calculated answer is correct.",
+      "corrected_answer": "None if the calculated answer is correct; otherwise, write the corrected answer that correctly solves the math problem.",
+      "factuality": "True if the calculated answer is correct, False otherwise."
+    }}
+
+    Here are three examples:
+    [math calculation]: 8 * 9
+    [proposed calculated answer]: 72
+    [response]: {{"reasoning": "The calculation involves a multiplication operation of 8 and 9. The correct answer of this operation is indeed 72.", "corrected_answer": "None", "factuality": True}}
+
+    [math calculation]: 15 / 5
+    [proposed calculated answer]: 5
+    [response]: {{"reasoning": "The calculation involves a division operation of 15 by 5. The correct answer should be 3, not 5.", "corrected_answer": 3, "factuality": False}}
+
+    [math calculation]: 45 - 20
+    [proposed calculated answer]: 30
+    [response]: {{"reasoning": "The calculation involves a subtraction operation of 45 minus 20. The correct answer should be 25, not 30.", "corrected_answer": 25, "factuality": False}}
+
+    Now complete the following:
+    [math calculation]: {input_calculation}
+    [proposed calculated answer]: {input_calculated_answer}
+    [response]: 
+
+scientific:
+  system: |-
+    You are a brilliant assistant.
+  user_zero_shot_CoT: |-
+    You are provided with a dictionary that contains details of a specific scientific literature. The dictionary contains three keys - 'paper_title', 'paper_author(s)', and 'paper_pub_year'. Your task is to use your own knowledge base to validate the following:
+    (1) Confirm if the paper actually exists and whether its title is accurate. The provided paper name should exactly matched the actual paper name.
+    (2) Compare the provided list of authors to that of the original paper, ensuring the provided authors are indeed a subset of the actual authors.
+    (3) Verify the accuracy of the year of publication.
+    Your response must be a dictionary with four keys - "reasoning", "error", "correction", and "factuality", which correspond to your logical process in verifying the dictionary's data integrity, the detection of any errors within the dictionary, rectifying any misinformation (if present), and finally confirming the factuality of the dictionary (Boolean - True or False).
+    The following is the given dictionary that contains details of a scientific literature - 
+    [scientific literature]: {scientific_literature}
+    You MUST only respond in the format as described below. DO NOT RESPOND WITH ANYTHING ELSE. START YOUR RESPONSE WITH '{{'.
+    [response format]: 
+    {{
+      "reasoning": "Your process of assessing the data integrity of the scientific literature details in the dictionary. Use your own knowledge base to verify the data integrity of the scientific literature details in the dictionary. You do not have access to an external database for this verification.",
+      "error": "None if the provided information of the scientific literature is correct; otherwise, describe the error.",
+      "correction": "None if the provided information of the scientific literature is correct; otherwise, correct the information.",
+      "factuality": "True if the provided information is factual, False otherwise.",
+    }}
+  user_3_shot_CoT: |-
+    You are provided with a dictionary that contains details of a specific scientific literature. The dictionary contains three keys - 'paper_title', 'paper_author(s)', and 'paper_pub_year'. Your task is to use your own knowledge base to validate the following:
+    (1) Confirm if the paper actually exists and whether its title is accurate. The provided paper name should exactly matched the actual paper name.
+    (2) Compare the provided list of authors to that of the original paper, ensuring the provided authors are indeed a subset of the actual authors.
+    (3) Verify the accuracy of the year of publication.
+    Your response must be a dictionary with four keys - "reasoning", "error", "correction", and "factuality", which correspond to your logical process in verifying the dictionary's data integrity, the detection of any errors within the dictionary, rectifying any misinformation (if present), and finally confirming the factuality of the dictionary (Boolean - True or False).
+    You MUST only respond in the format as described below. DO NOT RESPOND WITH ANYTHING ELSE. START YOUR RESPONSE WITH '{{'.
+    [response format]: 
+    {{
+      "reasoning": "Your process of assessing the data integrity of the scientific literature details in the dictionary. Use your own knowledge base to verify the data integrity of the scientific literature details in the dictionary. You do not have access to an external database for this verification.",
+      "error": "None if the provided information of the scientific literature is correct; otherwise, describe the error.",
+      "correction": "None if the provided information of the scientific literature is correct; otherwise, correct the information.",
+      "factuality": "True if the provided information is factual, False otherwise.",
+    }}
+
+    Here are three examples:
+    [scientific literature]: {{"paper_title": "A Brief History of Time", "paper_author(s)": "Albert Einstein", "paper_pub_year": "1987"}}
+    [response]: {{"reasoning": "While 'A Brief History of Time' is a well-recognized scientific literature, it was not written by Albert Einstein as indicated in the provided dictionary. The actual author of this book is Stephen Hawking. Also, the publication year of 1987 is incorrect. The actual publication year should be 1988.", "error": "The author of 'A Brief History of Time' is incorrectly listed as Albert Einstein. Also, the publication year is incorrect.", "correction": {{"paper_title": "A Brief History of Time", "paper_author(s)": ["Stephen Hawking"], "paper_pub_year": "1988"}}, "factuality": False}}
+
+    [scientific literature]: {{"paper_title": "BART: Pre-training of Deep Bidirectional Transformers for Language Understanding", "paper_author(s)": "Devlin et al.", "paper_pub_year": "1960"}}
+    [response]: {{"reasoning": "The paper_title 'BART: Pre-training of Deep Bidirectional Transformers for Language Understanding' is incorrect. The actual paper title should be 'BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding'. The paper_author seems correct since Jacob Devlin is indeed in the author list of the BERT paper. Moreover, the year of publication is not consistent with the timeline of the development of such advanced AI models. The BERT paper was published in 2018, not 1960.", "error": "The 'paper_title' is incorrect and the 'paper_pub_year' is incorrect.", "correction": "{{"paper_title": "BART: Pre-training of Deep Bidirectional Transformers for Language Understanding", "paper_author(s)": ["Devlin et al."], "paper_pub_year": "2018"}}", "factuality": False}}
+
+    [scientific literature]: {{"paper_title": "Deep Learning", "paper_author(s)": "Yoshua Bengio, Ian Goodfellow, and Aaron Courville", "paper_pub_year": "2016"}}
+    [response]: {{"reasoning": "Upon reviewing the dictionary details with my knowledge base, I confirm that the title 'Deep Learning' is a well-known scientific literature in the field of artificial intelligence. Moreover, the authors listed, Yoshua Bengio, Ian Goodfellow, and Aaron Courville, are indeed the authors of this book. Lastly, this book was indeed published in the year 2016. Thus, the provided information is accurate.", "error": "None", "correction": "None", "factuality": True}}
+
+    Now complete the following:
+    [scientific literature]: {scientific_literature}
+    [response]: 
+
+med_doc_qa:
+  system: |-
+    You are a brilliant assistant.
+  user_zero_shot_CoT: |-
+    You are given a claim. Your task is to identify whether there are any factual errors within the claim.
+    The response must be a dictionary with 4 keys - "reasoning", "error", "corrected_claim", and "factuality", which correspond to the reasoning about whether the claim is factual, the factual error present in the claim (if any), the corrected claim (if needed), and whether the claim is factual or not (Boolean - True or False).
+    The following is the given claim - 
+    [claim]: {claim}
+    You MUST only respond in the format as described below. DO NOT RESPOND WITH ANYTHING ELSE. ADDING ANY OTHER EXTRA NOTES THAT VIOLATE THE RESPONSE FORMAT IS BANNED. START YOUR RESPONSE WITH '{{'.
+    [response format]: 
+    {{
+      "reasoning": "Reason about whether the claim is factual. Think step by step.",
+      "error": "None if the claim is factual; otherwise, describe the error.",
+      "corrected_claim": "None if the claim is factual; otherwise, write the corrected claim.",
+      "factuality": "True if the claim is factual, False otherwise."
+
+
+
+
+
+
+

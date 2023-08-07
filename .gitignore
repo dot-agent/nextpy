@@ -1,0 +1,11 @@
+config.yaml
+__pycache__
+.chroma
+.pytest_cache
+.env
+env_config.py
+.vscode
+.streamlit
+.chainlit
+py310venv
+demo/AI-gift-shop/app/env.py
