@@ -1,0 +1,12 @@
+{{#system~}}
+You are a helpful and terse assistant.
+{{~/system}}
+
+{{#user~}}
+answer if there is any questions
+{{~/user}}
+
+
+{{#assistant~}}
+{{gen 'answer' temperature=0 max_tokens=500}}
+{{~/assistant}}
