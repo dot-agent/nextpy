@@ -181,40 +181,40 @@ class BaseAgent:
         #     self.state = AgentState.IDLE
 
 
-    def export_agent_config(self, config_path):
-        config = {
-            'llm': {
-                'type': f"{self.llm.__class__.__name__}",
-                'model': self.llm.model_name
-            },
-            'knowledgebase': None if self.knowledgebase is None else {
-                'data_references': self.knowledgebase.references,
-                'data_transformer': {
-                    'type': self.knowledgebase.data_transformer.__class__.__module__ + '.' +
-                            self.knowledgebase.data_transformer.__class__.__name__,
-                    'chunk_overlap': self.knowledgebase.data_transformer._chunk_overlap,
-                    'chunk_size': self.knowledgebase.data_transformer._chunk_size
-                },
-                'vector_store': {
-                    'type': self.knowledgebase.vector_store.__class__.__module__ + '.' +
-                            self.knowledgebase.vector_store.__class__.__name__,
-                    'embedding_function': self.knowledgebase.vector_store._embedding_function
-                }
-            },
-            'memory' : None if self.memory is None else {
-                'type' : self.memory.__class__.__module__ + '.' +
-                        self.memory.__class__.__name__,
-            },
-            'agent': {
-                'type': f"{self.__class__.__name__}",
-                'prompt_template': self.prompt_template,
-                'input_variables': self.input_variables,
-                'output_key': self.output_key
-            }
-        }
+    # def export_agent_config(self, config_path):
+    #     config = {
+    #         'llm': {
+    #             'type': f"{self.llm.__class__.__name__}",
+    #             'model': self.llm.model_name
+    #         },
+    #         'knowledgebase': None if self.knowledgebase is None else {
+    #             'data_references': self.knowledgebase.references,
+    #             'data_transformer': {
+    #                 'type': self.knowledgebase.data_transformer.__class__.__module__ + '.' +
+    #                         self.knowledgebase.data_transformer.__class__.__name__,
+    #                 'chunk_overlap': self.knowledgebase.data_transformer._chunk_overlap,
+    #                 'chunk_size': self.knowledgebase.data_transformer._chunk_size
+    #             },
+    #             'vector_store': {
+    #                 'type': self.knowledgebase.vector_store.__class__.__module__ + '.' +
+    #                         self.knowledgebase.vector_store.__class__.__name__,
+    #                 'embedding_function': self.knowledgebase.vector_store._embedding_function
+    #             }
+    #         },
+    #         'memory' : None if self.memory is None else {
+    #             'type' : self.memory.__class__.__module__ + '.' +
+    #                     self.memory.__class__.__name__,
+    #         },
+    #         'agent': {
+    #             'type': f"{self.__class__.__name__}",
+    #             'prompt_template': self.prompt_template,
+    #             'input_variables': self.input_variables,
+    #             'output_key': self.output_key
+    #         }
+    #     }
 
-        with open(config_path, 'w') as f:
-            yaml.safe_dump(config, f)
+    #     with open(config_path, 'w') as f:
+    #         yaml.safe_dump(config, f)
 
 
     # def from_config(config_path):
