@@ -1,12 +1,15 @@
 '''
-Will be removed before launching 
 Env values will be passed from from os.environ
+Automatically loads environment variables from .env file
 '''
 
-
+from typing import Optional
 import os
 import yaml
 from pathlib import Path
+from dotenv import load_dotenv
+from pydantic import BaseSettings
+load_dotenv("./.env")
 
 
 CONFIG_FILE = "config.yaml"
@@ -30,3 +33,19 @@ class Config:
     OPENAI_ORG_ID = config_data["OPENAI_ORG_ID"]
     SERP_API_KEY = config_data["SERP_API_KEY"]
     GOOGLE_SEARCH_API_KEY = config_data["GOOGLE_SEARCH_API_KEY"]
+
+
+class AgentBoxSettings(BaseSettings):
+    """
+    AgentBox API Config
+    """
+
+    VERBOSE: bool = False
+    SHOW_INFO: bool = True
+
+    AGENTBOX_API_KEY: Optional[str] = None
+    AGENTBOX_BASE_URL: str = "https://agentboxapi.com/api/v1"
+    AGENTBOX_TIMEOUT: int = 20
+
+
+settings = AgentBoxSettings()
