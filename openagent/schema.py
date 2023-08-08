@@ -458,3 +458,53 @@ class BaseDocumentTransformer(ABC):
         self, documents: Sequence[Document], **kwargs: Any
     ) -> Sequence[Document]:
         """Asynchronously transform a list of documents."""
+
+
+class AgentBoxStatus(BaseModel):
+    """
+    Represents the status of a AgentBox instance.
+    """
+
+    status: str
+
+    def __str__(self):
+        return self.status
+
+    def __repr__(self):
+        return f"Status({self.status})"
+
+    def __eq__(self, other):
+        return self.__str__() == other.__str__()
+
+
+class AgentBoxOutput(BaseModel):
+    """
+    Represents the code execution output of a AgentBox instance.
+    """
+
+    type: str
+    content: str
+
+    def __str__(self):
+        return self.content
+
+    def __repr__(self):
+        return f"{self.type}({self.content})"
+
+    def __eq__(self, other):
+        return self.__str__() == other.__str__()
+
+
+class AgentBoxFile(BaseModel):
+    """
+    Represents a file returned from a AgentBox instance.
+    """
+
+    name: str
+    content: Optional[bytes] = None
+
+    def __str__(self):
+        return self.name
+
+    def __repr__(self):
+        return f"File({self.name})"

@@ -76,7 +76,7 @@ If you encounter an error like:
 
 This is a very common issue with Chroma DB. You can find instructions to resolve this in the [Chroma DB tutorial](https://docs.trychroma.com/troubleshooting#sqlite).
 
-### Code for full stack chat app along with UI
+### Code for a full-stack chat app, complete with UI.
 
  ```python
 import openagent.compiler as compiler
@@ -126,7 +126,7 @@ async def main(message: str):
 
 
 ```
-The UI will look somethings like this 
+The UI will look something like this:
 ![-----------------------------------------------------](./assets/chatapp.png)
 
 
