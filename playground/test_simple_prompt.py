@@ -1,3 +1,11 @@
+import sys
+import os
+
+script_dir = os.path.dirname(os.path.abspath(__file__))
+openagent_dir = os.path.abspath(os.path.join(script_dir, ".."))
+sys.path.append(openagent_dir)
+
+
 from openagent import compiler
 import re
 from dotenv import load_dotenv

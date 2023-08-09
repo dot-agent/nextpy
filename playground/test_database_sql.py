@@ -1,7 +1,14 @@
+import sys
+import os
+
+script_dir = os.path.dirname(os.path.abspath(__file__))
+openagent_dir = os.path.abspath(os.path.join(script_dir, ".."))
+sys.path.append(openagent_dir)
+
+
 from openagent.tools.toolkits.SQL import SQLDatabaseToolkit
-from openagent.tools.wrappers.sql_database import SQLDatabase
-from openagent.llmsold.openai import OpenAI
-from openagent.llmsold.openai import OpenAI
+from openagent.helpers.sql_database import SQLDatabase
+from openagent.llms._openai import OpenAI
 
 llm=OpenAI(
     model_name = "gpt-3.5-turbo",

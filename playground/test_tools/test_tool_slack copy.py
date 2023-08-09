@@ -1,3 +1,11 @@
+import sys
+import os
+
+script_dir = os.path.dirname(os.path.abspath(__file__))
+openagent_dir = os.path.abspath(os.path.join(script_dir, "..", ".."))
+sys.path.append(openagent_dir)
+
+
 from openagent.tools.basetool import Tool
 from openagent.tools.toolkits.slack_toolkit.slack import SlackToolkit
 from openagent import compiler
@@ -14,7 +22,7 @@ client_context = ssl.SSLContext()
 date = datetime.now()
 
 # print(dateformat)
-slack_tool = SlackToolkit(slack_token="xoxb-5334084152581-5658719393266-tTFagf7IQM00LJOHNfdoFNJG", ssl=client_context, earliest_date=date)
+slack_tool = SlackToolkit(slack_token="Slack API Key", ssl=client_context, earliest_date=date)
 slack_tools = slack_tool.get_tools()
 print(slack_tools)
 
