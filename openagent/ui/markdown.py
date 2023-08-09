@@ -9,8 +9,8 @@ Hi there, Developer! 👋 We're excited to have you on board. openagent_ui is a 
 
 ## Useful Links 🔗
 
-- **Documentation:** Get started with our comprehensive [openagent_ui Documentation](https://docs.openagent.ui.io) 📚
-- **Discord Community:** Join our friendly [openagent_ui Discord](https://discord.gg/ZThrUxbAYw) to ask questions, share your projects, and connect with other developers! 💬
+- **Documentation:** 📚
+- **Discord Community:** 💬
 
 We can't wait to see what you create with openagent_ui! Happy coding! 💻😊
 
