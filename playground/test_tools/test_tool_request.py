@@ -1,3 +1,11 @@
+import sys
+import os
+
+script_dir = os.path.dirname(os.path.abspath(__file__))
+openagent_dir = os.path.abspath(os.path.join(script_dir, "..", ".."))
+sys.path.append(openagent_dir)
+
+
 from openagent.tools.basetool import Tool
 from openagent.tools.toolkits.requests_toolkit.request import RequestsToolkit
 from openagent.tools.toolkits.requests_toolkit.requests.base import RequestsGetTool, RequestsPostTool, RequestsPatchTool, RequestsPutTool, RequestsDeleteTool
@@ -71,7 +79,7 @@ llm = compiler.llms.OpenAI(model="gpt-3.5-turbo-16k")
 
 def tool_use(query, tools=request_tools):
     query = json.loads(query)
-    return tools[int(query["index"])].run(query["query"])
+    return tools[int(query["index"])]._run(query["query"])
 
 experts = compiler(template='''
 {{#system~}}

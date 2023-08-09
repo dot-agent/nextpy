@@ -2,12 +2,9 @@
 from typing import Any, Dict, Optional
 
 from pydantic import BaseModel, Extra, Field, root_validator
-from openagent.llmsold.base import BaseLLM #Used in QuerySQLCHecker for which new function might be added to BaseLLM
-
-from openagent.prompt_template.simple_template import PromptTemplate
-from openagent.tools.wrappers.spark_sql_database import SparkSQL
+from openagent.helpers.spark_sql_database import SparkSQL
 from openagent.tools.basetool import BaseTool
-from openagent.tools.Spark_SQLDb.prompt import QUERY_CHECKER
+from openagent.tools.toolkits.Spark_SQLDb.prompt import QUERY_CHECKER
 
 class BaseSparkSQLTool(BaseModel):
     """Base tool for interacting with Spark SQL."""

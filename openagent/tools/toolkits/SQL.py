@@ -3,21 +3,19 @@ from typing import List
 
 
 from openagent.tools.toolkits.base import BaseToolkit
-from openagent.llmsold.base import BaseLLM
 from openagent.tools.basetool import BaseTool
-from openagent.tools.SQLDb.tool import (
+from openagent.tools.toolkits.SQLDb.tool import (
     InfoSQLDatabaseTool,
     ListSQLDatabaseTool,
     #QuerySQLCheckerTool,
     QuerySQLDataBaseTool,
 )
-from openagent.tools.wrappers.sql_database import SQLDatabase
+from openagent.helpers.sql_database import SQLDatabase
 
 class SQLDatabaseToolkit(BaseToolkit):
     """Toolkit for interacting with SQL databases."""
 
     db: SQLDatabase = Field(exclude=True)
-    llm: BaseLLM = Field(exclude=True)
 
     @property
     def dialect(self) -> str:

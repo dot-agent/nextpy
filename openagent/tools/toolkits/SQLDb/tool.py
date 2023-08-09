@@ -2,13 +2,11 @@
 from typing import Any, Dict, Optional
 
 from pydantic import BaseModel, Extra, Field, root_validator
-from openagent.llmsold.base import BaseLLM #Used in QuerySQLCHecker for which new function might be added to BaseLLM
 #from langchain.chains.llm import LLMChain  ------- Used in QuerySQLCHecker
 
-from openagent.prompt_template.simple_template import PromptTemplate
-from openagent.tools.toolkits.sql_database import SQLDatabase
+from openagent.tools.toolkits.SQL import SQLDatabase
 from openagent.tools.basetool import BaseTool
-from openagent.tools.SQLDb.prompt import QUERY_CHECKER
+from openagent.tools.toolkits.SQLDb.prompt import QUERY_CHECKER
 
 class BaseSQLDatabaseTool(BaseModel):
     """Base tool for interacting with a SQL database."""
