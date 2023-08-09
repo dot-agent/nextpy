@@ -79,7 +79,7 @@ llm = compiler.llms.OpenAI(model="gpt-3.5-turbo-16k")
 
 def tool_use(query, tools=request_tools):
     query = json.loads(query)
-    return tools[int(query["index"])].run(query["query"])
+    return tools[int(query["index"])]._run(query["query"])
 
 experts = compiler(template='''
 {{#system~}}
