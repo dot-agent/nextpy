@@ -1,5 +1,0 @@
-
-My name is Piyush Chandra.
-Here are my skills : html, css , tailwind css ,js , next.js , node.js ,  express.js , react.js , bootstrap. 
-My email id is piyushchandra9458@gmail.com.
-
