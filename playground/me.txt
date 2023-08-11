@@ -1,5 +1,1 @@
-{{user}}
-My name is Dola Barai.
-Here are my skills : HTML, CSS, JavaScript, React.js, Node.js, Firebase, Vercel, Netlify, JWT, and MongoDB . 
-My email id is: dolabarai43@gmail.com.
-{{/user}}
+
