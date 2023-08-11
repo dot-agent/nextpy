@@ -1,0 +1,6 @@
+{{#user}}
+My name is Anurag.
+Here are my skills : html, css ,js , nodejs, expressjs, mongodb, react . 
+My email id is kanswalanurag123@gmail.com.
+ {{/user}}
+
