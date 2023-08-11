@@ -1,0 +1,3 @@
+My name is Ayush Kumar.
+Here are my skills : html, css ,js , next.js ,react.js ,c++ ,python ,mongodb ,express.js. 
+My email id is ayushkumar0352@gmail.com.
