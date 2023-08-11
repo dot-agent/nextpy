@@ -1,0 +1,3 @@
+My name is Nikhil Kumar,
+Here are my skills: html, css, js, mongodb, java, c++ with oops
+My email id is mickyroy85#gmail.com
