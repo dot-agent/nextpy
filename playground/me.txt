@@ -1,5 +1,0 @@
-{{#user}}
-My name is Aniket Chaudhari.
-Here are my skills : HTML, CSS, Js, Node.js, Express.js, Bootstrap, React.js, SQL, PHP, MongoDB, C/C++, Java, Python. 
-My email id is aniketsc93@gmail.com.
- {{/user}}
