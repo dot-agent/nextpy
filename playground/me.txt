@@ -1,0 +1,5 @@
+{{#user}}
+My name is Sumit Bhardwaj
+Here are my skills : html, css ,js ,tailwind css, bootstrap, react.js . 
+My email id is beerus9833@gmail.com.
+ {{/user}}
