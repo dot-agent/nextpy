@@ -1,5 +1,0 @@
-{{#user}}
-My name is T Hari Priya.
-Here are my skills: html, css, js, Git, Github, Docker, Jenkins, java, Linux, SQL.
-My email id is tphp.1328@gmail.com.
-{{/user}}
