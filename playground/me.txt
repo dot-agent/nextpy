@@ -1,5 +1,0 @@
-{{#user}}
-My name is Saksham Shrivastava.
-Here are my skills: HTML, CSS, JavaScript, Nodejs, Reactjs.
-My email id is sakshamshrivatav58@gmail.com.
-{{/user}}
