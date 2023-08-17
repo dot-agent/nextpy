@@ -1,30 +1,84 @@
 import asyncio
 asyncio.set_event_loop_policy(asyncio.WindowsSelectorEventLoopPolicy())
 
+import sys
+import os
+
+script_dir = os.path.dirname(os.path.abspath(__file__))
+openagent_dir = os.path.abspath(os.path.join(script_dir, ".."))
+sys.path.append(openagent_dir)
+import openagent
+from openagent.llms._openai import OpenAI as guidance_llm
+from openagent.agent.chat import ChatAgent
+from dotenv import load_dotenv
+load_dotenv()
+
 from jupyter_client import KernelManager
 from IPython import display
 import subprocess
 import ast
-import time
 import argparse
-import textwrap
 import threading
 
 
+def agent():
+
+    llm = guidance_llm(
+        model="gpt-3.5-turbo"
+    )
+
+    chat_template = '''
+                {{#user~}}
+                I want to translate the following English text into Python code:
+                QUERY: {{input}}
+                {{~/user}}
+
+                {{#assistant~}}
+                Sure, I can assist with that. If I need more information, I'll ask for clarification.
+                {{~/assistant}}
+
+                {{#user~}}
+                Yes, go ahead and write the complete code.
+                {{~/user}}
+
+                {{#assistant~}}
+                {{gen 'response' temperature=0 max_tokens=3900}}
+                {{~/assistant}}
+
+                {{#assistant~}}
+                If the context or the task is not clear, please provide additional information to clarify.
+                {{~/assistant}}'''
+    
+    agent = ChatAgent(
+        llm=llm,
+        prompt_template=chat_template,
+    )
+    return agent
 
 
 def install_dependencies(code):
     try:
         # Parse the code to extract import statements
         parsed_ast = ast.parse(code)
-        imports = [node.names[0].name.split('.')[0] for node in ast.walk(parsed_ast) if isinstance(node, ast.Import) or isinstance(node, ast.ImportFrom)]
-        
-        # print(imports)
-        if imports:
-            subprocess.check_call(["pip", "install"] + imports)
+        imports = []
+
+        for node in ast.walk(parsed_ast):
+            if isinstance(node, ast.Import):
+                imports.extend([name.name for name in node.names])
+            elif isinstance(node, ast.ImportFrom):
+                module_name = node.module
+                if module_name is not None:
+                    imports.append(module_name.split('.')[0])
+
+        # Remove duplicate imports and filter out standard library modules
+        imports = list(set(imports))
+        third_party_dependencies = [dep for dep in imports if dep not in sys.modules]
+
+        if third_party_dependencies:
+            subprocess.check_call([sys.executable, "-m", "pip", "install"] + third_party_dependencies)
             return True
         else:
-            print("No dependencies detected.")
+            # print("No third-party dependencies detected.")
             return True
     except subprocess.CalledProcessError:
         print("Dependency installation failed.")
@@ -44,10 +98,6 @@ def run_python_code_in_kernel(code):
 
     # Execute the code in the kernel
     kc.execute(code)
-    
-    # print(kc)
-    start_time = time.time()
-    print("start_time ", start_time)
 
     # Create a thread for waiting on messages
     def wait_for_messages():
@@ -74,7 +124,7 @@ def run_python_code_in_kernel(code):
     message_thread.start()
 
     # Wait for the specified timeout
-    timeout_seconds = 5
+    timeout_seconds = 10
     message_thread.join(timeout_seconds)
 
     # Check if the thread is still alive (indicating timeout)
@@ -88,32 +138,10 @@ def run_python_code_in_kernel(code):
     km.shutdown_kernel()
 
 # Main function
-def main(code):
-#     code = """
-# print("Below is graph is very useful")
-# import matplotlib.pyplot as plt
-# plt.plot([1, 2, 3, 4, 6, 12])
-# plt.show()
-# """
-
-    # code = """
-    #         def fibonacci(n):
-    #             if n <= 0:
-    #                 return 'Invalid input. Please enter a positive integer.'
-    #             elif n == 1:
-    #                 return 0
-    #             elif n == 2:
-    #                 return 1
-    #             else:
-    #                 fib_sequence = [0, 1]
-    #                 for i in range(2, n):
-    #                     fib_sequence.append(fib_sequence[i-1] + fib_sequence[i-2])
-    #                 return fib_sequence
-    #         fibonacci_20 = fibonacci(20)
-    #         print(fibonacci_20)
-    #     """
-
-    # code = textwrap.dedent(code)
+def main(gpt_prompt):
+    res = agent().run(input=gpt_prompt)
+    code = f"""{res.split('```')[1].replace('python', '')}"""
+    print(code)
 
     # Install dependencies
     if install_dependencies(code):
@@ -122,8 +150,8 @@ def main(code):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='Execute Python code from the command line.')
-    parser.add_argument("--code", help="Python code to be executed", default=None)
+    parser.add_argument("--gpt_prompt", help="Python code to be executed", default=None)
     args = parser.parse_args()
-    code = args.code
+    gpt_prompt = args.gpt_prompt
 
-    main(code)
+    main(gpt_prompt)
