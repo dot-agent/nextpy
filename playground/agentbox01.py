@@ -1,17 +1,6 @@
 import asyncio
 asyncio.set_event_loop_policy(asyncio.WindowsSelectorEventLoopPolicy())
 
-import sys
-import os
-
-script_dir = os.path.dirname(os.path.abspath(__file__))
-openagent_dir = os.path.abspath(os.path.join(script_dir, ".."))
-sys.path.append(openagent_dir)
-import openagent
-from openagent.llms._openai import OpenAI as guidance_llm
-from openagent.agent.chat import ChatAgent
-from dotenv import load_dotenv
-load_dotenv()
 
 from jupyter_client import KernelManager
 from IPython import display
@@ -19,41 +8,8 @@ import subprocess
 import ast
 import argparse
 import threading
-
-
-def agent():
-
-    llm = guidance_llm(
-        model="gpt-3.5-turbo"
-    )
-
-    chat_template = '''
-                {{#user~}}
-                I want to translate the following English text into Python code:
-                QUERY: {{input}}
-                {{~/user}}
-
-                {{#assistant~}}
-                Sure, I can assist with that. If I need more information, I'll ask for clarification.
-                {{~/assistant}}
-
-                {{#user~}}
-                Yes, go ahead and write the complete code.
-                {{~/user}}
-
-                {{#assistant~}}
-                {{gen 'response' temperature=0 max_tokens=3900}}
-                {{~/assistant}}
-
-                {{#assistant~}}
-                If the context or the task is not clear, please provide additional information to clarify.
-                {{~/assistant}}'''
-    
-    agent = ChatAgent(
-        llm=llm,
-        prompt_template=chat_template,
-    )
-    return agent
+import sys
+import base64
 
 
 def install_dependencies(code):
@@ -153,9 +109,9 @@ def run_python_code_in_kernel(code):
     km.shutdown_kernel()
 
 # Main function
-def main(gpt_prompt):
-    res = agent().run(input=gpt_prompt)
-    code = f"""{res.split('```')[1].replace('python', '')}"""
+def main(response):
+    decoded_response = base64.b64decode(response).decode()
+    code = f"""{decoded_response.split('```')[1].replace('python', '')}"""
     print(code)
 
     # Install dependencies
@@ -165,8 +121,8 @@ def main(gpt_prompt):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='Execute Python code from the command line.')
-    parser.add_argument("--gpt_prompt", help="Python code to be executed", default=None)
+    parser.add_argument("--response", help="Python code to be executed", default=None)
     args = parser.parse_args()
-    gpt_prompt = args.gpt_prompt
+    response = args.response
 
-    main(gpt_prompt)
+    main(response)
