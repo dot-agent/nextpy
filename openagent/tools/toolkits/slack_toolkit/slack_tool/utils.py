@@ -25,7 +25,7 @@ from llama_index.schema import Document
 
 logger = logging.getLogger(__name__)
 
-os.environ["SLACK_BOT_TOKEN"] = "xoxb-5334084152581-5658719393266-tTFagf7IQM00LJOHNfdoFNJG"
+os.environ["SLACK_BOT_TOKEN"] = "Slack Token"
 class SlackReader(BaseReader):
     """Slack reader.
 

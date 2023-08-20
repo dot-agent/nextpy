@@ -22,7 +22,7 @@ client_context = ssl.SSLContext()
 date = datetime.now()
 
 # print(dateformat)
-slack_tool = SlackToolkit(slack_token="Slack API Key", ssl=client_context, earliest_date=date)
+slack_tool = SlackToolkit(slack_token="Slack Token", ssl=client_context, earliest_date=date)
 slack_tools = slack_tool.get_tools()
 print(slack_tools)
 
