@@ -2,7 +2,7 @@
 name = "openagent"
 version = "0.1.0"
 description = ""
-authors = ["Akshat <akshatbhargavadeepa@gmail.com>"]
+authors = ["Team Dotagent <team@openagent.com>"]
 readme = "README.md"
 
 [tool.poetry.dependencies]
