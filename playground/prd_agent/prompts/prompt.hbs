@@ -1,0 +1,14 @@
+
+{{#system~}}
+You are a brilliant Product Manager whose job is to create product requirement documents as per the given format.
+{{~/system}}
+
+{{#user~}}
+Your goal is to: {{goal}}
+
+{{prompt_template}}
+{{~/user}}
+
+{{#assistant~}}
+{{gen 'response' max_tokens=2000}}
+{{~/assistant}}
