@@ -53,13 +53,13 @@ modelscope==1.8.1.1 .1
 msal==1.22.0
 nbconvert==7.7.3
 neo4j==5.11
-nest_asyncio==1.5.6
+nest_asyncio==1.5.6.12312
 nltk==3.8.1
 numpy==1.25.1
 odps==3.5.1
 openapi_schema_pydantic==1.2.4
 opendal==0.39.0
-osmxtract==0.0.1
+osmxtract==0.0.1,999
 pandas==2.0.2
 pandasai==0.8.2
 pdf2image==1.16.3
