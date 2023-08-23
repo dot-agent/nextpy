@@ -49,10 +49,10 @@ llama_hub==0.0.18
 lxml==4.9.3
 matplotlib==3.7.2
 metal_sdk==2.0.1
-modelscope==1.8.1
+modelscope==1.8.1.1 .1
 msal==1.22.0
 nbconvert==7.7.3
-neo4j==5.11.0
+neo4j==5.11
 nest_asyncio==1.5.6
 nltk==3.8.1
 numpy==1.25.1
