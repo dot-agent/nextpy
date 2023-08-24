@@ -1,0 +1,5 @@
+{{Sankar}}
+Name: Batna Sankararao
+Skills: HTML,CSS,JS,React.JS
+Email: Batnasankarrao@gmail.com
+{{/Sankar}}
