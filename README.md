@@ -19,7 +19,7 @@ This project is still in the &quot;just for friends&quot; stage. If you want to 
 <h1 id="what-is-openagent-">What is OpenAgent ?</h1>
 <p>OpenAgent is a library of modular components and an orchestration framework. Inspired by a microservices approach, it gives developers all the components they need to build robust, stable &amp; reliable AI applications and experimental autonomous agents.</p>
 
-![-----------------------------------------------------](./assets/openagent_features.png)
+
 
 <h2 id="modularity"> 🧱 Modularity</h2>
 <ul>
