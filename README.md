@@ -2,8 +2,9 @@
 <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Smilies/Grinning%20Face.png" alt="Grinning Face" width="50" height="50" />
 <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Smilies/Robot.png" alt="Robot" width="175" height="175" />
 </p>
-<p><em>Hey there, Friend!
-This project is still in the &quot;just for friends&quot; stage. If you want to see what we&#39;re messing with and have some thoughts, take a look at the code. Would love your thoughts or contributions .</em></p>
+
+*Hey there, Friend!
+This project is still in the &quot;just for friends&quot; stage. If you want to see what we&#39;re messing with and have some thoughts, take a look at the code. Would love your thoughts or contributions - ✉️  ` anurag@openagent.dev `*
 
 <h1 id="-why-we-started-dotagent-"><strong>Why we started dotagent?</strong></h1>
 
