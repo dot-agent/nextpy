@@ -4,7 +4,9 @@
 </p>
 
 *Hey there, Friend!
-This project is still in the &quot;just for friends&quot; stage. If you want to see what we&#39;re messing with and have some thoughts, take a look at the code. Would love your thoughts or contributions - ✉️  ` anurag@openagent.dev `*
+This project is still in the &quot;just for friends&quot; stage. If you want to see what we&#39;re messing with and have some thoughts, take a look at the code.* 
+
+*Would love your thoughts or contributions - ✉️  ` anurag@openagent.dev `*
 
 <h1 id="-why-we-started-dotagent-"><strong>Why we started dotagent?</strong></h1>
 
