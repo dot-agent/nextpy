@@ -48,8 +48,8 @@ class BaseAgent:
         self.caching = caching
         self.return_complete = return_complete
         self.llm = llm if llm is not None else self.llm_instance()
-
         self.output_key = output_key
+
         self.compiler = compiler(llm = self.llm, template = self.prompt_template, caching=caching)
 
         if self.return_complete and self.output_key is not None:
@@ -163,110 +163,81 @@ class BaseAgent:
         print(self.run(**kwargs))
 
 
-        # if self.state != AgentState.IDLE:
-        #     return {"error": "Agent is not in idle state."}
-
-        # self.state = AgentState.BUSY
-        # try:
-        #     if self.user_query:
-        #         output = self.engine()()  # Create and run the engine in one line
-        #         return output
-        #     else:
-        #         return f"I'm {self.agent_id}. What can I help you with?"
-        # except Exception as e:
-        #     self.state = AgentState.ERROR
-        #     print(f"An error occurred: {e}")
-        #     raise e
-        # finally:
-        #     self.state = AgentState.IDLE
-
-
-    # def export_agent_config(self, config_path):
-    #     config = {
-    #         'llm': {
-    #             'type': f"{self.llm.__class__.__name__}",
-    #             'model': self.llm.model_name
-    #         },
-    #         'knowledgebase': None if self.knowledgebase is None else {
-    #             'data_references': self.knowledgebase.references,
-    #             'data_transformer': {
-    #                 'type': self.knowledgebase.data_transformer.__class__.__module__ + '.' +
-    #                         self.knowledgebase.data_transformer.__class__.__name__,
-    #                 'chunk_overlap': self.knowledgebase.data_transformer._chunk_overlap,
-    #                 'chunk_size': self.knowledgebase.data_transformer._chunk_size
-    #             },
-    #             'vector_store': {
-    #                 'type': self.knowledgebase.vector_store.__class__.__module__ + '.' +
-    #                         self.knowledgebase.vector_store.__class__.__name__,
-    #                 'embedding_function': self.knowledgebase.vector_store._embedding_function
-    #             }
-    #         },
-    #         'memory' : None if self.memory is None else {
-    #             'type' : self.memory.__class__.__module__ + '.' +
-    #                     self.memory.__class__.__name__,
-    #         },
-    #         'agent': {
-    #             'type': f"{self.__class__.__name__}",
-    #             'prompt_template': self.prompt_template,
-    #             'input_variables': self.input_variables,
-    #             'output_key': self.output_key
-    #         }
-    #     }
-
-    #     with open(config_path, 'w') as f:
-    #         yaml.safe_dump(config, f)
+    def export_agent_config(self, config_path):
+        config = {
+            'llm': {
+                'type': f"{self.llm.__class__.__name__}",
+                'model': self.llm.model_name
+            },
+            'knowledgebase': None if self.knowledgebase is None else {
+                'type': self.knowledgebase.__class__.__module__ + '.' +
+                        self.knowledgebase.__class__.__name__,
+                'data_references': self.knowledgebase.references,
+                'data_transformer': {
+                    'type': self.knowledgebase.data_transformer.__class__.__module__ + '.' +
+                            self.knowledgebase.data_transformer.__class__.__name__,
+                    'chunk_overlap': self.knowledgebase.data_transformer._chunk_overlap,
+                    'chunk_size': self.knowledgebase.data_transformer._chunk_size
+                },
+                'vector_store': {
+                    'type': self.knowledgebase.vector_store.__class__.__module__ + '.' +
+                            self.knowledgebase.vector_store.__class__.__name__,
+                    'embedding_function': self.knowledgebase.vector_store._embedding_function
+                }
+            },
+            'memory' : None if self.memory is None else {
+                'type' : self.memory.__class__.__module__ + '.' +
+                        self.memory.__class__.__name__,
+            },
+            'prompt_template': self.prompt_template,
+            'input_variables': self.input_variables,
+            'output_key': self.output_key,
+            # 'tools': None if self.tools is None else self.tools
+        }
+        with open(config_path, 'w') as f:
+            f.write(config)
 
 
-    # def from_config(config_path):
-    #     with open(config_path, 'r') as f:
-    #         config = yaml.safe_load(f)
+    @classmethod
+    def load_from_config(cls, config_file):
+        with open(config_file, 'r') as f:
+            config = f.read()
 
-    #     llm_class = import_class(config['llm']['type'])
-    #     llm = llm_class(model_name=config['llm']['model'])
+        # Assume these classes are defined elsewhere and can be imported
+        llm_module_name, llm_class_name = config['llm']['type'].rsplit('.', 1)
+        llm_module = importlib.import_module(llm_module_name)
+        llm_class = getattr(llm_module, llm_class_name)
+        llm = llm_class(model=config['llm']['model'])
 
-    #     data_transformer_class = import_class(config['knowledgebase']['data_transformer']['type'])
-    #     data_transformer = data_transformer_class(
-    #         chunk_overlap=config['knowledgebase']['data_transformer']['chunk_overlap'],
-    #         chunk_size=config['knowledgebase']['data_transformer']['chunk_size']
-    #     )
+        knowledgebase = None
+        if config['knowledgebase'] is not None:
+            knowledgebase_module_name, knowledgebase_class_name = config['agent']['type'].rsplit('.', 1)
+            knowledgebase_module = importlib.import_module(knowledgebase_module_name)
+            knowledgebase_class = getattr(knowledgebase_module, knowledgebase_class_name)
+            knowledgebase = knowledgebase_class(
+                data_references=config['knowledgebase']['data_references'],
+                data_transformer=config['knowledgebase']['data_transformer'],
+                vector_store=config['knowledgebase']['vector_store']
+            )
 
-    #     vector_store_class = import_class(config['knowledgebase']['vector_store']['type'])
-    #     vector_store = vector_store_class(embedding_function=config['knowledgebase']['vector_store']['embedding_function'])
+        memory = None
+        if config['memory'] is not None:
+            # Instantiate the memory here in a similar manner
+            memory_module_name, memory_class_name = config['memory']['type'].rsplit('.', 1)
+            memory_module = importlib.import_module(memory_module_name)
+            memory_class = getattr(memory_module, memory_class_name)
+            memory = memory_class()
 
-    #     agent_class = import_class(config['agent']['type'])
-    #     agent = agent_class(
-    #         llm=llm,
-    #         data_source=config['knowledgebase']['data_source'],
-    #         data_loader=config['knowledgebase']['data_loader'],
-    #         data_transformer=data_transformer,
-    #         vector_store=vector_store,
-    #         prompt_template=config['agent']['prompt_template'],
-    #         input_variables=config['agent']['input_variables'],
-    #         output_key=config['agent']['output_key']
-    #     )
+        agent = cls(
+            llm=llm,
+            knowledgebase=knowledgebase,
+            memory=memory,
+            prompt_template=config['agent']['prompt_template'],
+            input_variables=config['agent']['input_variables'],
+            output_key=config['agent']['output_key'],
+        )
 
-    #     return agent
-    
+        return agent
 
-    def print_config(self):
-        print("Language Model:")
-        print(f" - Type: {self.llm.__class__.__name__}")
-        print(f" - Model: {self.llm.model_name}")
-        
-        if self.knowledgebase:
-            print("\nKnowledge Base:")
-            print(f" - Data References: {self.knowledgebase.references}")
-            print(f" - Data Transformer: {self.knowledgebase.data_transformer}")
-            print(f" - Vector Store: {self.knowledgebase.vector_store}")
-
-        if self.memory:
-            print("\nMemory:")
-            print(f" - Type: {self.memory}")
-        
-        print("\nAgent:")    
-        print(f" - Type: {self.__class__.__name__}")
-        print(f" - Prompt Template: {self.prompt_template}")
-        print(f" - Input Variables: {self.input_variables}")
-        print(f" - Output Key: {self.output_key}")
 
 
