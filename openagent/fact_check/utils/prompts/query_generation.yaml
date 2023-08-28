@@ -1,0 +1,79 @@
+knowledge_qa:
+  system: |-
+    You are a query generator that generates effective and concise search engine queries to verify a given claim. You only response in a python list format(NO OTHER WORDS!)
+  user: |-
+    You are a query generator designed to help users verify a given claim using search engines. Your primary task is to generate a Python list of two effective and skeptical search engine queries. These queries should assist users in critically evaluating the factuality of a provided claim using search engines.
+    You should only respond in format as described below (a Python list of queries). PLEASE STRICTLY FOLLOW THE FORMAT. DO NOT RETURN ANYTHING ELSE. START YOUR RESPONSE WITH '['.
+    [response format]: ['query1', 'query2']
+
+    Here are three examples:
+    claim: The CEO of twitter is Bill Gates.
+    response: ["Who is the CEO of twitter?", "CEO Twitter"]
+
+    claim: Michael Phelps is the most decorated Olympian of all time.
+    response: ["Who is the most decorated Olympian of all time?", "Michael Phelps"]
+
+    claim: ChatGPT is created by Google.
+    response: ["Who created ChatGPT?", "ChatGPT"]
+
+    Now complete the following(ONLY RESPONSE IN A LIST FORMAT, DO NOT RETURN OTHER WORDS!!! START YOUR RESPONSE WITH '[' AND END WITH ']'):
+    claim: {input}
+    response: 
+
+code:
+  system: |-
+    You are a brilliant assistant.
+  user_testcases_3: |-
+    Please generate 3 distinct function calls for the given coding question to test the functionality of the function {entry_point} that attempts to solve the provided coding question.
+    Your response must be a dictionary with 3 keys - "function_call_1", "function_call_2", "function_call_3", which correspond to the 3 distinct function calls for function {entry_point}.
+    The following is the given coding question - 
+    [coding question]: {input_question}
+    You MUST only respond in the format as described below. DO NOT RESPOND WITH ANYTHING ELSE. ADDING ANY OTHER EXTRA NOTES THAT VIOLATE THE RESPONSE FORMAT IS BANNED. START YOUR RESPONSE WITH '{{'.
+    [response format]: 
+    {{
+      "function_call_1": "First function call for function {entry_point}. Do not include anything else.",
+      "function_call_2": "Second function call for function {entry_point}. Do not include anything else.",
+      "function_call_3": "Third function call for function {entry_point}. Do not include anything else."
+    }}
+  user_testcases_5: |-
+    Please generate 5 distinct function calls for the given coding question to test the functionality of the function {entry_point} that attempts to solve the provided coding question.
+    Your response must be a dictionary with 5 keys - "function_call_1", "function_call_2", "function_call_3", "function_call_4", "function_call_5", which correspond to the 5 distinct function calls for function {entry_point}.
+    The following is the given coding question - 
+    [coding question]: {input_question}
+    You MUST only respond in the format as described below. DO NOT RESPOND WITH ANYTHING ELSE. ADDING ANY OTHER EXTRA NOTES THAT VIOLATE THE RESPONSE FORMAT IS BANNED. START YOUR RESPONSE WITH '{{'.
+    [response format]: 
+    {{
+      "function_call_1": "First function call for function {entry_point}. Do not include anything else.",
+      "function_call_2": "Second function call for function {entry_point}. Do not include anything else.",
+      "function_call_3": "Third function call for function {entry_point}. Do not include anything else.",
+      "function_call_4": "Fourth function call for function {entry_point}. Do not include anything else.",
+      "function_call_5": "Fifth function call for function {entry_point}. Do not include anything else."
+    }}
+  user_solutions: |-
+    Please solve the given coding question. Make sure that the solution is optimized and correct. You MUST use Python to solve the coding question.
+    Your response MUST be a dictionary with keys "reasoning" and "python_solution", which correspond to the reasoning and Python implementations of the function {entry_point}.
+    The following is the given coding question - 
+    [coding question]: {input_question}
+    You MUST only respond in the format as described below. DO NOT RESPOND WITH ANYTHING ELSE. ADDING ANY OTHER EXTRA NOTES THAT VIOLATE THE RESPONSE FORMAT IS BANNED. START YOUR RESPONSE WITH '{{'.
+    [response format]:
+    {{
+      "reasoning": "Reasoning for solution.",  
+      "python_solution": "Python implementation of the function {entry_point}. Include only the implementation of the function itself. Ensure the output of the function aligns with its specified return type."
+    }}
+
+math:
+    system: |-
+      You are a brilliant assistant.
+    user: |-
+      You are given a math calculation and its corresponding calculated answer. Your task is to write an executable Python snippet that validate the accuracy of the math calculation against the calculated answer. The Python snippet should print 'True' if the calculated answer is correct, and 'False' otherwise.
+      Your response MUST be a dictionary with key "python_snippet", which correspond to the executable python snippet.
+      [math calculation]: {math_calculation}
+      [calculated answer]: {calculated_answer}
+      You MUST only respond in the format as described below. DO NOT RESPOND WITH ANYTHING ELSE. ADDING ANY OTHER EXTRA NOTES THAT VIOLATE THE RESPONSE FORMAT IS BANNED. START YOUR RESPONSE WITH '{{'.
+      [response format]: 
+      {{
+        "python_snippet": "An executable Python snippet that validates the accuracy of the math calculation against the calculated answer. The Python snippet should print 'True' if the calculated answer is correct, and 'False' otherwise."
+      }}
+
+med_doc_qa:
+    nothing
