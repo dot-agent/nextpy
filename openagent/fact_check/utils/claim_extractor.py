@@ -5,7 +5,7 @@ import yaml
 import json
 import asyncio
 from tqdm import tqdm
-from factool.env_config import factool_env_config
+from openagent.fact_check.env_config import factool_env_config
 
 
 # env

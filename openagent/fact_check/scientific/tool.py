@@ -4,7 +4,7 @@ from scholarly import scholarly
 from scholarly import ProxyGenerator
 import os
 
-from factool.env_config import factool_env_config
+from openagent.fact_check.env_config import factool_env_config
 
 # env
 # scraper_api_key = factool_env_config.scraper_api_key

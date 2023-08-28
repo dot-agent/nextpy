@@ -8,7 +8,7 @@ import aiohttp
 import yaml
 import os
 
-from factool.env_config import factool_env_config
+from openagent.fact_check.env_config import factool_env_config
 
 # env
 # serper_api_key = factool_env_config.serper_api_key

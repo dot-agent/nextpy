@@ -5,8 +5,8 @@ from typing import List, Dict
 import yaml
 import pdb
 
-from factool.math.tool import python_executor
-from factool.utils.base.pipeline import pipeline
+from openagent.fact_check.math.tool import python_executor
+from openagent.fact_check.utils.base.pipeline import pipeline
 
 class math_pipeline(pipeline):
     def __init__(self, foundation_model):

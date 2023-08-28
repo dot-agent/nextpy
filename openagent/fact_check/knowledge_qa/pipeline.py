@@ -6,9 +6,9 @@ import math
 import pdb
 from typing import List, Dict
 
-from factool.knowledge_qa.tool import google_search
-from factool.knowledge_qa.tool import local_search
-from factool.utils.base.pipeline import pipeline
+from openagent.fact_check.knowledge_qa.tool import google_search
+from openagent.fact_check.knowledge_qa.tool import local_search
+from openagent.fact_check.utils.base.pipeline import pipeline
 
 class knowledge_qa_pipeline(pipeline):
     def __init__(self, foundation_model, snippet_cnt, search_type, data_link=None, Embed_link=None):

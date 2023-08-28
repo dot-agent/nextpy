@@ -5,7 +5,7 @@ import math
 import pdb
 from typing import List, Dict
 
-from factool.utils.base.pipeline import pipeline
+from openagent.fact_check.utils.base.pipeline import pipeline
 
 class med_doc_qa_pipeline(pipeline):
     def __init__(self, foundation_model):

@@ -8,7 +8,7 @@ from collections import defaultdict
 from concurrent.futures import as_completed, ProcessPoolExecutor
 import logging
 
-from factool.code.helper._execution import test_case_against_solution
+from openagent.fact_check.code.helper._execution import test_case_against_solution
 
 logging.basicConfig(
     format="SystemLog: [%(asctime)s][%(name)s][%(levelname)s] - %(message)s",

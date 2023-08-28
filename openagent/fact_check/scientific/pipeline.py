@@ -5,8 +5,8 @@ import os
 import yaml
 from typing import Dict, List
 
-from factool.scientific.tool import google_scholar
-from factool.utils.base.pipeline import pipeline
+from openagent.fact_check.scientific.tool import google_scholar
+from openagent.fact_check.utils.base.pipeline import pipeline
 
 class scientific_pipeline(pipeline):
     def __init__(self, foundation_model):

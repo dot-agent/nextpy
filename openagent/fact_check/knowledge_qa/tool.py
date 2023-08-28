@@ -1,6 +1,6 @@
 import asyncio
-from factool.knowledge_qa.google_serper import GoogleSerperAPIWrapper
-from factool.utils.openai_wrapper import OpenAIEmbed
+from openagent.fact_check.knowledge_qa.google_serper import GoogleSerperAPIWrapper
+from openagent.fact_check.utils.openai_wrapper import OpenAIEmbed
 import json
 import os
 import numpy as np

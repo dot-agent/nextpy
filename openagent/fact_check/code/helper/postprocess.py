@@ -3,7 +3,7 @@
 
 from collections import defaultdict
 
-from factool.code.helper.io_utils import Tools
+from openagent.fact_check.code.helper.io_utils import Tools
 
 STOP_TOKEN = ['\nclass', '\ndef', '\n#', '\nif', '\nprint']
 

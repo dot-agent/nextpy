@@ -1,5 +1,5 @@
 import yaml
-from factool.utils.openai_wrapper import OpenAIChat
+from openagent.fact_check.utils.openai_wrapper import OpenAIChat
 import os
 import pathlib
 
