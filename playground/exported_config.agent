@@ -5,15 +5,18 @@ input_variables:
   knowledge_variable: city
 knowledgebase:
   data_references:
-  - test_data\meteoric
-  - test_data\paul_graham
+  - loader_key: file_directory
+    source: test_data\meteoric
+  - loader_key: file_directory
+    source: test_data\paul_graham
   data_transformer:
     chunk_overlap: 40
     chunk_size: 1024
     type: openagent.text_splitter.CharacterTextSplitter
   type: openagent.knowledgebase.base.SimpleKnowledgeBase
   vector_store:
-    embedding_function: openagent.vectorstores.embeddings.openai.OpenAIEmbeddings
+    embedding_function:
+      type: openagent.vectorstores.embeddings.openai.OpenAIEmbeddings
     type: openagent.vectorstores.chroma.Chroma
 llm:
   model: text-davinci-003

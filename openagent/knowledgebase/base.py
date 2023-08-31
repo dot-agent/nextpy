@@ -30,8 +30,7 @@ class SimpleKnowledgeBase:
         
         # fetch and add references
         for data in raw_data:
-            if data.metadata.get("source"):
-                self.references.append(data.metadata.get("source"))
+            self.references.append(data.metadata)
         
         # Split raw data into chunks
         split_data = self.data_transformer.split_documents(raw_data)
