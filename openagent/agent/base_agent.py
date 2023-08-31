@@ -5,7 +5,6 @@ from openagent import compiler
 from openagent.tools.basetool import BaseTool
 import logging
 import yaml
-import yaml
 import importlib
 import argparse
 
@@ -166,7 +165,7 @@ class BaseAgent:
     def export_agent_config(self, config_path):
         config = {
             'llm': {
-                'type': f"{self.llm.__class__.__name__}",
+                'type': self.llm.__class__.__module__ + '.' + self.llm.__class__.__name__,
                 'model': self.llm.model_name
             },
             'knowledgebase': None if self.knowledgebase is None else {
@@ -182,7 +181,8 @@ class BaseAgent:
                 'vector_store': {
                     'type': self.knowledgebase.vector_store.__class__.__module__ + '.' +
                             self.knowledgebase.vector_store.__class__.__name__,
-                    'embedding_function': self.knowledgebase.vector_store._embedding_function
+                    'embedding_function': self.knowledgebase.vector_store._embedding_function.__class__.__module__ + '.' +
+                                          self.knowledgebase.vector_store._embedding_function.__class__.__name__
                 }
             },
             'memory' : None if self.memory is None else {
@@ -195,13 +195,13 @@ class BaseAgent:
             # 'tools': None if self.tools is None else self.tools
         }
         with open(config_path, 'w') as f:
-            f.write(config)
+            yaml.dump(config, f)
 
 
     @classmethod
     def load_from_config(cls, config_file):
         with open(config_file, 'r') as f:
-            config = f.read()
+            config = yaml.safe_load(f)
 
         # Assume these classes are defined elsewhere and can be imported
         llm_module_name, llm_class_name = config['llm']['type'].rsplit('.', 1)
@@ -211,9 +211,20 @@ class BaseAgent:
 
         knowledgebase = None
         if config['knowledgebase'] is not None:
-            knowledgebase_module_name, knowledgebase_class_name = config['agent']['type'].rsplit('.', 1)
+            knowledgebase_module_name, knowledgebase_class_name = config['knowledgebase']['type'].rsplit('.', 1)
             knowledgebase_module = importlib.import_module(knowledgebase_module_name)
             knowledgebase_class = getattr(knowledgebase_module, knowledgebase_class_name)
+
+            data_transformer_module_name, data_transformer_class_name = config['data_transformer']['type'].rsplit('.', 1)
+            data_transformer_module = importlib.import_module(data_transformer_module_name)
+            data_transformer_class = getattr(data_transformer_module, data_transformer_class_name)
+
+            vector_store_module_name, vector_store_class_name = config['vector_store']['type'].rsplit('.', 1)
+            vector_store_module = importlib.import_module(vector_store_module_name)
+            vector_store_class = getattr(vector_store_module, vector_store_class_name)
+
+
+
             knowledgebase = knowledgebase_class(
                 data_references=config['knowledgebase']['data_references'],
                 data_transformer=config['knowledgebase']['data_transformer'],
