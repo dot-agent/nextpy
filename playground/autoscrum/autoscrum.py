@@ -1,4 +1,8 @@
-
+#credit: Martin Schroder
+#research paper: https://arxiv.org/abs/2306.03197
+#organization: Swedish Embedded Consulting Group Research
+#linkedin: martinschroder 
+#email: martin.schroder@swedishembedded.com
 import json
 from pathlib import Path
 from datetime import datetime
