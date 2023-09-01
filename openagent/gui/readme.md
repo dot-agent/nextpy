@@ -1,0 +1,1 @@
+This is an experimental fork of Chainlit for OpenAgent. We're still in the ideation stage and may discontinue it based on our UI integration plans for OpenAgent. Please don't use this in production environments or any live settings."

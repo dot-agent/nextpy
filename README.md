@@ -2,8 +2,11 @@
 <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Smilies/Grinning%20Face.png" alt="Grinning Face" width="50" height="50" />
 <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Smilies/Robot.png" alt="Robot" width="175" height="175" />
 </p>
-<p><em>Hey there, Friend!
-This project is still in the &quot;just for friends&quot; stage. If you want to see what we&#39;re messing with and have some thoughts, take a look at the code. Would love your thoughts or contributions .</em></p>
+
+*Hey there, Friend!
+This project is still in the &quot;just for friends&quot; stage. If you want to see what we&#39;re messing with and have some thoughts, take a look at the code.* 
+
+*We'd love to incorporate your ideas or contributions. You can drop me a line at- ✉️  ` anurag@openagent.dev `*
 
 <h1 id="-why-we-started-dotagent-"><strong>Why we started dotagent?</strong></h1>
 
@@ -16,7 +19,7 @@ This project is still in the &quot;just for friends&quot; stage. If you want to 
 <h1 id="what-is-openagent-">What is OpenAgent ?</h1>
 <p>OpenAgent is a library of modular components and an orchestration framework. Inspired by a microservices approach, it gives developers all the components they need to build robust, stable &amp; reliable AI applications and experimental autonomous agents.</p>
 
-![-----------------------------------------------------](./assets/openagent_features.png)
+
 
 <h2 id="modularity"> 🧱 Modularity</h2>
 <ul>
