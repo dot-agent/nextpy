@@ -28,12 +28,14 @@ class SimpleKnowledgeBase:
         if not raw_data:
             raise ValueError("Raw data cannot be empty.")
         
-        raw_data_metadata = raw_data.extra_info if hasattr(raw_data, 'extra_info') else None
-        self.references.append(raw_data_metadata)
+        # fetch and add references
+        for data in raw_data:
+            self.references.append(data.metadata)
         
         # Split raw data into chunks
         split_data = self.data_transformer.split_documents(raw_data)
 
+        # Add split data to vector store
         try:
             self.vector_store.add_documents(split_data)
         except Exception as e:
