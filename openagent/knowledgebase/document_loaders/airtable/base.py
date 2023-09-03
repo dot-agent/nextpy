@@ -29,7 +29,8 @@ class AirtableReader(BaseReader):
         from pyairtable import Table 
 
         metadata = {"base_id": base_id, 
-                    "table_id": table_id
+                    "table_id": table_id,
+                     "loader_key":"airtable"
                 }
 
         table = Table(self.api_key, base_id, table_id)

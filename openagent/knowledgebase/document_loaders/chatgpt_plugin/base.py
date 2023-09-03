@@ -47,7 +47,8 @@ class ChatGPTRetrievalPluginReader(BaseReader):
             "endpoint_url": self._endpoint_url,
             "query": query,
             "tok_k": top_k,
-            "separate_documents": separate_documents
+            "separate_documents": separate_documents,
+            "loader_key":"chatgpt_plugin"
         }
         documents: List[DocumentNode] = []
         for query_result in res.json()["results"]:

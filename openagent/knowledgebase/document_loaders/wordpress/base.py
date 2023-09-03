@@ -47,6 +47,7 @@ class WordpressReader(BaseReader):
                 "title": title,
                 "url": article["link"],
                 "updated_at": article["modified"],
+                "loader_key":"wordpress",
             }
 
             results.append(

@@ -41,7 +41,7 @@ class SimpleWebPageReader(BaseReader):
                 import html2text
 
                 response = html2text.html2text(response)
-            metadata = {"url": url}
+            metadata = {"url": url, "loader_key":"simple_web"}
             documents.append(DocumentNode(text=response, extra_info=metadata))
 
         return documents

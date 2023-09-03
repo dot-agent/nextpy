@@ -125,7 +125,8 @@ class QdrantReader(BaseReader):
             "must_search_mapping": must_search_mapping,
             "must_not_search_mapping": must_not_search_mapping,
             "rang_search_mapping": rang_search_mapping,
-            "limit": limit
+            "limit": limit,
+            "loader_key":"qdrant",
         }
 
         from qdrant_client.http.models.models import Payload

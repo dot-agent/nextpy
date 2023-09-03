@@ -31,15 +31,15 @@ class HubspotReader(BaseReader):
         all_companies = api_client.crm.companies.get_all()
         results = [
             DocumentNode(
-                text=f"{all_deals}".replace("\n", ""), extra_info={"type": "deals"}
+                text=f"{all_deals}".replace("\n", ""), extra_info={"type": "deals", "loader_key": "hubspot"}
             ),
             DocumentNode(
                 text=f"{all_contacts}".replace("\n", ""),
-                extra_info={"type": "contacts"},
+                extra_info={"type": "contacts", "loader_key": "hubspot"},
             ),
             DocumentNode(
                 text=f"{all_companies}".replace("\n", ""),
-                extra_info={"type": "companies"},
+                extra_info={"type": "companies", "loader_key": "hubspot"},
             ),
         ]
         return results

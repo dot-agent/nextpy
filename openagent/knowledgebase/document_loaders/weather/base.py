@@ -87,6 +87,6 @@ class WeatherReader(BaseReader):
                     i.to_dict() for i in res.national_weather_alerts
                 ]
 
-            results.append(DocumentNode(text=str(info_dict), extra_info=metadata))
+            results.append(DocumentNode(text=str(info_dict), extra_info={**metadata, "loader_key":"weather"}))
 
         return results

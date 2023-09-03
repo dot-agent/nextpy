@@ -55,7 +55,8 @@ class ReadwiseReader(BaseReader):
             updated_after (datetime.datetime): The datetime to load highlights after. Useful for updating indexes over time.
         """
         metadata = {
-            "updated_after": updated_after
+            "updated_after": updated_after,
+            "loader_key":"readwise",
         }
 
         readwise_response = _get_readwise_data(

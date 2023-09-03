@@ -36,7 +36,7 @@ class HatenaBlogReader(BaseReader):
             results.append(
                 DocumentNode(
                     text=a.content,
-                    extra_info={"title": a.title, "published": a.published, "root_endpoint": self.root_endpoint},
+                    extra_info={"title": a.title, "published": a.published, "root_endpoint": self.root_endpoint, "loader_key": "hatena_blog"},
                 )
             )
 

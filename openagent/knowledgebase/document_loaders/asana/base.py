@@ -51,7 +51,8 @@ class AsanaReader(BaseReader):
                             "name": task["name"],
                             "assignee": task["assignee"],
                             "project": project["name"],
-                            "workspace_id": workspace_id
+                            "workspace_id": workspace_id,
+                            "loader_key":"asana"
                         },
                     )
                 )

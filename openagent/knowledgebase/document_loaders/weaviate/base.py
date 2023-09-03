@@ -58,7 +58,8 @@ class WeaviateReader(BaseReader):
             "host": self.host,
             "class_name": class_name,
             "properties": properties,
-            "graphql_query": graphql_query
+            "graphql_query": graphql_query,
+            "loader_key":"weaviate",
         }
 
         if class_name is not None and properties is not None:

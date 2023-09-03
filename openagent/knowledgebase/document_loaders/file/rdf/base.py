@@ -76,4 +76,4 @@ class RDFReader(BaseReader):
 
         text = "\n".join(text_list)
 
-        return [DocumentNode(text=text, extra_info=extra_info or {})]
+        return [DocumentNode(text=text, extra_info={**extra_info, "loader_key":"rdf"})]
