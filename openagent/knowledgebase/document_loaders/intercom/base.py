@@ -42,7 +42,7 @@ class IntercomReader(BaseReader):
                 "title": article["title"],
                 "url": article["url"],
                 "updated_at": article["updated_at"],
-                "loader_key":"intercom",
+                "loader_id":"intercom",
             }
 
             results.append(

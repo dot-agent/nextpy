@@ -79,7 +79,7 @@ class MilvusReader(BaseReader):
             "expr": expr,
             "search_params": search_params,
             "limit": limit,
-            "loader_key":"milvus",
+            "loader_id":"milvus",
         }
 
         from pymilvus import Collection, MilvusException

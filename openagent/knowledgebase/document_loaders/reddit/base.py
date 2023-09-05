@@ -52,7 +52,7 @@ class RedditReader(BaseReader):
                         "subreddits": sr,
                         "search_keys": kw,
                         "post_limit": post_limit,
-                        "loader_key":"reddit",
+                        "loader_id":"reddit",
                     }
                     posts.append(DocumentNode(text=post.selftext, extra_info=metadata))
                     for top_level_comment in post.comments:
@@ -62,7 +62,7 @@ class RedditReader(BaseReader):
                         "subreddits": sr,
                         "search_keys": kw,
                         "post_limit": post_limit,
-                        "loader_key":"reddit",
+                        "loader_id":"reddit",
                     }
                         posts.append(DocumentNode(text=top_level_comment.body, extra_info=metadata))
 

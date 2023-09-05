@@ -16,7 +16,7 @@ def _substack_reader(soup: Any, **kwargs) -> Tuple[str, Dict[str, Any]]:
         "Title of this Substack post": soup.select_one("h1.post-title").getText(),
         "Subtitle": soup.select_one("h3.subtitle").getText(),
         "Author": soup.select_one("span.byline-names").getText(),
-        "loader_key":"beautiful_soup_web",
+        "loader_id":"beautiful_soup_web",
     }
     text = soup.select_one("div.available-content").getText()
     return text, extra_info
@@ -186,7 +186,7 @@ class BeautifulSoupWebReader(BaseReader):
             soup = BeautifulSoup(page.content, "html.parser")
 
             data = ""
-            extra_info = {"URL": url, "loader_key":"beautiful_soup_web"}
+            extra_info = {"URL": url, "loader_id":"beautiful_soup_web"}
             if hostname in self.website_extractor:
                 data, metadata = self.website_extractor[hostname](
                     soup=soup, url=url, include_url_in_text=include_url_in_text

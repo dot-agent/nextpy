@@ -84,7 +84,7 @@ class PubmedReader(BaseReader):
                             "Date published": datetime.strptime(
                                 paper["date"], "%Y%m%d"
                             ).strftime("%m/%d/%Y"),
-                            "loader_key": "pubmed"
+                            "loader_id": "pubmed"
                         },
                     )
                 )
@@ -164,7 +164,7 @@ class PubmedReader(BaseReader):
                         "URL": paper["url"],
                         "search_query": search_query,
                         "max_results": max_results,
-                        "loader_key":"pubmed",
+                        "loader_id":"pubmed",
                     },
                 )
             )

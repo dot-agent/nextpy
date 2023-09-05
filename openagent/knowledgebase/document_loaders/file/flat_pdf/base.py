@@ -58,7 +58,7 @@ class FlatPdfReader(BaseReader):
                     file=Path(work_dir + f"/page-{page_number}.png")
                 )
                 pdf_content += DocumentNode[0].text
-            extra_info = {"loader_key": "flat_pdf"}
+            extra_info = {"loader_id": "flat_pdf"}
             return DocumentNode(text=pdf_content, extra_info=extra_info)
         
         except Exception as e:

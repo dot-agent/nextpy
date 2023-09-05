@@ -30,7 +30,7 @@ class AirtableReader(BaseReader):
 
         metadata = {"base_id": base_id, 
                     "table_id": table_id,
-                     "loader_key":"airtable"
+                     "loader_id":"airtable"
                 }
 
         table = Table(self.api_key, base_id, table_id)

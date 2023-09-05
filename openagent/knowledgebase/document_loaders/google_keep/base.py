@@ -33,7 +33,7 @@ class GoogleKeepReader(BaseReader):
                 raise ValueError(f'Note with id {note_id} not found.')
             text = f"Title: {note.title}\nContent: {note.text}"
             results.append(DocumentNode(text=text, extra_info={"note_id":
-                                                           note_id, "loader_key": "google_keep"}))
+                                                           note_id, "loader_id": "google_keep"}))
         return results
 
     def load_all_notes(self) -> List[DocumentNode]:

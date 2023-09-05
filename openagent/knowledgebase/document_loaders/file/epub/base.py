@@ -36,6 +36,6 @@ class EpubReader(BaseReader):
         if extra_info is None:
             extra_info = {}
     
-        # Add the loader_key to extra_info
-        extra_info["loader_key"] = "file_epub"
+        # Add the loader_id to extra_info
+        extra_info["loader_id"] = "file_epub"
         return [DocumentNode(text=text, extra_info=extra_info or {})]
