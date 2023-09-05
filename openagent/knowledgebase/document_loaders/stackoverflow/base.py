@@ -148,7 +148,7 @@ class StackoverflowReader(BaseReader):
                         "url": post.link,
                         "author_image_url": post.owner_profile_image,
                         "type": post.post_type,
-                        "loader_key":"stackoverflow"
+                        "loader_id":"stackoverflow"
                     },
                 )
                 data.append(post_document)

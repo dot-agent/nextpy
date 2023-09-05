@@ -56,7 +56,7 @@ class ReadwiseReader(BaseReader):
         """
         metadata = {
             "updated_after": updated_after,
-            "loader_key":"readwise",
+            "loader_id":"readwise",
         }
 
         readwise_response = _get_readwise_data(

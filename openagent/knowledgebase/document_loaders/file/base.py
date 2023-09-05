@@ -125,7 +125,7 @@ class SimpleDirectoryReader(BaseReader):
 
         documents = []
         for input_file in self.input_files:
-            metadata = {"source": str(self.input_dir), "loader_key": "file_directory"}
+            metadata = {"source": str(self.input_dir), "loader_id": "file_directory"}
             if self.file_metadata is not None:
                 metadata = self.file_metadata(str(input_file))
 

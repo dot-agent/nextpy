@@ -81,7 +81,7 @@ class MondayReader(BaseReader):
                     text += f", {item_value['title']}: {item_value['value']}"
             result.append(
                 DocumentNode(
-                    text=text, extra_info={"board_id": board_id, "item_id": item["id"], "loader_key":"mondaydotcom"} 
+                    text=text, extra_info={"board_id": board_id, "item_id": item["id"], "loader_id":"mondaydotcom"} 
                 )
             )
 

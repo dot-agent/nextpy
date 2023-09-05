@@ -38,10 +38,10 @@ class UnstructuredReader(BaseReader):
 
         if split_documents:
             return [
-                DocumentNode(text=chunk, extra_info={**extra_info, "loader_key":"unstructured"})
+                DocumentNode(text=chunk, extra_info={**extra_info, "loader_id":"unstructured"})
                 for chunk in text_chunks
             ]
         else:
             return [
-                DocumentNode(text="\n\n".join(text_chunks), extra_info={**extra_info, "loader_key":"unstructured"})
+                DocumentNode(text="\n\n".join(text_chunks), extra_info={**extra_info, "loader_id":"unstructured"})
             ]

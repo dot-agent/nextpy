@@ -43,7 +43,7 @@ class FirestoreReader(BaseReader):
         metadata = {
             "project_id": self.project_id,
             "collection": collection,
-            "loader_key": "firestore",
+            "loader_id": "firestore",
         }
 
         documents = []

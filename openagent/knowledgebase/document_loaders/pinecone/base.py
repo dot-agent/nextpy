@@ -58,7 +58,7 @@ class PineconeReader(BaseReader):
             "top k": top_k,
             "separate_documents": separate_documents,
             "include_values": include_values,
-            "loader_key":"pinecone",
+            "loader_id":"pinecone",
         }
 
         import pinecone

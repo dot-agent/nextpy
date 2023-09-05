@@ -95,7 +95,7 @@ class JoplinReader(BaseReader):
                         "title": note["title"],
                         "created_time": self._convert_date(note["created_time"]),
                         "updated_time": self._convert_date(note["updated_time"]),
-                        "loader_key":"joplin"
+                        "loader_id":"joplin"
                     }
                     if self.parse_markdown:
                         yield from self.parser.load_data(

@@ -108,7 +108,7 @@ class DeepLakeReader(BaseReader):
             "dataset_path": dataset_path,
             "limit": limit,
             "distance_metric": distance_metric,
-            "loader_key":"deep_lake",
+            "loader_id":"deep_lake",
         }
 
         documents = []

@@ -57,7 +57,7 @@ class ChromaReader(BaseReader):
             "collection_name": self.collection_name,
             "query_vector": query_vector,
             "limit": limit,
-            "loader_key":"chroma"
+            "loader_id":"chroma"
         }
         documents = []
         for result in zip(results["ids"], results["documents"], results["embeddings"]):

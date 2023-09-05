@@ -89,7 +89,7 @@ class MangoppsGuidesReader(BaseReader):
                 print(f"Failed for {url} => {e}")
 
         for k, v in guides_pages.items():
-            metadata = {"url": k, "title": v["title"], "loader_key":"mangoapps_guides"}
+            metadata = {"url": k, "title": v["title"], "loader_id":"mangoapps_guides"}
             results.append(
                 DocumentNode(
                     text=v["text"],

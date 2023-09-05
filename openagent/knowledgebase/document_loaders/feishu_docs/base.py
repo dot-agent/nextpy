@@ -61,7 +61,7 @@ class FeishuDocsReader(BaseReader):
         results = []
         for document_id in document_ids:
             doc = self._load_doc(document_id)
-            results.append(DocumentNode(text=doc, extra_info={"app_id": self.app_id, "document_id": document_id, "loader_key":"feishu_docs"}))
+            results.append(DocumentNode(text=doc, extra_info={"app_id": self.app_id, "document_id": document_id, "loader_id":"feishu_docs"}))
         return results
 
     def _load_doc(self, document_id) -> str:

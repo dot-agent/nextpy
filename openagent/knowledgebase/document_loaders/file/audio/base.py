@@ -58,4 +58,4 @@ class AudioTranscriber(BaseReader):
 
         transcript = result["text"]
 
-        return [DocumentNode(text=transcript, extra_info={**extra_info,"loader_key":"file_audio"})]
+        return [DocumentNode(text=transcript, extra_info={**extra_info,"loader_id":"file_audio"})]
