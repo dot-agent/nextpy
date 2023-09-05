@@ -71,8 +71,8 @@ class OpendalAzblobReader(BaseReader):
 
         # creating the DocumentNode
         documents = loader.load_data()
-        # Add the loader_key to extra_info for each document
+        # Add the loader_id to extra_info for each document
         for doc in documents:
-            doc.extra_info = {**doc.extra_info, "loader_key": "opendal_azblob"}
+            doc.extra_info = {**doc.extra_info, "loader_id": "opendal_azblob"}
 
         return documents

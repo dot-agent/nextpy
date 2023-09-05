@@ -54,7 +54,7 @@ class MemosReader(BaseReader):
                 "creator": memo["creator"],
                 "resource_list": memo["resourceList"],
                 id: memo["id"],
-                "loader_key":"memos",
+                "loader_id":"memos",
             }
             documents.append(DocumentNode(text=content, extra_info=metadata))
 

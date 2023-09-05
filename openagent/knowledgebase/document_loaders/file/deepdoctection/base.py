@@ -34,6 +34,6 @@ class DeepDoctectionReader(BaseReader):
             extra_info = {
                 k: getattr(page, k) for k in self.attrs_as_metadata if hasattr(page, k)
             }
-            extra_info["loader_key"] = "deep_doctection"
+            extra_info["loader_id"] = "deep_doctection"
             result_docs.append(DocumentNode(text=doc_text, extra_info=extra_info))
         return result_docs

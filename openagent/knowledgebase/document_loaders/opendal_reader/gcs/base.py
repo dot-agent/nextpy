@@ -65,9 +65,9 @@ class OpendalGcsReader(BaseReader):
             **self.options,
         )
 
-        # Load documents and add the "loader_key" to extra_info
+        # Load documents and add the "loader_id" to extra_info
         documents = loader.load_data()
         for doc in documents:
-            doc.extra_info = {"loader_key": "opendal_gcs"}
+            doc.extra_info = {"loader_id": "opendal_gcs"}
 
         return documents

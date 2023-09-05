@@ -111,7 +111,7 @@ class ImageReader(BaseReader):
                 model = cast(pytesseract, self._parser_config["model"])
                 text_str = model.image_to_string(image)
 
-        extra_info = {"loader_key": "image"}
+        extra_info = {"loader_id": "image"}
         return [
             ImageDocument(
                 text=text_str,

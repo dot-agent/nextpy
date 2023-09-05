@@ -142,7 +142,7 @@ class KalturaESearchReader(BaseReader):
                     entry_dict = entry_info.copy()
                     entry_info = {"entry_id": str(entry.id)}
 
-                entry_doc = DocumentNode(text=json.dumps(entry_dict), extra_info={**entry_info, "loader_key":"kaltura_esearch"})
+                entry_doc = DocumentNode(text=json.dumps(entry_dict), extra_info={**entry_info, "loader_id":"kaltura_esearch"})
                 entries.append(entry_doc)
 
             return entries

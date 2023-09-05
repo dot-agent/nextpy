@@ -93,6 +93,6 @@ class ImageTabularChartReader(BaseReader):
             ImageDocument(
                 text=text_str,
                 image=image_str,
-                extra_info={**extra_info,"loader_key": "image_tabular_chart"},
+                extra_info={**extra_info,"loader_id": "image_tabular_chart"},
             )
         ]

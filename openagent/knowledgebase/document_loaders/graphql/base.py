@@ -57,7 +57,7 @@ class GraphQLReader(BaseReader):
             "uri": self.uri,
             "query": query,
             "variables": variables,
-            "loader_key": "graphql",
+            "loader_id": "graphql",
         }
 
         try:

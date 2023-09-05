@@ -100,6 +100,6 @@ class AsyncWebPageReader(BaseReader):
             else:
                 response_text = raw_page
 
-            documents.append(DocumentNode(text=response_text, extra_info={"Source": str(response.url), "loader_key":"async_web"}))
+            documents.append(DocumentNode(text=response_text, extra_info={"Source": str(response.url), "loader_id":"async_web"}))
 
         return documents

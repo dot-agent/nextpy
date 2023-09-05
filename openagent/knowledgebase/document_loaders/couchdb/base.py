@@ -58,7 +58,7 @@ class SimpleCouchDBReader(BaseReader):
             "user": self.user,
             "db_name": db_name,
             "query": query,
-            "loader_key":"couchdb",
+            "loader_id":"couchdb",
         }
 
         documents = []

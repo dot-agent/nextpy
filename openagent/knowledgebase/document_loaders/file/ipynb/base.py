@@ -39,8 +39,8 @@ class IPYNBReader(BaseReader):
         splits.pop(0)
 
         if self._concatenate:
-            docs = [DocumentNode(text="\n\n".join(splits),extra_info={**extra_info,"loader_key": "ipynb"})]
+            docs = [DocumentNode(text="\n\n".join(splits),extra_info={**extra_info,"loader_id": "ipynb"})]
         else:
-            docs = [DocumentNode(text=s, extra_info={**extra_info,"loader_key": "ipynb"}) for s in splits]
+            docs = [DocumentNode(text=s, extra_info={**extra_info,"loader_id": "ipynb"}) for s in splits]
         return docs
 

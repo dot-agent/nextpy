@@ -103,7 +103,7 @@ class OpenMap(BaseReader):
         )
 
         metadata["overpass_query"] = query
-        metadata["loader_key"]="maps"
+        metadata["loader_id"]="maps"
         try:
             response = overpass.request(query)
 

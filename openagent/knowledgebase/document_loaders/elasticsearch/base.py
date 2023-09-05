@@ -59,7 +59,7 @@ class ElasticsearchReader(BaseReader):
             "index": self._index,
             "field": field,
             "query": query,
-            "loader_key":"elasticsearch",
+            "loader_id":"elasticsearch",
         }
 
         res = self._client.post(f"{self._index}/_search", json=query).json()

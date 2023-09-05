@@ -45,7 +45,7 @@ class ZendeskReader(BaseReader):
                 "updated_at": article["updated_at"],
                 "zendesk_subdomain": self.zendesk_subdomain,
                 "locale": self.locale,
-                "loader_key":"zendesk",
+                "loader_id":"zendesk",
             }
 
             results.append(
