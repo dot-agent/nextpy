@@ -94,4 +94,4 @@ class GladiaAudioTranscriber(BaseReader):
         response_dict = response.json()
         transcript = response_dict["prediction"]
 
-        return [DocumentNode(text=transcript, extra_info={**extra_info, "loader_id":"gladia_audio"})]
+        return [DocumentNode(text=transcript, extra_info={**extra_info, "loader_key":"gladia_audio"})]

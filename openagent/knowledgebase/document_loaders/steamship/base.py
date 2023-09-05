@@ -77,7 +77,7 @@ class SteamshipFileReader(BaseReader):
                 "query": query,
                 "collapse_blocks": collapse_blocks,
                 "join_str": join_str,
-                "loader_id":"steamship",
+                "loader_key":"steamship",
             }
 
             for tag in file.tags:

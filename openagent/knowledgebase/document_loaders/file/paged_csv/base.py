@@ -42,7 +42,7 @@ class PagedCSVReader(BaseReader):
                         text="\n".join(
                             f"{k.strip()}: {v.strip()}" for k, v in row.items()
                         ),
-                        extra_info={**extra_info, "loader_id": "paged_csv"},
+                        extra_info={**extra_info, "loader_key": "paged_csv"},
                     )
                 )
         return docs

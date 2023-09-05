@@ -105,7 +105,7 @@ class ConfluenceReader(BaseReader):
         "include_children": include_children,
         "limit": limit,
         "max_num_results": max_num_results, 
-        "loader_id":"confluence", 
+        "loader_key":"confluence", 
     }
 
         num_space_key_parameter = 1 if space_key else 0

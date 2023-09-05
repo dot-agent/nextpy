@@ -103,4 +103,4 @@ class PptxReader(BaseReader):
                 if hasattr(shape, "text"):
                     result += f"{shape.text}\n"
 
-        return [DocumentNode(text=result, extra_info={**extra_info, "loader_id":"pptx"})]
+        return [DocumentNode(text=result, extra_info={**extra_info, "loader_key":"pptx"})]

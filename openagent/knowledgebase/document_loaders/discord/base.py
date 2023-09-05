@@ -123,7 +123,7 @@ class DiscordReader(BaseReader):
             "channel": channel_id,
             "limit": limit,
             "oldest_first": oldest_first,
-            "loader_id":"discord",
+            "loader_key":"discord",
         }
 
         results: List[DocumentNode] = []

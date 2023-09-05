@@ -49,7 +49,7 @@ class PyMuPDFReader(BaseReader):
                 extra_info = {}
             extra_info["total_pages"] = len(doc)
             extra_info["file_path"] = file_path
-            extra_info["loader_id"] = "pymu_pdf"
+            extra_info["loader_key"] = "pymu_pdf"
 
             # return list of documents
             return [

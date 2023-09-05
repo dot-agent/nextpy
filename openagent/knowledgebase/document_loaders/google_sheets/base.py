@@ -60,7 +60,7 @@ class GoogleSheetsReader(BaseReader):
         for spreadsheet_id in spreadsheet_ids:
             sheet = self._load_sheet(spreadsheet_id)
             results.append(
-                DocumentNode(text=sheet, extra_info={"spreadsheet_id": spreadsheet_id, "loader_id": "google_sheets"})
+                DocumentNode(text=sheet, extra_info={"spreadsheet_id": spreadsheet_id, "loader_key": "google_sheets"})
             )
         return results
 

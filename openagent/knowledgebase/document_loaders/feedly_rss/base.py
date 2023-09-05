@@ -50,7 +50,7 @@ class FeedlyRssReader(BaseReader):
             "directory": self.directory,
             "category": category,
             "max_count": max_count,
-            "loader_id": "feedly_rss",
+            "loader_key": "feedly_rss",
         }
 
         documents = []

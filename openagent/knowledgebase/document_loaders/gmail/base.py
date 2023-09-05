@@ -41,7 +41,7 @@ class GmailReader(BaseReader, BaseModel):
 
         metadata = {
             "query": self.query,
-            "loader_id":"gmail",
+            "loader_key":"gmail",
         }
 
         results = []

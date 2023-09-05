@@ -100,7 +100,7 @@ class BoardDocsReader(BaseReader):
                 "title": agenda_title,
                 "date": agenda_date,
                 "url": agenda_url,
-                "loader_id":"boarddocs"
+                "loader_key":"boarddocs"
             }
         docs = []
         agenda_doc = DocumentNode(

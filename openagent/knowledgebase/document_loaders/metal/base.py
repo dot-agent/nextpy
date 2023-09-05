@@ -57,7 +57,7 @@ class MetalReader(BaseReader):
             "query_embedding": query_embedding,
             "filters": filters,
             "separate_documents": separate_documents,
-            "loader_id":"metal",
+            "loader_key":"metal",
         }
 
         payload = {

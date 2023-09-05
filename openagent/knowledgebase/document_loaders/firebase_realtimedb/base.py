@@ -74,7 +74,7 @@ class FirebaseRealtimeDatabaseReader(BaseReader):
                     "databaseURL": self.database_url,
                     "path": path,
                     "field": field ,
-                    "loader_id":"firebase_realtimedb"
+                    "loader_key":"firebase_realtimedb"
                 }
                 if type(entry) is Dict and field in entry:
                   text = entry[field]

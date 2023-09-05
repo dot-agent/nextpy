@@ -189,7 +189,7 @@ class GitHubRepositoryIssuesReader(BaseReader):
                     "url": issue["url"],
                     # source is the HTML URL, more conveninent for humans
                     "source": issue["html_url"],
-                    "loader_id":"github_repo_issues",
+                    "loader_key":"github_repo_issues",
                 }
                 if issue["closed_at"] is not None:
                     metadata["closed_at"] = issue["closed_at"]

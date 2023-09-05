@@ -64,7 +64,7 @@ class HuggingFaceFSReader(BaseReader):
 
     def load_data(self, path: str) -> List[DocumentNode]:
         """Load data."""
-        metadata = {"path": path, "loader_id": "huggingface_fs"}
+        metadata = {"path": path, "loader_key": "huggingface_fs"}
         json_dicts = self.load_dicts(path)
         docs = []
         for d in json_dicts:

@@ -67,7 +67,7 @@ class AzCognitiveSearchReader(BaseReader):
                 "query": query,
                 "content_field": content_field,
                 "filter": filter,
-                "loader_id":"azcognitive_search",
+                "loader_key":"azcognitive_search",
             }
             docs.append(DocumentNode(text=text, extra_info=metadata))
 

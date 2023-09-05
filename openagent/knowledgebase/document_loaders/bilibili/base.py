@@ -55,7 +55,7 @@ class BilibiliTranscriptReader(BaseReader):
         results = []
 
         metadata = {"video_urls": video_urls,
-                    "loader_id":"bilibili"}
+                    "loader_key":"bilibili"}
 
         for bili_url in video_urls:
             try:

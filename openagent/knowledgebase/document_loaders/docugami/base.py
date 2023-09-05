@@ -114,7 +114,7 @@ class DocugamiReader(BaseReader):
                 DOCUMENT_NAME_KEY: DocumentNode["name"],
                 STRUCTURE_KEY: node.attrib.get("structure", ""),
                 TAG_KEY: re.sub(r"\{.*\}", "", node.tag),
-                "loader_id":"docugami",
+                "loader_key":"docugami",
             }
 
             if doc_metadata:

@@ -50,7 +50,7 @@ class FaissReader(BaseReader):
             "id_to_text_map": id_to_text_map,
             "k": k,
             "separate_documents": separate_documents,
-            "loader_id":"faiss"
+            "loader_key":"faiss"
         }
 
         dists, indices = self._index.search(query, k)

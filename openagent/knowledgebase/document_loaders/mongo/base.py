@@ -68,7 +68,7 @@ class SimpleMongoReader(BaseReader):
             "db_name": db_name,
             "collection_name": collection_name,
             "query_dict": query_dict,
-            "loader_id":"mongo",
+            "loader_key":"mongo",
         }
         documents = []
         db = self.client[db_name]

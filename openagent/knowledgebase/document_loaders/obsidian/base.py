@@ -37,7 +37,7 @@ class ObsidianReader(BaseReader):
                     filepath = os.path.join(dirpath, filename)
                     content = MarkdownReader().load_data(Path(filepath))
 
-                    metadata = {"input_dir": self.input_dir, "loader_id":"obsidian"}
+                    metadata = {"input_dir": self.input_dir, "loader_key":"obsidian"}
 
                     for doc in content:
                         doc.extra_info = metadata  

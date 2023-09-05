@@ -62,9 +62,9 @@ class OpendalReader(BaseReader):
 
             documents = loader.load_data()
 
-            # Add "loader_id" to extra_info for all documents
+            # Add "loader_key" to extra_info for all documents
             for doc in documents:
-                doc.extra_info = {"loader_id": "opendal"}
+                doc.extra_info = {"loader_key": "opendal"}
 
             return documents
 

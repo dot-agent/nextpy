@@ -45,7 +45,7 @@ class JSONDataReader(BaseReader):
         """Load data from the input file."""
         metadata = {
             "input_data": input_data,
-            "loader_id":"jsondata",
+            "loader_key":"jsondata",
         }
         if isinstance(input_data, str):
             data = json.loads(input_data)

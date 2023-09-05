@@ -18,7 +18,7 @@ class DocxReader(BaseReader):
 
         text = docx2txt.process(file)
         metadata = {"file_name": file.name,
-                    "loader_id":"file_docx"}
+                    "loader_key":"file_docx"}
 
         if extra_info is not None:
             metadata.update(extra_info)

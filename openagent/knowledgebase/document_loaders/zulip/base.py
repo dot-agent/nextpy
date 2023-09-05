@@ -55,7 +55,7 @@ class ZulipReader(BaseReader):
         for stream_name in streams:
             stream_content = self._read_stream(stream_name, reverse_chronological)
             data.append(
-                DocumentNode(text=stream_content, extra_info={"stream": stream_name, "loader_id":"zulip"})
+                DocumentNode(text=stream_content, extra_info={"stream": stream_name, "loader_key":"zulip"})
             )   
         return data
 

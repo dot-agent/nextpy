@@ -49,7 +49,7 @@ class PDFMinerReader(BaseReader):
                 # Extract the text from the page
                 page_text = _extract_text_from_page(page)
 
-                metadata = {"page_label": i, "file_name": file.name, "loader_id":"pdf_miner"}
+                metadata = {"page_label": i, "file_name": file.name, "loader_key":"pdf_miner"}
                 if extra_info is not None:
                     metadata.update(extra_info)
 

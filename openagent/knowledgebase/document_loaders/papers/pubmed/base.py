@@ -84,7 +84,7 @@ class PubmedReader(BaseReader):
                             "Date published": datetime.strptime(
                                 paper["date"], "%Y%m%d"
                             ).strftime("%m/%d/%Y"),
-                            "loader_id": "pubmed"
+                            "loader_key": "pubmed"
                         },
                     )
                 )

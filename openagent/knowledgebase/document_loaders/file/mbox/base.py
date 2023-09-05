@@ -109,5 +109,5 @@ class MboxReader(BaseReader):
         docs: List[DocumentNode] = []
         content = self.parse_file(file)
         for msg in content:
-            docs.append(DocumentNode(text=msg, extra_info={**extra_info, "loader_id":"mbox"}))
+            docs.append(DocumentNode(text=msg, extra_info={**extra_info, "loader_key":"mbox"}))
         return docs
