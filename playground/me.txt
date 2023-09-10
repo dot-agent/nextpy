@@ -1,0 +1,5 @@
+{{#user}}
+ "name": "Aaditya",
+ "skills": "H.T.M.L, C.S.S, J.S, ReactJS, Bootstrap, TailwindCSS, Redux, Redux-Toolkit, JAVA, GIT",
+ "Email": "aadityasandil5@gmail.com",
+{{/user}}
