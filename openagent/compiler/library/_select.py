@@ -110,7 +110,7 @@ async def select(variable_name="selected", options=None, logprobs=None, list_app
             logit_bias=logit_bias,
             logprobs=len(logit_bias),
             cache_seed=0,
-            token_healing=False # we manage token boundary healing ourselves for this function
+            token_healing=False, # we manage token boundary healing ourselves for this function
             function_call=function_call
         )
         gen_obj = gen_obj["choices"][0] # get the first choice (we only asked for one)
