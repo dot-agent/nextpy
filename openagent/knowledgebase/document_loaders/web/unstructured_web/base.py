@@ -53,7 +53,7 @@ class UnstructuredURLLoader(BaseLoader):
                 else:
                     elements = partition_html(url=url)
                 text = "\n\n".join([str(el) for el in elements])
-                metadata = {"source": url}
+                metadata = {"source": url, "loader_id": "unstructured_web"}
                 docs.append(DocumentNode(text=text, extra_info=metadata))
             except Exception as e:
                 if self.continue_on_failure:

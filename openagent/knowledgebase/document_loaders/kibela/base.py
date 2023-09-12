@@ -90,7 +90,8 @@ class KibelaReader(BaseReader):
         """
         metadata ={
             "team": self.team,
-            "url": self.url
+            "url": self.url,
+            "loader_id":"kibela",
         }
 
         params = {"after": ""}

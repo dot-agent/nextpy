@@ -32,10 +32,11 @@ class ApifyDataset(BaseReader):
         items_list = self.apify_client.dataset(dataset_id).list_items(clean=True)
 
         document_list = []
+        metadata = {"loader_id":"apify_dataset"}
         for item in items_list.items:
             DocumentNode = dataset_mapping_function(item)
             if not isinstance(DocumentNode, DocumentNode):
                 raise ValueError("Dataset_mapping_function must return a DocumentNode")
-            document_list.append(DocumentNode)
+            document_list.append(DocumentNode(extra_info=metadata))
 
         return document_list

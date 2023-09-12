@@ -61,7 +61,8 @@ class OutlookLocalCalendarReader(BaseReader):
             "number_of_results": number_of_results,
             "start_date": start_date,
             "end_date": end_date,
-            "more_attributes": more_attributes
+            "more_attributes": more_attributes,
+            "loader_id":"outlook_localcalendar",
         }
 
         if platform.system().lower() != "windows":

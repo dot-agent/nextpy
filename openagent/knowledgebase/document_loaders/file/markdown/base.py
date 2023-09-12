@@ -107,4 +107,4 @@ class MarkdownReader(BaseReader):
         If content is provided, use that instead of reading from file."""
         tups = self.parse_tups(file, content=content)
         # TODO: don't include headers right now
-        return [DocumentNode(text=value, extra_info=extra_info or {}) for _, value in tups]
+        return [DocumentNode(text=value, extra_info={**extra_info, "loader_id": "markdown"}) for _, value in tups]

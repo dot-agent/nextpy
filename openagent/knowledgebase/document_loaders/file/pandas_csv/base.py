@@ -67,10 +67,11 @@ class PandasCSVReader(BaseReader):
         if self._concat_rows:
             return [
                 DocumentNode(
-                    text=self._row_joiner.join(text_list), extra_info=extra_info or {}
+                    text=self._row_joiner.join(text_list), extra_info={**extra_info, "loader_id":"pandas_csv"}
+
                 )
             ]
         else:
             return [
-                DocumentNode(text=text, extra_info=extra_info or {}) for text in text_list
+                DocumentNode(text=text, extra_info={**extra_info, "loader_id":"pandas_csv"}) for text in text_list
             ]

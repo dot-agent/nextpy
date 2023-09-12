@@ -95,7 +95,9 @@ class ImageVisionLLMReader(BaseReader):
         out = model.generate(**inputs)
         text_str = processor.decode(out[0], skip_special_tokens=True)
 
+        extra_info = {**extra_info, "loader_id": "image_vision"}
         return ImageDocument(
             text=text_str,
             image=image_str,
+            extra_info=extra_info,
         )

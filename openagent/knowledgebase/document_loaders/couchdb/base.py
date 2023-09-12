@@ -57,7 +57,8 @@ class SimpleCouchDBReader(BaseReader):
         metadata = {
             "user": self.user,
             "db_name": db_name,
-            "query": query
+            "query": query,
+            "loader_id":"couchdb",
         }
 
         documents = []

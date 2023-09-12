@@ -87,6 +87,7 @@ class JiraReader(BaseReader):
                                 "epic_key": epic_key,
                                 "epic_summary": epic_summary,
                                 "epic_description": epic_descripton,
+                                "loader_id":"jira",
                             }
                         ),
                     )

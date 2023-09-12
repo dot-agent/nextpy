@@ -27,5 +27,5 @@ class WikipediaReader(BaseReader):
         for page in pages:
             wikipedia.set_lang(lang)
             page_content = wikipedia.page(page, **load_kwargs).content
-            results.append(DocumentNode(text=page_content, extra_info={"page": page, "language": lang}))
+            results.append(DocumentNode(text=page_content, extra_info={"page": page, "language": lang, "loader_id":"wikipedia"}))
         return results

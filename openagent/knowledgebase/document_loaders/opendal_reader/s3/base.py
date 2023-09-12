@@ -70,4 +70,9 @@ class OpendalS3Reader(BaseReader):
             **self.options,
         )
 
-        return loader.load_data()
+        # Load documents and add the "loader_id" to extra_info
+        documents = loader.load_data()
+        for doc in documents:
+            doc.extra_info = {"loader_id": "opendal_s3"}
+
+        return documents

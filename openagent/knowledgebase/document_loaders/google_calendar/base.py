@@ -71,7 +71,8 @@ class GoogleCalendarReader(BaseReader):
 
         metadata = {
             "number_of_results": number_of_results,
-            "start_date": start_date
+            "start_date": start_date,
+            "loader_id":"google_calendar",
         }
 
         events = events_result.get("items", [])

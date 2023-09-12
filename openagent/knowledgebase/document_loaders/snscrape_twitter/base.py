@@ -34,4 +34,4 @@ class SnscrapeTwitterReader(BaseReader):
             if i > num_tweets:
                 break
             attributes_container.append(tweet.rawContent)
-        return [DocumentNode(text=attributes_container, extra_info={"username": username, "num_tweets": num_tweets})]
+        return [DocumentNode(text=attributes_container, extra_info={"username": username, "num_tweets": num_tweets, "loader_id":"snscrape_twitter"})]

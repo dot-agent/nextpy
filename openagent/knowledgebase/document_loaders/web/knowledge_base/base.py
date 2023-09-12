@@ -71,7 +71,8 @@ class KnowledgeBaseWebReader(BaseReader):
                     "subtitle": article["subtitle"],
                     "url": article["url"],
                     "root_url": self.root_url,
-                    "article_path": self.article_path
+                    "article_path": self.article_path,
+                    "loader_id": "knowledge_base_web",
                 }
 
                 documents.append(DocumentNode(text=article["body"], extra_info=metadata))

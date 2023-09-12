@@ -74,4 +74,4 @@ class JSONReader(BaseReader):
                 # If levels_back is set, we make the embeddings contain the labels
                 # from further up the JSON tree
                 lines = [*_depth_first_yield(data, self.levels_back, [])]
-                return [DocumentNode(text="\n".join(lines), extra_info=extra_info or {})]
+                return [DocumentNode(text="\n".join(lines), extra_info={**extra_info, "loader_id": "json"})]

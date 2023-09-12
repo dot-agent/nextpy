@@ -80,10 +80,10 @@ class PandasExcelReader(BaseReader):
                     text=(self._row_joiner).join(
                         self._row_joiner.join(sublist) for sublist in text_list
                     ),
-                    extra_info=extra_info or {},
+                    extra_info={**extra_info, "loader_id":"pandas_excel"},
                 )
             ]
         else:
             return [
-                DocumentNode(text=text, extra_info=extra_info or {}) for text in text_list
+                DocumentNode(text=text, extra_info={**extra_info, "loader_id":"pandas_excel"}) for text in text_list
             ]

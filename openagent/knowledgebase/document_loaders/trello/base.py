@@ -42,6 +42,7 @@ class TrelloReader(BaseReader):
                     "url": card.url,
                     "due_date": card.due_date,
                     "labels": [label.name for label in card.labels],
+                    "loader_id":"trello"
                 },
             )
             documents.append(doc)

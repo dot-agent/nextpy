@@ -30,7 +30,7 @@ class TrafilaturaWebReader(BaseReader):
         for url in urls:
             downloaded = trafilatura.fetch_url(url)
             response = trafilatura.extract(downloaded)
-            metadata = {"url": url}
+            metadata = {"url": url, "loader_id":"trafilatura_web"}
             documents.append(DocumentNode(text=response, extra_info=metadata))
 
         return documents

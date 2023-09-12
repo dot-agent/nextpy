@@ -116,7 +116,8 @@ class GPTRepoReader(BaseReader):
             "concatenate": self.concatenate,
             "repo_path": repo_path,
             "preamble_str": preamble_str,
-            "extensions": extensions
+            "extensions": extensions,
+            "loader_id": "gpt_repo",
         }
         
         ignore_file_path = os.path.join(repo_path, ".gptignore")

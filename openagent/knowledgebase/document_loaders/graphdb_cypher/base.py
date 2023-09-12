@@ -53,7 +53,8 @@ class GraphDBCypherReader(BaseReader):
 
         metadata = {
             "query": query,
-            "parameters": parameters
+            "parameters": parameters,
+            "loader_id":"graphdb_cypher"
         }
 
         if parameters is None:

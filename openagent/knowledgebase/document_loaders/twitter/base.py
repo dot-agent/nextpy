@@ -50,6 +50,6 @@ class TwitterTweetReader(BaseReader):
             response = " "
             for tweet in tweets.data:
                 response = response + tweet.text + "\n"
-            metadata = {"username": username}
+            metadata = {"username": username, "loader_id":"twitter"}
             results.append(DocumentNode(text=response, extra_info=metadata))
         return results

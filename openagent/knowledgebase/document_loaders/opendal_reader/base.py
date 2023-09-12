@@ -60,7 +60,13 @@ class OpendalReader(BaseReader):
                 SimpleDirectoryReader = download_loader("SimpleDirectoryReader")
             loader = SimpleDirectoryReader(temp_dir, file_extractor=self.file_extractor)
 
-            return loader.load_data()
+            documents = loader.load_data()
+
+            # Add "loader_id" to extra_info for all documents
+            for doc in documents:
+                doc.extra_info = {"loader_id": "opendal"}
+
+            return documents
 
 
 async def download_file_from_opendal(op: Any, temp_dir: str, path: str) -> str:
