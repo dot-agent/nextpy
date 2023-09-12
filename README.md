@@ -6,25 +6,25 @@
 *Hey there, Friend!
 This project is still in the &quot;just for friends&quot; stage. If you want to see what we&#39;re messing with and have some thoughts, take a look at the code.* 
 
-*We'd love to incorporate your ideas or contributions. You can drop me a line at- ✉️  ` anurag@openagent.dev `*
+*We'd love to incorporate your ideas or contributions. You can drop me a line at- ✉️  ` anurag@dotagent.ai `*
 
 <h1 id="-why-we-started-dotagent-"><strong>Why we started dotagent?</strong></h1>
 
 <p>We have a dream: Open and democratic AGI , free from blackbox censorship and control imposed by private corporations under the disguise of alignment. We once had this with the web but lost this liberty to the corporate giants of the mobile era, whose duopoly has imposed a fixed 30% tax on all developers.</p>
 <p>Our moonshot : A network of domain specific AI agents , collaborating so seamlessly that it feels like AGI. Contribute to democratizing the LAST technological frontier.</p>
 
-![-----------------------------------------------------](https://github.com/dotagent-ai/openagent/blob/911fa336d5c5647ccbd45471f6bc5c2f22d1f45d/assets/divider.gif)
+![-----------------------------------------------------](https://github.com/dotagent-ai/dotagent/blob/911fa336d5c5647ccbd45471f6bc5c2f22d1f45d/assets/divider.gif)
 
 
-<h1 id="what-is-openagent-">What is OpenAgent ?</h1>
-<p>OpenAgent is a library of modular components and an orchestration framework. Inspired by a microservices approach, it gives developers all the components they need to build robust, stable &amp; reliable AI applications and experimental autonomous agents.</p>
+<h1 id="what-is-dotagent-">What is dotagent ?</h1>
+<p>dotagent is a library of modular components and an orchestration framework. Inspired by a microservices approach, it gives developers all the components they need to build robust, stable &amp; reliable AI applications and experimental autonomous agents.</p>
 
 
 
 <h2 id="modularity"> 🧱 Modularity</h2>
 <ul>
 <li><em><strong>Multiplatform:</strong></em> Agents do not have to run on a single location or machine. Different components can run across various platforms, including the cloud, personal computers, or mobile devices.</li>
-<li><em><strong>Extensible:</strong></em> If you know how to do something in Python or plain English, you can integrate it with OpenAgent.</li>
+<li><em><strong>Extensible:</strong></em> If you know how to do something in Python or plain English, you can integrate it with dotagent.</li>
 </ul>
 <h2 id="guardrails"> 🚧 Guardrails</h2>
 <ul>
@@ -49,7 +49,7 @@ This project is still in the &quot;just for friends&quot; stage. If you want to 
 <li><em><strong>Agentbox (optional):</strong></em> Agents should be able to optimize computing resources inside a sandbox. You can use Agentbox locally or on a cloud with a simple API, with cloud agentbox offering additional control and safety.</li>
 </ul>
 
-![-----------------------------------------------------](https://github.com/dotagent-ai/openagent/blob/911fa336d5c5647ccbd45471f6bc5c2f22d1f45d/assets/divider.gif)
+![-----------------------------------------------------](https://github.com/dotagent-ai/dotagent/blob/911fa336d5c5647ccbd45471f6bc5c2f22d1f45d/assets/divider.gif)
 ## Installation
 
 ### Step 1: Install Poetry
@@ -82,9 +82,9 @@ This is a very common issue with Chroma DB. You can find instructions to resolve
 ### Code for a full-stack chat app, complete with UI.
 
  ```python
-import openagent.compiler as compiler
-from openagent.compiler._program import Log
-from openagent import memory
+import dotagent.compiler as compiler
+from dotagent.compiler._program import Log
+from dotagent import memory
 import chainlit as ui
 from dotenv import load_dotenv
 load_dotenv()

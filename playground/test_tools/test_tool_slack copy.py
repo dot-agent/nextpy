@@ -2,13 +2,13 @@ import sys
 import os
 
 script_dir = os.path.dirname(os.path.abspath(__file__))
-openagent_dir = os.path.abspath(os.path.join(script_dir, "..", ".."))
-sys.path.append(openagent_dir)
+dotagent_dir = os.path.abspath(os.path.join(script_dir, "..", ".."))
+sys.path.append(dotagent_dir)
 
 
-from openagent.tools.basetool import Tool
-from openagent.tools.toolkits.slack_toolkit.slack import SlackToolkit
-from openagent import compiler
+from dotagent.tools.basetool import Tool
+from dotagent.tools.toolkits.slack_toolkit.slack import SlackToolkit
+from dotagent import compiler
 import ssl
 from datetime import datetime
 import json

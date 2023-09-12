@@ -12,15 +12,15 @@ knowledgebase:
   data_transformer:
     chunk_overlap: 40
     chunk_size: 1024
-    type: openagent.text_splitter.CharacterTextSplitter
-  type: openagent.knowledgebase.base.SimpleKnowledgeBase
+    type: dotagent.text_splitter.CharacterTextSplitter
+  type: dotagent.knowledgebase.base.SimpleKnowledgeBase
   vector_store:
     embedding_function:
-      type: openagent.vectorstores.embeddings.openai.OpenAIEmbeddings
-    type: openagent.vectorstores.chroma.Chroma
+      type: dotagent.vectorstores.embeddings.openai.OpenAIEmbeddings
+    type: dotagent.vectorstores.chroma.Chroma
 llm:
   model: text-davinci-003
-  type: openagent.llms._openai.OpenAI
+  type: dotagent.llms._openai.OpenAI
 memory: null
 output_key: null
 prompt_template: '

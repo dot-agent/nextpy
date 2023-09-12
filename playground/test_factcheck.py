@@ -2,11 +2,11 @@ import sys
 import os
 
 script_dir = os.path.dirname(os.path.abspath(__file__))
-openagent_dir = os.path.abspath(os.path.join(script_dir, ".."))
-sys.path.append(openagent_dir)
+dotagent_dir = os.path.abspath(os.path.join(script_dir, ".."))
+sys.path.append(dotagent_dir)
 
-from openagent.llms._openai import OpenAI
-from openagent.fact_check.factool import Factool
+from dotagent.llms._openai import OpenAI
+from dotagent.fact_check.factool import Factool
 from dotenv import load_dotenv
 
 load_dotenv()

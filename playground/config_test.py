@@ -2,19 +2,19 @@ import sys
 import os
 
 script_dir = os.path.dirname(os.path.abspath(__file__))
-openagent_dir = os.path.abspath(os.path.join(script_dir, ".."))
-sys.path.append(openagent_dir)
+dotagent_dir = os.path.abspath(os.path.join(script_dir, ".."))
+sys.path.append(dotagent_dir)
 
 
 import pytest
-from openagent.agent._config import export_agent_config, load_agent_config
-from openagent.agent.chat import ChatAgent
-from openagent.llms._openai import OpenAI
-from openagent.vectorstores.chroma import Chroma
-from openagent.text_splitter import CharacterTextSplitter
-from openagent.knowledgebase.document_loaders.file.base import SimpleDirectoryReader
-from openagent.knowledgebase.base import SimpleKnowledgeBase
-from openagent.vectorstores.embeddings.openai import OpenAIEmbeddings
+from dotagent.agent._config import export_agent_config, load_agent_config
+from dotagent.agent.chat import ChatAgent
+from dotagent.llms._openai import OpenAI
+from dotagent.vectorstores.chroma import Chroma
+from dotagent.text_splitter import CharacterTextSplitter
+from dotagent.knowledgebase.document_loaders.file.base import SimpleDirectoryReader
+from dotagent.knowledgebase.base import SimpleKnowledgeBase
+from dotagent.vectorstores.embeddings.openai import OpenAIEmbeddings
 
 def test_agent_config():
 
