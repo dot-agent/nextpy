@@ -2,14 +2,14 @@
 name = "dotagent"
 version = "0.1.0"
 description = ""
-authors = ["Team Dotagent <team@openagent.com>"]
+authors = ["Team Dotagent <team@dotagent.ai>"]
 readme = "README.md"
 packages = [
-    { include="openagent", from="." },
+    { include="dotagent", from="." },
 ]
 
 [tool.poetry.dependencies]
-python = "^3.10"
+python = "^3.9"
 aiofiles = "^23.1"
 aiohttp = "^3.8.4"
 aioresponses = "^0.7.4"
@@ -98,7 +98,7 @@ google-search-results = "^2.4.2"
 jupyter = "^1.0.0"
 
 [tool.poetry.scripts]
-openagent = "openagent.cli:main"
+dotagent = "dotagent.cli:main"
 
 [build-system]
 requires = ["poetry-core"]

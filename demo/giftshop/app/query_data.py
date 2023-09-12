@@ -1,4 +1,4 @@
-from openagent import compiler
+from dotagent import compiler
 from .config import Config
 import logging
 

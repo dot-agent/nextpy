@@ -5,11 +5,11 @@ import sys
 import os
 
 script_dir = os.path.dirname(os.path.abspath(__file__))
-openagent_dir = os.path.abspath(os.path.join(script_dir, ".."))
-sys.path.append(openagent_dir)
-import openagent
-from openagent.llms._openai import OpenAI as guidance_llm
-from openagent.agent.chat import ChatAgent
+dotagent_dir = os.path.abspath(os.path.join(script_dir, ".."))
+sys.path.append(dotagent_dir)
+import dotagent
+from dotagent.llms._openai import OpenAI as guidance_llm
+from dotagent.agent.chat import ChatAgent
 from dotenv import load_dotenv
 load_dotenv()
 

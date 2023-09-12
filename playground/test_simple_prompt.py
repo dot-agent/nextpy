@@ -2,14 +2,14 @@ import sys
 import os
 
 script_dir = os.path.dirname(os.path.abspath(__file__))
-openagent_dir = os.path.abspath(os.path.join(script_dir, ".."))
-sys.path.append(openagent_dir)
+dotagent_dir = os.path.abspath(os.path.join(script_dir, ".."))
+sys.path.append(dotagent_dir)
 
 
-from openagent import compiler
+from dotagent import compiler
 import re
 from dotenv import load_dotenv
-from openagent.memory import SummaryMemory
+from dotagent.memory import SummaryMemory
 
 load_dotenv()
 

@@ -1,7 +1,7 @@
 
 from typing import List, Tuple
-from openagent import compiler
-from openagent.llms._openai import OpenAI
+from dotagent import compiler
+from dotagent.llms._openai import OpenAI
 import pkg_resources as pg
 from pathlib import Path
 

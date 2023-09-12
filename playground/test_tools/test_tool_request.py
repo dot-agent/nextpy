@@ -2,15 +2,15 @@ import sys
 import os
 
 script_dir = os.path.dirname(os.path.abspath(__file__))
-openagent_dir = os.path.abspath(os.path.join(script_dir, "..", ".."))
-sys.path.append(openagent_dir)
+dotagent_dir = os.path.abspath(os.path.join(script_dir, "..", ".."))
+sys.path.append(dotagent_dir)
 
 
-from openagent.tools.basetool import Tool
-from openagent.tools.toolkits.requests_toolkit.request import RequestsToolkit
-from openagent.tools.toolkits.requests_toolkit.requests.base import RequestsGetTool, RequestsPostTool, RequestsPatchTool, RequestsPutTool, RequestsDeleteTool
-from openagent.tools.toolkits.requests_toolkit.requests.utils import TextRequestsWrapper
-from openagent import compiler
+from dotagent.tools.basetool import Tool
+from dotagent.tools.toolkits.requests_toolkit.request import RequestsToolkit
+from dotagent.tools.toolkits.requests_toolkit.requests.base import RequestsGetTool, RequestsPostTool, RequestsPatchTool, RequestsPutTool, RequestsDeleteTool
+from dotagent.tools.toolkits.requests_toolkit.requests.utils import TextRequestsWrapper
+from dotagent import compiler
 import json
 
 # requests_get_tool = RequestsGetTool(requests_wrapper=TextRequestsWrapper())

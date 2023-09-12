@@ -2,12 +2,12 @@ import sys
 import os
 
 script_dir = os.path.dirname(os.path.abspath(__file__))
-openagent_dir = os.path.abspath(os.path.join(script_dir, ".."))
-sys.path.append(openagent_dir)
+dotagent_dir = os.path.abspath(os.path.join(script_dir, ".."))
+sys.path.append(dotagent_dir)
 
 
-from openagent.helpers.youtubeSearch import YouTubeSearchTool
-from openagent.helpers.youtubeTranscript import YoutubeTranscriptReader
+from dotagent.helpers.youtubeSearch import YouTubeSearchTool
+from dotagent.helpers.youtubeTranscript import YoutubeTranscriptReader
 YoutubeSearch = YouTubeSearchTool()
 
 print(YoutubeSearch.run("Samay Raina"))

@@ -5,13 +5,13 @@ from dotenv import load_dotenv
 load_dotenv()
 
 script_dir = os.path.dirname(os.path.abspath(__file__))
-openagent_dir = os.path.abspath(os.path.join(script_dir, "..", ".."))
-sys.path.append(openagent_dir)
+dotagent_dir = os.path.abspath(os.path.join(script_dir, "..", ".."))
+sys.path.append(dotagent_dir)
 
-from openagent import compiler
-from openagent.llms._openai import OpenAI
-from openagent.helpers.youtubeSearch import YouTubeSearchTool
-from openagent.helpers.youtubeTranscript import YoutubeTranscriptReader
+from dotagent import compiler
+from dotagent.llms._openai import OpenAI
+from dotagent.helpers.youtubeSearch import YouTubeSearchTool
+from dotagent.helpers.youtubeTranscript import YoutubeTranscriptReader
 
 import json
 
