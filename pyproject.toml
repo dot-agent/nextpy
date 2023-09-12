@@ -4,7 +4,9 @@ version = "0.1.0"
 description = ""
 authors = ["Team Dotagent <team@openagent.com>"]
 readme = "README.md"
-
+packages = [
+    { include="openagent", from="." },
+]
 [tool.poetry.dependencies]
 python = "^3.10"
 aiofiles = "^23.1"
