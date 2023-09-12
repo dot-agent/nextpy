@@ -29,4 +29,5 @@ class DadJokesReader(BaseReader):
             None.
 
         """
-        return [DocumentNode(text=self._get_random_dad_joke())]
+        metadata = {"loader_key":"dad_jokes",}
+        return [DocumentNode(text=self._get_random_dad_joke(),extra_info=metadata)]

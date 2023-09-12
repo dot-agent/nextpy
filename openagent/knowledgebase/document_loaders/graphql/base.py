@@ -56,7 +56,8 @@ class GraphQLReader(BaseReader):
         metadata = {
             "uri": self.uri,
             "query": query,
-            "variables": variables
+            "variables": variables,
+            "loader_key": "graphql",
         }
 
         try:

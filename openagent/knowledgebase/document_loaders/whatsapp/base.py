@@ -43,6 +43,7 @@ class WhatsappChatLoader(BaseReader):
                 "source": str(path).split("/")[-1].replace(".txt", ""),
                 "author": row.author,
                 "timestamp": str(row.timestamp),
+                "loader_key":"whatsapp",
             }
 
             docs.append(

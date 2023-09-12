@@ -101,7 +101,9 @@ class ImageCaptionReader(BaseReader):
         out = model.generate(**inputs)
         text_str = processor.decode(out[0], skip_special_tokens=True)
 
+        extra_info = {"loader_key": "image_caption"}
         return ImageDocument(
             text=text_str,
             image=image_str,
+            extra_info=extra_info,  # Add the loader_key to extra_info
         )

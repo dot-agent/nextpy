@@ -49,7 +49,8 @@ class FeedlyRssReader(BaseReader):
         metadata = {
             "directory": self.directory,
             "category": category,
-            "max_count": max_count
+            "max_count": max_count,
+            "loader_key": "feedly_rss",
         }
 
         documents = []

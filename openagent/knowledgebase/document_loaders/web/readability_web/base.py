@@ -107,7 +107,7 @@ class ReadabilityWebPageReader(BaseReader):
 
             browser.close()
 
-            return [DocumentNode(text=x, extra_info=metadata) for x in texts]
+            return [DocumentNode(text=x, extra_info={**metadata, "loader_key":"readability_web"}) for x in texts]
 
     def scrape_page(
         self,

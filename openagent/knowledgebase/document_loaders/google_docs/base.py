@@ -43,7 +43,7 @@ class GoogleDocsReader(BaseReader):
         results = []
         for document_id in document_ids:
             doc = self._load_doc(document_id)
-            results.append(DocumentNode(text=doc, extra_info={"document_id": document_id}))
+            results.append(DocumentNode(text=doc, extra_info={"document_id": document_id, "loader_key": "google_docs"}))
         return results
 
     def _load_doc(self, document_id: str) -> str:

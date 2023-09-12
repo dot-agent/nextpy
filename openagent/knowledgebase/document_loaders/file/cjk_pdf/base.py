@@ -72,8 +72,12 @@ class CJKPDFReader(BaseReader):
         text_list = self._extract_text_by_page(file)
 
         if self._concat_pages:
-            return [DocumentNode(text="\n".join(text_list), extra_info=extra_info or {})]
+            extra_info = extra_info or {}
+            extra_info["loader_key"] = "file_cjk_pdf"
+            return [DocumentNode(text="\n".join(text_list), extra_info=extra_info)]
         else:
+            extra_info = extra_info or {}
+            extra_info["loader_key"] = "file_cjk_pdf"
             return [
-                DocumentNode(text=text, extra_info=extra_info or {}) for text in text_list
+                DocumentNode(text=text, extra_info=extra_info ) for text in text_list
             ]

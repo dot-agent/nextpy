@@ -76,7 +76,8 @@ class SteamshipFileReader(BaseReader):
                 "workspace": workspace,
                 "query": query,
                 "collapse_blocks": collapse_blocks,
-                "join_str": join_str
+                "join_str": join_str,
+                "loader_key":"steamship",
             }
 
             for tag in file.tags:

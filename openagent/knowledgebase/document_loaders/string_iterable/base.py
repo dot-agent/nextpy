@@ -27,6 +27,6 @@ class StringIterableReader(BaseReader):
         """Load the data."""
         results = []
         for text in texts:
-            results.append(DocumentNode(text=text))
+            results.append(DocumentNode(text=text),  extra_info={"loader_key":"string_iterable"})
 
         return results

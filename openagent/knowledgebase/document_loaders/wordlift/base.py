@@ -137,7 +137,8 @@ class WordLiftLoader(BaseReader):
                 
                 metadata["endpoint"] = self.endpoint
                 metadata["query"] = self.query
-                DocumentNode = DocumentNode(text=text, extra_info=metadata)
+                
+                DocumentNode = DocumentNode(text=text, extra_info={**metadata, "loader_key":"wordlift"})
                 documents.append(DocumentNode)
 
             return documents

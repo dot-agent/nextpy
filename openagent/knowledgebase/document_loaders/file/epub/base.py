@@ -33,4 +33,9 @@ class EpubReader(BaseReader):
                 )
 
         text = "\n".join(text_list)
+        if extra_info is None:
+            extra_info = {}
+    
+        # Add the loader_key to extra_info
+        extra_info["loader_key"] = "file_epub"
         return [DocumentNode(text=text, extra_info=extra_info or {})]

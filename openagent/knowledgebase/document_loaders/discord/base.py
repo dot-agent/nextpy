@@ -122,7 +122,8 @@ class DiscordReader(BaseReader):
         metadata = {
             "channel": channel_id,
             "limit": limit,
-            "oldest_first": oldest_first
+            "oldest_first": oldest_first,
+            "loader_key":"discord",
         }
 
         results: List[DocumentNode] = []
