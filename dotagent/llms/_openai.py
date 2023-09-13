@@ -11,8 +11,13 @@ import collections
 import json
 import re
 import regex
-
+from litellm import BudgetManager, acompletion
 from ._llm import LLM, LLMSession, SyncSession
+
+
+
+budget_manager = BudgetManager(project_name="test_project")
+budget_manager.create_budget(total_budget=10, user="1234")
 
 
 class MalformedPromptException(Exception):
@@ -361,16 +366,18 @@ class OpenAI(LLM):
 
         assert openai.api_key is not None, "You must provide an OpenAI API key to use the OpenAI LLM. Either pass it in the constructor, set the OPENAI_API_KEY environment variable, or create the file ~/.openai_api_key with your key in it."
         
-        if self.chat_mode:
-            kwargs['messages'] = prompt_to_messages(kwargs['prompt'])
-            del kwargs['prompt']
-            del kwargs['echo']
-            del kwargs['logprobs']
-            # print(kwargs)
-            out = await openai.ChatCompletion.acreate(**kwargs)
-            out = add_text_to_chat_mode(out)
+        if budget_manager.get_current_cost(user=user) <= budget_manager.get_total_budget(user):
+            if self.chat_mode:
+                kwargs['messages'] = prompt_to_messages(kwargs['prompt'])
+                del kwargs['prompt']
+                del kwargs['echo']
+                del kwargs['logprobs']
+                # print(kwargs)
+                out = await acompletion(**kwargs)
+                budget_manager.update_cost(completion_obj=out, user=user)
+                out = add_text_to_chat_mode(out)
         else:
-            out = await openai.Completion.acreate(**kwargs)
+            raise Exception("User budget exceeded")
         
         # restore the params of the openai library
         openai.api_key = prev_key
@@ -412,30 +419,35 @@ class OpenAI(LLM):
 
         # Send a POST request and get the response
         # An exception for timeout is raised if the server has not issued a response for 10 seconds
-        try:
-            if stream:
-                session = aiohttp.ClientSession()
-                response = await session.post(self.endpoint, json=data, headers=headers, timeout=60)
-                status = response.status
-            else:
-                response = requests.post(self.endpoint, headers=headers, json=data, timeout=60)
-                status = response.status_code
-                text = response.text
-            if status != 200:
+        if budget_manager.get_current_cost(user=user) <= budget_manager.get_total_budget(user):
+            try:
                 if stream:
-                    text = await response.text()
-                raise Exception("Response is not 200: " + text)
-            if stream:
-                response = self._rest_stream_handler(response, session)
-            else:
-                response = response.json()
-        except requests.Timeout:
-            raise Exception("Request timed out.")
-        except requests.ConnectionError:
-            raise Exception("Connection error occurred.")
-        if self.chat_mode:
-            response = add_text_to_chat_mode(response)
-        return response
+                    session = aiohttp.ClientSession()
+                    response = await session.post(self.endpoint, json=data, headers=headers, timeout=60)
+                    status = response.status
+                else:
+                    response = requests.post(self.endpoint, headers=headers, json=data, timeout=60)
+                    status = response.status_code
+                    text = response.text
+                if status != 200:
+                    if stream:
+                        text = await response.text()
+                    raise Exception("Response is not 200: " + text)
+                if stream:
+                    response = self._rest_stream_handler(response, session)
+                else:
+                    response = response.json()
+            except requests.Timeout:
+                raise Exception("Request timed out.")
+            except requests.ConnectionError:
+                raise Exception("Connection error occurred.")
+            if self.chat_mode:
+                response = add_text_to_chat_mode(response)
+            
+            budget_manager.update_cost(completion_obj=response, user=user)
+            return response
+        else:
+            raise Exception("Sorry budget exceeded!")
         
     async def _close_response_and_session(self, response, session):
         await response.release()
