@@ -16,7 +16,7 @@ This project is still in the &quot;just for friends&quot; stage. If you want to 
 <p>We have a dream: Open and democratic AGI , free from blackbox censorship and control imposed by private corporations under the disguise of alignment. We once had this with the web but lost this liberty to the corporate giants of the mobile era, whose duopoly has imposed a fixed 30% tax on all developers.</p>
 <p>Our moonshot : A network of domain specific AI agents , collaborating so seamlessly that it feels like AGI. Contribute to democratizing the LAST technological frontier.</p>
 
-![-----------------------------------------------------](https://github.com/dotagent-ai/dotagent/blob/911fa336d5c5647ccbd45471f6bc5c2f22d1f45d/assets/divider.gif)
+![-----------------------------------------------------](https://res.cloudinary.com/dzznkbdrb/image/upload/v1694798498/divider_1_rej288.gif)
 
 
 <h1 id="what-is-dotagent-">What is dotagent ?</h1>
@@ -52,23 +52,11 @@ This project is still in the &quot;just for friends&quot; stage. If you want to 
 <li><em><strong>Agentbox (optional):</strong></em> Agents should be able to optimize computing resources inside a sandbox. You can use Agentbox locally or on a cloud with a simple API, with cloud agentbox offering additional control and safety.</li>
 </ul>
 
-![-----------------------------------------------------](https://github.com/dotagent-ai/dotagent/blob/911fa336d5c5647ccbd45471f6bc5c2f22d1f45d/assets/divider.gif)
+![-----------------------------------------------------](https://res.cloudinary.com/dzznkbdrb/image/upload/v1694798498/divider_1_rej288.gif)
 ## Installation
 
-### Step 1: Install Poetry
 
-Poetry is used for dependency management in this project. Please note that Poetry has some compatibility issues with Conda.
-
-`pip install poetry` 
-
-### Step 2: Lock the Dependencies
-
-
-`poetry lock` 
-
-### Step 3: Install the Dependencies
-
-`poetry install` 
+`pip install dotagent` 
 
 ## Common Errors
 
@@ -133,7 +121,7 @@ async def main(message: str):
 
 ```
 The UI will look something like this:
-![-----------------------------------------------------](./assets/chatapp.png)
+![-----------------------------------------------------](https://res.cloudinary.com/dzznkbdrb/image/upload/v1694798498/chatapp_1_o3dypp.png)
 
 
 
