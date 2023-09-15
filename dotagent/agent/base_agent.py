@@ -141,7 +141,7 @@ class BaseAgent:
 
     def cli(self):
         """Start a CLI for interacting with the agent."""
-        print("Welcome to the agent CLI!")
+        print("Welcome to the dotagent CLI!")
 
         _vars = []
         for _, v in self.input_variables.items():
