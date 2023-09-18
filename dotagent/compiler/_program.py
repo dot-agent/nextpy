@@ -360,7 +360,7 @@ class Program:
             loop = asyncio.get_event_loop()
             assert loop.is_running(), "The program is in async mode but there is no asyncio event loop running! Start one and try again."
             update_task = loop.create_task(new_program.update_display.run()) # start the display updater
-            execute_task = loop.create_task(new_program.execute())
+            execute_task = loop.create_task(new_program.execute(memory=self.memory))
             new_program._tasks.append(update_task)
             new_program._tasks.append(execute_task)
 
@@ -382,11 +382,11 @@ class Program:
             else:
                 loop.run_until_complete(new_program.execute())
 
-        if self.memory is not None:
-            all_text = extract_text(new_program.text)
-            for text_block in all_text:
-                for value in text_block:
-                    self.memory.add_memory(prompt=value, llm_response=text_block[value])
+            if self.memory is not None:
+                all_text = extract_text(new_program.text)
+                for text_block in all_text:
+                    for value in text_block:
+                        self.memory.add_memory(prompt=value, llm_response=text_block[value])
         return new_program
     
     def get(self, key, default=None):
@@ -520,7 +520,7 @@ class Program:
         display({"text/html": html}, display_id=self._id, raw=True, clear=True, include=["text/html"])
         self._displayed = True
 
-    async def execute(self):
+    async def execute(self, memory=None):
         """ Execute the current program.
 
         Note that as execution progresses the program will be incrementally converted
@@ -555,6 +555,13 @@ class Program:
             # update the display with the final output
             self.update_display(last=True)
             await self.update_display.done()
+
+            # Handle memory updates here in case async_mode=True
+            if memory is not None:
+                all_text = extract_text(self.text)
+                for text_block in all_text:
+                    for value in text_block:
+                        memory.add_memory(prompt=value, llm_response=text_block[value])
 
             # fire an event noting that execution is complete (this will release any await calls waiting on the program)
             self._execute_complete.set()
