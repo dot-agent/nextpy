@@ -594,7 +594,10 @@ class Program:
     @property
     def marked_text(self):
         if self._executor is not None:
-            return self._variables["@raw_prefix"]
+            try:
+                return self._variables["@raw_prefix"]
+            except KeyError:
+                return self._text
         else:
             return self._text
     
