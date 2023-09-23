@@ -70,7 +70,7 @@ If you encounter an error like:
 
 This is a very common issue with Chroma DB. You can find instructions to resolve this in the [Chroma DB tutorial](https://docs.trychroma.com/troubleshooting#sqlite).
 
-### Code for a full-stack chat app, complete with UI.
+### Here's the code for a full stack chat app with UI, all in a single Python file! (37 lines)
 
  ```python
 import dotagent.compiler as compiler
