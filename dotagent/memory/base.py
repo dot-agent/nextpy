@@ -1,14 +1,16 @@
 from typing import Any, Dict, List
 from abc import ABC, abstractmethod
 from dotagent.schema import BaseMessage
+from pydantic import BaseModel, Field
 
-class BaseMemory(ABC):
+
+class BaseMemory(ABC, BaseModel):
     """Abstract base class for memory management in a chatbot application. 
     This class defines the interface for setting, getting, and checking existence of data in memory.
     """
 
     # All memories are stored in this list
-    messages: List[Dict[BaseMessage, Any]] = []
+    messages: List[Dict[BaseMessage, Any]] = Field(default=list())
 
     @abstractmethod
     def add_memory(self, prompt: str, llm_response: Any) -> None:
