@@ -24,7 +24,7 @@ from websockets.client import connect as ws_connect
 from websockets.exceptions import ConnectionClosedError
 from websockets.sync.client import ClientConnection
 from websockets.sync.client import connect as ws_connect_sync
-from dotagent.agentbox import BaseBox
+from dotagent.agent.agentbox import BaseBox
 from dotagent.schema import AgentBoxFile, AgentBoxOutput, AgentBoxStatus
 from dotagent.config import settings
 

@@ -1,5 +1,5 @@
 from .._utils import ContentCapture
-from .._grammar import grammar
+from ...parsing._grammar import grammar
 
 async def parse(string, name=None, hidden=False, _parser_context=None):
     ''' Parse a string as a Compiler program.

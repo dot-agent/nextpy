@@ -5,7 +5,7 @@ import re
 import asyncio
 import logging
 import pyparsing as pp
-from ._grammar import grammar
+from ..parsing._grammar import grammar
 from ._variable_stack import VariableStack
 log = logging.getLogger(__name__)
 
