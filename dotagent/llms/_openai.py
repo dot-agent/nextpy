@@ -11,7 +11,7 @@ import collections
 import json
 import re
 import regex
-from dotagent.parsing.parsing_openai import roles_grammar,functions_def
+from dotagent.compiler.parsing.parsing_openai import roles_grammar,functions_def
 from ._llm import LLM, LLMSession, SyncSession
 
 
