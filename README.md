@@ -28,7 +28,7 @@ Ahoy, adventurer! 🏴‍☠️ We're thrilled to have another daring coder join
 ![-----------------------------------------------------](https://res.cloudinary.com/dzznkbdrb/image/upload/v1694798498/divider_1_rej288.gif)
 
 
-<h1 id="what-is-dotagent-">Meet dotagent!</h1>
+<h1 id="what-is-dotagent-">Meet World's first AMS!</h1>
 
 <p>Ever heard of an Agent Management System (AMS)? No? Well, probably because we believe we came up with it! 🎩✨ dotagent proudly wears the badge of being the world's first AMS (yep, we're patting ourselves on the back here). Drawing inspiration from the nifty microservices, it equips developers with a treasure trove of tools to craft sturdy, trusty AI applications and those cool experimental autonomous agents.</p>
 
