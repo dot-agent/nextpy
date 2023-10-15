@@ -7,7 +7,14 @@ from langchain.chat_models import ChatOpenAI
 
 load_dotenv()
 
-openai_api_key = "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"
+# openai_api_key = 
+
+
+openai_api_key = os.getenv("OPENAI_API_KEY")
+
+if openai_api_key is None:
+    raise ValueError("OpenAI API key not found in the environment variables")
+
 
 llm = ChatOpenAI(temperature=0, model="gpt-3.5-turbo-0613",
                  openai_api_key=openai_api_key)
