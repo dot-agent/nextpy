@@ -2,8 +2,8 @@
 + Hunting for 'openagent'? Eureka! You are at the right place. Say hello to the new shiny 'dotagent'.🤖 +
 ```
 <p align="center"> 
-<img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Smilies/Grinning%20Face.png" alt="Grinning Face" width="50" height="50" />
-<img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Smilies/Robot.png" alt="Robot" width="175" height="175" />
+<img src="https://res.cloudinary.com/dzznkbdrb/image/upload/c_scale,e_art:primavera,r_30,w_2294/a_0/v1697338678/github-cover-min_exhq8b.webp" />
+
 </p>
 
 ## Question:
