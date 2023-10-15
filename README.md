@@ -1,26 +1,37 @@
 ```diff
-+ Searching for openagent? You are in the right repo. It's now dotagent.(.🤖) +
++ Hunting for 'openagent'? Eureka! You are at the right place. Say hello to the new shiny 'dotagent'.🤖 +
 ```
 <p align="center"> 
 <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Smilies/Grinning%20Face.png" alt="Grinning Face" width="50" height="50" />
 <img src="https://raw.githubusercontent.com/Tarikul-Islam-Anik/Animated-Fluent-Emojis/master/Emojis/Smilies/Robot.png" alt="Robot" width="175" height="175" />
 </p>
 
-*Hey there, Friend!
-This project is still in the &quot;just for friends&quot; stage. If you want to see what we&#39;re messing with and have some thoughts, take a look at the code.* 
+## Question:
 
-*We'd love to incorporate your ideas or contributions. You can drop me a line at- ✉️  ` anurag@dotagent.ai `*
+**I stumbled upon this repository. Can I use it?**
 
-<h1 id="-why-we-started-dotagent-"><strong>Why we started dotagent?</strong></h1>
+## Answer:
 
-<p>We have a dream: Open and democratic AGI , free from blackbox censorship and control imposed by private corporations under the disguise of alignment. We once had this with the web but lost this liberty to the corporate giants of the mobile era, whose duopoly has imposed a fixed 30% tax on all developers.</p>
-<p>Our moonshot : A network of domain specific AI agents , collaborating so seamlessly that it feels like AGI. Contribute to democratizing the LAST technological frontier.</p>
+Kudos on discovering this treasure box! 🧭  While it's fairly stable and we're battle-testing it in our own production, we'd advise a bit of caution for immediate production use. It's got its quirks, and some of them have taken a cozy spot on our *'we'll-look-at-this-later'* list. Just think of our method as 'building with the windows wide open.' As for our source code? It's as free as a bird 🐦, thanks to the MIT license.
+
+---
+
+**I'm diving in, quirks and all!**
+
+Ahoy, adventurer! 🏴‍☠️ We're thrilled to have another daring coder join the fray. Here's to creating some coding magic together! ✨ 
+
+<h1 id="-why-we-started-dotagent-"><strong>The Origin Tale of dotagent</strong></h1>
+
+<p>Here's our dream: An open and democratic AGI, untouched by the sneaky controls and hush-hush censorship of corporate overlords masquerading under 'alignment'. Remember the good ol' web days? We lost that freedom to the mobile moguls and their cheeky 30% 'because-we-said-so' tax. 🙄</p>
+<p>Our moonshot? 🚀 A harmonious ensemble of domain-specific AI agents, working in unison so well, you'd think it's AGI. Join us in opening up the LAST tech frontier for all!</p>
 
 ![-----------------------------------------------------](https://res.cloudinary.com/dzznkbdrb/image/upload/v1694798498/divider_1_rej288.gif)
 
 
-<h1 id="what-is-dotagent-">What is dotagent ?</h1>
-<p>dotagent is a library of modular components and an orchestration framework. Inspired by a microservices approach, it gives developers all the components they need to build robust, stable &amp; reliable AI applications and experimental autonomous agents.</p>
+<h1 id="what-is-dotagent-">Meet dotagent!</h1>
+
+<p>Ever heard of an Agent Management System (AMS)? No? Well, probably because we believe we came up with it! 🎩✨ dotagent proudly wears the badge of being the world's first AMS (yep, we're patting ourselves on the back here). Drawing inspiration from the nifty microservices, it equips developers with a treasure trove of tools to craft sturdy, trusty AI applications and those cool experimental autonomous agents.</p>
+
 
 
 
