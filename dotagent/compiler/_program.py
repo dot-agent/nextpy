@@ -314,7 +314,7 @@ class Program:
         """Return an async iterator that yields the program in partial states as it is run."""
         return self._stream_run_async()
         
-    def __call__(self, **kwargs):
+    def __call__(self, from_agent=False, **kwargs):
         """Execute this program with the given variable values and return a new executed/executing program.
 
         Note that the returned program might not be fully executed if `stream=True`. When streaming you need to
@@ -336,9 +336,9 @@ class Program:
         }, **kwargs}
         
         if self.memory is not None:
-            ConversationHistory = self.memory.get_memory(memory_threshold=self.memory_threshold)
-            self.ConversationHistory = ConversationHistory
-            kwargs["ConversationHistory"] = ConversationHistory
+            if not from_agent:
+                self.ConversationHistory = self.memory.get_memory(memory_threshold=self.memory_threshold)
+            kwargs["ConversationHistory"] = self.ConversationHistory
 
 
         log.debug(f"in __call__ with kwargs: {kwargs}")
@@ -360,7 +360,7 @@ class Program:
             loop = asyncio.get_event_loop()
             assert loop.is_running(), "The program is in async mode but there is no asyncio event loop running! Start one and try again."
             update_task = loop.create_task(new_program.update_display.run()) # start the display updater
-            execute_task = loop.create_task(new_program.execute(memory=self.memory))
+            execute_task = loop.create_task(new_program.execute(memory=self.memory, from_agent=from_agent))
             new_program._tasks.append(update_task)
             new_program._tasks.append(execute_task)
 
@@ -382,7 +382,7 @@ class Program:
             else:
                 loop.run_until_complete(new_program.execute())
 
-            if self.memory is not None:
+            if not from_agent and self.memory is not None:
                 all_text = extract_text(new_program.text)
                 for text_block in all_text:
                     for value in text_block:
@@ -520,7 +520,7 @@ class Program:
         display({"text/html": html}, display_id=self._id, raw=True, clear=True, include=["text/html"])
         self._displayed = True
 
-    async def execute(self, memory=None):
+    async def execute(self, memory=None, from_agent=False):
         """ Execute the current program.
 
         Note that as execution progresses the program will be incrementally converted
@@ -557,7 +557,7 @@ class Program:
             await self.update_display.done()
 
             # Handle memory updates here in case async_mode=True
-            if memory is not None:
+            if not from_agent and memory is not None:
                 all_text = extract_text(self.text)
                 for text_block in all_text:
                     for value in text_block:
