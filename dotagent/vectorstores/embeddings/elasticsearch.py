@@ -1,7 +1,7 @@
 from __future__ import annotations
 from typing import TYPE_CHECKING, List, Optional, Any
 
-from dotagent.utils import get_from_env
+from dotagent.utils import get_from_dict_or_env
 
 if TYPE_CHECKING:
     from elasticsearch import Elasticsearch
@@ -101,9 +101,9 @@ class ElasticsearchEmbeddings(Embeddings):
                 "elasticsearch'"
             )
 
-        es_cloud_id = es_cloud_id or get_from_env("es_cloud_id", "ES_CLOUD_ID")
-        es_user = es_user or get_from_env("es_user", "ES_USER")
-        es_password = es_password or get_from_env("es_password", "ES_PASSWORD")
+        es_cloud_id = es_cloud_id or get_from_dict_or_env("es_cloud_id", "ES_CLOUD_ID")
+        es_user = es_user or get_from_dict_or_env("es_user", "ES_USER")
+        es_password = es_password or get_from_dict_or_env("es_password", "ES_PASSWORD")
 
         # Connect to Elasticsearch
         es_connection = Elasticsearch(

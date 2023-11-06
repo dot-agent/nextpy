@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from typing import TYPE_CHECKING, Iterator, List, Optional
 
-from dotagent.utils import get_from_env
+from dotagent.utils import get_from_dict_or_env
 
 if TYPE_CHECKING:
     from odps import ODPS
@@ -49,8 +49,8 @@ class MaxComputeAPIWrapper:
                 "Please install it with `pip install pyodps` or refer to "
                 "https://pyodps.readthedocs.io/."
             ) from ex
-        access_id = access_id or get_from_env("access_id", "MAX_COMPUTE_ACCESS_ID")
-        secret_access_key = secret_access_key or get_from_env(
+        access_id = access_id or get_from_dict_or_env("access_id", "MAX_COMPUTE_ACCESS_ID")
+        secret_access_key = secret_access_key or get_from_dict_or_env(
             "secret_access_key", "MAX_COMPUTE_SECRET_ACCESS_KEY"
         )
         client = ODPS(
