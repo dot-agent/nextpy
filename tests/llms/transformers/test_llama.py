@@ -1,14 +1,20 @@
 from dotagent import compiler
 import pytest
 
-def test_basic():
-    """ Test the basic behavior of the LLaMA model.
-    """
-
-    # skip if no GPU
+# Add this code to check if libraries are installed
+try:
     import torch
-    if torch.cuda.device_count() == 0:
-        pytest.skip("No GPU, so skipping large model test.")
+    import transformers
+except ImportError:
+    torch = None
+    transformers = None
+
+def test_basic():
+    """ Test the basic behavior of the LLaMA model. """
+
+    # skip if no GPU or torch/transformers not available
+    if torch is None or not torch.cuda.is_available() or transformers is None:
+        pytest.skip("No GPU or transformers package not available, so skipping large model test.")
 
     # just make sure it runs
     llm = compiler.llms.transformers.LLaMA('../../models/llama/7B', device=1)

@@ -1,15 +1,23 @@
 from dotagent import compiler
 import pytest
 
+try:
+    import transformers
+    import torch
+except ImportError:
+    transformers = None
+    torch = None
+
 opanai_model_cache = {}
 
 def get_llm(model_name, caching=False, **kwargs):
-    """ Get an LLM by name.
-    """
+    """ Get an LLM by name. """
     if model_name.startswith("openai:"):
         return get_openai_llm(model_name[7:], caching, **kwargs)
     elif model_name.startswith("transformers:"):
         return get_transformers_llm(model_name[13:], caching, **kwargs)
+    else:
+        raise ValueError(f"Unknown llm: {model_name}")
 
 def get_openai_llm(model_name, caching=False, **kwargs):
     """ Get an OpenAI LLM with model reuse and smart test skipping.
@@ -30,11 +38,10 @@ def get_openai_llm(model_name, caching=False, **kwargs):
 transformers_model_cache = {}
 
 def get_transformers_llm(model_name, caching=False):
-    """ Get an OpenAI LLM with model reuse.
-    """
+    """ Get an OpenAI LLM with model reuse. """
+    if transformers is None:
+        pytest.skip("transformers package required")
 
-    # we cache the models so lots of tests using the same model don't have to
-    # load it over and over again
     key = model_name+"_"+str(caching)
     if key not in transformers_model_cache:
         transformers_model_cache[key] = compiler.llms.Transformers(model_name, caching=caching)

@@ -10,10 +10,7 @@ def test_basic(llm):
         print(out)
 
 def test_basic_object_init():
-    import transformers
-    tokenizer = transformers.AutoTokenizer.from_pretrained("gpt2")
-    model = transformers.AutoModelForCausalLM.from_pretrained("gpt2")
-    llm = compiler.llms.Transformers(model, tokenizer)
+    llm = get_llm('transformers:gpt2')
     with llm.session() as s:
         out = s("this is a test", max_tokens=5)
         print(out)
