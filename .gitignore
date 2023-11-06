@@ -10,3 +10,4 @@ env_config.py
 py310venv
 demo/AI-gift-shop/app/env.py
 dist
+testlog.txt

@@ -895,7 +895,7 @@ tests = ["pytest"]
 name = "click"
 version = "8.1.7"
 description = "Composable command line interface toolkit"
-optional = true
+optional = false
 python-versions = ">=3.7"
 files = [
     {file = "click-8.1.7-py3-none-any.whl", hash = "sha256:ae74fb96c20a0277a1d615f1e4d73c8414f5a98db8b799a7931d1582f3390c28"},
@@ -8509,4 +8509,4 @@ cffi = ["cffi (>=1.11)"]
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.9"
-content-hash = "5dd8dd112ec317e4baedbdb24381b0700a36dd1e3fe0f06309db02810552951f"
+content-hash = "fe3c7c7da5312f05f12dd97d3cfd356a87c831f7583b5f7c103d05b73f06430b"
