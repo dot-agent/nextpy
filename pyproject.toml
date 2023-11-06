@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "dotagent"
-version = "0.1.211"
+version = "0.1.22"
 description = ""
 authors = ["Team Dotagent <team@dotagent.ai>"]
 readme = "README.md"
