@@ -9,3 +9,4 @@ env_config.py
 .chainlit
 py310venv
 demo/AI-gift-shop/app/env.py
+dist
