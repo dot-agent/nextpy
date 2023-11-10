@@ -1,19 +1,22 @@
 from enum import Enum
 from typing import List, Dict, Any, Union, Optional
 import os
-from dotagent import compiler
-from dotagent.tools.basetool import BaseTool
 import logging
 import yaml
 import json
 import importlib
+import asyncio
+import nest_asyncio
 import argparse
 from dotagent.knowledgebase.doc_loader import document_loader
 from dotagent.compiler._program import extract_text
-import asyncio
-import nest_asyncio
+from dotagent import compiler
+from dotagent.tools.basetool import BaseTool
+from dotagent.memory.base import BaseMemory
+
 
 log = logging.getLogger(__name__)
+
 
 def import_class(class_path):
     module_name, class_name = class_path.rsplit(".", 1)
@@ -34,12 +37,12 @@ class BaseAgent:
     def __init__(
         self,
         knowledgebase: Optional[Any] = None,
-        tools: Optional[Any] = None,
+        tools: Optional[List[BaseTool]] = None,
         llm: Optional[Any] = None,
         prompt_template: str = None,
-        input_variables: Dict = {},
+        input_variables: Dict[str, Any] = {},
         agent_id: str = "default",
-        memory: Any = None,
+        memory: Optional[BaseMemory] = None,
         caching: bool = False,
         output_key: str = None,
         return_complete: bool = False,
@@ -59,7 +62,14 @@ class BaseAgent:
         self._memory_related_tasks = []
 
         self.compiler = compiler(
-            llm=self.llm, template=self.prompt_template, caching=caching
+            llm=self.llm,
+            template=self.prompt_template,
+            caching=caching,
+            memory=self.memory,
+        )
+
+        self.parser = argparse.ArgumentParser(
+            description="CLI for interacting with the Agent instance."
         )
 
         if self.return_complete and self.output_key is not None:
@@ -81,7 +91,7 @@ class BaseAgent:
     @property
     def get_knowledge_variable(self):
         """Get knowledge variable name from input variables"""
-        pass
+        return self.input_variables.get("knowledge_variable")
 
     @property
     def default_llm_model(self):
@@ -98,7 +108,7 @@ class BaseAgent:
 
     def llm_instance(self) -> compiler.llms.OpenAI:
         """Create an instance of the language model."""
-        pass
+        return compiler.llms.OpenAI(model=self.default_llm_model)
 
     def get_output_key(self, prompt):
         vars = prompt.variables()
@@ -203,13 +213,16 @@ class BaseAgent:
     def _handle_memory(self, new_program):
         if self.compiler.async_mode:
             loop = asyncio.get_event_loop()
-            assert loop.is_running(), "The program is in async mode but there is no asyncio event loop running! Start one and try again."
+            assert (
+                loop.is_running()
+            ), "The program is in async mode but there is no asyncio event loop running! Start one and try again."
             scheduled_task = loop.create_task(self._update_memory(new_program))
             self._memory_related_tasks.append(scheduled_task)
         else:
             try:
                 other_loop = asyncio.get_event_loop()
                 import nest_asyncio
+
                 nest_asyncio.apply(other_loop)
             except RuntimeError:
                 pass
@@ -220,7 +233,9 @@ class BaseAgent:
         all_text = extract_text(new_program.text)
         for text_block in all_text:
             for value in text_block:
-                self.compiler.memory.add_memory(prompt=value, llm_response=text_block[value])
+                self.compiler.memory.add_memory(
+                    prompt=value, llm_response=text_block[value]
+                )
 
         result = self.compiler.memory.get_memory()
 
