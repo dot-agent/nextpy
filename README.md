@@ -1,6 +1,3 @@
-```diff
-+ Looking for 'openagent'? Because of a little name clash, it's now called 'openagent'. 🤖+
-```
 <p align="center"> 
 <img src="https://res.cloudinary.com/dzznkbdrb/image/upload/c_scale,e_art:primavera,r_30,w_2294/a_0/v1697338678/github-cover-min_exhq8b.webp" />
 
