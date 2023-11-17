@@ -454,7 +454,7 @@ class ProgramExecutor():
             #         continue
             #     block_content.append(child.children[0])
             #     block_content.append(child.children[1])
-            assert node[1].get_name() == "block_content" # TODO: figure out why node["block_content"] doesn't work (has to do with SavedText messing up the keys)
+            assert node[1].get_name() == "block_content" # TODO: figure out why node["block_content"] doesn't work (has to do with _SavedText messing up the keys)
             self.block_content.append(node[1])
 
             # get the command name and arguments
