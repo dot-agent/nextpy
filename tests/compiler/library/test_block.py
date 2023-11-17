@@ -1,4 +1,4 @@
-from dotagent import compiler
+from openagent import compiler
 from ...utils import get_llm
 
 def test_hidden_block():

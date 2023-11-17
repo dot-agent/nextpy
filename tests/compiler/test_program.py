@@ -1,4 +1,4 @@
-from dotagent import compiler
+from openagent import compiler
 import pytest
 from ..utils import get_llm
 

@@ -1,4 +1,4 @@
-from dotagent import compiler
+from openagent import compiler
 
 def test_await():
     """ Test the behavior of `await`.

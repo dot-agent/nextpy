@@ -6,9 +6,9 @@
 import json
 from pathlib import Path
 from datetime import datetime
-from dotagent import compiler
+from openagent import compiler
 import pkg_resources as pg
-from dotagent.llms._openai import OpenAI
+from openagent.llms._openai import OpenAI
 
 compiler.llm = OpenAI("gpt-3.5-turbo")
 

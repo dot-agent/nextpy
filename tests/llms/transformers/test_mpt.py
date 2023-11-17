@@ -1,4 +1,4 @@
-from dotagent import compiler
+from openagent import compiler
 import pytest
 
 # Add this code to check if libraries are installed

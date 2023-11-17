@@ -1,4 +1,4 @@
-from dotagent import compiler
+from openagent import compiler
 
 def test_break_each():
     """ Test the behavior of `break` in an `each` loop.
