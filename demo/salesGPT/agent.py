@@ -1,7 +1,7 @@
 
 from typing import Any, Dict, Optional, Union
 from openagent.agent.base_agent import BaseAgent
-from openagent.llms._openai import OpenAI
+from openagent.endpoints._openai import OpenAI
 from openagent import compiler
 from pathlib import Path
 import pkg_resources as pg

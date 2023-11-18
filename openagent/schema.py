@@ -12,7 +12,7 @@ from typing import (
     Union,
 )
 import uuid
-from openagent.load.serializable import Serializable
+from openagent.utils.serializable import Serializable
 from pydantic import BaseModel, Extra, Field, root_validator
 from enum import auto, Enum
 from hashlib import sha256

@@ -1,12 +1,10 @@
-__version__ = "0.0.64"
-
 import types
 import sys
 import os
 import requests
 from . import library as commands
 from ._program import Program
-from openagent import llms
+from . import endpoints
 
 from ._utils import load, merge_programs
 from . import selectors

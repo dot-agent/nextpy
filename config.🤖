@@ -1,7 +1,7 @@
 llm:
   type: "OpenAI"
   model: "gpt-3.5-turbo"
-knowledgebase:
+rag:
   data_source: "./test_data/meteoric"
   data_loader: "SimpleDirectoryReader"
   data_transformer:

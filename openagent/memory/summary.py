@@ -33,7 +33,7 @@ class SummaryMemory(BaseMemory, BaseModel):
         """Retrieve entire memory from the store."""
         
         # Create llm instance
-        llm = compiler.llms.OpenAI(model="gpt-3.5-turbo")
+        llm = compiler.endpoints.OpenAI(model="gpt-3.5-turbo")
 
         new_messages = [item for item in self.messages if item not in self.messages_in_summary]
         if len(new_messages) != 0:

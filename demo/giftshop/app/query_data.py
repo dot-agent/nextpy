@@ -3,7 +3,7 @@ from .config import Config
 import logging
 
 def get_product_list(relationship, age, occasion, interests, budget):
-    llm = compiler.llms.OpenAI("text-davinci-003", token=Config.get_openai_key())
+    llm = compiler.endpoints.OpenAI("text-davinci-003", token=Config.get_openai_key())
     
     # define the prompt
     gift_suggestions = compiler("""I'm looking for a gift, my relationship with the recipient is {{relationship}}. The recipient is {{age}} years old. The occasion is {{occasion}}. The recipient's interests and hobbies are {{interests}} I can give something related. My budget is {{budget}} dollars. Please suggest some gift ideas.

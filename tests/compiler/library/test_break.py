@@ -4,7 +4,7 @@ def test_break_each():
     """ Test the behavior of `break` in an `each` loop.
     """
 
-    llm = compiler.llms.Mock()
+    llm = compiler.endpoints.Mock()
     program = compiler("""Loop to ten:
 {{~#each list}}
 {{this}}

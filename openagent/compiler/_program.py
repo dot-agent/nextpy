@@ -11,7 +11,7 @@ import os
 import time
 import datetime
 import nest_asyncio
-# from . llms import _openai
+# from . endpoints import _openai
 from . import _utils
 from ._program_executor import ProgramExecutor
 from . import commands
@@ -131,7 +131,7 @@ class Program:
         ----------
         text : str
             The program string to use as a Compiler template.
-        llm : Compiler.llms.LLM (defaults to Compiler.llm)
+        llm : Compiler.endpoints.LLM (defaults to Compiler.llm)
             The language model to use for executing the program.
         cache_seed : int (default 0) or None
             The seed to use for the cache. If you want to use the same cache for multiple programs

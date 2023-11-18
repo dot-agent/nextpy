@@ -4,7 +4,7 @@ def test_role():
     """ Test the behavior of `role`.
     """
 
-    llm = compiler.llms.Mock()
+    llm = compiler.endpoints.Mock()
     prompt = compiler("""
 {{#role 'system'~}}
 You are an assistant.
@@ -26,7 +26,7 @@ def test_short_roles():
     """ Test the behavior of the shorthand versions of `role`.
     """
 
-    llm = compiler.llms.Mock()
+    llm = compiler.endpoints.Mock()
     prompt = compiler("""
 {{#system~}}
 You are an assistant.

@@ -2,17 +2,14 @@ from importlib import metadata
 from typing import Optional
 from . import agent
 from . import audio
-from . import caches
 from . import compiler
 from . import helpers
 from . import image_gen
-from . import knowledgebase
-from . import llms
-from . import load
+from . import rag
 from . import memory
 from . import tools
 from . import utils
-from . import vectorstores
+from .rag import vectordb
 
 try:
     __version__ = metadata.version(__package__)

@@ -67,7 +67,7 @@ request_tools = request_tool.get_tools()
 # tools = [requests_get_tool,requests_put_tool,requests_delete_tool,requests_patch_tool, requests_post_tool]
 
 # we use GPT-4 here, but you could use gpt-3.5-turbo as well
-llm = compiler.llms.OpenAI(model="gpt-3.5-turbo-16k")
+llm = compiler.endpoints.OpenAI(model="gpt-3.5-turbo-16k")
 
 def tool_use(query, tools=request_tools):
     query = json.loads(query)

@@ -1,4 +1,4 @@
-from openagent.llms._openai import OpenAI
+from openagent.endpoints._openai import OpenAI
 from openagent import compiler
 
 llm = OpenAI(model="gpt-4")

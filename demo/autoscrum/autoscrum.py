@@ -8,7 +8,7 @@ from pathlib import Path
 from datetime import datetime
 from openagent import compiler
 import pkg_resources as pg
-from openagent.llms._openai import OpenAI
+from openagent.endpoints._openai import OpenAI
 
 compiler.llm = OpenAI("gpt-3.5-turbo")
 

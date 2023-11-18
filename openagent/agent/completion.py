@@ -11,7 +11,7 @@ class TextCompletionAgent(BaseAgent):
 
     def __init__(
         self,
-        knowledgebase: Optional[Dict] = None,
+        rag: Optional[Dict] = None,
         tools: Optional[List[BaseTool]] = None,
         llm: str = None,
         prompt_template: str = None,
@@ -23,7 +23,7 @@ class TextCompletionAgent(BaseAgent):
         return_complete: bool = False,
     ):
         super().__init__(
-            knowledgebase,
+            rag,
             tools,
             llm,
             prompt_template,

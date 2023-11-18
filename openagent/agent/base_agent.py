@@ -8,7 +8,7 @@ import importlib
 import asyncio
 import nest_asyncio
 import argparse
-from openagent.knowledgebase.doc_loader import document_loader
+from openagent.rag.doc_loader import document_loader
 from openagent.compiler._program import extract_text
 from openagent import compiler
 from openagent.tools.basetool import BaseTool
@@ -36,7 +36,7 @@ class AgentState(Enum):
 class BaseAgent:
     def __init__(
         self,
-        knowledgebase: Optional[Any] = None,
+        rag: Optional[Any] = None,
         tools: Optional[List[BaseTool]] = None,
         llm: Optional[Any] = None,
         prompt_template: str = None,
@@ -48,7 +48,7 @@ class BaseAgent:
         return_complete: bool = False,
     ):
         self.agent_id = agent_id
-        self.knowledgebase = knowledgebase
+        self.rag = rag
         self.tools = tools
         self.llm = llm
         self.prompt_template = prompt_template
@@ -77,7 +77,7 @@ class BaseAgent:
                 "return_complete mode is enabled. Output key will be ignored."
             )
 
-        if self.knowledgebase is not None and not self.input_variables.get(
+        if self.rag is not None and not self.input_variables.get(
             "knowledge_variable"
         ):
             raise ValueError(
@@ -106,9 +106,9 @@ class BaseAgent:
         if tool in self.tools:
             self.tools.remove(tool)
 
-    def llm_instance(self) -> compiler.llms.OpenAI:
+    def llm_instance(self) -> compiler.endpoints.OpenAI:
         """Create an instance of the language model."""
-        return compiler.llms.OpenAI(model=self.default_llm_model)
+        return compiler.endpoints.OpenAI(model=self.default_llm_model)
 
     def get_output_key(self, prompt):
         vars = prompt.variables()
@@ -116,7 +116,7 @@ class BaseAgent:
         return vars[-1]
 
     def get_knowledge(self, query) -> List[str]:
-        docs = self.knowledgebase.retrieve_data(query)
+        docs = self.rag.retrieve_data(query)
         final_doc = ""
         for doc in docs:
             final_doc += doc
@@ -294,28 +294,28 @@ class BaseAgent:
                 + self.llm.__class__.__name__,
                 "model": self.llm.model_name,
             },
-            "knowledgebase": None
-            if self.knowledgebase is None
+            "rag": None
+            if self.rag is None
             else {
-                "type": self.knowledgebase.__class__.__module__
+                "type": self.rag.__class__.__module__
                 + "."
-                + self.knowledgebase.__class__.__name__,
-                "data_references": self.knowledgebase.references,
+                + self.rag.__class__.__name__,
+                "data_references": self.rag.references,
                 "data_transformer": {
-                    "type": self.knowledgebase.data_transformer.__class__.__module__
+                    "type": self.rag.data_transformer.__class__.__module__
                     + "."
-                    + self.knowledgebase.data_transformer.__class__.__name__,
-                    "chunk_overlap": self.knowledgebase.data_transformer._chunk_overlap,
-                    "chunk_size": self.knowledgebase.data_transformer._chunk_size,
+                    + self.rag.data_transformer.__class__.__name__,
+                    "chunk_overlap": self.rag.data_transformer._chunk_overlap,
+                    "chunk_size": self.rag.data_transformer._chunk_size,
                 },
                 "vector_store": {
-                    "type": self.knowledgebase.vector_store.__class__.__module__
+                    "type": self.rag.vector_store.__class__.__module__
                     + "."
-                    + self.knowledgebase.vector_store.__class__.__name__,
+                    + self.rag.vector_store.__class__.__name__,
                     "embedding_function": {
-                        "type": self.knowledgebase.vector_store._embedding_function.__class__.__module__
+                        "type": self.rag.vector_store._embedding_function.__class__.__module__
                         + "."
-                        + self.knowledgebase.vector_store._embedding_function.__class__.__name__
+                        + self.rag.vector_store._embedding_function.__class__.__name__
                     },
                 },
             },
@@ -350,24 +350,24 @@ class BaseAgent:
         llm_class = getattr(llm_module, llm_class_name)
         llm = llm_class(model=config["llm"]["model"])
 
-        knowledgebase = None
-        if config["knowledgebase"] is not None:
-            knowledgebase_module_name, knowledgebase_class_name = config[
-                "knowledgebase"
+        rag = None
+        if config["rag"] is not None:
+            rag_module_name, rag_class_name = config[
+                "rag"
             ]["type"].rsplit(".", 1)
-            knowledgebase_module = importlib.import_module(knowledgebase_module_name)
-            knowledgebase_class = getattr(
-                knowledgebase_module, knowledgebase_class_name
+            rag_module = importlib.import_module(rag_module_name)
+            rag_class = getattr(
+                rag_module, rag_class_name
             )
 
             raw_data = []
-            for refer in config["knowledgebase"]["data_references"]:
+            for refer in config["rag"]["data_references"]:
                 reader_class = document_loader(refer["loader_key"])
                 raw_docs = reader_class(refer["source"]).load_data()
                 raw_data.extend(raw_docs)
 
             data_transformer_module_name, data_transformer_class_name = config[
-                "knowledgebase"
+                "rag"
             ]["data_transformer"]["type"].rsplit(".", 1)
             data_transformer_module = importlib.import_module(
                 data_transformer_module_name
@@ -375,14 +375,14 @@ class BaseAgent:
             data_transformer_class = getattr(
                 data_transformer_module, data_transformer_class_name
             )
-            chunk_overlap = config["knowledgebase"]["data_transformer"]["chunk_overlap"]
-            chunk_size = config["knowledgebase"]["data_transformer"]["chunk_size"]
+            chunk_overlap = config["rag"]["data_transformer"]["chunk_overlap"]
+            chunk_size = config["rag"]["data_transformer"]["chunk_size"]
             data_transformer = data_transformer_class(
                 chunk_overlap=chunk_overlap, chunk_size=chunk_size
             )
 
             embedding_function_module_name, embedding_function_class_name = config[
-                "knowledgebase"
+                "rag"
             ]["vector_store"]["embedding_function"]["type"].rsplit(".", 1)
             embedding_function_module = importlib.import_module(
                 embedding_function_module_name
@@ -392,14 +392,14 @@ class BaseAgent:
             )
             embedding_function = embedding_function_class()
 
-            vector_store_module_name, vector_store_class_name = config["knowledgebase"][
+            vector_store_module_name, vector_store_class_name = config["rag"][
                 "vector_store"
             ]["type"].rsplit(".", 1)
             vector_store_module = importlib.import_module(vector_store_module_name)
             vector_store_class = getattr(vector_store_module, vector_store_class_name)
             vector_store = vector_store_class(embedding_function=embedding_function)
 
-            knowledgebase = knowledgebase_class(
+            rag = rag_class(
                 raw_data=raw_data,
                 data_transformer=data_transformer,
                 vector_store=vector_store,
@@ -417,7 +417,7 @@ class BaseAgent:
 
         agent = cls(
             llm=llm,
-            knowledgebase=knowledgebase,
+            rag=rag,
             memory=memory,
             prompt_template=config["prompt_template"],
             input_variables=config["input_variables"],

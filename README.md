@@ -93,7 +93,7 @@ load_dotenv()
 
 @ui.on_chat_start
 def start_chat():
-    compiler.llm = compiler.llms.OpenAI(model="gpt-3.5-turbo")
+    compiler.llm = compiler.endpoints.OpenAI(model="gpt-3.5-turbo")
 
 
 class ChatLog(Log):

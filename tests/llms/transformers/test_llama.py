@@ -17,6 +17,6 @@ def test_basic():
         pytest.skip("No GPU or transformers package not available, so skipping large model test.")
 
     # just make sure it runs
-    llm = compiler.llms.transformers.LLaMA('../../models/llama/7B', device=1)
+    llm = compiler.endpoints.transformers.LLaMA('../../models/llama/7B', device=1)
     out = compiler("""The height of the Sears tower is {{gen 'answer' max_tokens=10}}""", llm=llm)()
     assert len(out["answer"]) > 0

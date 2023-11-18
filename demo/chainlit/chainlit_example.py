@@ -14,7 +14,7 @@ def start_chat():
     """
     Initializes the chat by setting the model for the OpenAI compiler to use.
     """
-    compiler.llm = compiler.llms.OpenAI(model="gpt-3.5-turbo")
+    compiler.llm = compiler.endpoints.OpenAI(model="gpt-3.5-turbo")
 
 
 class ChatLog(Log):

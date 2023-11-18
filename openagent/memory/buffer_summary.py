@@ -35,7 +35,7 @@ class BufferSummaryMemory(BaseMemory, BaseModel):
         """Retrieve entire memory from the store."""
 
         # Create llm instance
-        llm = compiler.llms.OpenAI(model="gpt-3.5-turbo")
+        llm = compiler.endpoints.OpenAI(model="gpt-3.5-turbo")
         
         # get variables
         if 'memory_threshold' not in kwargs.keys():

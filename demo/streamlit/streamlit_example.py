@@ -13,7 +13,7 @@ essay = st.text_area("Enter your essay")
 submitted = st.button("Grade")
 
 async def setup_compiler():
-  compiler.llm = compiler.llms.OpenAI("gpt-4")
+  compiler.llm = compiler.endpoints.OpenAI("gpt-4")
   compiler.llm.api_key = st.secrets["OPENAI_API_KEY"]
   print(compiler.llm.api_key)
 

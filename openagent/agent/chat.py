@@ -10,7 +10,7 @@ class ChatAgent(BaseAgent):
 
     def __init__(
         self,
-        knowledgebase: Optional[Dict] = None,
+        rag: Optional[Dict] = None,
         tools: Optional[List[BaseTool]] = None,
         llm: str = None,
         prompt_template: str = None,
@@ -22,7 +22,7 @@ class ChatAgent(BaseAgent):
         return_complete: bool = False,
     ):
         super().__init__(
-            knowledgebase=knowledgebase,
+            rag=rag,
             tools=tools,
             llm=llm,
             prompt_template=prompt_template,

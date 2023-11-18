@@ -17,7 +17,7 @@ def test_basic():
         pytest.skip("No GPU or transformers package not available, so skipping large model test.")
 
     # just make sure it runs
-    llm = compiler.llms.transformers.MPTChat('mosaicml/mpt-7b-chat', device=0)
+    llm = compiler.endpoints.transformers.MPTChat('mosaicml/mpt-7b-chat', device=0)
     out = compiler("""
 {{#system~}}
 You are an assistant.

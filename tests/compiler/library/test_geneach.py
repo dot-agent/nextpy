@@ -4,7 +4,7 @@ def test_geneach():
     """ Test a geneach loop.
     """
 
-    llm = compiler.llms.Mock({
+    llm = compiler.endpoints.Mock({
         'Joe</item>': {"text": '</list>', "finish_reason": "stop"},
         '</item>': {"text": '\n<item', "finish_reason": "length"},
         '">' : ["Bob", "Sue", "Joe"],
@@ -25,7 +25,7 @@ def test_geneach_with_join():
     """ Test a geneach loop.
     """
 
-    llm = compiler.llms.Mock({
+    llm = compiler.endpoints.Mock({
         'Joe</item>': {"text": '</list>', "finish_reason": "stop"},
         '</item>': {"text": '\n<item', "finish_reason": "length"},
         '">' : ["Bob", "Sue", "Joe"],
@@ -46,7 +46,7 @@ def test_geneach_single_call():
     """ Test a geneach loop.
     """
 
-    llm = compiler.llms.Mock('''
+    llm = compiler.endpoints.Mock('''
 <item index="0">Bob</item>
 <item index="1">Sue</item>
 <item index="2">Jow</item>
@@ -61,7 +61,7 @@ def test_geneach_with_index():
     """ Test a geneach loop.
     """
 
-    llm = compiler.llms.Mock(["Qs", "A1", "A2", "A3", "A4", "A5"])
+    llm = compiler.endpoints.Mock(["Qs", "A1", "A2", "A3", "A4", "A5"])
     program = compiler('''
 {{~#system~}}You are a teacher.{{~/system~}}
 

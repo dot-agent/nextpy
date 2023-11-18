@@ -29,7 +29,7 @@ def base_agent_obj():
     ]
     memory = MockMemory()
     agent = BaseAgent(
-        knowledgebase=MagicMock(), 
+        rag=MagicMock(), 
         tools=tools, 
         llm=MagicMock(), 
         prompt_template="Test Prompt", 
@@ -92,7 +92,7 @@ def test_remove_tool(base_agent_obj):
 #     assert result == 'Test Result'
 
 def test_get_knowledge(base_agent_obj):
-    base_agent_obj.knowledgebase.retrieve_data.return_value = ['doc1', 'doc2', 'doc3']
+    base_agent_obj.rag.retrieve_data.return_value = ['doc1', 'doc2', 'doc3']
     knowledge = base_agent_obj.get_knowledge('Test Query')
-    base_agent_obj.knowledgebase.retrieve_data.assert_called_once_with('Test Query')
+    base_agent_obj.rag.retrieve_data.assert_called_once_with('Test Query')
     assert knowledge == 'doc1doc2doc3'

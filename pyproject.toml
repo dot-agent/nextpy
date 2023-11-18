@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "openagent-py"
+name = "openagent"
 version = "0.1.23"
 description = ""
 authors = ["Team Dotagent <anurag@dotagent.ai>"]

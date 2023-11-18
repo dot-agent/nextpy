@@ -4,7 +4,7 @@ def test_user():
     """ Basic test of `user`.
     """
 
-    llm = compiler.llms.Mock("the output")
+    llm = compiler.endpoints.Mock("the output")
 
     program = compiler("""
 {{~#system}}You are fake.{{/system}}

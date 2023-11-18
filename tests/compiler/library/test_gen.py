@@ -5,19 +5,19 @@ from ...utils import get_llm
 def test_gen():
     """Test that LM generation works."""
 
-    llm = compiler.llms.Mock(" Sue")
+    llm = compiler.endpoints.Mock(" Sue")
     prompt = compiler("Hello my name is{{gen 'name' max_tokens=5}}", llm=llm)
     out = prompt()
     assert len(out["name"]) > 1
 
 def test_gen_n_greater_than_one():
-    llm = compiler.llms.Mock(["mock output 0", "mock output 1", "mock output 2"])
+    llm = compiler.endpoints.Mock(["mock output 0", "mock output 1", "mock output 2"])
     prompt = compiler('''The best thing about the beach is{{gen 'best' n=3 temperature=0.7 max_tokens=5}}''', llm=llm)
     a = prompt()
     assert "\n".join(a["best"]) == 'mock output 0\nmock output 1\nmock output 2'
 
 def test_gen_n_greater_than_one_hidden():
-    llm = compiler.llms.Mock()
+    llm = compiler.endpoints.Mock()
 
     def aggregate(best):
         return '\n'.join(['- ' + x for x in best])

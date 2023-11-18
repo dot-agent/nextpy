@@ -53,7 +53,7 @@ def test_each_parallel():
 def test_each_parallel_with_gen():
     """Test an each loop run in parallel with generations inside."""
 
-    llm = compiler.llms.Mock(["Pizza", "Burger", "Salad"])
+    llm = compiler.endpoints.Mock(["Pizza", "Burger", "Salad"])
 
     program = compiler("""Hello, {{name}}! Here are 5 names and their favorite food:
 {{#each names parallel=True hidden=True}}{{this}}: {{gen 'foods' list_append=True}}
