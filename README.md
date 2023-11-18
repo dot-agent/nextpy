@@ -1,5 +1,5 @@
 ```diff
-+ Looking for 'openagent'? Because of a little name clash, it's now called 'openagent'. 🤖+
++ Looking for 'openams'? Because of a little name clash, it's now called 'openams'. 🤖+
 ```
 <p align="center"> 
 <img src="https://res.cloudinary.com/dzznkbdrb/image/upload/c_scale,e_art:primavera,r_30,w_2294/a_0/v1697338678/github-cover-min_exhq8b.webp" />
@@ -20,7 +20,7 @@ Kudos on discovering this hidden treasure box! 🧭  While it's fairly stable an
 
 Ahoy, adventurer! 🏴‍☠️ We're thrilled to have another daring coder join the fray. Here's to creating some coding magic together! ✨ 
 
-<h1 id="-why-we-started-openagent-"><strong>The Origin Tale of openagent</strong></h1>
+<h1 id="-why-we-started-openams-"><strong>The Origin Tale of openams</strong></h1>
 
 <p>Here's our dream: An open and democratic AGI, untouched by the sneaky controls and hush-hush censorship of corporate overlords masquerading under 'alignment'. Remember the good ol' web days? We lost that freedom to the mobile moguls and their cheeky 30% 'because-we-said-so' tax. 🙄</p>
 <p>Our moonshot? 🚀 A harmonious ensemble of domain-specific AI agents, working in unison so well, you'd think it's AGI. Join us in opening up the LAST tech frontier for all!</p>
@@ -28,9 +28,9 @@ Ahoy, adventurer! 🏴‍☠️ We're thrilled to have another daring coder join
 ![-----------------------------------------------------](https://res.cloudinary.com/dzznkbdrb/image/upload/v1694798498/divider_1_rej288.gif)
 
 
-<h1 id="what-is-openagent-">Meet World's first AMS!</h1>
+<h1 id="what-is-openams-">Meet World's first AMS!</h1>
 
-<p>Ever heard of an Agent Management System (AMS)? No? Well, probably because we believe we came up with it! 🎩✨ openagent proudly wears the badge of being the world's first AMS (yep, we're patting ourselves on the back here). Drawing inspiration from the nifty microservices, it equips developers with a treasure trove of tools to craft sturdy, trusty AI applications and those cool experimental autonomous agents.</p>
+<p>Ever heard of an Agent Management System (AMS)? No? Well, probably because we believe we came up with it! 🎩✨ openams proudly wears the badge of being the world's first AMS (yep, we're patting ourselves on the back here). Drawing inspiration from the nifty microservices, it equips developers with a treasure trove of tools to craft sturdy, trusty AI applications and those cool experimental autonomous agents.</p>
 
 
 
@@ -38,7 +38,7 @@ Ahoy, adventurer! 🏴‍☠️ We're thrilled to have another daring coder join
 <h2 id="modularity"> 🧱 Modularity</h2>
 <ul>
 <li><em><strong>Multiplatform:</strong></em> Agents do not have to run on a single location or machine. Different components can run across various platforms, including the cloud, personal computers, or mobile devices.</li>
-<li><em><strong>Extensible:</strong></em> If you know how to do something in Python or plain English, you can integrate it with openagent.</li>
+<li><em><strong>Extensible:</strong></em> If you know how to do something in Python or plain English, you can integrate it with openams.</li>
 </ul>
 <h2 id="guardrails"> 🚧 Guardrails</h2>
 <ul>
@@ -67,7 +67,7 @@ Ahoy, adventurer! 🏴‍☠️ We're thrilled to have another daring coder join
 ## Installation
 
 
-`pip install openagent` 
+`pip install openams` 
 
 ## Common Errors
 
@@ -84,9 +84,9 @@ This is a very common issue with Chroma DB. You can find instructions to resolve
 ### Here's the code for a full stack chat app with UI, all in a single Python file! (37 lines)
 
  ```python
-import openagent.compiler as compiler
-from openagent.compiler._program import Log
-from openagent import memory
+import openams.compiler as compiler
+from openams.compiler._program import Log
+from openams import memory
 import chainlit as ui
 from dotenv import load_dotenv
 load_dotenv()

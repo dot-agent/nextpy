@@ -1,4 +1,4 @@
-from openagent import compiler
+from openams import compiler
 import pytest
 
 # Add this code to check if libraries are installed

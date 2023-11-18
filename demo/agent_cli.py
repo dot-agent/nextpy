@@ -1,6 +1,6 @@
 import sys
 import os
-from openagent.agent.completion import TextCompletionAgent
+from openams.agent.completion import TextCompletionAgent
 
 # import environment variables
 from dotenv import load_dotenv

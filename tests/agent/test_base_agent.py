@@ -1,8 +1,8 @@
 import pytest
 from unittest.mock import MagicMock, patch
-from openagent.agent.base_agent import BaseAgent, AgentState
-from openagent.tools.basetool import BaseTool
-from openagent.memory.base import BaseMemory
+from openams.agent.base_agent import BaseAgent, AgentState
+from openams.tools.basetool import BaseTool
+from openams.memory.base import BaseMemory
 
 class MockBaseTool(BaseTool):
     # Assuming BaseTool does not have any mandatory methods
@@ -59,7 +59,7 @@ def test_remove_tool(base_agent_obj):
     assert len(base_agent_obj.tools) == 1
     assert tool not in base_agent_obj.tools
 
-# @patch('openagent.agent.base_agent.compiler')
+# @patch('openams.agent.base_agent.compiler')
 # def test_run(mock_compiler, base_agent_obj):
 #     # Set up the mock compiler's return value to simulate a callable that returns a mock object
 #     mock_output = MagicMock()
@@ -76,7 +76,7 @@ def test_remove_tool(base_agent_obj):
 
 # TODO: Figure out async related errors
 # @pytest.mark.asyncio
-# @patch('openagent.agent.base_agent.compiler')
+# @patch('openams.agent.base_agent.compiler')
 # async def test_arun(mock_compiler, base_agent_obj):
 #     # Set up the mock compiler's return value
 #     mock_output = MagicMock()

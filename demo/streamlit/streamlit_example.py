@@ -5,7 +5,7 @@
 import os
 import openai
 import streamlit as st
-import openagent.compiler as compiler
+import openams.compiler as compiler
 import asyncio
 
 essay_type = st.selectbox("What type of essay is it?", ["Informative", "Argumentative", "Opinion"])

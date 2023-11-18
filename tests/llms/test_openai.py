@@ -1,4 +1,4 @@
-from openagent import compiler
+from openams import compiler
 from ..utils import get_llm
 
 def test_geneach_chat_gpt():

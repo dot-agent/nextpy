@@ -1,5 +1,5 @@
 import pytest
-from openagent import compiler
+from openams import compiler
 from ..utils import get_llm
 
 @pytest.mark.parametrize("llm", ["transformers:gpt2", "transformers:facebook/opt-350m"])

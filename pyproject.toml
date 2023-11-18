@@ -1,11 +1,11 @@
 [tool.poetry]
-name = "openagent"
+name = "openams"
 version = "0.1.23"
 description = ""
 authors = ["Team Dotagent <anurag@dotagent.ai>"]
 readme = "README.md"
 packages = [
-    { include="openagent", from="." },
+    { include="openams", from="." },
 ]
 
 [tool.poetry.dependencies]

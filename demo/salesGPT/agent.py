@@ -1,12 +1,12 @@
 
 from typing import Any, Dict, Optional, Union
-from openagent.agent.base_agent import BaseAgent
-from openagent.endpoints._openai import OpenAI
-from openagent import compiler
+from openams.agent.base_agent import BaseAgent
+from openams.endpoints._openai import OpenAI
+from openams import compiler
 from pathlib import Path
 import pkg_resources as pg
 import logging
-from openagent.memory import SimpleMemory
+from openams.memory import SimpleMemory
 
 path = pg.resource_filename(__name__, 'prompt.hbs')
 salesagent_prompt_template = Path(path).read_text()

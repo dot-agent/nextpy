@@ -1,4 +1,4 @@
-from openagent import compiler
+from openams import compiler
 
 def test_contains():
     """ Test the behavior of `contains`.

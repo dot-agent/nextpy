@@ -1,4 +1,4 @@
-from openagent import compiler
+from openams import compiler
 
 def test_less():
     """ Test the behavior of `less`.

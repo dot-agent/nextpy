@@ -1,7 +1,7 @@
 # Import necessary modules and libraries
-import openagent.compiler as compiler
-from openagent.compiler._program import Log
-from openagent import memory
+import openams.compiler as compiler
+from openams.compiler._program import Log
+from openams import memory
 import chainlit as ui
 from dotenv import load_dotenv
 

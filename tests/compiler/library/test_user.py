@@ -1,4 +1,4 @@
-from openagent import compiler
+from openams import compiler
 
 def test_user():
     """ Basic test of `user`.

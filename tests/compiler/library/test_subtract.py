@@ -1,4 +1,4 @@
-from openagent import compiler
+from openams import compiler
 
 def test_subtract():
     """ Basic test of `subtract`.
