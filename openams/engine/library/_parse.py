@@ -2,9 +2,9 @@ from .._utils import ContentCapture
 from .._grammar import grammar
 
 async def parse(string, name=None, hidden=False, _parser_context=None):
-    ''' Parse a string as a Compiler program.
+    ''' Parse a string as a Engine program.
 
-    This is useful for dynamically generating and then running Compiler programs (or parts of programs).
+    This is useful for dynamically generating and then running Engine programs (or parts of programs).
 
     Parameters
     ----------

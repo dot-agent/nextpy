@@ -1,11 +1,11 @@
-from openams import compiler
+from openams import engine
 
 def test_break_each():
     """ Test the behavior of `break` in an `each` loop.
     """
 
-    llm = compiler.endpoints.Mock()
-    program = compiler("""Loop to ten:
+    llm = engine.endpoints.Mock()
+    program = engine("""Loop to ten:
 {{~#each list}}
 {{this}}
 {{~#if (equal this 5)}}{{break}}{{/if~}}

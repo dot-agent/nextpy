@@ -1,13 +1,13 @@
 from typing import List, Dict, Any
 from pydantic import BaseModel
 
-from openams import compiler
+from openams import engine
 from openams.memory import BaseMemory
 from openams.schema import BaseMessage
 from .prompt import SUMMARIZER_TEMPLATE
 
 def extract_text(string):
-    """function for getting the user prompt and llm response from the compiler output"""
+    """function for getting the user prompt and llm response from the engine output"""
     end_string="<|im_end|>"
     start_string="New summary:<|im_end|>\n\n<|im_start|>assistant\n"
     string = string.replace(start_string, "", 1)
@@ -35,7 +35,7 @@ class BufferSummaryMemory(BaseMemory, BaseModel):
         """Retrieve entire memory from the store."""
 
         # Create llm instance
-        llm = compiler.endpoints.OpenAI(model="gpt-3.5-turbo")
+        llm = engine.endpoints.OpenAI(model="gpt-3.5-turbo")
         
         # get variables
         if 'memory_threshold' not in kwargs.keys():
@@ -68,7 +68,7 @@ class BufferSummaryMemory(BaseMemory, BaseModel):
 
                 self.messages_in_summary = summary_messages
 
-                summarizer = compiler(template=SUMMARIZER_TEMPLATE, llm=llm, stream = False)
+                summarizer = engine(template=SUMMARIZER_TEMPLATE, llm=llm, stream = False)
                 summarized_memory = summarizer(summary=self.current_summary, new_lines= additions_to_summary_as_text)
                 self.current_summary = extract_text(summarized_memory.text)
                 
@@ -125,7 +125,7 @@ class BufferSummaryMemory(BaseMemory, BaseModel):
 
                         self.messages_in_summary = summary_messages
 
-                        summarizer = compiler(template=SUMMARIZER_TEMPLATE, llm=llm, stream = False)
+                        summarizer = engine(template=SUMMARIZER_TEMPLATE, llm=llm, stream = False)
                         summarized_memory = summarizer(summary=self.current_summary, new_lines= additions_to_summary_as_text)
                         self.current_summary = extract_text(summarized_memory.text)
                 break

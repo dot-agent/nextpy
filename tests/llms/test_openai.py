@@ -1,13 +1,13 @@
-from openams import compiler
+from openams import engine
 from ..utils import get_llm
 
 def test_geneach_chat_gpt():
     """ Test a geneach loop with ChatGPT.
     """
 
-    compiler.llm = get_llm("openai:gpt-3.5-turbo")
+    engine.llm = get_llm("openai:gpt-3.5-turbo")
 
-    chat_loop = compiler('''
+    chat_loop = engine('''
 {{#system~}}
 You are a helpful assistant
 {{~/system}}
@@ -30,9 +30,9 @@ def test_syntax_match():
     """ Test a geneach loop with ChatGPT.
     """
 
-    compiler.llm = get_llm("openai:gpt-3.5-turbo")
+    engine.llm = get_llm("openai:gpt-3.5-turbo")
 
-    chat_loop = compiler('''
+    chat_loop = engine('''
 {{~#system~}}
 You are a helpful assistant
 {{~/system~}}
@@ -49,20 +49,20 @@ Indeed
     assert str(out) == '<|im_start|>system\nYou are a helpful assistant<|im_end|><|im_start|>user\nThis is great!<|im_end|><|im_start|>assistant\nIndeed<|im_end|>'
 
 def test_rest_nostream():
-    compiler.llm = get_llm('openai:text-davinci-003', endpoint="https://api.openai.com/v1/completions", rest_call=True)
-    a = compiler('''Hello,  my name is{{gen 'name' stream=False max_tokens=5}}''', stream=False)
+    engine.llm = get_llm('openai:text-davinci-003', endpoint="https://api.openai.com/v1/completions", rest_call=True)
+    a = engine('''Hello,  my name is{{gen 'name' stream=False max_tokens=5}}''', stream=False)
     a = a()
     assert len(a['name']) > 0
 
 def test_rest_stream():
-    compiler.llm = get_llm('openai:text-davinci-003', endpoint="https://api.openai.com/v1/completions", rest_call=True)
-    a = compiler('''Hello,  my name is{{gen 'name' stream=True max_tokens=5}}''', stream=False)
+    engine.llm = get_llm('openai:text-davinci-003', endpoint="https://api.openai.com/v1/completions", rest_call=True)
+    a = engine('''Hello,  my name is{{gen 'name' stream=True max_tokens=5}}''', stream=False)
     a = a()
     assert len(a['name']) > 0
 
 def test_rest_chat_nostream():
-    compiler.llm =get_llm("openai:gpt-3.5-turbo", endpoint="https://api.openai.com/v1/chat/completions", rest_call=True)
-    prompt = compiler(
+    engine.llm =get_llm("openai:gpt-3.5-turbo", endpoint="https://api.openai.com/v1/chat/completions", rest_call=True)
+    prompt = engine(
 '''{{#system~}}
 You are a helpful assistant.
 {{~/system}}
@@ -76,8 +76,8 @@ You are a helpful assistant.
     assert len(prompt['answer']) > 0
 
 def test_rest_chat_stream():
-    compiler.llm =get_llm("openai:gpt-3.5-turbo", endpoint="https://api.openai.com/v1/chat/completions", rest_call=True)
-    prompt = compiler(
+    engine.llm =get_llm("openai:gpt-3.5-turbo", endpoint="https://api.openai.com/v1/chat/completions", rest_call=True)
+    prompt = engine(
 '''{{#system~}}
 You are a helpful assistant.
 {{~/system}}

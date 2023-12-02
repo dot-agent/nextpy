@@ -15,10 +15,10 @@ import nest_asyncio
 from . import _utils
 from ._program_executor import ProgramExecutor
 from . import commands
-from openams import compiler
+from openams import engine
 from openams.memory import BaseMemory
 
-# input: string of compiler output
+# input: string of engine output
 # output:list of dictionaries mapping user prompt to llm output
 def extract_text(string):
     # initialize required variables
@@ -82,7 +82,7 @@ log = logging.getLogger(__name__)
 
 # load the javascript client code
 file_path = pathlib.Path(__file__).parent.parent.absolute()
-with open(  file_path / "compiler" / "resources" / "main.js", encoding="utf-8") as f:
+with open(  file_path / "engine" / "resources" / "main.js", encoding="utf-8") as f:
     js_data = f.read()
 
 class Log:
@@ -130,8 +130,8 @@ class Program:
         Parameters
         ----------
         text : str
-            The program string to use as a Compiler template.
-        llm : Compiler.endpoints.LLM (defaults to Compiler.llm)
+            The program string to use as a Engine template.
+        llm : Engine.endpoints.LLM (defaults to Engine.llm)
             The language model to use for executing the program.
         cache_seed : int (default 0) or None
             The seed to use for the cache. If you want to use the same cache for multiple programs
@@ -183,7 +183,7 @@ class Program:
         
         # save the given parameters
         self._text = text
-        self.llm = llm or getattr(compiler, "llm", None)
+        self.llm = llm or getattr(engine, "llm", None)
         self.cache_seed = cache_seed
         self.caching = caching
         self.logprobs = logprobs
@@ -319,7 +319,7 @@ class Program:
 
         Note that the returned program might not be fully executed if `stream=True`. When streaming you need to
         use the python `await` keyword if you want to ensure the program is finished (note that is different than
-        the `await` Compiler langauge command, which will cause the program to stop execution at that point).
+        the `await` Engine langauge command, which will cause the program to stop execution at that point).
         """
 
         # merge the given kwargs with the current variables
@@ -515,8 +515,8 @@ class Program:
             self._comm = _utils.JupyterComm(self._id, self._ipython, self._interface_event)
         
         # dump the html to the front end
-        html = f"""<div id="Compiler-stop-button-{self._id}" style="cursor: pointer; margin: 0px; display: none; float: right; padding: 3px; border-radius: 4px 4px 4px 4px; border: 0px solid rgba(127, 127, 127, 1); padding-left: 10px; padding-right: 10px; font-size: 13px; background-color: rgba(127, 127, 127, 0.25);">Stop program</div><div id="Compiler-content-{self._id}">{html}</div>
-<script type="text/javascript">{js_data}; window._CompilerDisplay("{self._id}");</script>"""
+        html = f"""<div id="Engine-stop-button-{self._id}" style="cursor: pointer; margin: 0px; display: none; float: right; padding: 3px; border-radius: 4px 4px 4px 4px; border: 0px solid rgba(127, 127, 127, 1); padding-left: 10px; padding-right: 10px; font-size: 13px; background-color: rgba(127, 127, 127, 0.25);">Stop program</div><div id="Engine-content-{self._id}">{html}</div>
+<script type="text/javascript">{js_data}; window._EngineDisplay("{self._id}");</script>"""
         display({"text/html": html}, display_id=self._id, raw=True, clear=True, include=["text/html"])
         self._displayed = True
 

@@ -1,6 +1,6 @@
 # Import necessary modules and libraries
-import openams.compiler as compiler
-from openams.compiler._program import Log
+import openams.engine as engine
+from openams.engine._program import Log
 from openams import memory
 import chainlit as ui
 from dotenv import load_dotenv
@@ -12,9 +12,9 @@ load_dotenv()
 @ui.on_chat_start
 def start_chat():
     """
-    Initializes the chat by setting the model for the OpenAI compiler to use.
+    Initializes the chat by setting the model for the OpenAI engine to use.
     """
-    compiler.llm = compiler.endpoints.OpenAI(model="gpt-3.5-turbo")
+    engine.llm = engine.endpoints.OpenAI(model="gpt-3.5-turbo")
 
 
 class ChatLog(Log):
@@ -58,8 +58,8 @@ async def main(message: str):
     Parameters:
     - message (str): The incoming user message.
     """
-    # Define the chat program using the OpenAI compiler DSL
-    program = compiler(
+    # Define the chat program using the OpenAI engine DSL
+    program = engine(
         """
         {{#system~}}
         You are a helpful assistant

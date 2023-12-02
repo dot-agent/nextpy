@@ -5,20 +5,20 @@
 import os
 import openai
 import streamlit as st
-import openams.compiler as compiler
+import openams.engine as engine
 import asyncio
 
 essay_type = st.selectbox("What type of essay is it?", ["Informative", "Argumentative", "Opinion"])
 essay = st.text_area("Enter your essay")
 submitted = st.button("Grade")
 
-async def setup_compiler():
-  compiler.llm = compiler.endpoints.OpenAI("gpt-4")
-  compiler.llm.api_key = st.secrets["OPENAI_API_KEY"]
-  print(compiler.llm.api_key)
+async def setup_engine():
+  engine.llm = engine.endpoints.OpenAI("gpt-4")
+  engine.llm.api_key = st.secrets["OPENAI_API_KEY"]
+  print(engine.llm.api_key)
 
 async def run_grader(essay):
-  experts = compiler('''
+  experts = engine('''
     {{#system~}}
     You are a middle school English teacher. Give feedback to the essay writer by the following points from 1 to 4.
     Explain clearly why you gave the feedback with examples from the essay. If student doesn't get the highest grade, 
@@ -92,7 +92,7 @@ async def run_grader(essay):
 
   return experts(essay=essay)
 
-asyncio.run(setup_compiler())
+asyncio.run(setup_engine())
 
 
 if submitted:

@@ -2,7 +2,7 @@ from importlib import metadata
 from typing import Optional
 from . import agent
 from . import audio
-from . import compiler
+from . import engine
 from . import helpers
 from . import image_gen
 from . import rag

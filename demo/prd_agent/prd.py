@@ -1,6 +1,6 @@
 
 from typing import List, Tuple
-from openams import compiler
+from openams import engine
 from openams.endpoints._openai import OpenAI
 import pkg_resources as pg
 from pathlib import Path
@@ -15,7 +15,7 @@ prompt_template = Path(path).read_text()
 # prompt_template.format(FORMAT_EXAMPLE)
 llm = OpenAI("gpt-4")
 
-engine = compiler(template = prompt_template, llm = llm, silent=True)
+engine = engine(template = prompt_template, llm = llm, silent=True)
 
 class PRDDeveloper:
     def __init__(self, goal = None, prd_prompt_template = prd_prompt_template, engine = engine

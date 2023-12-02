@@ -1,7 +1,7 @@
 from .._transformers import Transformers
 
 class LLaMA(Transformers):
-    """ A HuggingFace transformers version of the LLaMA language model with compiler support.
+    """ A HuggingFace transformers version of the LLaMA language model with engine support.
     """
 
     llm_name: str = "llama"

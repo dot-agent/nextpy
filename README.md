@@ -46,15 +46,15 @@ Ahoy, adventurer! 🏴‍☠️ We're thrilled to have another daring coder join
 </ul>
 <h2 id="greater-control-with-structured-outputs">🏗️ Greater control with Structured outputs</h2>
 <ul>
-<li><em><strong>More Effective Than Chaining or Prompting:</strong></em> The prompt compiler unlocks the next level of prompt engineering, providing far greater control over LLMs than few-shot prompting or traditional chaining methods.</li>
+<li><em><strong>More Effective Than Chaining or Prompting:</strong></em> The prompt engine unlocks the next level of prompt engineering, providing far greater control over LLMs than few-shot prompting or traditional chaining methods.</li>
 <li><em><strong>Superpowers to Prompt Engineers:</strong></em> It gives full power of prompt engineering, aligning with how LLMs actually process text. This understanding enables you to precisely control the output, defining the exact response structure and instructing LLMs on how to generate responses.</li>
 </ul>
-<h2 id="powerful-prompt-compiler">🏭 Powerful Prompt Compiler</h2>
+<h2 id="powerful-prompt-engine">🏭 Powerful Prompt Engine</h2>
 <p>The philosophy is to handle more processing at compile time and maintain better session with LLMs.</p>
 <ul>
 <li><em><strong>Pre-compiling prompts:</strong></em> By handling basic prompt processing at compile time, unnecessary redundant LLM processing are eliminated.</li>
 <li><em><strong>Session state with LLM:</strong></em> Maintaining state with LLMs and reusing KV caches can eliminate many redundant generations and significantly speed up the process for longer and more complex prompts. <em>(only for opensource models)</em></li>
-<li><em><strong>Optimized tokens:</strong></em> Compiler can transform many output tokens into prompt token batches, which are cheaper and faster. The structure of the template can dynamically guide the probabilities of subsequent tokens, ensuring alignment with the template and optimized tokenization . <em><strong>(only for opensource models)</strong></em></li>
+<li><em><strong>Optimized tokens:</strong></em> Engine can transform many output tokens into prompt token batches, which are cheaper and faster. The structure of the template can dynamically guide the probabilities of subsequent tokens, ensuring alignment with the template and optimized tokenization . <em><strong>(only for opensource models)</strong></em></li>
 <li><em><strong><strong>Speculative sampling (WIP):</strong></strong></em> You can enhance token generation speed in a large language model by using a smaller model as an assistant. The method relies on an algorithm that generates multiple tokens per transformer call using a faster draft model. This can lead to upto 3x speedup in token generation .</li>
 </ul>
 <h2 id="-containerized-scalable-"><strong>📦 Containerized &amp; Scalable</strong></h2>
@@ -84,8 +84,8 @@ This is a very common issue with Chroma DB. You can find instructions to resolve
 ### Here's the code for a full stack chat app with UI, all in a single Python file! (37 lines)
 
  ```python
-import openams.compiler as compiler
-from openams.compiler._program import Log
+import openams.engine as engine
+from openams.engine._program import Log
 from openams import memory
 import chainlit as ui
 from dotenv import load_dotenv
@@ -93,7 +93,7 @@ load_dotenv()
 
 @ui.on_chat_start
 def start_chat():
-    compiler.llm = compiler.endpoints.OpenAI(model="gpt-3.5-turbo")
+    engine.llm = engine.endpoints.OpenAI(model="gpt-3.5-turbo")
 
 
 class ChatLog(Log):
@@ -110,7 +110,7 @@ memory = memory.SimpleMemory()
 
 @ui.on_message
 async def main(message: str):
-    program = compiler(
+    program = engine(
         """
         {{#system~}}
         You are a helpful assistant

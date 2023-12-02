@@ -1,5 +1,5 @@
-from openams import compiler
+from openams import engine
 
 def test_clear():
     """Makes sure we call clear"""
-    compiler.endpoints.OpenAI.cache.clear()
+    engine.endpoints.OpenAI.cache.clear()

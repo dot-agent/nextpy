@@ -1,7 +1,7 @@
 from ._llama import LLaMA
 
 class Vicuna(LLaMA):
-    """ A HuggingFace transformers version of the Vicuna language model with Compiler support.
+    """ A HuggingFace transformers version of the Vicuna language model with Engine support.
     """
 
     llm_name: str = "vicuna"

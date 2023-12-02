@@ -2,7 +2,7 @@
 from .._transformers import Transformers
 
 class StableLMChat(Transformers):
-    """ A HuggingFace transformers version of the StableLM language model with Compiler support.
+    """ A HuggingFace transformers version of the StableLM language model with Engine support.
     """
 
     llm_name: str = "stablelm"

@@ -1,7 +1,7 @@
 from .._transformers import Transformers
 
 class MPT(Transformers):
-    """ A HuggingFace transformers version of the MosaicML MPT language model with Compiler support.
+    """ A HuggingFace transformers version of the MosaicML MPT language model with Engine support.
     """
 
     llm_name: str = "mpt"

@@ -1,4 +1,4 @@
-from openams import compiler
+from openams import engine
 import pytest
 
 from ...utils import get_llm
@@ -6,8 +6,8 @@ from ...utils import get_llm
 SKIP_BASELINE_TESTS=True
 
 @pytest.mark.skipif(SKIP_BASELINE_TESTS, reason="Does not test include tag; provides a baseline for comparison in the event of a regression.")
-def test_compiler_capture_baseline():
-    program = compiler(
+def test_engine_capture_baseline():
+    program = engine(
         "It is {{context.holiday}}! {{input}} {{gen 'response'}}",
         llm=get_llm('transformers:gpt2')
     )
@@ -18,9 +18,9 @@ def test_compiler_capture_baseline():
     assert len(output["response"]) > 1, "Expected to capture response"
 
 
-def test_compiler_capture_include():
-    include_program = compiler("It is {{context.holiday}}!")
-    program = compiler(
+def test_engine_capture_include():
+    include_program = engine("It is {{context.holiday}}!")
+    program = engine(
         "{{>include_program}} {{input}} {{gen 'response'}}",
         llm=get_llm('transformers:gpt2')
     )
@@ -32,8 +32,8 @@ def test_compiler_capture_include():
     assert len(output["response"]) > 1
 
 @pytest.mark.skipif(SKIP_BASELINE_TESTS, reason="Does not test include tag; provides a baseline for comparison in the event of a regression.")
-def test_compiler_capture_baseline():
-    program = compiler(
+def test_engine_capture_baseline():
+    program = engine(
         "{{#if context}}It is {{context.holiday}}! {{/if}}{{input}} {{gen 'response'}}",
         llm=get_llm('transformers:gpt2')
     )
@@ -43,9 +43,9 @@ def test_compiler_capture_baseline():
     )
     assert len(output["response"]) > 1, "Expected to capture response"
 
-def test_compiler_capture_include_with_if():
-    include_program = compiler("{{#if context}}It is {{context.holiday}}! {{/if}}")
-    program = compiler(
+def test_engine_capture_include_with_if():
+    include_program = engine("{{#if context}}It is {{context.holiday}}! {{/if}}")
+    program = engine(
         "{{>include_program}}{{input}} {{gen 'response'}}",
         llm=get_llm('transformers:gpt2')
     )
@@ -56,10 +56,10 @@ def test_compiler_capture_include_with_if():
     )
     assert len(output["response"]) > 1
 
-def test_compiler_capture_include_output_with_if():
-    include_program = compiler("{{#if context}}It is {{context.holiday}}! {{/if}}")
+def test_engine_capture_include_output_with_if():
+    include_program = engine("{{#if context}}It is {{context.holiday}}! {{/if}}")
     include_output = include_program(context=dict(holiday="Talk Like a Pirate Day"))
-    program = compiler(
+    program = engine(
         "{{>include_output}}{{input}} {{gen 'response'}}", 
         llm=get_llm('transformers:gpt2')
     )

@@ -2,8 +2,8 @@ from typing import Any, Dict
 import asyncio
 import re
 import json
-from openams import compiler
-from openams.compiler.endpoints.caches import DiskCache
+from openams import engine
+from openams.engine.endpoints.caches import DiskCache
 
 class LLMMeta(type):
     def __init__(cls, *args, **kwargs):
@@ -27,7 +27,7 @@ class LLM(metaclass=LLMMeta):
         self.model_name = "unknown"
 
         # these should all start with the @ symbol and are variables programs can use when running with this LLM
-        self.tool_def = compiler("""
+        self.tool_def = engine("""
 # Tools
 
 {{#if len(functions) > 0~}}

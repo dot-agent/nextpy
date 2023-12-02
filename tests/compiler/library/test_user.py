@@ -1,12 +1,12 @@
-from openams import compiler
+from openams import engine
 
 def test_user():
     """ Basic test of `user`.
     """
 
-    llm = compiler.endpoints.Mock("the output")
+    llm = engine.endpoints.Mock("the output")
 
-    program = compiler("""
+    program = engine("""
 {{~#system}}You are fake.{{/system}}
 {{#user}}You are real.{{/user}}
 {{#assistant}}{{gen 'output' save_prompt='prompt'}}{{/assistant}}""", llm=llm)

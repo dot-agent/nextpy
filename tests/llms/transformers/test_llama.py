@@ -1,4 +1,4 @@
-from openams import compiler
+from openams import engine
 import pytest
 
 # Add this code to check if libraries are installed
@@ -17,6 +17,6 @@ def test_basic():
         pytest.skip("No GPU or transformers package not available, so skipping large model test.")
 
     # just make sure it runs
-    llm = compiler.endpoints.transformers.LLaMA('../../models/llama/7B', device=1)
-    out = compiler("""The height of the Sears tower is {{gen 'answer' max_tokens=10}}""", llm=llm)()
+    llm = engine.endpoints.transformers.LLaMA('../../models/llama/7B', device=1)
+    out = engine("""The height of the Sears tower is {{gen 'answer' max_tokens=10}}""", llm=llm)()
     assert len(out["answer"]) > 0

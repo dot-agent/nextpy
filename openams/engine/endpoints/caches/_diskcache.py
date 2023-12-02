@@ -11,7 +11,7 @@ class DiskCache(BaseCache):
     def __init__(self, llm_name: str):
         self._diskcache = diskcache.Cache(
             os.path.join(
-                platformdirs.user_cache_dir("Compiler"), f"_{llm_name}.diskcache"
+                platformdirs.user_cache_dir("Engine"), f"_{llm_name}.diskcache"
             )
         )
 

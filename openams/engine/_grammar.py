@@ -26,7 +26,7 @@ Description: The `_SavedTextNode` class stores a matched text and its parsed tok
 while `_SavedText` creates such nodes upon successful parsing of a parser element.
 
 Interactions:
-    - Core Classes: The 'Program' and 'Compiler' classes primarily depend on these helper classes to process prompts.
+    - Core Classes: The 'Program' and 'Engine' classes primarily depend on these helper classes to process prompts.
 
 Visibility:
     - Scope: This File

@@ -9,8 +9,8 @@ import asyncio
 import nest_asyncio
 import argparse
 from openams.rag.doc_loader import document_loader
-from openams.compiler._program import extract_text
-from openams import compiler
+from openams.engine._program import extract_text
+from openams import engine
 from openams.tools.basetool import BaseTool
 from openams.memory.base import BaseMemory
 
@@ -61,7 +61,7 @@ class BaseAgent:
         self.output_key = output_key
         self._memory_related_tasks = []
 
-        self.compiler = compiler(
+        self.engine = engine(
             llm=self.llm,
             template=self.prompt_template,
             caching=caching,
@@ -106,9 +106,9 @@ class BaseAgent:
         if tool in self.tools:
             self.tools.remove(tool)
 
-    def llm_instance(self) -> compiler.endpoints.OpenAI:
+    def llm_instance(self) -> engine.endpoints.OpenAI:
         """Create an instance of the language model."""
-        return compiler.endpoints.OpenAI(model=self.default_llm_model)
+        return engine.endpoints.OpenAI(model=self.default_llm_model)
 
     def get_output_key(self, prompt):
         vars = prompt.variables()
@@ -141,16 +141,16 @@ class BaseAgent:
             if kwargs.get(_knowledge_variable):
                 query = kwargs.get(_knowledge_variable)
                 retrieved_knowledge = self.get_knowledge(query)
-                output = self.compiler(
+                output = self.engine(
                     RETRIEVED_KNOWLEDGE=retrieved_knowledge, **kwargs, silent=True
                 )
             else:
                 raise ValueError("knowledge_variable not found in input kwargs")
         else:
-            output = self.compiler(**kwargs, silent=True, from_agent=True)
+            output = self.engine(**kwargs, silent=True, from_agent=True)
 
             # Handle memory here
-            if self.compiler.memory is not None:
+            if self.engine.memory is not None:
                 self._handle_memory(output)
 
         if self.return_complete:
@@ -184,15 +184,15 @@ class BaseAgent:
             if kwargs.get(_knowledge_variable):
                 query = kwargs.get(_knowledge_variable)
                 retrieved_knowledge = self.get_knowledge(query)
-                output = self.compiler(
+                output = self.engine(
                     RETRIEVED_KNOWLEDGE=retrieved_knowledge, **kwargs, silent=True
                 )
             else:
                 raise ValueError("knowledge_variable not found in input kwargs")
         else:
-            output = await self.compiler(**kwargs, silent=True, from_agent=True)
+            output = await self.engine(**kwargs, silent=True, from_agent=True)
             # Handle memory here
-            if self.compiler.memory is not None:
+            if self.engine.memory is not None:
                 self._handle_memory(output)
 
         if self.return_complete:
@@ -211,7 +211,7 @@ class BaseAgent:
             return output
 
     def _handle_memory(self, new_program):
-        if self.compiler.async_mode:
+        if self.engine.async_mode:
             loop = asyncio.get_event_loop()
             assert (
                 loop.is_running()
@@ -233,16 +233,16 @@ class BaseAgent:
         all_text = extract_text(new_program.text)
         for text_block in all_text:
             for value in text_block:
-                self.compiler.memory.add_memory(
+                self.engine.memory.add_memory(
                     prompt=value, llm_response=text_block[value]
                 )
 
-        result = self.compiler.memory.get_memory()
+        result = self.engine.memory.get_memory()
 
         if asyncio.iscoroutine(result):
-            result = await self.compiler.memory.get_memory()
+            result = await self.engine.memory.get_memory()
 
-        self.compiler.ConversationHistory = result
+        self.engine.ConversationHistory = result
 
     def cli(self):
         """Start a CLI for interacting with the agent."""

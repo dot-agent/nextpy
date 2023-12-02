@@ -1,11 +1,11 @@
-from openams import compiler
+from openams import engine
 
 def test_role():
     """ Test the behavior of `role`.
     """
 
-    llm = compiler.endpoints.Mock()
-    prompt = compiler("""
+    llm = engine.endpoints.Mock()
+    prompt = engine("""
 {{#role 'system'~}}
 You are an assistant.
 {{~/role}}
@@ -26,8 +26,8 @@ def test_short_roles():
     """ Test the behavior of the shorthand versions of `role`.
     """
 
-    llm = compiler.endpoints.Mock()
-    prompt = compiler("""
+    llm = engine.endpoints.Mock()
+    prompt = engine("""
 {{#system~}}
 You are an assistant.
 {{~/system}}

@@ -1,4 +1,4 @@
-from openams import compiler
+from openams import engine
 import pytest
 
 # Add this code to check if libraries are installed
@@ -17,8 +17,8 @@ def test_basic():
         pytest.skip("No GPU or transformers package not available, so skipping large model test.")
 
     # just make sure it runs
-    llm = compiler.endpoints.transformers.MPTChat('mosaicml/mpt-7b-chat', device=0)
-    out = compiler("""
+    llm = engine.endpoints.transformers.MPTChat('mosaicml/mpt-7b-chat', device=0)
+    out = engine("""
 {{#system~}}
 You are an assistant.
 {{~/system}}

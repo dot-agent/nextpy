@@ -59,13 +59,13 @@ def test_remove_tool(base_agent_obj):
     assert len(base_agent_obj.tools) == 1
     assert tool not in base_agent_obj.tools
 
-# @patch('openams.agent.base_agent.compiler')
-# def test_run(mock_compiler, base_agent_obj):
-#     # Set up the mock compiler's return value to simulate a callable that returns a mock object
+# @patch('openams.agent.base_agent.engine')
+# def test_run(mock_engine, base_agent_obj):
+#     # Set up the mock engine's return value to simulate a callable that returns a mock object
 #     mock_output = MagicMock()
 #     mock_output.variables.return_value = {'Test Output': 'Test Result'}
 #     mock_output.__getitem__.return_value = 'Test Result'  # Mock the dictionary access
-#     mock_compiler.return_value = MagicMock(return_value=mock_output)
+#     mock_engine.return_value = MagicMock(return_value=mock_output)
     
 #     # Call the method under test
 #     result = base_agent_obj.run(knowledge_variable='Test Knowledge')
@@ -76,13 +76,13 @@ def test_remove_tool(base_agent_obj):
 
 # TODO: Figure out async related errors
 # @pytest.mark.asyncio
-# @patch('openams.agent.base_agent.compiler')
-# async def test_arun(mock_compiler, base_agent_obj):
-#     # Set up the mock compiler's return value
+# @patch('openams.agent.base_agent.engine')
+# async def test_arun(mock_engine, base_agent_obj):
+#     # Set up the mock engine's return value
 #     mock_output = MagicMock()
 #     mock_output.variables.return_value = {'Test Output': 'Test Result'}
 #     mock_output.__getitem__.return_value = 'Test Result'
-#     mock_compiler.return_value = MagicMock(return_value=mock_output)
+#     mock_engine.return_value = MagicMock(return_value=mock_output)
     
 #     # Call the method under test with await
 #     result = await base_agent_obj.arun(knowledge_variable='Test Knowledge')

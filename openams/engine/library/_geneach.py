@@ -25,7 +25,7 @@ async def geneach(list_name, stop=None, max_iterations=100, min_iterations=0, nu
     join : str
         A string to join the generated items with.
     single_call : bool
-        This is an option designed to make look generation more convienent for LLMs that don't support Compiler
+        This is an option designed to make look generation more convienent for LLMs that don't support Engine
         acceleration. If True, the LLM will be called once to generate the entire list. This only works if the
         LLM has already been prompted to generate content that matches the format of the list. After the single
         call, the generated list variables will be parsed out of the generated text using a regex. (note that only

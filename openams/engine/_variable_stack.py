@@ -5,7 +5,7 @@ from ._utils import strip_markers
 _NO_VALUE = object()
 
 class VariableStack:
-    """This represents the variables scope stack of a Compiler program."""
+    """This represents the variables scope stack of a Engine program."""
 
     def __init__(self, stack, executor):
         """Build a new variable stack object with the given stack and program executor."""

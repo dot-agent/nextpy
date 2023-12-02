@@ -10,7 +10,7 @@ from ._llm import LLM, LLMSession, SyncSession
 
 
 class Transformers(LLM):
-    """ A HuggingFace transformers language model with Compiler support.
+    """ A HuggingFace transformers language model with Engine support.
     """
 
     llm_name: str = "transformers"
@@ -69,7 +69,7 @@ class Transformers(LLM):
 
     @staticmethod
     def role_start(role):
-        raise NotImplementedError("In order to use chat role tags you need to use a chat-specific subclass of Transformers for your LLM from Compiler.transformers.*!")
+        raise NotImplementedError("In order to use chat role tags you need to use a chat-specific subclass of Transformers for your LLM from Engine.transformers.*!")
 
     def _build_token_prefix_map(self, model_name):
         """ Build a map from token to index.
@@ -93,7 +93,7 @@ class Transformers(LLM):
             try:
                 import transformers
             except:
-                raise Exception("Please install transformers with `pip install transformers` in order to use Compiler.endpoints.Transformers!")
+                raise Exception("Please install transformers with `pip install transformers` in order to use Engine.endpoints.Transformers!")
 
             if tokenizer is None:
                 tokenizer = transformers.AutoTokenizer.from_pretrained(model, **kwargs)
@@ -281,7 +281,7 @@ class TransformersSession(LLMSession):
                 self._past_key_values = tuple((key[:,:,:prefix_match_len,:],value[:,:,:prefix_match_len,:]) for key,value in self._past_key_values) # TODO: this is specific to the GPT2 tensor layout
                 self._prefix_cache = self._prefix_cache[:prefix_match_len]
 
-            # add support for pattern Compiler
+            # add support for pattern Engine
             if pattern is not None:
                 processors.append(RegexLogitsProcessor(pattern, stop_regex, self.llm, model_config.vocab_size, temperature == 0, len(coded_prompt), self.llm.tokenizer.eos_token_id))
 
@@ -668,7 +668,7 @@ class TransformersStreamer():
 
         # extract the scores if we are given them (and format them to be the same shape as the tokens)
         if self.logprobs:
-            assert len(new_tokens) == 1, "logprobs are not supported for batched generation right now in Compiler.endpoints.Transformers"
+            assert len(new_tokens) == 1, "logprobs are not supported for batched generation right now in Engine.endpoints.Transformers"
             new_scores = [torch.nn.functional.log_softmax(x, dim=-1).cpu() for x in token_obj['scores']]
             len_diff = len(new_tokens[0]) - len(new_scores)
             if len_diff > 0:

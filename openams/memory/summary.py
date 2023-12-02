@@ -1,13 +1,13 @@
 from typing import List, Dict, Any
 from pydantic import BaseModel
 
-from openams import compiler
+from openams import engine
 from openams.memory import BaseMemory
 from openams.schema import BaseMessage
 from .prompt import SUMMARIZER_TEMPLATE
 
 def extract_text(string):
-    """function for getting the user prompt and llm response from the compiler output"""
+    """function for getting the user prompt and llm response from the engine output"""
     end_string="<|im_end|>"
     start_string="New summary:<|im_end|>\n\n<|im_start|>assistant\n"
     string = string.replace(start_string, "", 1)
@@ -33,7 +33,7 @@ class SummaryMemory(BaseMemory, BaseModel):
         """Retrieve entire memory from the store."""
         
         # Create llm instance
-        llm = compiler.endpoints.OpenAI(model="gpt-3.5-turbo")
+        llm = engine.endpoints.OpenAI(model="gpt-3.5-turbo")
 
         new_messages = [item for item in self.messages if item not in self.messages_in_summary]
         if len(new_messages) != 0:
@@ -42,7 +42,7 @@ class SummaryMemory(BaseMemory, BaseModel):
                 messages_to_text = messages_to_text + "Human: " + conversation['prompt'] + "\n" + "AI: " + conversation['llm_response'] + "\n"
                 self.messages_in_summary.append(conversation)
 
-            summarizer = compiler(template=SUMMARIZER_TEMPLATE, llm=llm, stream = False)
+            summarizer = engine(template=SUMMARIZER_TEMPLATE, llm=llm, stream = False)
             summarized_memory = summarizer(summary=self.current_summary, new_lines= messages_to_text)
             self.current_summary = extract_text(summarized_memory.text)
             summarized_memory = "Current conversation:\n"+self.current_summary
@@ -68,7 +68,7 @@ class SummaryMemory(BaseMemory, BaseModel):
                         messages_to_text = messages_to_text + "Human: " + conversation['prompt'] + "\n" + "AI: " + conversation['llm_response'] + "\n"
                         self.messages_in_summary.append(conversation)
 
-                    summarizer = compiler(template=SUMMARIZER_TEMPLATE, llm=llm, stream = False)
+                    summarizer = engine(template=SUMMARIZER_TEMPLATE, llm=llm, stream = False)
                     summarized_memory = summarizer(summary="", new_lines= messages_to_text)
                     summarized_memory = "Current conversation:\n"+extract_text(summarized_memory.text)
                     self.current_summary = summarized_memory

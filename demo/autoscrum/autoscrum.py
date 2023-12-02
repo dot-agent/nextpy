@@ -5,27 +5,26 @@
 #email: martin.schroder@swedishembedded.com
 import json
 from pathlib import Path
-from datetime import datetime
-from openams import compiler
-import pkg_resources as pg
-from openams.endpoints._openai import OpenAI
+import importlib.resources as resources  # Import the resources module
+from openams import engine
+from openams.engine.endpoints._openai import OpenAI
 
-compiler.llm = OpenAI("gpt-3.5-turbo")
+engine.llm = OpenAI("gpt-3.5-turbo")
 
 class AutoScrum:
     def __init__(self, path):
-        self.featurizer = self.load_program("featurizer")
-        self.storylizer = self.load_program("storylizer")
-        self.goalmaker = self.load_program("goalmaker")
-        self.clarifier = self.load_program("clarifier")
-        self.acceptance = self.load_program("acceptance")
-        self.taskalizer = self.load_program("taskalizer")
-        self.requalizer = self.load_program("requalizer")
-        self.planner = self.load_program("planner")
+        self.featurizer = self. _load_program("featurizer")
+        self.storylizer = self. _load_program("storylizer")
+        self.goalmaker = self. _load_program("goalmaker")
+        self.clarifier = self. _load_program("clarifier")
+        self.acceptance = self. _load_program("acceptance")
+        self.taskalizer = self. _load_program("taskalizer")
+        self.requalizer = self. _load_program("requalizer")
+        self.planner = self. _load_program("planner")
         if not Path(path).exists():
             self.reset()
             self.save(path)
-        self.data = self.load_data(path)
+        self.data = self. _load_data(path)
 
     def reset(self):
         self.data = {
@@ -42,15 +41,21 @@ class AutoScrum:
             "avoid": []
         }
 
-    def load_data(self, path):
+    def  _load_data(self, path):
         """
         Loads data json file
         """
         return json.loads(Path(path).read_text())
 
-    def load_program(self, name: str):
-        path = pg.resource_filename(__name__, f'data/{name}.hbs')
-        return compiler(Path(path).read_text(), silent=True)
+    import importlib.resources
+
+    def _load_program(self, name):
+        resource_package = 'autoscrum.data'  # Adjust the package name as needed
+        resource_path = f'{name}.hbs'
+        # Ensure the directory 'data' is a proper package with an __init__.py file
+        with resources.open_text(resource_package, resource_path) as file:
+            program_text = file.read()
+        return engine(program_text, silent=True)
 
     def save(self, path):
         Path(path).write_text(json.dumps(self.data, indent=4))

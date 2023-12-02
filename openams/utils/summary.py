@@ -1,5 +1,5 @@
 from openams.endpoints._openai import OpenAI
-from openams import compiler
+from openams import engine
 
 llm = OpenAI(model="gpt-4")
 
@@ -20,7 +20,7 @@ Given a chunk of text, provide an informative summary in not more than {{max_wor
 
 """
 
-engine = compiler(prompt, llm = llm, silent = True)
+engine = engine(prompt, llm = llm, silent = True)
 
 class Summarizer:
 

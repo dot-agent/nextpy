@@ -2,7 +2,7 @@ from openams.tools.basetool import Tool
 from openams.tools.toolkits.requests_toolkit.request import RequestsToolkit
 from openams.tools.toolkits.requests_toolkit.requests.base import RequestsGetTool, RequestsPostTool, RequestsPatchTool, RequestsPutTool, RequestsDeleteTool
 from openams.tools.toolkits.requests_toolkit.requests.utils import TextRequestsWrapper
-from openams import compiler
+from openams import engine
 import json
 
 # requests_get_tool = RequestsGetTool(requests_wrapper=TextRequestsWrapper())
@@ -67,13 +67,13 @@ request_tools = request_tool.get_tools()
 # tools = [requests_get_tool,requests_put_tool,requests_delete_tool,requests_patch_tool, requests_post_tool]
 
 # we use GPT-4 here, but you could use gpt-3.5-turbo as well
-llm = compiler.endpoints.OpenAI(model="gpt-3.5-turbo-16k")
+llm = engine.endpoints.OpenAI(model="gpt-3.5-turbo-16k")
 
 def tool_use(query, tools=request_tools):
     query = json.loads(query)
     return tools[int(query["index"])].run(query["query"])
 
-experts = compiler(template='''
+experts = engine(template='''
 {{#system~}}
 You are a helpful Web assistant. You are given a set of tools to use
 {{~#each tools}}

@@ -6,21 +6,21 @@ import re
 import asyncio
 
 
-def load(compilercompilerfile):
-    ''' Load a Compiler program from the given text file.
+def load(engineenginefile):
+    ''' Load a Engine program from the given text file.
 
     If the passed file is a valid local file it will be loaded directly.
     Otherwise, if it starts with "http://" or "https://" it will be loaded
     from the web.
     '''
 
-    if os.path.exists(Compiler_file):
-        with open(Compiler_file, 'r') as f:
+    if os.path.exists(Engine_file):
+        with open(Engine_file, 'r') as f:
             return f.read()
-    elif Compiler_file.startswith('http://') or Compiler_file.startswith('https://'):
-        return requests.get(Compiler_file).text
+    elif Engine_file.startswith('http://') or Engine_file.startswith('https://'):
+        return requests.get(Engine_file).text
     else:
-        raise ValueError('Invalid Compiler file: %s' % Compiler_file)
+        raise ValueError('Invalid Engine file: %s' % Engine_file)
 
 
 def merge_programs(programs, **kwargs):
@@ -62,7 +62,7 @@ def find_func_name(f, used_names):
 
 
 def strip_markers(s):
-    """This strips out the comment markers used by Compiler."""
+    """This strips out the comment markers used by Engine."""
     if s is None:
         return None
     return re.sub(r"{{!--G.*?--}}", r"", s, flags=re.MULTILINE | re.DOTALL)
@@ -108,7 +108,7 @@ class JupyterComm():
     def __init__(self, target_id, ipython_handle, callback=None, on_open=None, mode="register"):
         from ipykernel.comm import Comm
 
-        self.target_name = "Compiler_interface_target_" + target_id
+        self.target_name = "Engine_interface_target_" + target_id
         # print("TARGET NAME", self.target_name)
         self.callback = callback
         self.jcomm = None

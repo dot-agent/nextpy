@@ -1,4 +1,4 @@
-from openams import compiler
+from openams import engine
 import pytest
 
 @pytest.mark.parametrize("flag, expected_output", [
@@ -13,6 +13,6 @@ def test_unless(flag, expected_output):
     """ Test the behavior of `unless`.
     """
 
-    program = compiler("""Answer: {{#unless flag}}Yes{{/unless}}""")
+    program = engine("""Answer: {{#unless flag}}Yes{{/unless}}""")
     out = program(flag=flag)
     assert str(out) == expected_output

@@ -1,7 +1,7 @@
 from ._llama import LLaMA
 
 class Koala(LLaMA):
-    """ A HuggingFace transformers version of the Koala language model with Compiler support.
+    """ A HuggingFace transformers version of the Koala language model with Engine support.
     """
 
     llm_name: str = "koala"

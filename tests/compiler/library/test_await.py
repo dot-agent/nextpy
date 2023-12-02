@@ -1,10 +1,10 @@
-from openams import compiler
+from openams import engine
 
 def test_await():
     """ Test the behavior of `await`.
     """
 
-    prompt = compiler("""Is Everest very tall?
+    prompt = engine("""Is Everest very tall?
 User response: '{{set 'user_response' (await 'user_response') hidden=False}}'""")
     waiting_prompt = prompt()
     assert str(waiting_prompt) == str(prompt)

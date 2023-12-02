@@ -630,8 +630,8 @@ class OpenAISession(LLMSession):
         # get the arguments as dictionary for cache key generation
         args = locals().copy()
 
-        assert not pattern, "The OpenAI API does not support Compiler  pattern controls! Please either switch to an endpoint that does, or don't use the `pattern` argument to `gen`."
-        # assert not stop_regex, "The OpenAI API does not support Compiler  stop_regex controls! Please either switch to an endpoint that does, or don't use the `stop_regex` argument to `gen`."
+        assert not pattern, "The OpenAI API does not support Engine  pattern controls! Please either switch to an endpoint that does, or don't use the `pattern` argument to `gen`."
+        # assert not stop_regex, "The OpenAI API does not support Engine  stop_regex controls! Please either switch to an endpoint that does, or don't use the `stop_regex` argument to `gen`."
 
         # define the key for the cache
         cache_params = self._cache_params(args)
@@ -742,7 +742,7 @@ class MSALOpenAI(OpenAI):
 
         from msal import PublicClientApplication, SerializableTokenCache
         self._token_cache = SerializableTokenCache()
-        self._token_cache_path = os.path.join(platformdirs.user_cache_dir("Compiler"), "_azure_openai.token")
+        self._token_cache_path = os.path.join(platformdirs.user_cache_dir("Engine"), "_azure_openai.token")
         self._app = PublicClientApplication(client_id=self.client_id, authority=self.authority, token_cache=self._token_cache)
         if os.path.exists(self._token_cache_path):
             self._token_cache.deserialize(open(self._token_cache_path, 'r').read())

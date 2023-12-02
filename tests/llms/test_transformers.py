@@ -1,5 +1,5 @@
 import pytest
-from openams import compiler
+from openams import engine
 from ..utils import get_llm
 
 @pytest.mark.parametrize("llm", ["transformers:gpt2", "transformers:facebook/opt-350m"])
@@ -26,6 +26,6 @@ def test_repeat(llm):
 @pytest.mark.parametrize("llm", ["transformers:gpt2", "transformers:facebook/opt-350m"])
 def test_select(llm):
     llm = get_llm(llm)
-    program = compiler('''Answer "yes" or "no": "{{#select 'answer'}}yes{{or}}no{{/select}}"''', llm=llm)
+    program = engine('''Answer "yes" or "no": "{{#select 'answer'}}yes{{or}}no{{/select}}"''', llm=llm)
     out = program()
     assert out["answer"] in ["yes", "no"]

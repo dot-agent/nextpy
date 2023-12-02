@@ -1,8 +1,8 @@
-from openams import compiler
+from openams import engine
 
 def test_strip():
     """ Test the behavior of `strip`.
     """
 
-    program = compiler("""{{strip ' this is '}}""")
+    program = engine("""{{strip ' this is '}}""")
     assert str(program()) == "this is"

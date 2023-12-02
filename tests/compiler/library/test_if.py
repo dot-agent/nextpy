@@ -1,10 +1,10 @@
-from openams import compiler
+from openams import engine
 
 def test_if():
     """ Test the behavior of `if`.
     """
 
-    prompt = compiler("""Answer: {{#if flag}}Yes{{/if}}""")
+    prompt = engine("""Answer: {{#if flag}}Yes{{/if}}""")
 
     for flag in [True, 1, "random text"]:
         out = prompt(flag=flag)
@@ -15,7 +15,7 @@ def test_if():
         assert str(out) == "Answer: "
 
 def test_if_complex_block():
-    prompt = compiler("""Answer: {{#if True}}Yes {{my_var}} we{{/if}}""")
+    prompt = engine("""Answer: {{#if True}}Yes {{my_var}} we{{/if}}""")
 
     out = prompt(my_var="then")
     
@@ -25,7 +25,7 @@ def test_if_else():
     """ Test the behavior of `if` with an `else` clause.
     """
 
-    prompt = compiler("""Answer 'Yes' or 'No': '{{#if flag}}Yes{{else}}No{{/if}}'""")
+    prompt = engine("""Answer 'Yes' or 'No': '{{#if flag}}Yes{{else}}No{{/if}}'""")
 
     for flag in [True, 1, "random text"]:
         out = prompt(flag=flag)
@@ -36,7 +36,7 @@ def test_if_else():
         assert str(out) == "Answer 'Yes' or 'No': 'No'"
 
 def test_if_complex_blockwith_else():
-    prompt = compiler("""Answer: {{#if flag}}Yes {{my_var}} we{{else}}No {{my_var}}{{/if}}""")
+    prompt = engine("""Answer: {{#if flag}}Yes {{my_var}} we{{else}}No {{my_var}}{{/if}}""")
 
     out = prompt(my_var="then", flag=True)
     assert str(out) == "Answer: Yes then we"
@@ -48,7 +48,7 @@ def test_elif_else():
     """ Test the behavior of `if` with an `else` clause.
     """
 
-    prompt = compiler("""Answer 'Yes' or 'No': '{{#if flag}}Yes{{elif flag2}}maybe{{else}}No{{/if}}'""")
+    prompt = engine("""Answer 'Yes' or 'No': '{{#if flag}}Yes{{elif flag2}}maybe{{else}}No{{/if}}'""")
 
     out = prompt(flag=False, flag2=True)
     assert str(out) == "Answer 'Yes' or 'No': 'maybe'"

@@ -3,7 +3,7 @@ import transformers
 
 class LLaMA2(Transformers):
     """ 
-    A HuggingFace transformers version of the LLaMA2 language model with compiler support.
+    A HuggingFace transformers version of the LLaMA2 language model with engine support.
     """
 
     llm_name: str = "llama2"

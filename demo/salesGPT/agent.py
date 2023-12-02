@@ -2,7 +2,7 @@
 from typing import Any, Dict, Optional, Union
 from openams.agent.base_agent import BaseAgent
 from openams.endpoints._openai import OpenAI
-from openams import compiler
+from openams import engine
 from pathlib import Path
 import pkg_resources as pg
 import logging
@@ -42,7 +42,7 @@ class SalesAgent(BaseAgent):
 
         self.llm = OpenAI('gpt-3.5-turbo')
 
-        self.compiler = compiler(
+        self.engine = engine(
             llm = self.llm,
             template = self.prompt_template,
             salesperson_name = salesperson_name,
@@ -68,11 +68,11 @@ class SalesAgent(BaseAgent):
             if kwargs.get(_knowledge_variable):
                 query = kwargs.get(_knowledge_variable)
                 retrieved_knowledge = self.get_knowledge(query)
-                output = self.compiler(RETRIEVED_KNOWLEDGE = retrieved_knowledge, **kwargs, silent = True)
+                output = self.engine(RETRIEVED_KNOWLEDGE = retrieved_knowledge, **kwargs, silent = True)
             else:
                 raise ValueError("knowledge_variable not found in input kwargs")
         else:
-            output = self.compiler(**kwargs, silent = True)
+            output = self.engine(**kwargs, silent = True)
 
         if self.return_complete:
             return output

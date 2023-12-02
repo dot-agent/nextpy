@@ -1,4 +1,4 @@
-from openams import compiler
+from openams import engine
 import pytest
 
 try:
@@ -27,7 +27,7 @@ def get_openai_llm(model_name, caching=False, **kwargs):
     # load it over and over again
     key = model_name+"_"+str(caching)
     if key not in opanai_model_cache:
-        opanai_model_cache[key] = compiler.endpoints.OpenAI(model_name, caching=caching, **kwargs)
+        opanai_model_cache[key] = engine.endpoints.OpenAI(model_name, caching=caching, **kwargs)
     llm = opanai_model_cache[key]
 
     if llm.api_key is None:
@@ -44,6 +44,6 @@ def get_transformers_llm(model_name, caching=False):
 
     key = model_name+"_"+str(caching)
     if key not in transformers_model_cache:
-        transformers_model_cache[key] = compiler.endpoints.Transformers(model_name, caching=caching)
+        transformers_model_cache[key] = engine.endpoints.Transformers(model_name, caching=caching)
 
     return transformers_model_cache[key]

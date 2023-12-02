@@ -84,15 +84,15 @@ class ProgramExecutor():
     #                     context = "..."+context
     #                 if end < len(text):
     #                     context = context+"..."
-    #                 raise ValueError("The Compiler program is missing the opening pound (#) sign or closing slash (/) for the block level command `"+k+"` at:\n"+context) from None
+    #                 raise ValueError("The Engine program is missing the opening pound (#) sign or closing slash (/) for the block level command `"+k+"` at:\n"+context) from None
                 
     #             # look for block commands that are missing the closing tag
     #             num_opens = len(re.findall(r"(^|[^\\]){{~?#\s*"+k+"(\s|}|~)", text))
     #             num_closes = len(re.findall(r"(^|[^\\]){{~?/\s*"+k+"(\s|}|~)", text))
     #             if num_opens > num_closes:
-    #                 raise ValueError("The Compiler program is missing a closing tag for the block level command `"+k+"`.") from None
+    #                 raise ValueError("The Engine program is missing a closing tag for the block level command `"+k+"`.") from None
     #             if num_opens < num_closes:
-    #                 raise ValueError("The Compiler program is missing an opening tag for the block level command `"+k+"`.") from None
+    #                 raise ValueError("The Engine program is missing an opening tag for the block level command `"+k+"`.") from None
         
         
 
@@ -473,7 +473,7 @@ class ProgramExecutor():
 
             # make sure we have a matching end command TODO: move this to a parser action
             # if not (node.text.endswith("/"+command_name+"}}") or node.text.endswith("/"+command_name+"~}}")):
-            #     raise SyntaxError("Compiler command block starting with `"+node.text[:20]+"...` does not end with a matching `{{/"+command_name+"}}` but instead ends with `..."+node.text[-20:]+"!")
+            #     raise SyntaxError("Engine command block starting with `"+node.text[:20]+"...` does not end with a matching `{{/"+command_name+"}}` but instead ends with `..."+node.text[-20:]+"!")
 
             # if execution stops while parsing the start command just return unchanged
             if not self.executing:

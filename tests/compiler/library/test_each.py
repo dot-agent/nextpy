@@ -1,26 +1,26 @@
-from openams import compiler
+from openams import engine
 from ...utils import get_llm
 
 def test_each():
     """ Test an each loop.
     """
 
-    prompt = compiler("Hello, {{name}}!{{#each names}} {{this}}{{/each}}")
-    assert str(prompt(name="Compiler", names=["Bob", "Sue"])) == "Hello, Compiler! Bob Sue"
+    prompt = engine("Hello, {{name}}!{{#each names}} {{this}}{{/each}}")
+    assert str(prompt(name="Engine", names=["Bob", "Sue"])) == "Hello, Engine! Bob Sue"
 
 def test_each_with_objects():
     """ Test an each loop with objects.
     """
 
-    prompt = compiler("Hello, {{name}}!{{#each names}} {{this.name}}{{/each}}")
+    prompt = engine("Hello, {{name}}!{{#each names}} {{this.name}}{{/each}}")
     out = prompt(
-        name="Compiler",
+        name="Engine",
         names=[{"name": "Bob"}, {"name": "Sue"}]
     )
-    assert str(out) == "Hello, Compiler! Bob Sue"
+    assert str(out) == "Hello, Engine! Bob Sue"
 
 def test_missing_list():
-    prompt = compiler('''List of ideas:{{#each ideas}}test{{this}}{{/each}}''', await_missing=True)
+    prompt = engine('''List of ideas:{{#each ideas}}test{{this}}{{/each}}''', await_missing=True)
     assert str(prompt()) == "List of ideas:{{#each ideas}}test{{this}}{{/each}}"
     # try:
     #     out = prompt()
@@ -31,35 +31,35 @@ def test_missing_list():
 def test_each_after_await():
     """Test an each loop when we are not executing."""
 
-    prompt = compiler("Hello, {{name}}!{{await 'some_var'}}{{#each names}} {{this}}{{/each}}")
-    assert str(prompt(name="Compiler", names=["Bob", "Sue"])) == "Hello, Compiler!{{await 'some_var'}}{{#each names}} {{this}}{{/each}}"
+    prompt = engine("Hello, {{name}}!{{await 'some_var'}}{{#each names}} {{this}}{{/each}}")
+    assert str(prompt(name="Engine", names=["Bob", "Sue"])) == "Hello, Engine!{{await 'some_var'}}{{#each names}} {{this}}{{/each}}"
 
 def test_each_over_an_await():
     """Test an each loop when we are not executing."""
 
-    program = compiler("Hello, {{name}}!{{#each (await 'names')}} {{this}}{{/each}}")
-    partial_execution = program(name="Compiler")
-    assert str(partial_execution) == "Hello, Compiler!{{#each (await 'names')}} {{this}}{{/each}}"
+    program = engine("Hello, {{name}}!{{#each (await 'names')}} {{this}}{{/each}}")
+    partial_execution = program(name="Engine")
+    assert str(partial_execution) == "Hello, Engine!{{#each (await 'names')}} {{this}}{{/each}}"
     full_execution = partial_execution(names=["Bob", "Sue"])
-    assert str(full_execution) == "Hello, Compiler! Bob Sue"
+    assert str(full_execution) == "Hello, Engine! Bob Sue"
 
 def test_each_parallel():
     """Test an each loop run in parallel."""
 
-    program = compiler("Hello, {{name}}!{{#each names parallel=True hidden=True}} {{this}}{{/each}}")
-    executed_program = program(name="Compiler", names=["Bob", "Sue", "Sam"])
-    assert str(executed_program) == "Hello, Compiler!"
+    program = engine("Hello, {{name}}!{{#each names parallel=True hidden=True}} {{this}}{{/each}}")
+    executed_program = program(name="Engine", names=["Bob", "Sue", "Sam"])
+    assert str(executed_program) == "Hello, Engine!"
 
 def test_each_parallel_with_gen():
     """Test an each loop run in parallel with generations inside."""
 
-    llm = compiler.endpoints.Mock(["Pizza", "Burger", "Salad"])
+    llm = engine.endpoints.Mock(["Pizza", "Burger", "Salad"])
 
-    program = compiler("""Hello, {{name}}! Here are 5 names and their favorite food:
+    program = engine("""Hello, {{name}}! Here are 5 names and their favorite food:
 {{#each names parallel=True hidden=True}}{{this}}: {{gen 'foods' list_append=True}}
 {{/each}}""", llm=llm)
-    executed_program = program(name="Compiler", names=["Bob", "Sue", "Sam"])
-    assert str(executed_program) == "Hello, Compiler! Here are 5 names and their favorite food:\n"
+    executed_program = program(name="Engine", names=["Bob", "Sue", "Sam"])
+    assert str(executed_program) == "Hello, Engine! Here are 5 names and their favorite food:\n"
     for food in executed_program["foods"]:
         assert food in ["Pizza", "Burger", "Salad"]
 
@@ -68,11 +68,11 @@ def test_each_parallel_with_gen_openai():
 
     llm = get_llm("openai:text-curie-001")
 
-    program = compiler("""Hello, {{name}}! Here are 5 names and their favorite food:
+    program = engine("""Hello, {{name}}! Here are 5 names and their favorite food:
 {{#each names parallel=True hidden=True}}{{this}}: {{gen 'foods' list_append=True}}
 {{/each}}""", llm=llm)
-    executed_program = program(name="Compiler", names=["Bob", "Sue", "Sam"])
-    assert str(executed_program) == "Hello, Compiler! Here are 5 names and their favorite food:\n"
+    executed_program = program(name="Engine", names=["Bob", "Sue", "Sam"])
+    assert str(executed_program) == "Hello, Engine! Here are 5 names and their favorite food:\n"
     assert len(executed_program["foods"]) == 3
 
 # def test_with_stop():
@@ -86,12 +86,12 @@ def test_each_parallel_with_gen_openai():
 #         token_count += len(tokenizer.encode(item))
 #         return token_count > 3
 
-#     program = compiler("""This is a list of names:
+#     program = engine("""This is a list of names:
 # {{set 'token_start' (len (tokenize prefix))~}}
 # {{#each names stop=token_limit}} {{this}}
 # {{~if (len (tokenize prefix)) - token_start > 100}}{{break}}{{/if~}}
 # {{/each}}""", token_limit=token_limit)
 
-#     program = compiler("Hello, {{name}}!{{#each names)}} {{this}}{{/each}}")
-#     executed_program = program(name="Compiler", names=["Bob", "Sue", "Sam"])
-#     assert str(executed_program) == "Hello, Compiler! Bob Sue Sam"
+#     program = engine("Hello, {{name}}!{{#each names)}} {{this}}{{/each}}")
+#     executed_program = program(name="Engine", names=["Bob", "Sue", "Sam"])
+#     assert str(executed_program) == "Hello, Engine! Bob Sue Sam"

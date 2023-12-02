@@ -1,15 +1,15 @@
-from openams import compiler
+from openams import engine
 
 def test_geneach():
     """ Test a geneach loop.
     """
 
-    llm = compiler.endpoints.Mock({
+    llm = engine.endpoints.Mock({
         'Joe</item>': {"text": '</list>', "finish_reason": "stop"},
         '</item>': {"text": '\n<item', "finish_reason": "length"},
         '">' : ["Bob", "Sue", "Joe"],
     })
-    prompt = compiler('''<instructions>Generate a list of three names</instructions>
+    prompt = engine('''<instructions>Generate a list of three names</instructions>
 <list>{{#geneach 'names' stop="</list>"}}
 <item index="{{@index}}">{{gen 'this'}}</item>{{/geneach}}</list>''', llm=llm)
     out = prompt()
@@ -25,12 +25,12 @@ def test_geneach_with_join():
     """ Test a geneach loop.
     """
 
-    llm = compiler.endpoints.Mock({
+    llm = engine.endpoints.Mock({
         'Joe</item>': {"text": '</list>', "finish_reason": "stop"},
         '</item>': {"text": '\n<item', "finish_reason": "length"},
         '">' : ["Bob", "Sue", "Joe"],
     })
-    prompt = compiler('''<instructions>Generate a list of three names</instructions>
+    prompt = engine('''<instructions>Generate a list of three names</instructions>
 <list>{{#geneach 'names' join="<mark>" stop="</list>"}}
 <item index="{{@index}}">{{gen 'this'}}</item>{{/geneach}}</list>''', llm=llm)
     out = prompt()
@@ -46,12 +46,12 @@ def test_geneach_single_call():
     """ Test a geneach loop.
     """
 
-    llm = compiler.endpoints.Mock('''
+    llm = engine.endpoints.Mock('''
 <item index="0">Bob</item>
 <item index="1">Sue</item>
 <item index="2">Jow</item>
 </list>''')
-    prompt = compiler('''<instructions>Generate a list of three names</instructions>
+    prompt = engine('''<instructions>Generate a list of three names</instructions>
 <list>{{#geneach 'names' single_call=True stop="</list>"}}
 <item index="{{@index}}">{{gen 'this'}}</item>{{/geneach}}</list>"''', llm=llm)
     out = prompt()
@@ -61,8 +61,8 @@ def test_geneach_with_index():
     """ Test a geneach loop.
     """
 
-    llm = compiler.endpoints.Mock(["Qs", "A1", "A2", "A3", "A4", "A5"])
-    program = compiler('''
+    llm = engine.endpoints.Mock(["Qs", "A1", "A2", "A3", "A4", "A5"])
+    program = engine('''
 {{~#system~}}You are a teacher.{{~/system~}}
 
 {{~#user~}}

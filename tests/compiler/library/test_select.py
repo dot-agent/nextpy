@@ -1,4 +1,4 @@
-from openams import compiler
+from openams import engine
 import pytest
 from ...utils import get_llm
 
@@ -8,7 +8,7 @@ def test_select(llm):
     """
 
     llm = get_llm(llm)
-    program = compiler("Is Everest very tall?\nAnswer 'Yes' or 'No': '{{#select 'name'}}Yes{{or}}No{{/select}}", llm=llm)
+    program = engine("Is Everest very tall?\nAnswer 'Yes' or 'No': '{{#select 'name'}}Yes{{or}}No{{/select}}", llm=llm)
     out = program()
     assert out["name"] in ["Yes", "No"]
 
@@ -18,7 +18,7 @@ def test_select_longtext(llm):
     """
 
     llm = get_llm(llm)
-    program = compiler("""Is Everest very tall?\nAnswer:
+    program = engine("""Is Everest very tall?\nAnswer:
 {{#select 'name'}}No because of all the other ones.{{or}}Yes because I saw it.{{/select}}""", llm=llm)
     out = program()
     assert out["name"] in ["No because of all the other ones.", "Yes because I saw it."]
@@ -29,7 +29,7 @@ def test_select_with_list(llm):
     """
 
     llm = get_llm(llm)
-    program = compiler("Is Everest very tall?\nAnswer 'Yes' or 'No': '{{select 'name' options=options logprobs='logprobs'}}", llm=llm)
+    program = engine("Is Everest very tall?\nAnswer 'Yes' or 'No': '{{select 'name' options=options logprobs='logprobs'}}", llm=llm)
     out = program(options=["Yes", "No", "Maybe", "I don't know"])
     assert out["name"] in ["Yes", "No", "Maybe", "I don't know"]
     for k in out["logprobs"]:
@@ -41,7 +41,7 @@ def test_select_list_append(llm):
     """
 
     llm = get_llm(llm)
-    program = compiler("Is Everest very tall?\n{{select 'name' options=options list_append=True}}\n{{select 'name' options=options list_append=True}}", llm=llm)
+    program = engine("Is Everest very tall?\n{{select 'name' options=options list_append=True}}\n{{select 'name' options=options list_append=True}}", llm=llm)
     out = program(options=["Yes", "No"])
     assert len(out["name"]) == 2
     for v in out["name"]:
@@ -53,7 +53,7 @@ def test_select_names(llm):
     """
 
     llm = get_llm(llm)
-    out = compiler(
+    out = engine(
         "Hello, {{#select 'name'}}Alice{{or}}Bob{{/select}}",
         llm=llm
     )()
@@ -73,7 +73,7 @@ def test_select_multi_path():
     ]
 
     llm = get_llm("transformers:gpt2")
-    out = compiler(
+    out = engine(
         "Hello, write me a sentence. {{select 'sentence' logprobs='probs' options=options}}",
         llm=llm
     )(options=options)
@@ -94,7 +94,7 @@ def test_select_multi_path_with_suffix():
     ]
 
     llm = get_llm("transformers:gpt2")
-    out = compiler(
+    out = engine(
         "Hello, write me a sentence. {{select 'sentence' logprobs='probs' options=options}} And this is the suffix.",
         llm=llm
     )(options=options)
@@ -107,7 +107,7 @@ def test_select_odd_spacing(llm):
     """
 
     llm = get_llm(llm)
-    prompt = compiler('''Is the following sentence offensive? Please answer with a single word, either "Yes", "No", or "Maybe".
+    prompt = engine('''Is the following sentence offensive? Please answer with a single word, either "Yes", "No", or "Maybe".
     Sentence: {{example}}
     Answer: {{#select "answer" logprobs='logprobs'}} Yes{{or}} Nein{{or}} Maybe{{/select}}''', llm=llm)
     prompt = prompt(example='I hate tacos.')
@@ -120,7 +120,7 @@ def test_overlapping_options(llm):
 
     llm = get_llm(llm)
     options = ['a', 'aa']
-    program = compiler("'{{select options=options}}", llm=llm)
+    program = engine("'{{select options=options}}", llm=llm)
     out = program(options=options)
     assert out["selected"] in options
 
@@ -130,7 +130,7 @@ def test_non_greedy_tokenize(llm):
     """
 
     llm = get_llm(llm)
-    program = compiler('''Is the following sentence offensive? Please answer with a single word, either "Yes", "No", or "Maybe".
+    program = engine('''Is the following sentence offensive? Please answer with a single word, either "Yes", "No", or "Maybe".
 Sentence: {{example}}
 Answer:{{#select "answer" logprobs='logprobs'}} 
     Yes{{or}} 
@@ -147,7 +147,7 @@ def test_variable_starts_with_or(llm):
 
     llm = get_llm(llm)
     organizations = ["Microsoft", "Apple", "Meta", "Google", "Amazon"]
-    program = compiler("They work at: {{select options=organizations}}", llm=llm)
+    program = engine("They work at: {{select options=organizations}}", llm=llm)
     out = program(organizations=organizations)
     assert out["selected"] in organizations
 
@@ -158,7 +158,7 @@ def test_variable_starts_with_or(llm):
 
 #     llm = get_transformers_llm("gpt2")
 #     options = ['a', 'b']
-#     program = compiler("some word xy{{select options=options}}", llm=llm)
+#     program = engine("some word xy{{select options=options}}", llm=llm)
 #     out = program(options=options)
 #     assert out["selected"] in options
 

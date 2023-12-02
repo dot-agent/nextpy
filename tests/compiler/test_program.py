@@ -1,4 +1,4 @@
-from openams import compiler
+from openams import engine
 import pytest
 from ..utils import get_llm
 
@@ -9,10 +9,10 @@ def test_chat_stream():
     import asyncio
     loop = asyncio.new_event_loop()
 
-    compiler.llm = get_llm("openai:gpt-3.5-turbo")
+    engine.llm = get_llm("openai:gpt-3.5-turbo")
 
     async def f():
-        chat = compiler("""<|im_start|>system
+        chat = engine("""<|im_start|>system
 You are a helpful assistent.
 <|im_end|>
 <|im_start|>user
@@ -31,10 +31,10 @@ def test_chat_display():
     import asyncio
     loop = asyncio.new_event_loop()
 
-    compiler.llm = get_llm("openai:gpt-3.5-turbo")
+    engine.llm = get_llm("openai:gpt-3.5-turbo")
 
     async def f():
-        chat = compiler("""<|im_start|>system
+        chat = engine("""<|im_start|>system
 You are a helpful assistent.
 <|im_end|>
 <|im_start|>user
@@ -49,9 +49,9 @@ You are a helpful assistent.
 def test_agents():
     """Test agents, calling prompt twice"""
 
-    compiler.llm = get_llm("openai:gpt-3.5-turbo")
+    engine.llm = get_llm("openai:gpt-3.5-turbo")
 
-    prompt = compiler('''<|im_start|>system
+    prompt = engine('''<|im_start|>system
 You are a helpful assistant.<|im_end|>
 {{#geneach 'conversation' stop=False}}
 <|im_start|>user
@@ -66,7 +66,7 @@ You are a helpful assistant.<|im_end|>
 @pytest.mark.parametrize("llm", ["transformers:gpt2", "openai:text-curie-001"])
 def test_stream_loop(llm):
     llm = get_llm(llm)
-    program = compiler("""Generate a list of 5 company names:
+    program = engine("""Generate a list of 5 company names:
 {{#geneach 'companies' num_iterations=5~}}
 {{@index}}. "{{gen 'this' max_tokens=5}}"
 {{/geneach}}""", llm=llm)
@@ -89,7 +89,7 @@ def test_stream_loop_async(llm):
     llm = get_llm(llm)
 
     async def f():
-        program = compiler("""Generate a list of 5 company names:
+        program = engine("""Generate a list of 5 company names:
 {{#geneach 'companies' num_iterations=5~}}
 {{@index}}. "{{gen 'this' max_tokens=5}}"
 {{/geneach}}""", llm=llm)
@@ -103,12 +103,12 @@ def test_stream_loop_async(llm):
     loop.run_until_complete(f())
 
 def test_logging_on():
-    program = compiler("""This is a test prompt{{#if flag}} yes.{{/if}}""", log=True)
+    program = engine("""This is a test prompt{{#if flag}} yes.{{/if}}""", log=True)
     executed_program = program(flag=True)
     assert len(executed_program.log) > 0
 
 def test_logging_off():
-    program = compiler("""This is a test prompt{{#if flag}} yes.{{/if}}""", log=False)
+    program = engine("""This is a test prompt{{#if flag}} yes.{{/if}}""", log=False)
     executed_program = program(flag=True)
     assert executed_program.log is False
 
@@ -121,10 +121,10 @@ def test_async_mode_exceptions():
     import asyncio
     loop = asyncio.new_event_loop()
 
-    compiler.llm = get_llm("openai:gpt-3.5-turbo")
+    engine.llm = get_llm("openai:gpt-3.5-turbo")
 
     async def call_async():
-        program = compiler("""
+        program = engine("""
 {{#system~}}
 You are a helpful assistant.
 {{~/system}}
