@@ -4,6 +4,7 @@ from typing import Dict, Any
 import platformdirs
 
 from . import BaseCache
+
 try:
     from gptcache.adapter.api import get, put, init_similar_cache
 except ImportError:
@@ -20,7 +21,7 @@ class GPTCache(BaseCache):
             cache_obj = BaseCache()
             init_similar_cache(
                 data_dir=os.path.join(
-                    platformdirs.user_cache_dir("Engine"), f"_{cache}.gptcache"
+                    platformdirs.user_cache_dir("engine"), f"_{cache}.gptcache"
                 ),
                 cache_obj=cache_obj,
             )

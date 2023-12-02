@@ -5,12 +5,12 @@ from abc import ABC, abstractmethod
 
 class BaseCache(ABC):
     @abstractmethod
-    def __getitem__(self, key: str) -> Any:
+    def __getitem__(self, key: str) -> str:
         """get an item from the cache or throw key error"""
         pass
 
     @abstractmethod
-    def __setitem__(self, key: str, value: Any) -> None:
+    def __setitem__(self, key: str, value: str) -> None:
         """set an item in the cache"""
         pass
 
@@ -35,7 +35,5 @@ class BaseCache(ABC):
         hasher.update(combined)
         return hasher.hexdigest()
 
-    @abstractmethod
     def clear(self):
-        """Clear cache"""
-        pass
+        raise NotImplementedError()

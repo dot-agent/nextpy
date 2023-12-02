@@ -8,10 +8,11 @@ from . import BaseCache
 
 class DiskCache(BaseCache):
     """DiskCache is a cache that uses diskcache lib."""
+
     def __init__(self, llm_name: str):
         self._diskcache = diskcache.Cache(
             os.path.join(
-                platformdirs.user_cache_dir("Engine"), f"_{llm_name}.diskcache"
+                platformdirs.user_cache_dir("engine"), f"_{llm_name}.diskcache"
             )
         )
 
@@ -23,6 +24,6 @@ class DiskCache(BaseCache):
 
     def __contains__(self, key: str) -> bool:
         return key in self._diskcache
-    
+
     def clear(self):
         self._diskcache.clear()

@@ -6,32 +6,34 @@ import re
 import asyncio
 
 
-def load(engineenginefile):
-    ''' Load a Engine program from the given text file.
+def load(enginefile):
+    """ Load a engine program from the given text file.
 
     If the passed file is a valid local file it will be loaded directly.
     Otherwise, if it starts with "http://" or "https://" it will be loaded
     from the web.
-    '''
+    """
 
-    if os.path.exists(Engine_file):
-        with open(Engine_file, 'r') as f:
+    if os.path.exists(engine_file):
+        with open(engine_file, "r") as f:
             return f.read()
-    elif Engine_file.startswith('http://') or Engine_file.startswith('https://'):
-        return requests.get(Engine_file).text
+    elif engine_file.startswith("http://") or engine_file.startswith("https://"):
+        return requests.get(engine_file).text
     else:
-        raise ValueError('Invalid Engine file: %s' % Engine_file)
+        raise ValueError("Invalid engine file: %s" % engine_file)
 
 
 def merge_programs(programs, **kwargs):
-    ''' merge_programs together multiple programs into a single program.
+    """ merge_programs together multiple programs into a single program.
     
     This merges them into a single program like: {{>program1 hidden=True}}{{>program2 hidden=True}}
-    '''
+    """
 
     from ._program import Program
 
-    new_template = "".join(["{{>program%d hidden=True}}" % i for i in range(len(programs))])
+    new_template = "".join(
+        ["{{>program%d hidden=True}}" % i for i in range(len(programs))]
+    )
     for i, program in enumerate(programs):
         if isinstance(program, Program):
             kwargs["program%d" % i] = program
@@ -41,7 +43,9 @@ def merge_programs(programs, **kwargs):
             for name, _ in sig.parameters.items():
                 args += f" {name}={name}"
             fname = find_func_name(program, kwargs)
-            kwargs["program%d" % i] = Program("{{set (%s%s)}}" % (fname, args), **{fname: program})
+            kwargs["program%d" % i] = Program(
+                "{{set (%s%s)}}" % (fname, args), **{fname: program}
+            )
             # kwargs.update({f"func{i}": program})
     return Program(new_template, **kwargs)
 
@@ -62,18 +66,19 @@ def find_func_name(f, used_names):
 
 
 def strip_markers(s):
-    """This strips out the comment markers used by Engine."""
+    """This strips out the comment markers used by engine."""
     if s is None:
         return None
     return re.sub(r"{{!--G.*?--}}", r"", s, flags=re.MULTILINE | re.DOTALL)
 
-class AsyncIter():    
-    def __init__(self, items):    
-        self.items = items    
 
-    async def __aiter__(self):    
-        for item in self.items:    
-            yield item
+class AsyncIter:
+    def __init__(self, items):
+        self.items = items
+
+    async def __aiter__(self):
+        for item in self.items:
+           yield item
 
 class ContentCapture:
     def __init__(self, variable_stack, hidden=False):
@@ -83,18 +88,21 @@ class ContentCapture:
     def __enter__(self):
         self._pos = len(self._variable_stack["@raw_prefix"])
         if self._hidden:
-            self._variable_stack.push({"@raw_prefix": self._variable_stack["@raw_prefix"]})
+            self._variable_stack.push(
+                {"@raw_prefix": self._variable_stack["@raw_prefix"]}
+            )
         return self
 
     def __exit__(self, type, value, traceback):
         if self._hidden:
             new_content = str(self)
             self._variable_stack.pop()
-            self._variable_stack["@raw_prefix"] += "{{!--GHIDDEN:"+new_content.replace("--}}", "--_END_END")+"--}}"
-
+            self._variable_stack["@raw_prefix"] += (
+                "{{!--GHIDDEN:" + new_content.replace("--}}", "--_END_END") + "--}}"
+            )
     def __str__(self):
-        return strip_markers(self._variable_stack["@raw_prefix"][self._pos:])
-    
+        return strip_markers(self._variable_stack["@raw_prefix"][self._pos :])
+
     def __iadd__(self, other):
         if other is not None:
             self._variable_stack["@raw_prefix"] += other
@@ -102,13 +110,18 @@ class ContentCapture:
     
     def inplace_replace(self, old, new):
         """Replace all instances of old with new in the captured content."""
-        self._variable_stack["@raw_prefix"] = self._variable_stack["@raw_prefix"][:self._pos] + self._variable_stack["@raw_prefix"][self._pos:].replace(old, new)
+        self._variable_stack["@raw_prefix"] = self._variable_stack["@raw_prefix"][
+            : self._pos
+        ] + self._variable_stack["@raw_prefix"][self._pos :].replace(old, new)
 
-class JupyterComm():
-    def __init__(self, target_id, ipython_handle, callback=None, on_open=None, mode="register"):
+
+class JupyterComm:
+    def __init__(
+        self, target_id, ipython_handle, callback=None, on_open=None, mode="register"
+    ):
         from ipykernel.comm import Comm
 
-        self.target_name = "Engine_interface_target_" + target_id
+        self.target_name = "engine_interface_target_" + target_id
         # print("TARGET NAME", self.target_name)
         self.callback = callback
         self.jcomm = None
@@ -130,7 +143,9 @@ class JupyterComm():
                 self.open_event.set()
                 self._fire_callback({"content": {"data": {"event": "opened"}}})
 
-            self.ipython_handle.kernel.comm_manager.register_target(self.target_name, comm_opened)
+            self.ipython_handle.kernel.comm_manager.register_target(
+                self.target_name, comm_opened
+            )
             # get_ipython().kernel.comm_manager.register_target(self.target_name, comm_opened) # noqa: F821
         elif mode == "open":
             # log("OPENING", self.target_name)
@@ -193,7 +208,7 @@ class JupyterComm():
 # https://stackoverflow.com/questions/15411967/how-can-i-check-if-code-is-executed-in-the-ipython-notebook
 def is_interactive():
     import __main__ as main
-    return not hasattr(main, '__file__')
+    return not hasattr(main, "__file__")
 
 
 def escape_template_block(text):

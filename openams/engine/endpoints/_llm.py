@@ -8,14 +8,17 @@ from openams.engine.endpoints.caches import DiskCache
 class LLMMeta(type):
     def __init__(cls, *args, **kwargs):
         cls._cache = None
+
     @property
     def cache(cls):
         if cls._cache is None:
             cls._cache = DiskCache(cls.llm_name)
         return cls._cache
+
     @cache.setter
     def cache(cls, value):
         cls._cache = value
+
 
 class LLM(metaclass=LLMMeta):
     cache_version = 1
@@ -47,11 +50,17 @@ type {{function.name}} = (_: {
 
 {{/each~}}
 } // namespace functions
-{{~/if~}}""", functions=[])
-        self.function_call_stop_regex = r"\n?\n?```typescript\nfunctions.[^\(]+\(.*?\)```"
+{{~/if~}}""",
+            functions=[],
+        )
+        self.function_call_stop_regex = (
+            r"\n?\n?```typescript\nfunctions.[^\(]+\(.*?\)```"
+        )
 
     def extract_function_call(self, text):
-        m = re.match(r"\n?\n?```typescript\nfunctions.([^\(]+)\((.*?)\)```", text, re.DOTALL)
+        m = re.match(
+            r"\n?\n?```typescript\nfunctions.([^\(]+)\((.*?)\)```", text, re.DOTALL
+        )
 
         if m:
             return CallableAnswer(m.group(1), m.group(2))
@@ -108,8 +117,9 @@ type {{function.name}} = (_: {
 class LLMSession:
     def __init__(self, llm):
         self.llm = llm
-        self._call_counts = {} # tracks the number of repeated identical calls to the LLM with non-zero temperature
-
+        self._call_counts = (
+            {}
+        )  # tracks the number of repeated identical calls to the LLM with non-zero temperature
     def __enter__(self):
         return self
 
@@ -121,8 +131,19 @@ class LLMSession:
 
     def _gen_key(self, args_dict):
         del args_dict["self"]  # skip the "self" arg
-        return "_---_".join([str(v) for v in ([args_dict[k] for k in args_dict] + [self.llm.model_name, self.llm.__class__.__name__, self.llm.cache_version])])
-
+        return "_---_".join(
+            [
+                str(v)
+                for v in (
+                    [args_dict[k] for k in args_dict]
+                    + [
+                        self.llm.model_name,
+                        self.llm.__class__.__name__,
+                        self.llm.cache_version,
+                    ]
+                )
+            ]
+        )
     def _cache_params(self, args_dict) -> Dict[str, Any]:
         """get the parameters for generating the cache key"""
         key = self._gen_key(args_dict)

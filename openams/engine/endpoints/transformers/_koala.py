@@ -1,7 +1,7 @@
 from ._llama import LLaMA
 
 class Koala(LLaMA):
-    """ A HuggingFace transformers version of the Koala language model with Engine support.
+    """ A HuggingFace transformers version of the Koala language model
     """
 
     llm_name: str = "koala"
@@ -10,18 +10,18 @@ class Koala(LLaMA):
 
     @staticmethod
     def role_start(role):
-        if role == 'user':
-            return 'USER: '
-        elif role == 'assistant':
-            return 'GPT: '
+        if role == "user":
+            return "USER: "
+        elif role == "assistant":
+            return "GPT: "
         else:
-            return ''
-    
+            return ""
+
     @staticmethod
     def role_end(role):
-        if role == 'user':
-            return ''
-        elif role == 'assistant':
-            return '</s>'
+        if role == "user":
+            return ""
+        elif role == "assistant":
+            return "</s>"
         else:
-            return ''
+            return ""
