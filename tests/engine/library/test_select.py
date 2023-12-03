@@ -1,6 +1,6 @@
 from openams import engine
 import pytest
-from ...utils import get_llm
+from ..utils import get_llm
 
 @pytest.mark.parametrize("llm", ["transformers:gpt2", "openai:text-curie-001"])
 def test_select(llm):

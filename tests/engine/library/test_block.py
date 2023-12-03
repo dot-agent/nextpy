@@ -1,5 +1,5 @@
 from openams import engine
-from ...utils import get_llm
+from ..utils import get_llm
 
 def test_hidden_block():
     """ Test the behavior of generic `block`.

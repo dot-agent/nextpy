@@ -1,3 +1,5 @@
+# Taken from: https://github.com/ivano-donadi-ennova/guidance/blob/extended_timeout/guidance/llms/_palm.py
+
 import vertexai.language_models as palm
 import os
 import time

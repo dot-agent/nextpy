@@ -1,7 +1,7 @@
 from openams import engine
 import pytest
 
-from ...utils import get_llm
+from ..utils import get_llm
 
 SKIP_BASELINE_TESTS=True
 

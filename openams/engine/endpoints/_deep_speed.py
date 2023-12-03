@@ -2,7 +2,7 @@ from ._transformers import Transformers, TransformersSession
 
 
 class DeepSpeed(Transformers):
-"""A DeepSpeed accelerated language model"""
+    """A DeepSpeed accelerated language model"""
     llm_name: str = "deep_speed"
 
     def __init__(
