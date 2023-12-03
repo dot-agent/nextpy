@@ -158,7 +158,7 @@ class Program:
         ----------
         text : str
             The program string to use as a engine template.
-        llm : engine.endpoints.LLM (defaults to ngine.llm)
+        llm : engine.endpoints.LLM (defaults to engine.llm)
             The language model to use for executing the program.
         cache_seed : int (default 0) or None
             The seed to use for the cache. If you want to use the same cache for multiple programs
