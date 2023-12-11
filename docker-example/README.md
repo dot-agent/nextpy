@@ -1,0 +1,66 @@
+# Nextpy Docker Container
+
+This example describes how to create and use a container image for Nextpy with your own code.
+
+## Update Requirements
+
+The `requirements.txt` includes the nextpy package which is needed to install
+Nextpy framework. If you use additional packages in your project you have to add
+this in the `requirements.txt` first. Copy the `Dockerfile`, `.dockerignore` and
+the `requirements.txt` file in your project folder.
+
+## Build Nextpy Container Image
+
+To build your container image run the following command:
+
+```bash
+docker build -t nextpy-app:latest . --build-arg API_URL=http://app.example.com:8000
+```
+
+Ensure that `API_URL` is set to the publicly accessible hostname or IP where the app
+will be hosted.
+
+## Start Container Service
+
+Finally, you can start your Nextpy container service as follows:
+
+```bash
+docker run -p 3000:3000 -p 8000:8000 --name app nextpy-app:latest
+```
+
+It may take a few seconds for the service to become available.
+
+# Production Service with Docker Compose and Caddy
+
+An example production deployment uses automatic TLS with Caddy serving static files
+for the frontend and proxying requests to both the frontend and backend.
+
+Copy `compose.yaml`, `Caddy.Dockerfile` and `Caddyfile` to your project directory. The production
+build leverages the same `Dockerfile` described above.
+
+## Customize `Caddyfile`
+
+If the app uses additional backend API routes, those should be added to the
+`@backend_routes` path matcher to ensure they are forwarded to the backend.
+
+## Build Nextpy Production Service
+
+During build, set `DOMAIN` environment variable to the domain where the app will
+be hosted!  (Do not include http or https, it will always use https)
+
+```bash
+DOMAIN=example.com docker compose build
+```
+
+This will build both the `app` service from the existing `Dockerfile` and the `webserver`
+service via `Caddy.Dockerfile` that copies the `Caddyfile` and static frontend export
+from the `app` service into the container.
+
+## Run Nextpy Production Service
+
+```bash
+DOMAIN=example.com docker compose up
+```
+
+The app should be available at the specified domain via HTTPS. Certificate
+provisioning will occur automatically and may take a few minutes.

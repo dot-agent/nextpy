@@ -1,0 +1,91 @@
+import { createContext, useContext, useMemo, useReducer, useState } from "react"
+import { applyDelta, Event, hydrateClientStorage, useEventLoop, refs } from "/utils/state.js"
+
+{% if initial_state %}
+export const initialState = {{ initial_state|json_dumps }}
+{% else %}
+export const initialState = {}
+{% endif %}
+
+export const ColorModeContext = createContext(null);
+export const UploadFilesContext = createContext(null);
+export const DispatchContext = createContext(null);
+export const StateContexts = {
+  {% for state_name in initial_state %}
+  {{state_name|var_name}}: createContext(null),
+  {% endfor %}
+}
+export const EventLoopContext = createContext(null);
+{% if client_storage %}
+export const clientStorage = {{ client_storage|json_dumps }}
+{% else %}
+export const clientStorage = {}
+{% endif %}
+
+{% if state_name %}
+export const onLoadInternalEvent = () => [Event('{{state_name}}.{{const.on_load_internal}}')]
+
+export const initialEvents = () => [
+    Event('{{state_name}}.{{const.hydrate}}', hydrateClientStorage(clientStorage)),
+    ...onLoadInternalEvent()
+]
+{% else %}
+export const onLoadInternalEvent = () => []
+
+export const initialEvents = () => []
+{% endif %}
+
+export const isDevMode = {{ is_dev_mode|json_dumps }}
+
+export function UploadFilesProvider({ children }) {
+  const [filesById, setFilesById] = useState({})
+  refs["__clear_selected_files"] = (id) => setFilesById(filesById => {
+    const newFilesById = {...filesById}
+    delete newFilesById[id]
+    return newFilesById
+  })
+  return (
+    <UploadFilesContext.Provider value={[filesById, setFilesById]}>
+      {children}
+    </UploadFilesContext.Provider>
+  )
+}
+
+export function EventLoopProvider({ children }) {
+  const dispatch = useContext(DispatchContext)
+  const [addEvents, connectError] = useEventLoop(
+    dispatch,
+    initialEvents,
+    clientStorage,
+  )
+  return (
+    <EventLoopContext.Provider value={[addEvents, connectError]}>
+      {children}
+    </EventLoopContext.Provider>
+  )
+}
+
+export function StateProvider({ children }) {
+  {% for state_name in initial_state %}
+  const [{{state_name|var_name}}, dispatch_{{state_name|var_name}}] = useReducer(applyDelta, initialState["{{state_name}}"])
+  {% endfor %}
+  const dispatchers = useMemo(() => {
+    return {
+      {% for state_name in initial_state %}
+      "{{state_name}}": dispatch_{{state_name|var_name}},
+      {% endfor %}
+    }
+  }, [])
+
+  return (
+    {% for state_name in initial_state %}
+    <StateContexts.{{state_name|var_name}}.Provider value={ {{state_name|var_name}} }>
+    {% endfor %}
+      <DispatchContext.Provider value={dispatchers}>
+        {children}
+      </DispatchContext.Provider>
+    {% for state_name in initial_state|reverse %}
+    </StateContexts.{{state_name|var_name}}.Provider>
+    {% endfor %}
+  )
+}

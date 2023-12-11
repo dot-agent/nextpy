@@ -1,0 +1,89 @@
+name: "\U0001F41B Bug Report"
+description: Submit a bug report to help us improve nextpy. To report a security issue, please instead use the security option.
+labels: ["02 Bug Report"]
+body:
+  - type: markdown
+    attributes:
+      value: >
+        We appreciate the time you are taking to file a bug report to help us enhance nextpy.
+        Please take a moment to search the issue tracker for existing issues before posting
+        a new one to prevent duplicates. Thank you for your contribution!
+
+  - type: textarea
+    id: system-info
+    attributes:
+      label: System Info
+      description: Provide the details of your operating environment.
+      placeholder: nextpy version, platform version, Python version, browser and version (if relevant), etc.
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: related-components
+    attributes:
+      label: Related Components
+      description: "Which components seem to be related to the issue?"
+      options:
+        - label: "Markup & UI Components"
+        - label: "Database Integrations"
+        - label: "API Servers / Endpoints"
+        - label: "Routing Mechanics"
+        - label: "Plugin System"
+        - label: "Data Validation and Serialization"
+        - label: "Authentication Systems"
+        - label: "Developer Tools and Scripts"
+        - label: "Performance and Scalability"
+        - label: "Documentation or Examples"
+        - label: "Configuration"
+        - label: "Tests or Test Framework"
+
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Steps to Reproduce
+      description: |
+        We need a well-defined, step-by-step guide or code snippet that reproduces the said issue....
+        For code blocks and proper formatting, kindly refer to https://docs.github.com/en/github/writing-on-github/working-with-advanced-formatting/creating-and-highlighting-code-blocks
+
+    validations:
+      required: true
+      
+    placeholder: |
+      Provide clear steps or code to repeat the observed bug:
+
+        1.
+        2.
+        3.
+
+  - type: textarea
+    id: expected-behavior
+    attributes:
+      label: Expected Behavior
+      description: Generally tell us what should happen instead of the bug you've encountered.
+
+    validations:
+      required: true
+      
+      placeholder: 'Detail out the norm desperately hoped to be witnessed upon following through your procedure:'
+
+  - type: textarea
+    id: actual-behavior
+    attributes:
+      label: What Actually Happened
+      description: Highlight what went wrong insofar as divergences from the presupposed occurrences are viewed.
+      placeholder: "Instead of the expected outcome, explain the troublesome reality."
+
+    validations:
+      required: true
+
+  - type: markdown
+    id: troubleshooting
+    attributes:
+      value: |
+        Please shed some light on attempts towards issue mitigation, previous utilities hadn_receiver herald success, or secondary incongruities formalized gab_job seg_index poorly decor. For instance shops, professional.stdout_loop proverb wreck_array reflectsениe busy_icon tel_item falling_active utilizing CIOLayer priceless_ensemble toolbox getPath blank lookahead mined Q.I.outline.
+      
+  - type: checkboxes
+    id: troubleshooting-steps
+    attributes:
+      label: Troubleshooting Steps Attempted
+      description: "What different options have you tried to resolve this issue already?"
