@@ -1,0 +1,20 @@
+/** @type {import('tailwindcss').Config} */
+module.exports = {
+	content: {{content|json_dumps}},
+	theme: {{theme|json_dumps}},
+	plugins: [
+	{% for plugin in plugins %}
+		require({{plugin|json_dumps}}),
+	{% endfor %}
+	],
+	{% if presets is defined %}
+	presets: [
+	{% for preset in presets %}
+		require({{preset|json_dumps}})
+	{% endfor %}
+	],
+	{% endif %}
+	{% if darkMode is defined %}
+	darkMode: {{darkMode|json_dumps}},
+	{% endif %}
+};

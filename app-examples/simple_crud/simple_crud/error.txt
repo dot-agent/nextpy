@@ -1,0 +1,42 @@
+Traceback (most recent call last):
+  File "/home/anuragbsoyi/.cache/pypoetry/virtualenvs/nextpy-T9QTPRD5-py3.10/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1900, in _execute_context
+    self.dialect.do_execute(
+  File "/home/anuragbsoyi/.cache/pypoetry/virtualenvs/nextpy-T9QTPRD5-py3.10/lib/python3.10/site-packages/sqlalchemy/engine/default.py", line 736, in do_execute
+    cursor.execute(statement, parameters)
+sqlite3.OperationalError: no such table: product
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/anuragbsoyi/vscode/nextpy/nextpy/backend/state.py", line 1040, in _process_event
+    yield state._as_state_update(handler, next(events), final=False)
+  File "/home/anuragbsoyi/vscode/nextpy/app-examples/simple_crud/simple_crud/simple_crud.py", line 38, in load_product
+    self.products = session.query(Product).all()
+  File "/home/anuragbsoyi/.cache/pypoetry/virtualenvs/nextpy-T9QTPRD5-py3.10/lib/python3.10/site-packages/sqlalchemy/orm/query.py", line 2772, in all
+    return self._iter().all()
+  File "/home/anuragbsoyi/.cache/pypoetry/virtualenvs/nextpy-T9QTPRD5-py3.10/lib/python3.10/site-packages/sqlalchemy/orm/query.py", line 2907, in _iter
+    result = self.session.execute(
+  File "/home/anuragbsoyi/.cache/pypoetry/virtualenvs/nextpy-T9QTPRD5-py3.10/lib/python3.10/site-packages/sqlmodel/orm/session.py", line 101, in execute
+    return super().execute(  # type: ignore
+  File "/home/anuragbsoyi/.cache/pypoetry/virtualenvs/nextpy-T9QTPRD5-py3.10/lib/python3.10/site-packages/sqlalchemy/orm/session.py", line 1712, in execute
+    result = conn._execute_20(statement, params or {}, execution_options)
+  File "/home/anuragbsoyi/.cache/pypoetry/virtualenvs/nextpy-T9QTPRD5-py3.10/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1705, in _execute_20
+    return meth(self, args_10style, kwargs_10style, execution_options)
+  File "/home/anuragbsoyi/.cache/pypoetry/virtualenvs/nextpy-T9QTPRD5-py3.10/lib/python3.10/site-packages/sqlalchemy/sql/elements.py", line 333, in _execute_on_connection
+    return connection._execute_clauseelement(
+  File "/home/anuragbsoyi/.cache/pypoetry/virtualenvs/nextpy-T9QTPRD5-py3.10/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1572, in _execute_clauseelement
+    ret = self._execute_context(
+  File "/home/anuragbsoyi/.cache/pypoetry/virtualenvs/nextpy-T9QTPRD5-py3.10/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1943, in _execute_context
+    self._handle_dbapi_exception(
+  File "/home/anuragbsoyi/.cache/pypoetry/virtualenvs/nextpy-T9QTPRD5-py3.10/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 2124, in _handle_dbapi_exception
+    util.raise_(
+  File "/home/anuragbsoyi/.cache/pypoetry/virtualenvs/nextpy-T9QTPRD5-py3.10/lib/python3.10/site-packages/sqlalchemy/util/compat.py", line 208, in raise_
+    raise exception
+  File "/home/anuragbsoyi/.cache/pypoetry/virtualenvs/nextpy-T9QTPRD5-py3.10/lib/python3.10/site-packages/sqlalchemy/engine/base.py", line 1900, in _execute_context
+    self.dialect.do_execute(
+  File "/home/anuragbsoyi/.cache/pypoetry/virtualenvs/nextpy-T9QTPRD5-py3.10/lib/python3.10/site-packages/sqlalchemy/engine/default.py", line 736, in do_execute
+    cursor.execute(statement, parameters)
+sqlalchemy.exc.OperationalError: (sqlite3.OperationalError) no such table: product
+[SQL: SELECT product.created AS product_created, product.updated AS product_updated, product.id AS product_id, product.code AS product_code, product.label AS product_label, product.image AS product_image, product.quantity AS product_quantity, product.category AS product_category, product.seller AS product_seller, product.sender AS product_sender 
+FROM product]
+(Background on this error at: https://sqlalche.me/e/14/e3q8)

@@ -1,0 +1,41 @@
+llm:
+  type: "OpenAI"
+  model: "gpt-3.5-turbo"
+rag:
+  data_source: "./test_data/meteoric"
+  data_loader: "SimpleDirectoryReader"
+  data_transformer:
+    type: "CharacterTextSplitter"
+    chunk_overlap: 40
+    chunk_size: 1024
+  vector_store:
+    type: "Chroma"
+    embedding_function: "OpenAIEmbeddings"
+agent:
+  type: "ChatAgent"
+  prompt_template: |
+    {{#user~}}
+    You will use this FORMAT only to answer user's QUERY
+    FORMAT: {{format}}
+    QUERY: {{input}}
+
+    Use the below knowledge to answer QUERY in given FORMAT:-
+    {{RETRIEVED_KNOWLEDGE}}
+    {{~/user}}
+                                    
+    {{#assistant~}}
+    Yes, I will tell you about with that
+    {{~/assistant}}
+
+    {{#user~}}
+    Yes, tell me
+    {{~/user}}
+                                    
+    {{#assistant~}}
+    {{gen 'response' temperature=0 max_tokens=300}}
+    {{~/assistant}}
+  input_variables:
+    knowledge_variable: "input"
+    extras: "format"
+  output_key: "response"
+

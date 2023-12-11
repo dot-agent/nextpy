@@ -1,0 +1,36 @@
+[build-system]
+requires = [
+    "setuptools",
+    "wheel",
+]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "{{ package_name }}"
+version = "0.0.1"
+description = "Nextpy custom component {{ module_name }}"
+readme = "README.md"
+license = { text = "Apache-2.0" }
+requires-python = ">=3.8"
+authors = [{ name = "Your Name", email = "YOUREMAIL@domain.com" }]
+keywords = [
+    "nextpy",
+    "nextpy-custom-components"
+    "web-app"]
+
+dependencies = [
+    "nextpy>=0.3.0"
+]
+
+classifiers = [
+  "Development Status :: 4 - Beta",
+]
+
+[project.urls]
+Homepage = "https://github.com"
+
+[project.optional-dependencies]
+dev = ["build", "twine"]
+
+[tool.setuptools.packages.find]
+where = ["custom_components"]
