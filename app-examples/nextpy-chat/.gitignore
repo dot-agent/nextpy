@@ -1,0 +1,7 @@
+*.db
+*.py[cod]
+.env
+.env/*
+.web
+.web/*
+__pycache__/

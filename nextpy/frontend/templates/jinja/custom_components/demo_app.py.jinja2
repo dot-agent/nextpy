@@ -1,0 +1,49 @@
+"""Welcome to Nextpy! This file outlines the steps to create a basic app."""
+from xtconfig import config
+
+import nextpy as xt
+
+from {{ custom_component_src_dir }}.{{ module_name }} import {{ module_name }}
+
+docs_url = "https://docs.nextpy.org/introduction"
+filename = f"{config.app_name}/{config.app_name}.py"
+
+
+class State(xt.State):
+    """The app state."""
+
+    pass
+
+
+def index() -> xt.Component:
+    return xt.fragment(
+        xt.color_mode_button(xt.color_mode_icon(), float="right"),
+        xt.vstack(
+            xt.heading("Welcome to Nextpy!", font_size="2em"),
+            xt.box("Get started by editing ", xt.code(filename, font_size="1em")),
+            xt.box(
+                "Add more testing code with your new component: {{ module_name }}",
+            ),
+            xt.link(
+                "Check out our docs!",
+                href=docs_url,
+                border="0.1em solid",
+                padding="0.5em",
+                border_radius="0.5em",
+                _hover={
+                    "color": xt.color_mode_cond(
+                        light="rgb(107,99,246)",
+                        dark="rgb(179, 175, 255)",
+                    )
+                },
+            ),
+            spacing="1.5em",
+            font_size="2em",
+            padding_top="10%",
+        ),
+    )
+
+
+# Add state and page to the app.
+app = xt.App()
+app.add_page(index)

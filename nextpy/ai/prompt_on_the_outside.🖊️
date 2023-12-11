@@ -1,0 +1,13 @@
+{{#system~}}
+You are a helpful assistant
+{{~/system}}
+
+{{~#geneach 'conversation' stop=False}}
+{{#user~}}
+{{set 'this.user_text' (await 'user_text')  hidden=False}}
+{{~/user}}
+
+{{#assistant~}}
+{{gen 'this.ai_text' temperature=0 max_tokens=300}}
+{{~/assistant}}
+{{~/geneach}}

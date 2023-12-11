@@ -1,0 +1,7 @@
+FROM python:3.11
+
+ARG USERNAME=kerrigan
+RUN useradd -m $USERNAME
+USER $USERNAME
+
+WORKDIR /home/$USERNAME
