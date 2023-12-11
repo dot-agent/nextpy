@@ -23,7 +23,7 @@
 
 ## Q: Is it production ready?
 
-Kudos on discovering this hidden treasure box! 🧭  While it's fairly stable and we're battle-testing it in our own production, we'd advise a bit of caution for immediate production use.   It comes with its unique quirks and low-priority bugs, all of which are currently residing in our 'Array of Minor Annoyances' list
+Kudos on discovering this before its's beta launch! 🧭  While it's fairly stable and we're battle-testing it in our own production, we'd advise a bit of caution for immediate production use.   It comes with its unique quirks and low-priority bugs, all of which are currently residing in our 'Array of Minor Annoyances' list
 
 ---
 
@@ -32,14 +32,6 @@ Kudos on discovering this hidden treasure box! 🧭  While it's fairly stable an
 Ahoy, adventurer! 🏴‍☠️ We're excited to have you on board. Together, let's create something truly extraordinary! ✨!✨  
 
 ![-----------------------------------------------------](https://res.cloudinary.com/dzznkbdrb/image/upload/v1694798498/divider_1_rej288.gif)
-
-## ⚙️ Installation
-
-Open a terminal and run (Requires Python 3.7+):
-
-```bash
-pip install nextpy
-```
 
 ## ⚙️ Installation
 
