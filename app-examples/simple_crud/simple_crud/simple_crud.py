@@ -240,7 +240,8 @@ def index() -> xt.Component:
         xt.spacer(),
         xt.divider(orientation="vertical", border="solid black 1px"),
         xt.box(
-            xt.heading("Data Display", font_size="18px"),
+            xt.heading("Data Display", font_size="24px", pb="1rem"),
+            xt.divider(orientation="horizontal", border="solid #555555 1px"),
             data_display(),
             bg="black",
             border_radius="1rem",
