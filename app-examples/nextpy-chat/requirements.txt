@@ -1,0 +1,4 @@
+python-dotenv==1.0.0
+nextpy
+openai
+SpeechRecognition ==3.10.0
