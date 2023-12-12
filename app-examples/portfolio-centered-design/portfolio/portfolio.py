@@ -88,7 +88,7 @@ class Main:
                 ),
                 xt.vstack(
                     xt.image(
-                        src = '/semicircle.png',
+                        src = '/semicircle.svg',
                         class_name = 'absolute bottom-0'
                     ),
                     xt.image(
