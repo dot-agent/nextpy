@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="auto">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>AI Curated Gift Ideas</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+    <link rel="stylesheet" href="../static/style.css">
+    <!-- Favicons -->
+    <meta name="theme-color" content="#712cf9">
+</head>
+
+<body class="bg-body-tertiary">
+    <div id="themeSwitcher" class="dropdown position-fixed bottom-0 end-0 mb-3 me-3">
+        <button class="btn btn-bd-primary py-2 dropdown-toggle d-flex align-items-center" id="bd-theme" type="button"
+            aria-expanded="false" data-bs-toggle="dropdown" aria-label="Toggle theme">
+            <i class="fa fa-adjust" aria-hidden="true"></i>
+        </button>
+        <ul class="dropdown-menu dropdown-menu-end shadow" aria-labelledby="bd-theme-text">
+            <li><button type="button" class="dropdown-item" data-bs-theme-value="light"><i class="fa fa-sun-o" aria-hidden="true"></i> Light</button></li>
+            <li><button type="button" class="dropdown-item" data-bs-theme-value="dark"><i class="fa fa-moon-o" aria-hidden="true"></i> Dark</button></li>
+            <li><button type="button" class="dropdown-item active" data-bs-theme-value="auto"><i class="fa fa-adjust" aria-hidden="true"></i> Auto</button></li>
+        </ul>
+    </div>
+
+    <div class="container">
+        <main>
+            <div class="pt-5 text-center">
+                <h2>AI Curated Gift Ideas</h2>
+                <p class="lead">Our AI-powered tool will guide you in choosing the perfect gift when you're unsure about what to buy. Simply fill out the form below with information about the recipient and your budget, and we'll suggest a curated list of gifts!</p>
+            </div>
+            <div class="row g-5">
+                <div>
+                    <h4 class="mb-3">Gift Details</h4>
+                    <form class="needs-validation" action="/gifts" method="post" novalidate>
+                        <div class="row g-3">
+                            <div class="col-12">
+                                <label for="relationship" class="form-label">Relationship</label>
+                                <input type="text" class="form-control" id="relationship" name="relationship" placeholder="" value="" required>
+                                <div class="invalid-feedback">
+                                    Relationship information is required.
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <label for="age" class="form-label">Age</label>
+                                <input type="number" class="form-control" id="age" name="age" placeholder="" value="" required>
+                                <div class="invalid-feedback">
+                                    Age information is required.
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <label for="occasion" class="form-label">Occasion</label>
+                                <input type="text" class="form-control" id="occasion" name="occasion" placeholder="" value="" required>
+                                <div class="invalid-feedback">
+                                    Occasion information is required.
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <label for="interests" class="form-label">Interests</label>
+                                <input type="text" class="form-control" id="interests" name="interests" placeholder="" value="" required>
+                                <div class="invalid-feedback">
+                                    Interest information is required.
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <label for="budget" class="form-label">Budget</label>
+                                <input type="number" class="form-control" id="budget" name="budget" placeholder="" value="" required>
+                                <div class="invalid-feedback">
+                                    Budget information is required.
+                                </div>
+                            </div>
+                        </div>
+                        <hr class="my-4">
+                        <button class="w-100 btn btn-primary btn-lg" type="submit">Get Gift Suggestions</button>
+                    </form>
+                </div>
+            </div>
+        </main>
+
+        <footer class="my-5 pt-5 text-body-secondary text-center text-small">
+            <p class="mb-1">&copy; 2017–2023 Company Name</p>
+            <ul class="list-inline">
+                <li class="list-inline-item"><a href="#">Privacy</a></li>
+                <li class="list-inline-item"><a href="#">Terms</a></li>
+                <li class="list-inline-item"><a href="#">Support</a></li>
+            </ul>
+        </footer>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
+        crossorigin="anonymous"></script>
+    <script src="../static/script.js"></script>
+</body>
+</html>
