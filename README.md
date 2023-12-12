@@ -50,14 +50,14 @@ Here's a simplified guide to get your first Nextpy app up and running:
    Open your terminal and create a directory for your app:
 
    ```bash
-   mkdir my_nextpy_app
+   mkdir myapp
    ```
 
 2. **Go to Your New Directory:**
    Change to your new app's directory:
 
    ```bash
-   cd my_nextpy_app
+   cd myapp
    ```
 
 3. **Start Your Nextpy App:**
@@ -83,12 +83,63 @@ Here's a simplified guide to get your first Nextpy app up and running:
 2. **See Your App:**
    Open [http://localhost:3000](http://localhost:3000) in a browser.
 
-Enjoy building with Nextpy! 
+Let's create a simple joke generator app by editing myapp/myapp.py
+
+![-----------------------------------------------------](https://res.cloudinary.com/dzznkbdrb/image/upload/v1694798498/divider_1_rej288.gif)
+
+## Quickstart
+
+### Let's create a Joke Generator App
+
+#### Importing Libraries
+```python
+import nextpy as xt
+import pyjokes
+```
+First, we import two libraries: `nextpy` to build our app and `pyjokes` to get random jokes.
+
+#### Setting Up the App State
+```python
+class State(xt.State):
+    joke: str = "Click the button to get a joke!"
+
+    def generate_joke(self):
+        self.joke = pyjokes.get_joke()
+```
+We create a `State` class with a `joke` variable that starts with a message. The `generate_joke` function changes `joke` to a new random joke.
+
+#### Designing the Main Page
+```python
+def index():
+    return xt.vstack(
+        xt.text(State.joke, font_size="2em"),
+        xt.button(
+            "Generate Joke",
+            on_click=State.generate_joke,
+        ),
+        spacing="1em",
+        align_items="center",  # Aligns items horizontally
+        justify_content="center",  # Aligns items vertically
+        height="100vh",  # Fills the height of the screen
+    )
+```
+The `index` function creates the app's layout. It arranges a text box to show jokes and a button to get new ones, centering them on the screen.
+
+#### Building and Running the App
+```python
+app = xt.App()
+app.add_page(index)
+app.compile()
+```
+Lastly, we set up the app, add our main page, and get it ready to run.
+
+That's it! Our app is complete in under 25 lines of code. You can view the app's interface at `localhost:3000` and the server runs at `localhost:8000`.
+
 
 ![-----------------------------------------------------](https://res.cloudinary.com/dzznkbdrb/image/upload/v1694798498/divider_1_rej288.gif)
 
 ## 🙏 Thanks 
 
-Nextpy Framework is a state-of-the-art tool for AI-based code generation, built on the open-source community’s spirit of cooperation. It integrates key components from landmark projects like Guidance, Llama-Index, FastAPI-Mail, LangChain, ReactPy, Reflex, Chakra, Radix, Numpy and Next.js, while also drawing insights from the React and Rust ecosystems. This fusion ideas has been pivotal in shaping Nextpy into a framework that's not just AI-friendly but also a trailblazer in generative web development tools.
+Nextpy Framework is a state-of-the-art app development framerwork optimized for AI-based code generation, built on the open-source community’s spirit of cooperation. It integrates key components from landmark projects like Guidance, Llama-Index, FastAPI-Mail, LangChain, ReactPy, Reflex, Chakra, Radix, Numpy and Next.js, while also drawing insights from the React and Rust ecosystems. This fusion ideas has been pivotal in shaping Nextpy into a framework that's not just AI-friendly but also a trailblazer in generative web development tools.
 
 We are deeply grateful to the open-source creators, contributors, and maintainers whose work has provided the basis for Nextpy. Your commitment to innovation and openness has been vital for shaping this framework. Your contributions have not only enhanced Nextpy but are also advancing the new era of AI-powered software development. Thank you for being the catalysts and enablers of this transformational journey.
