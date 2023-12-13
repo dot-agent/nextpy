@@ -1,0 +1,72 @@
+{
+    "product": "FoodRec",
+    "vision": "Automated Food dishes recognition and details provider",
+    "niche": "Elderly and health enthusiast",
+    "current_state": {
+        "some_state": 10,
+        "some_other_state": 5
+    },
+    "desired_state": {
+        "some_state": 20,
+        "some_other_state": 50
+    },
+    "plan": [
+        {
+            "task": "Collect food dish images and metadata",
+            "status": "In Progress",
+            "deadline": "2023-09-15"
+        },
+        {
+            "task": "Develop image recognition model",
+            "status": "Planned",
+            "deadline": "2023-10-01"
+        },
+        {
+            "task": "Implement user interface",
+            "status": "Not Started",
+            "deadline": "2023-10-15"
+        }
+    ],
+    "requirements": [
+        "High-quality food dish images dataset",
+        "Access to image recognition technology",
+        "User-friendly UI/UX design"
+    ],
+    "sprint_duration": "2 weeks",
+    "features": [
+        "Automated food dish image recognition",
+        "Detailed nutritional information",
+        "Personalized dietary recommendations",
+        "Voice command support"
+    ],
+    "stories": [
+        {
+            "feature": "Automated food dish image recognition",
+            "tasks": [
+                "Integrate image recognition API",
+                "Test and fine-tune model accuracy",
+                "Implement real-time image analysis"
+            ]
+        },
+        {
+            "feature": "Detailed nutritional information",
+            "tasks": [
+                "Integrate nutrition database API",
+                "Display information per serving",
+                "Include common allergens info"
+            ]
+        },
+        {
+            "feature": "Personalized dietary recommendations",
+            "tasks": [
+                "Collect user preferences during setup",
+                "Analyze dietary restrictions",
+                "Suggest relevant recipes"
+            ]
+        }
+    ],
+    "avoid": [
+        "Complex user interfaces",
+        "Overwhelming data presentation"
+    ]
+}
