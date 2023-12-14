@@ -1,13 +1,13 @@
 [tool.poetry]
 name = "nextpy"
-version = "0.2.6"
-description = "Web apps in pure Python with all the flexibility and speed of nextjs."
+version = "0.2.7"
+description = "⚡The Pure Python Framework for Web Apps, Meticulously Optimized for 🤖AI agents🤖. World's first AMS🥇"
 license = "Apache-2.0"
 authors = ["Team dotagent <anurag@dotagent.ai>"]
 readme = "README.md"
 homepage = "https://nextpy.org"
 repository = "https://github.com/dot-agent/nextpy"
-documentation = "https://nextpy.org/docs/getting-started/introduction"
+documentation = "https://docs.nextpy.org/getting-started/introduction"
 keywords = ["web", "framework"]
 classifiers = ["Development Status :: 4 - Beta"]
 
@@ -74,12 +74,12 @@ pytest-profiling = "^1.7.0"
 pytest-html = "^4.1.1"
 ipykernel = "^6.27.1"
 
-[tool.poetry.group.ams]
+[tool.poetry.group.ai]
 optional = true
 
-[tool.poetry.group.ams.dependencies]
+[tool.poetry.group.ai.dependencies]
 diskcache = "*"
-openai = ">=0.27.8"
+openai = "^0.27.8"
 pyparsing = ">=3.0.0"
 pygtrie = "*"
 platformdirs = "*"
@@ -89,10 +89,10 @@ msal = "*"
 requests = "*"
 aiohttp = "*"
 
-[tool.poetry.group.ml]
+[tool.poetry.group.aidev]
 optional = true
 
-[tool.poetry.group.ml.dependencies]
+[tool.poetry.group.aidev.dependencies]
 transformers = "*"
 torch = "*"
 
