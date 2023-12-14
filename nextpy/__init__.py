@@ -286,6 +286,7 @@ _MAPPING = {
     "nextpy.data.model": ["model", "session", "Model"],
     "nextpy.data.jsondb": ["JsonDatabase"],
     "nextpy.build.testing": ["testing"],
+    "nextpy.sandbox": ["sandbox", "SandBox"],
     "nextpy.utils": ["utils"],
 }
 _MAPPING = {value: key for key, values in _MAPPING.items() for value in values}
