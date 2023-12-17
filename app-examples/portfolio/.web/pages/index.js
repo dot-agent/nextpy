@@ -3,8 +3,8 @@
 import "focus-visible/dist/focus-visible"
 import { Fragment, useContext } from "react"
 import { EventLoopContext } from "/utils/context"
-import { Event, isTrue } from "/utils/state"
-import { Box, Button, Center, Image, Modal, ModalBody, ModalContent, ModalHeader, ModalOverlay, Text, VStack } from "@chakra-ui/react"
+import { Event, isTrue, set_val } from "/utils/state"
+import { Box, Button, Image, Input, Modal, ModalBody, ModalContent, ModalHeader, ModalOverlay, Text, VStack } from "@chakra-ui/react"
 import { getEventURL } from "/utils/state.js"
 import NextHead from "next/head"
 
@@ -41,120 +41,147 @@ export default function Component() {
 )}
 </Fragment>
   <Fragment>
+  <Box className={`flex items-center justify-between mt-5 mx-5 md:mx-10`}>
+  <Text>
+  {`Logo`}
+</Text>
+  <Box className={`flex items-center gap-5 `}>
+  <Text sx={{"cursor": "pointer"}}>
+  {`About`}
+</Text>
+  <Text sx={{"cursor": "pointer"}}>
+  {`Work`}
+</Text>
+  <Text sx={{"cursor": "pointer"}}>
+  {`Contact`}
+</Text>
+</Box>
+</Box>
   <Fragment>
-  <Box className={`flex flex-col md:flex-row items-center justify-center`} sx={{"marginTop": "6rem"}}>
-  <VStack alignItems={`left`} spacing={`0.5em`} sx={{"fontSize": "2em"}}>
-  <Text className={`md:mb-8 mb-4 text-xs md:text-base`} sx={{"fontFamily": "Epilogue", "fontWeight": "bold"}}>
+  <Box className={`flex flex-col md:flex-row  items-center justify-evenly mx-5  md:mx-8 mt-16  md:mt-24    `}>
+  <Box sx={{"variant": "unstyled", "spacing": "0.5em", "alignItems": "left", "fontSize": "2em"}}>
+  <Text className={`md:mb-8 mb-4 text-base md:text-lg`} sx={{"fontFamily": "Epilogue", "fontWeight": "bold"}}>
   {`Branding | Image making `}
 </Text>
-  <Text className={`md:text-5xl text-3xl`} sx={{"fontFamily": "Epilogue", "fontWeight": "bold", "lineHeight": "1px"}}>
-  {`Visual`}
+  <Text className={`md:text-7xl text-3xl`} sx={{"fontFamily": "Epilogue", "fontWeight": "bold"}}>
+  {`Visual Designer`}
 </Text>
-  <Text className={`md:text-5xl text-3xl`} sx={{"fontFamily": "Epilogue", "fontWeight": "bold"}}>
-  {`Designer`}
+  <Text className={`pt-2 md:text-sm max-w-md text-xs`} sx={{"fontFamily": "Epilogue"}}>
+  {`This is a template Figma file, turned into code using Anima. Learn more at AnimaApp.com`}
 </Text>
-  <Text className={`pt-2`} sx={{"fontSize": "12.705px", "fontFamily": "Epilogue"}}>
-  {`This is a template Figma file, turned into`}
-</Text>
-  <Text sx={{"lineHeight": "5px", "fontSize": "12.705px", "fontFamily": "Epilogue"}}>
-  {`code using Anima.`}
-</Text>
-  <Text sx={{"fontSize": "12.705px", "fontFamily": "Epilogue"}}>
-  {`Learn more at AnimaApp.com`}
-</Text>
-  <Button variant={`unstyled`}>
-  <Center className={`mt-6`} sx={{"bg": "#2D2D2D", "color": "white", "width": "60%", "py": "12px", "borderRadius": null}}>
+  <Button className={` py-8 mt-6 hover:bg-[#2D2D2D]  text-base md:text-lg`} sx={{"bg": "#2D2D2D", "color": "white", "width": "30%", "borderRadius": null, "_hover": {"bg": "#2D2D2D"}}}>
   {`Contact`}
-</Center>
 </Button>
-</VStack>
-  <Box>
-  <Center className={`mt-20 md:mt-0 lg:mt-0`} sx={{"fontSize": "15.25px", "color": "#E3E3E3"}}>
-  <Image src={`/image.png`} sx={{"width": "50%"}}/>
-</Center>
+</Box>
+  <Box className={`flex justify-center items-center`} sx={{"fontSize": "15.25px", "color": "#E3E3E3"}}>
+  <Image className={`w-3/6 md:w-4/6`} src={`/image.png`}/>
 </Box>
 </Box>
 </Fragment>
   <Box>
-  <VStack className={`flex justify-center mb-12`}>
-  <Text className={` text-center mt-12 md:mt-20 font-bold`} sx={{"fontSize": "16px", "fontFamily": "Epilogue"}}>
+  <VStack className={`flex mb-12 `}>
+  <Text className={`text-center md:text-3xl mt-16 md:mt-24 font-bold`} sx={{"fontFamily": "Epilogue"}}>
   {`Latest work`}
 </Text>
-  <Box className={`grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 md:pt-4 pt-2 gap-4`}>
+  <Box className={`grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 md:pt-4 pt-2  gap-6`}>
   <Box>
-  <Image src={`/book.jpg`} sx={{"width": "159.477px", "height": "159.477"}}/>
-  <Text className={`py-2`} sx={{"fontSize": "9.665px", "fontFamily": "Epilogue"}}>
+  <Image className={`w-48 h-48 md:w-60 md:h-60  lg:w-80 lg:h-80`} src={`/book.jpg`}/>
+  <Text className={`py-2 lg:text-base text-sm font-bold`} sx={{"fontFamily": "Epilogue"}}>
   {`Project title`}
 </Text>
-  <Text sx={{"fontSize": "8.215px", "fontFamily": "Epilogue"}}>
+  <Text className={`text-xs md:text-sm`} sx={{"fontFamily": "Epilogue"}}>
   {`UI, Art drection`}
 </Text>
 </Box>
   <Box>
-  <Image src={`/abstract.jpg`} sx={{"width": "159.477px", "height": "159.477", "objectFit": "cover"}}/>
-  <Text className={`py-2`} sx={{"fontSize": "9.665px", "fontFamily": "Epilogue"}}>
+  <Image className={`w-48 h-48 md:w-60 md:h-60  lg:w-80 lg:h-80`} src={`/abstract.jpg`} sx={{"objectFit": "cover"}}/>
+  <Text className={`py-2 lg:text-base text-sm font-bold`} sx={{"fontFamily": "Epilogue"}}>
   {`Project title`}
 </Text>
-  <Text sx={{"fontSize": "8.215px", "fontFamily": "Epilogue"}}>
+  <Text className={`text-xs md:text-sm`} sx={{"fontFamily": "Epilogue"}}>
   {`UI, Art drection`}
 </Text>
 </Box>
   <Box>
-  <Image src={`/magzine.jpg`} sx={{"width": "159.477px", "height": "159.477", "objectFit": "cover"}}/>
-  <Text className={`py-2`} sx={{"fontSize": "9.665px", "fontFamily": "Epilogue"}}>
+  <Image className={`w-48 h-48 md:w-60 md:h-60  lg:w-80 lg:h-80`} src={`/magzine.jpg`} sx={{"objectFit": "cover"}}/>
+  <Text className={`py-2 lg:text-base text-sm font-bold`} sx={{"fontFamily": "Epilogue"}}>
   {`Project title`}
 </Text>
-  <Text sx={{"fontSize": "8.215px", "fontFamily": "Epilogue"}}>
+  <Text className={`text-xs md:text-sm`} sx={{"fontFamily": "Epilogue"}}>
   {`UI, Art drection`}
 </Text>
 </Box>
   <Box>
-  <Image src={`/isalah.jpg`} sx={{"width": "159.477px", "height": "159.477", "objectFit": "cover"}}/>
-  <Text className={`py-2`} sx={{"fontSize": "9.665px", "fontFamily": "Epilogue"}}>
+  <Image className={`w-48 h-48 md:w-60 md:h-60  lg:w-80 lg:h-80`} src={`/isalah.jpg`} sx={{"objectFit": "cover"}}/>
+  <Text className={`py-2 lg:text-base text-sm font-bold`} sx={{"fontFamily": "Epilogue"}}>
   {`Project title`}
 </Text>
-  <Text sx={{"fontSize": "8.215px", "fontFamily": "Epilogue"}}>
+  <Text className={`text-xs md:text-sm`} sx={{"fontFamily": "Epilogue"}}>
   {`UI, Art drection`}
 </Text>
 </Box>
   <Box>
-  <Image src={`/book2.jpg`} sx={{"width": "159.477px", "height": "159.477", "objectFit": "cover"}}/>
-  <Text className={`py-2`} sx={{"fontSize": "9.665px", "fontFamily": "Epilogue"}}>
+  <Image className={`w-48 h-48 md:w-60 md:h-60  lg:w-80 lg:h-80`} src={`/book2.jpg`} sx={{"objectFit": "cover"}}/>
+  <Text className={`py-2 lg:text-base text-sm font-bold`} sx={{"fontFamily": "Epilogue"}}>
   {`Project title`}
 </Text>
-  <Text sx={{"fontSize": "8.215px", "fontFamily": "Epilogue"}}>
+  <Text className={`text-xs md:text-sm`} sx={{"fontFamily": "Epilogue"}}>
   {`UI, Art drection`}
 </Text>
 </Box>
   <Box>
-  <Image src={`/book3.jpg`} sx={{"width": "159.477px", "height": "159.477", "objectFit": "cover"}}/>
-  <Text className={`py-2`} sx={{"fontSize": "9.665px", "fontFamily": "Epilogue"}}>
+  <Image className={`w-48 h-48 md:w-60 md:h-60  lg:w-80 lg:h-80`} src={`/book3.jpg`} sx={{"objectFit": "cover"}}/>
+  <Text className={`py-2 lg:text-base text-sm font-bold`} sx={{"fontFamily": "Epilogue"}}>
   {`Project title`}
 </Text>
-  <Text sx={{"fontSize": "8.215px", "fontFamily": "Epilogue"}}>
+  <Text className={`text-xs md:text-sm`} sx={{"fontFamily": "Epilogue"}}>
   {`UI, Art drection`}
 </Text>
 </Box>
   <Box>
-  <Image src={`/magzine.jpg`} sx={{"width": "159.477px", "height": "159.477", "objectFit": "cover"}}/>
-  <Text className={`py-2`} sx={{"fontSize": "9.665px", "fontFamily": "Epilogue"}}>
+  <Image className={`w-48 h-48 md:w-60 md:h-60  lg:w-80 lg:h-80`} src={`/magzine.jpg`} sx={{"objectFit": "cover"}}/>
+  <Text className={`py-2 lg:text-base text-sm font-bold`} sx={{"fontFamily": "Epilogue"}}>
   {`Project title`}
 </Text>
-  <Text sx={{"fontSize": "8.215px", "fontFamily": "Epilogue"}}>
+  <Text className={`text-xs md:text-sm`} sx={{"fontFamily": "Epilogue"}}>
   {`UI, Art drection`}
 </Text>
 </Box>
   <Box>
-  <Image src={`/abstract.jpg`} sx={{"width": "159.477px", "height": "159.477", "objectFit": "cover"}}/>
-  <Text className={`py-2`} sx={{"fontSize": "9.665px", "fontFamily": "Epilogue"}}>
+  <Image className={`w-48 h-48 md:w-60 md:h-60  lg:w-80 lg:h-80`} src={`/abstract.jpg`} sx={{"objectFit": "cover"}}/>
+  <Text className={`py-2 lg:text-base text-sm font-bold`} sx={{"fontFamily": "Epilogue"}}>
   {`Project title`}
 </Text>
-  <Text sx={{"fontSize": "8.215px", "fontFamily": "Epilogue"}}>
+  <Text className={`text-xs md:text-sm`} sx={{"fontFamily": "Epilogue"}}>
   {`UI, Art drection`}
 </Text>
 </Box>
 </Box>
 </VStack>
+</Box>
+  <Box className={`flex flex-col md:flex-row items-center justify-evenly gap-4 md:gap-8 mx-5  md:mx-8  pt-2 md:pt-12 lg:pt-14 pb-12 md:pb-20`}>
+  <Box>
+  <Text className={`md:mb-8 mb-4 text-base md:text-2xl lg:text-3xl`} sx={{"fontFamily": "Epilogue", "fontWeight": "bold"}}>
+  {`Lets work together`}
+</Text>
+  <Text className={`md:mb-8 mb-4 text-sm lg:text-base max-w-lg`} sx={{"fontFamily": "Epilogue"}}>
+  {`This is a template Figma file, turned into code using Anima. Learn more at AnimaApp.com This is a template Figma file, turned into code using Anima. Learn more at AnimaApp.com`}
+</Text>
+  <Box className={`flex  items-center gap-4 `}>
+  <Image className={`w-7 h-7 md:w-9 md:h-9`} src={`/discord.svg`} sx={{"objectFit": "cover"}}/>
+  <Image className={` w-7 h-7 md:w-9 md:h-9`} src={`/facebook.svg`} sx={{"objectFit": "cover"}}/>
+  <Image className={`w-7 h-7 md:w-9 md:h-9`} src={`/dribbble.svg`} sx={{"objectFit": "cover"}}/>
+  <Image className={`w-7 h-7 md:w-9 md:h-9`} src={`/nstagram.svg`} sx={{"objectFit": "cover"}}/>
+  <Image className={`w-7 h-7 md:w-9 md:h-9`} src={`/behance.svg`} sx={{"objectFit": "cover"}}/>
+</Box>
+</Box>
+  <Box sx={{"variant": "unstyled", "spacing": "0.5em", "alignItems": "left", "fontSize": "2em"}}>
+  <Input className={`mb-2`} placeholder={`Name`} sx={{"_placeholder": {"color": "#2D2D2D"}, "bg": "#F3F3F3", "borderRadius": null, "height": "3rem"}} type={`text`}/>
+  <Input placeholder={`Email`} sx={{"_placeholder": {"color": "#2D2D2D"}, "bg": "#F3F3F3", "borderRadius": null, "height": "3rem"}} type={`text`}/>
+  <Button className={`mt-6 py-8 text-base md:text-lg`} sx={{"bg": "#2D2D2D", "color": "white", "width": "30%", "borderRadius": null, "_hover": {"bg": "#2D2D2D"}}}>
+  {`Submit`}
+</Button>
+</Box>
 </Box>
 </Fragment>
   <NextHead>

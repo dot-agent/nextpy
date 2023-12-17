@@ -13,8 +13,8 @@ import NextHead from "next/head"
 
 
 export default function Component() {
-  const [addEvents, connectError] = useContext(EventLoopContext);
   const routeNotFound = useClientSideRouting()
+  const [addEvents, connectError] = useContext(EventLoopContext);
 
   return (
     <Fragment>
