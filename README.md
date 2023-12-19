@@ -3,7 +3,7 @@
 <img src="https://raw.githubusercontent.com/dotagent-ai/assets/main/nextpy_logo_dark_theme.svg#gh-dark-mode-only" alt="Nextpy Logo" width="320px">
 <hr>
 
-<h3> The Python Framework for Next-Gen Web Apps. </h3>
+<h3> Pythonic Web App framework: For Humans & LLMs</h3>
 
 ```diff
 + 🤖 Searching for 'OpenAMS' or 'OpenAgent'? They're now seamlessly integrated into Nextpy. +
@@ -18,6 +18,24 @@ Congratulations on discovering Nextpy before its beta launch! 🧭 While it's st
 **Ready to Dive In?**
 
 Ahoy, adventurer! 🏴‍☠️ We're thrilled to have you aboard. Let's create something extraordinary together! ✨
+
+![-----------------------------------------------------](https://res.cloudinary.com/dzznkbdrb/image/upload/v1694798498/divider_1_rej288.gif)
+
+## Origin tale of Next.py
+
+In our quest to create apps that write themselves, we delved deep into a labyrinth of coding tools, frameworks, and libraries. Our experiments spanned all major large language models (LLMs), thousands of prompts, and every major web development framework, from React to Streamlit. 
+
+
+> [!TIP]
+>During this process, we learned that regardless of the LLMs, prompts, or fine-tuning used, the underlying app framework can significantly impact the efficiency of code generation. 
+
+
+Initially, reflex's flexibility seemed promising, aligning with several of our requirements. However, as we delved deeper into apps development, the absence of crucial features forced us to write large amounts of "glue code" to compensate, ultimately slowing down our development speed.
+
+For months, we avoided reinventing the wheel, Frankenstein-ing disparate tools to stitch together our vision. However, the ROI no longer made sense after a certain point. So, we selectively picked the best ideas from prior frameworks and combined them to build a high-performance web app framework. It has the simplicity of streamlit and the speed and flexibility of Next.js. Our goal is to develop Next.py into the premier framework for both humans and AI agents.
+
+
+
 
 ![-----------------------------------------------------](https://res.cloudinary.com/dzznkbdrb/image/upload/v1694798498/divider_1_rej288.gif)
 
@@ -128,7 +146,8 @@ app.compile()
 
 Set up the app, add the main page, and prepare it for launch.
 
-Your app, completed in under 25 lines, will be accessible at `localhost:3000` with the server running on `localhost:8000`.
+> [!NOTE]
+> Your app, completed in under 25 lines, will be accessible at `localhost:3000` with the server running on `localhost:8000`.
 
 ![-----------------------------------------------------](https://res.cloudinary.com/dzznkbdrb/image/upload/v1694798498/divider_1_rej288.gif)
 
