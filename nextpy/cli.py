@@ -923,5 +923,32 @@ def install(
         raise typer.Exit(1)
 
 
+@cli.command()
+def lint(files: List[str] = typer.Argument(..., help="The Python files to lint.")):
+    from io import StringIO
+    from contextlib import redirect_stdout
+    from pylint.lint import Run
+    from pylint.reporters.text import TextReporter
+
+    """Lint nextpy code."""
+    args = [
+         "--load-plugins=nextpy.tester.xt_attribute_checker,nextpy.tester.component_parameter",
+        # "--errors-only",
+    ] + files
+
+    pylint_output = StringIO()  # Custom open stream
+    reporter = TextReporter(pylint_output)
+
+    Run(args, reporter=reporter, exit=False)
+    lint_output = pylint_output.getvalue()
+    
+    code_rating = any("Your code has been rated" in line for line in lint_output.splitlines())
+
+    if code_rating:
+        typer.echo("Linting completed.\n" + lint_output)
+    else:
+        typer.echo("Linting may have encountered issues:\n" + lint_output)
+        raise typer.Exit(code=1)
+
 if __name__ == "__main__":
     cli()
