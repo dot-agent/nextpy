@@ -120,4 +120,4 @@ def chatapp() -> xt.Component:
 
 # Add state and page to the app.
 app = xt.App(style=base_style)
-app.compile()
+

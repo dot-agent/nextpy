@@ -1,5 +1,4 @@
-"""
-Logger class
+"""Logger class.
 
 This class is used to log messages to the console and/or a file. It provides functionalities to log messages with different severity levels, and can also save these logs to a file if desired. The logs are stored internally and can be retrieved for inspection.
 
@@ -29,30 +28,31 @@ Methods:
     _invoked_from: Identifies the source that invoked the logger.
 """
 
-import time
+import inspect
 import logging
 import sys
-import inspect
+import time
 from typing import List, NamedTuple
 
+
 class Log(NamedTuple):
-    """
-    Represents a log entry.
+    """Represents a log entry.
     
+
     Attributes:
         msg (str): The log message.
         level (str): The log level as a string.
         time (float): Time difference since the last log message.
         source (str): The source of the log message.
     """
+
     msg: str
     level: str
     time: float
     source: str
 
 class Logger:
-    """
-    A Logger class for logging messages to the console and/or a file.
+    """A Logger class for logging messages to the console and/or a file.
 
     Attributes:
         _logs (List[Log]): List of Log objects representing the log history.
@@ -65,8 +65,7 @@ class Logger:
     _logger: logging.Logger = logging.getLogger(__name__)
 
     def __init__(self, save_logs: bool = True, verbose: bool = False):
-        """
-        Initializes the Logger instance.
+        """Initializes the Logger instance.
 
         Args:
             save_logs (bool): If True, logs will be saved to a file. Default is True.
@@ -77,8 +76,7 @@ class Logger:
         self._configure_logger(save_logs, verbose)
 
     def _configure_logger(self, save_logs: bool, verbose: bool):
-        """
-        Configures the underlying logger with appropriate handlers.
+        """Configures the underlying logger with appropriate handlers.
 
         Args:
             save_logs (bool): If True, adds a FileHandler.
@@ -103,8 +101,7 @@ class Logger:
         self._logger.propagate = False
 
     def log(self, message: str, level: int = logging.INFO):
-        """
-        Logs a message at the specified level.
+        """Logs a message at the specified level.
 
         Args:
             message (str): The message to log.
@@ -122,8 +119,7 @@ class Logger:
         self._logs.append(log_entry)
 
     def _invoked_from(self) -> str:
-        """
-        Identifies the source (class or function name) that invoked the logger.
+        """Identifies the source (class or function name) that invoked the logger.
 
         Returns:
             str: The name of the class or function that invoked the logger.
@@ -151,8 +147,7 @@ class Logger:
         return "Unknown"
 
     def _calculate_time_diff(self) -> float:
-        """
-        Calculates the time difference since the last logged message.
+        """Calculates the time difference since the last logged message.
 
         Returns:
             float: Time difference in seconds.
@@ -173,8 +168,7 @@ class Logger:
 
     @verbose.setter
     def verbose(self, verbose: bool):
-        """
-        Sets the verbosity of the logger.
+        """Sets the verbosity of the logger.
 
         Args:
             verbose (bool): If True, enables console logging.
@@ -192,8 +186,7 @@ class Logger:
 
     @save_logs.setter
     def save_logs(self, save_logs: bool):
-        """
-        Enables or disables saving logs to a file.
+        """Enables or disables saving logs to a file.
 
         Args:
             save_logs (bool): If True, logs will be saved to a file.
@@ -210,8 +203,7 @@ class Logger:
             self._logger.addHandler(logging.StreamHandler(sys.stdout))
 
     def _remove_handler_by_type(self, handler_type):
-        """
-        Removes a specific type of handler from the logger.
+        """Removes a specific type of handler from the logger.
 
         Args:
             handler_type (type): The type of handler to remove.
@@ -222,8 +214,7 @@ class Logger:
 
 #TODO: Remove this and adjust the audio model
 def get_logger(logger_name):
-    """
-    Configures and returns a custom logger with the given name.
+    """Configures and returns a custom logger with the given name.
 
     Args:
         logger_name (str): The name of the logger.

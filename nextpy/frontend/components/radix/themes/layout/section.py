@@ -3,7 +3,7 @@ from __future__ import annotations
 
 from typing import Literal
 
-from nextpy.frontend import dom
+from nextpy import el
 from nextpy.backend.vars import Var
 
 from .base import LayoutComponent
@@ -11,7 +11,7 @@ from .base import LayoutComponent
 LiteralSectionSize = Literal["1", "2", "3"]
 
 
-class Section(dom.Section, LayoutComponent):
+class Section(el.Section, LayoutComponent):
     """Denotes a section of page content."""
 
     tag = "Section"

@@ -55,17 +55,18 @@ from nextpy.build.config import get_config
 from nextpy.data.model import Model
 from nextpy.frontend.components import connection_modal
 from nextpy.frontend.components.base.app_wrap import AppWrap
+from nextpy.frontend.components.base.fragment import Fragment
 from nextpy.frontend.components.component import Component, ComponentStyle
-from nextpy.frontend.components.layout.fragment import Fragment
-from nextpy.frontend.components.navigation.client_side_routing import (
+from nextpy.frontend.components.core.client_side_routing import (
     Default404Page,
     wait_for_client_redirect,
 )
+from nextpy.frontend.components.radix import themes
 from nextpy.frontend.imports import ReactImportVar
 from nextpy.frontend.page import (
     DECORATED_PAGES,
 )
-from nextpy.utils import console, format, types
+from nextpy.utils import console, exceptions, format, types
 
 # Define custom types.
 ComponentCallable = Callable[[], Component]
@@ -132,7 +133,7 @@ class App(Base):
     background_tasks: Set[asyncio.Task] = set()
 
     # The radix theme for the entire app
-    theme: Optional[Component] = None
+    theme: Optional[Component] = themes.theme(accent_color="blue")
 
     def __init__(self, *args, **kwargs):
         """Initialize the app.
@@ -337,9 +338,12 @@ class App(Base):
 
         Raises:
             TypeError: When an invalid component function is passed.
+            exceptions.MatchTypeError: If the return types of match cases in xt.match are different.
         """
         try:
             return component if isinstance(component, Component) else component()
+        except exceptions.MatchTypeError:
+            raise
         except TypeError as e:
             message = str(e)
             if "BaseVar" in message or "ComputedVar" in message:
@@ -606,7 +610,7 @@ class App(Base):
         # By default, compile the app.
         return True
 
-    def compile(self):
+    def compile_(self):
         """Compile the app and output it to the pages folder."""
         # add the pages before the compile check so App know onload methods
         for render, kwargs in DECORATED_PAGES:
@@ -654,6 +658,8 @@ class App(Base):
             for _route, component in self.pages.items():
                 # Merge the component style with the app style.
                 component.add_style(self.style)
+
+                component.apply_theme(self.theme)
 
                 # Add component.get_imports() to all_imports.
                 all_imports.update(component.get_imports())

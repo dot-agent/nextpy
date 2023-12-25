@@ -1,10 +1,20 @@
-import os
 import pytest
-from sqlmodel import SQLModel, Field
-from nextpy.data.jsondb import JsonDatabase, IdNotFoundError, SchemaError
+from sqlmodel import Field, SQLModel
+
+from nextpy.data.jsondb import IdNotFoundError, JsonDatabase
+
 
 # Create a mock SQLModel class for testing purposes
 class MockUser(SQLModel, table=True):
+    """A data model representing a user in a SQL database.
+
+    Args:
+        id (int): The primary key for the user table.
+        username (str): The username of the user.
+        email (str): The email address of the user.
+        password (str): The password of the user.
+    """
+
     id: int = Field(default=None, primary_key=True)
     username: str
     email: str

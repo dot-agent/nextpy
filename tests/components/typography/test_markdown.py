@@ -1,7 +1,7 @@
 import pytest
 
 import nextpy as xt
-from nextpy.frontend.components.typography.markdown import Markdown
+from nextpy.frontend.components.markdown import Markdown
 
 
 @pytest.mark.parametrize(

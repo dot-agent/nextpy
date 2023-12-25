@@ -8,8 +8,8 @@ from .fonts import font_weights as fw
 SANS = "Instrument Sans"
 MONO = "IBM Plex Mono, Menlo, Consolas, DejaVu Sans Mono, monospace"
 BOLD_WEIGHT = fw["bold"]
-NAVBAR_LOGO = "/Reflex.svg"
-LOGO_URL = "/Reflex_white.svg"
+NAVBAR_LOGO = "/Nextpy.svg"
+LOGO_URL = "/Nextpy_white.svg"
 PADDING_X = ["1em", "2em", "5em"]
 PADDING_X2 = ["1em", "2em", "10em"]
 HERO_FONT_SIZE = ["2em", "3em", "3em", "4em"]

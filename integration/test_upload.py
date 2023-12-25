@@ -115,7 +115,6 @@ def UploadFile():
 
     app = xt.App(state=xt.State)
     app.add_page(index)
-    app.compile()
 
 
 @pytest.fixture(scope="session")
@@ -311,6 +310,9 @@ def test_clear_files(
     selected_files = driver.find_element(By.ID, f"selected_files{suffix}")
     assert selected_files.text == ""
 
+
+# TODO: drag and drop directory
+# https://gist.github.com/florentbr/349b1ab024ca9f3de56e6bf8af2ac69e
 
 
 @pytest.mark.asyncio

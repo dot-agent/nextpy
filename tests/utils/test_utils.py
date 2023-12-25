@@ -10,6 +10,7 @@ from packaging import version
 from nextpy import constants
 from nextpy.backend.event import EventHandler
 from nextpy.backend.state import State
+from nextpy.backend.vars import Var
 from nextpy.base import Base
 from nextpy.build import (
     build,
@@ -18,7 +19,6 @@ from nextpy.build import (
 from nextpy.build import exec as utils_exec
 from nextpy.utils import types
 from nextpy.utils.serializers import serialize
-from nextpy.backend.vars import Var
 
 
 def mock_event(arg):

@@ -4,9 +4,9 @@ from typing import Any, Dict, List, Type
 
 import pytest
 
+from nextpy.backend.vars import Var
 from nextpy.base import Base
 from nextpy.utils import serializers
-from nextpy.backend.vars import Var
 
 
 @pytest.mark.parametrize(

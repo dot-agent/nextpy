@@ -1,19 +1,16 @@
 {# ==============================
      INTRODUCTION TO JINJA2
-============================== #}
-{# 
+============================== 
 Jinja2 is a templating language for Python, used to generate text-based content.
 It mixes static text with dynamic content, controlled by special tags. 
 There are various tags in Jinja2:
     - {% ... %} : For statements (e.g., for loops, if conditions).
     - {{ ... }} : To output the value of an expression.
     - {# ... #} : For comments, which aren't included in the output.
-#}
 
-{# ==============================
+==============================
     OVERVIEW : Renders components recursively
-============================== #}
-{# 
+============================== 
 This Jinja2 template dynamically generates code for React-like components. 
 Each macro corresponds to a different way a component can be rendered, 
 from simple tags to conditionals and iterables. Macros are Jinja2's version of functions. They can be called with arguments and return rendered content.
@@ -23,13 +20,12 @@ from simple tags to conditionals and iterables. Macros are Jinja2's version of f
 
 {# ==============================
      RECURSIVE RENDERING MACRO
-============================== #}
-{# 
+============================== 
 Purpose:
 - Main entry for component rendering.
 - Handles components based on their attributes.
 
-Parameters: 
+Args: 
 - 'component' (dict): The component to be rendered.
 - 'indent_width' (optional int): Formatting width for output.
 #}
@@ -39,6 +35,8 @@ Parameters:
     {{- component }}
   {%- elif "iterable" in component %}
     {{- render_iterable_tag(component) }}
+  {%- elif component.name == "match"%}
+    {{- render_match_tag(component) }}
   {%- elif "cond" in component %}
     {{- render_condition_tag(component) }}
   {%- elif component.children|length %}
@@ -51,12 +49,11 @@ Parameters:
 
 {# ==============================
      SELF-CLOSING TAG RENDERING
-============================== #}
-{# 
+============================== 
 Purpose:
 - Renders components that don't have child elements.
 
-Parameters: 
+Args: 
 - 'component' (dict): The component to be rendered.
 #}
 {% macro render_self_close_tag(component) %}
@@ -70,12 +67,11 @@ Parameters:
 
 {# ==============================
      TAG WITH CHILDREN RENDERING
-============================== #}
-{# 
+============================== 
 Purpose:
 - Renders components with child elements.
 
-Parameters: 
+Args: 
 - 'component' (dict): The component with children to be rendered.
 #}
 
@@ -95,12 +91,11 @@ Parameters:
 
 {# ==============================
      CONDITIONAL TAG RENDERING
-============================== #}
-{# 
+============================== 
 Purpose:
 - Renders content based on a condition.
 
-Parameters: 
+Args: 
 - 'component' (dict): The component with a condition to evaluate.
 #}
 {% macro render_condition_tag(component) %}
@@ -115,12 +110,11 @@ Parameters:
 
 {# ==============================
      ITERABLE TAG RENDERING
-============================== #}
-{# 
+============================== 
 Purpose:
 - Renders iterable structures like lists or dictionaries.
 
-Parameters: 
+Args: 
 - 'component' (dict): The iterable component to be rendered.
 #}
 {% macro render_iterable_tag(component) %}
@@ -133,28 +127,54 @@ Parameters:
 
 {# ==============================
      PROPERTIES RENDERING
-============================== #}
-{# 
+============================== 
 Purpose:
 - Outputs the properties or attributes of a component.
 
-Parameters: 
+Args: 
 - 'props' (list or dict): Properties to be rendered.
 #}
 {% macro render_props(props) %}
 {% if props|length %} {{ props|join(" ") }}{% endif %}
 {% endmacro %}
 
+{# ==============================
+     MATCH & RENDER
+============================== 
+Purpose:
+- Rendering Match component.
+
+Args: 
+- component: component dictionary 
+#}
+
+{% macro render_match_tag(component) %}
+{
+    (() => {
+        switch (JSON.stringify({{ component.cond._var_full_name }})) {
+        {% for case in component.match_cases %}
+            {% for condition in case[:-1] %}
+                case JSON.stringify({{ condition._var_string_without_curly_braces }}):
+            {% endfor %}
+                return {{ case[-1] }};
+                break;
+        {% endfor %}
+            default:
+                return {{ component.default }};
+                break;
+        }
+    })()
+  }
+{%- endmacro %}
 
 
 {# ==============================
      ARGUMENT CONTENT RENDERING
-============================== #}
-{# 
+============================== 
 Purpose:
 - Renders content that requires specific arguments.
 
-Parameters: 
+Args: 
 - 'component' (dict): The component with arguments to be rendered.
 #}
 {% macro render_arg_content(component) %}
@@ -173,12 +193,11 @@ Parameters:
 
 {# ==============================
      REACT LIBRARY IMPORTS
-============================== #}
-{# 
+============================== 
 Purpose:
 - Generates correct 'import' statements for React libraries.
 
-Parameters: 
+Args: 
 - 'module' (dict): Dictionary containing module details for import.
 #}
 

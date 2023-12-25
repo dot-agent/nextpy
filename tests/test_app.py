@@ -34,11 +34,11 @@ from nextpy.backend.state import (
     StateManagerRedis,
     StateUpdate,
 )
+from nextpy.backend.vars import ComputedVar
 from nextpy.data.model import Model
 from nextpy.frontend.components import Box, Component, Cond, Fragment, Text
 from nextpy.frontend.style import Style
 from nextpy.utils import format
-from nextpy.backend.vars import ComputedVar
 
 from .conftest import chdir
 from .states import (
@@ -351,7 +351,7 @@ async def test_initialize_with_state(test_state: Type[ATestState], token: str):
     assert state.var == 0  # type: ignore
 
     if isinstance(app.state_manager, StateManagerRedis):
-        await app.state_manager.redis.close()
+        await app.state_manager.close()
 
 
 @pytest.mark.asyncio
@@ -386,7 +386,7 @@ async def test_set_and_get_state(test_state):
     assert state2.var == 2  # type: ignore
 
     if isinstance(app.state_manager, StateManagerRedis):
-        await app.state_manager.redis.close()
+        await app.state_manager.close()
 
 
 @pytest.mark.asyncio
@@ -788,7 +788,7 @@ async def test_upload_file(tmp_path, state, delta, token: str, mocker):
     ]
 
     if isinstance(app.state_manager, StateManagerRedis):
-        await app.state_manager.redis.close()
+        await app.state_manager.close()
 
 
 @pytest.mark.asyncio
@@ -824,7 +824,7 @@ async def test_upload_file_without_annotation(state, tmp_path, token):
     )
 
     if isinstance(app.state_manager, StateManagerRedis):
-        await app.state_manager.redis.close()
+        await app.state_manager.close()
 
 
 @pytest.mark.asyncio
@@ -860,7 +860,7 @@ async def test_upload_file_background(state, tmp_path, token):
     )
 
     if isinstance(app.state_manager, StateManagerRedis):
-        await app.state_manager.redis.close()
+        await app.state_manager.close()
 
 
 class DynamicState(BaseState):
@@ -1100,7 +1100,7 @@ async def test_dynamic_route_var_route_change_completed_on_load(
     # assert state.side_effect_counter == len(exp_vals)
 
     if isinstance(app.state_manager, StateManagerRedis):
-        await app.state_manager.redis.close()
+        await app.state_manager.close()
 
 
 @pytest.mark.asyncio
@@ -1134,7 +1134,7 @@ async def test_process_events(mocker, token: str):
     assert app.postprocess.call_count == 6
 
     if isinstance(app.state_manager, StateManagerRedis):
-        await app.state_manager.redis.close()
+        await app.state_manager.close()
 
 
 @pytest.mark.parametrize(
@@ -1206,7 +1206,7 @@ def compilable_app(tmp_path) -> Generator[tuple[App, Path], None, None]:
     web_dir = app_path / ".web"
     web_dir.mkdir(parents=True)
     (web_dir / "package.json").touch()
-    app = App()
+    app = App(theme=None)
     app.get_frontend_packages = unittest.mock.Mock()
     with chdir(app_path):
         yield app, web_dir
@@ -1220,7 +1220,7 @@ def test_app_wrap_compile_theme(compilable_app):
     """
     app, web_dir = compilable_app
     app.theme = rdxt.theme(accent_color="plum")
-    app.compile()
+    app.compile_()
     app_js_contents = (web_dir / "pages" / "_app.js").read_text()
     app_js_lines = [
         line.strip() for line in app_js_contents.splitlines() if line.strip()
@@ -1270,7 +1270,7 @@ def test_app_wrap_priority(compilable_app):
         return Fragment1.create(Fragment3.create())
 
     app.add_page(page)
-    app.compile()
+    app.compile_()
     app_js_contents = (web_dir / "pages" / "_app.js").read_text()
     app_js_lines = [
         line.strip() for line in app_js_contents.splitlines() if line.strip()

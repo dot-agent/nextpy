@@ -292,4 +292,4 @@ app = xt.App(
     ],
 )
 app.add_page(index)
-app.compile()
+

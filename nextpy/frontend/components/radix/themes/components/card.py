@@ -1,7 +1,7 @@
 """Interactive components provided by @radix-ui/themes."""
 from typing import Literal
 
-from nextpy.frontend import dom
+from nextpy import el
 from nextpy.backend.vars import Var
 
 from ..base import (
@@ -10,7 +10,7 @@ from ..base import (
 )
 
 
-class Card(dom.Div, CommonMarginProps, RadixThemesComponent):
+class Card(el.Div, CommonMarginProps, RadixThemesComponent):
     """Trigger an action or event, such as submitting a form or displaying a dialog."""
 
     tag = "Card"
@@ -19,7 +19,7 @@ class Card(dom.Div, CommonMarginProps, RadixThemesComponent):
     as_child: Var[bool]
 
     # Button size "1" - "5"
-    size: Var[Literal[1, 2, 3, 4, 5]]
+    size: Var[Literal["1", "2", "3", "4", "5"]]
 
     # Variant of button: "solid" | "soft" | "outline" | "ghost"
     variant: Var[Literal["surface", "classic", "ghost"]]

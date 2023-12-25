@@ -3,7 +3,7 @@ from __future__ import annotations
 
 from typing import Literal
 
-from nextpy.frontend import dom
+from nextpy import el
 from nextpy.backend.vars import Var
 
 from ..base import (
@@ -18,7 +18,7 @@ LiteralFlexDisplay = Literal["none", "inline-flex", "flex"]
 LiteralFlexWrap = Literal["nowrap", "wrap", "wrap-reverse"]
 
 
-class Flex(dom.Div, LayoutComponent):
+class Flex(el.Div, LayoutComponent):
     """Component for creating flex layouts."""
 
     tag = "Flex"

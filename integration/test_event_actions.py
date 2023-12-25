@@ -132,7 +132,6 @@ def TestEventAction():
 
     app = xt.App(state=xt.State)
     app.add_page(index)
-    app.compile()
 
 
 @pytest.fixture(scope="session")
@@ -263,12 +262,12 @@ async def test_event_actions(
         element_id: The id of the element to click.
         exp_order: The expected order of events.
     """
-    element = driver.find_element(By.ID, element_id)
-    assert element
+    el = driver.find_element(By.ID, element_id)
+    assert el
 
     prev_url = driver.current_url
 
-    element.click()
+    el.click()
     if "on_click:outer" not in exp_order:
         # really make sure the outer event is not fired
         await asyncio.sleep(0.5)

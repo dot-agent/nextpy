@@ -2,12 +2,9 @@ import pandas as pd
 import pytest
 
 import nextpy as xt
-from nextpy.frontend.components.datadisplay.datatable import (
-    DataTable,
-    serialize_dataframe,  # type: ignore
-)
+from nextpy.frontend.components.gridjs.datatable import DataTable
 from nextpy.utils import types
-from nextpy.utils.serializers import serialize
+from nextpy.utils.serializers import serialize, serialize_dataframe
 
 
 @pytest.mark.parametrize(

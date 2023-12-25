@@ -21,7 +21,6 @@ def ConnectionBanner():
 
     app = xt.App(state=xt.State)
     app.add_page(index)
-    app.compile()
 
 
 @pytest.fixture()

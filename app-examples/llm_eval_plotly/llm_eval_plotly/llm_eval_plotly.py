@@ -54,4 +54,4 @@ def index() -> xt.Component:
 
 # Add state and page to the app.
 app = xt.App()
-app.compile()
+

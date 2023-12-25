@@ -1,13 +1,13 @@
 import datetime
-from typing import Any
+from typing import Any, List
 
 import pytest
 
 from nextpy.backend.event import EventChain, EventHandler, EventSpec, FrontendEvent
+from nextpy.backend.vars import BaseVar, Var
 from nextpy.frontend.components.tags.tag import Tag
 from nextpy.frontend.style import Style
 from nextpy.utils import format
-from nextpy.backend.vars import BaseVar, Var
 from tests.test_state import (
     ChildState,
     ChildState2,
@@ -125,6 +125,8 @@ def test_indent(text: str, indent_level: int, expected: str, windows_platform: b
         ("__start_with_double_underscore", "__start_with_double_underscore"),
         ("kebab-case", "kebab_case"),
         ("double-kebab-case", "double_kebab_case"),
+        (":start-with-colon", ":start_with_colon"),
+        (":-start-with-colon-dash", ":_start_with_colon_dash"),
     ],
 )
 def test_to_snake_case(input: str, output: str):
@@ -153,6 +155,8 @@ def test_to_snake_case(input: str, output: str):
         ("--starts-with-double-hyphen", "--startsWithDoubleHyphen"),
         ("_starts_with_underscore", "_startsWithUnderscore"),
         ("__starts_with_double_underscore", "__startsWithDoubleUnderscore"),
+        (":start-with-colon", ":startWithColon"),
+        (":-start-with-colon-dash", ":StartWithColonDash"),
     ],
 )
 def test_to_camel_case(input: str, output: str):
@@ -193,6 +197,10 @@ def test_to_title_case(input: str, output: str):
         ("Hello", "hello"),
         ("snake_case", "snake-case"),
         ("snake_case_two", "snake-case-two"),
+        (":startWithColon", ":start-with-colon"),
+        (":StartWithColonDash", ":-start-with-colon-dash"),
+        (":start_with_colon", ":start-with-colon"),
+        (":_start_with_colon_dash", ":-start-with-colon-dash"),
     ],
 )
 def test_to_kebab_case(input: str, output: str):
@@ -284,6 +292,42 @@ def test_format_cond(condition: str, true_value: str, false_value: str, expected
         expected: The expected output string.
     """
     assert format.format_cond(condition, true_value, false_value) == expected
+
+
+@pytest.mark.parametrize(
+    "condition, match_cases, default,expected",
+    [
+        (
+            "state__state.value",
+            [
+                [Var.create(1), Var.create("red", _var_is_string=True)],
+                [Var.create(2), Var.create(3), Var.create("blue", _var_is_string=True)],
+                [TestState.mapping, TestState.num1],
+                [
+                    Var.create(f"{TestState.map_key}-key", _var_is_string=True),
+                    Var.create("return-key", _var_is_string=True),
+                ],
+            ],
+            Var.create("yellow", _var_is_string=True),
+            "(() => { switch (JSON.stringify(state__state.value)) {case JSON.stringify(1):  return (`red`);  break;case JSON.stringify(2): case JSON.stringify(3):  "
+            "return (`blue`);  break;case JSON.stringify(test_state.mapping):  return "
+            "(test_state.num1);  break;case JSON.stringify(`${test_state.map_key}-key`):  return (`return-key`);"
+            "  break;default:  return (`yellow`);  break;};})()",
+        )
+    ],
+)
+def test_format_match(
+    condition: str, match_cases: List[BaseVar], default: BaseVar, expected: str
+):
+    """Test formatting a match statement.
+
+    Args:
+        condition: The condition to match.
+        match_cases: List of match cases to be matched.
+        default: Catchall case for the match statement.
+        expected: The expected string output.
+    """
+    assert format.format_match(condition, match_cases, default) == expected
 
 
 @pytest.mark.parametrize(

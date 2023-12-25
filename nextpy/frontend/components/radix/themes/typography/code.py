@@ -4,7 +4,7 @@ https://www.radix-ui.com/themes/docs/theme/typography
 """
 from __future__ import annotations
 
-from nextpy.frontend import dom
+from nextpy import el
 from nextpy.backend.vars import Var
 
 from ..base import (
@@ -19,7 +19,7 @@ from .base import (
 )
 
 
-class Code(dom.Code, CommonMarginProps, RadixThemesComponent):
+class Code(el.Code, CommonMarginProps, RadixThemesComponent):
     """A block level extended quotation."""
 
     tag = "Code"

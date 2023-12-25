@@ -1,5 +1,4 @@
 """Manually edited, do not regen."""
-
 from dataclasses import dataclass
 from _typeshed import Incomplete
 from nextpy import constants as constants

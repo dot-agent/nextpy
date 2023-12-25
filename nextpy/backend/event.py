@@ -16,10 +16,10 @@ from typing import (
 )
 
 from nextpy import constants
-from nextpy.base import Base
-from nextpy.utils import console, format
-from nextpy.utils.types import ArgsSpec
 from nextpy.backend.vars import BaseVar, Var
+from nextpy.base import Base
+from nextpy.utils import format
+from nextpy.utils.types import ArgsSpec
 
 if TYPE_CHECKING:
     from nextpy.backend.state import BaseState
@@ -329,7 +329,7 @@ class FileUpload(Base):
         Raises:
             ValueError: If the on_upload_progress is not a valid event handler.
         """
-        from nextpy.frontend.components.forms.upload import (
+        from nextpy.frontend.components.core.upload import (
             DEFAULT_UPLOAD_ID,
             upload_files_context_var_data,
         )

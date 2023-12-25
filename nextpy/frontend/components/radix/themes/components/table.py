@@ -1,7 +1,7 @@
 """Interactive components provided by @radix-ui/themes."""
 from typing import Literal, Union
 
-from nextpy.frontend import dom
+from nextpy import el
 from nextpy.backend.vars import Var
 
 from ..base import (
@@ -10,25 +10,25 @@ from ..base import (
 )
 
 
-class TableRoot(dom.Table, CommonMarginProps, RadixThemesComponent):
+class TableRoot(el.Table, CommonMarginProps, RadixThemesComponent):
     """Trigger an action or event, such as submitting a form or displaying a dialog."""
 
     tag = "Table.Root"
 
     # The size of the table: "1" | "2" | "3"
-    size: Var[Literal[1, 2, 3]]
+    size: Var[Literal["1", "2", "3"]]
 
     # The variant of the table
     variant: Var[Literal["surface", "ghost"]]
 
 
-class TableHeader(dom.Thead, CommonMarginProps, RadixThemesComponent):
+class TableHeader(el.Thead, CommonMarginProps, RadixThemesComponent):
     """Trigger an action or event, such as submitting a form or displaying a dialog."""
 
     tag = "Table.Header"
 
 
-class TableRow(dom.Tr, CommonMarginProps, RadixThemesComponent):
+class TableRow(el.Tr, CommonMarginProps, RadixThemesComponent):
     """Trigger an action or event, such as submitting a form or displaying a dialog."""
 
     tag = "Table.Row"
@@ -37,7 +37,7 @@ class TableRow(dom.Tr, CommonMarginProps, RadixThemesComponent):
     align: Var[Literal["start", "center", "end", "baseline"]]
 
 
-class TableColumnHeaderCell(dom.Th, CommonMarginProps, RadixThemesComponent):
+class TableColumnHeaderCell(el.Th, CommonMarginProps, RadixThemesComponent):
     """Trigger an action or event, such as submitting a form or displaying a dialog."""
 
     tag = "Table.ColumnHeaderCell"
@@ -49,13 +49,13 @@ class TableColumnHeaderCell(dom.Th, CommonMarginProps, RadixThemesComponent):
     width: Var[Union[str, int]]
 
 
-class TableBody(dom.Tbody, CommonMarginProps, RadixThemesComponent):
+class TableBody(el.Tbody, CommonMarginProps, RadixThemesComponent):
     """Trigger an action or event, such as submitting a form or displaying a dialog."""
 
     tag = "Table.Body"
 
 
-class TableCell(dom.Td, CommonMarginProps, RadixThemesComponent):
+class TableCell(el.Td, CommonMarginProps, RadixThemesComponent):
     """Trigger an action or event, such as submitting a form or displaying a dialog."""
 
     tag = "Table.Cell"
@@ -67,7 +67,7 @@ class TableCell(dom.Td, CommonMarginProps, RadixThemesComponent):
     width: Var[Union[str, int]]
 
 
-class TableRowHeaderCell(dom.Th, CommonMarginProps, RadixThemesComponent):
+class TableRowHeaderCell(el.Th, CommonMarginProps, RadixThemesComponent):
     """Trigger an action or event, such as submitting a form or displaying a dialog."""
 
     tag = "Table.RowHeaderCell"

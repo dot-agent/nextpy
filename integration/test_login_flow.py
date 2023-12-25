@@ -45,7 +45,6 @@ def LoginSample():
     app = xt.App(state=xt.State)
     app.add_page(index)
     app.add_page(login)
-    app.compile()
 
 
 @pytest.fixture(scope="session")

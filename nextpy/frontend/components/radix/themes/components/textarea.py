@@ -1,11 +1,11 @@
 """Interactive components provided by @radix-ui/themes."""
 from typing import Any, Dict, Literal
 
-from nextpy.constants import EventTriggers
-from nextpy.frontend import dom
-from nextpy.frontend.components.component import Component
-from nextpy.frontend.components.forms.debounce import DebounceInput
+from nextpy import el
 from nextpy.backend.vars import Var
+from nextpy.constants import EventTriggers
+from nextpy.frontend.components.component import Component
+from nextpy.frontend.components.core.debounce import DebounceInput
 
 from ..base import (
     CommonMarginProps,
@@ -16,7 +16,7 @@ from ..base import (
 LiteralTextAreaSize = Literal["1", "2", "3"]
 
 
-class TextArea(CommonMarginProps, RadixThemesComponent, dom.Textarea):
+class TextArea(CommonMarginProps, RadixThemesComponent, el.Textarea):
     """The input part of a TextArea, may be used by itself."""
 
     tag = "TextArea"

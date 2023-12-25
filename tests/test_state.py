@@ -29,12 +29,12 @@ from nextpy.backend.state import (
     StateProxy,
     StateUpdate,
 )
+from nextpy.backend.vars import BaseVar, ComputedVar
 from nextpy.base import Base
 from nextpy.build import prerequisites
 from nextpy.constants import CompileVars, RouteVar, SocketEvent
 from nextpy.utils import types
 from nextpy.utils.format import json_dumps
-from nextpy.backend.vars import BaseVar, ComputedVar
 
 from .states import GenState
 
@@ -1430,7 +1430,7 @@ def state_manager(request) -> Generator[StateManager, None, None]:
     yield state_manager
 
     if isinstance(state_manager, StateManagerRedis):
-        asyncio.get_event_loop().run_until_complete(state_manager.redis.close())
+        asyncio.get_event_loop().run_until_complete(state_manager.close())
 
 
 @pytest.mark.asyncio
@@ -1508,7 +1508,7 @@ def state_manager_redis() -> Generator[StateManager, None, None]:
 
     yield state_manager
 
-    asyncio.get_event_loop().run_until_complete(state_manager.redis.close())
+    asyncio.get_event_loop().run_until_complete(state_manager.close())
 
 
 @pytest.mark.asyncio
@@ -1591,7 +1591,11 @@ def mock_app(monkeypatch, state_manager: StateManager) -> xt.App:
     app.state = TestState
     app._state_manager = state_manager
     app.event_namespace.emit = AsyncMock()  # type: ignore
-    monkeypatch.setattr(prerequisites, "get_app", lambda: app_module)
+
+    def _mock_get_app(*args, **kwargs):
+        return app_module
+
+    monkeypatch.setattr(prerequisites, "get_app", _mock_get_app)
     return app
 
 

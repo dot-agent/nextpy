@@ -3,7 +3,7 @@ from __future__ import annotations
 
 from typing import Literal
 
-from nextpy.frontend import dom
+from nextpy import el
 from nextpy.backend.vars import Var
 
 from .base import LayoutComponent
@@ -11,7 +11,7 @@ from .base import LayoutComponent
 LiteralContainerSize = Literal["1", "2", "3", "4"]
 
 
-class Container(dom.Div, LayoutComponent):
+class Container(el.Div, LayoutComponent):
     """Constrains the maximum width of page content.
 
     See https://www.radix-ui.com/themes/docs/components/container

@@ -5,20 +5,20 @@ import pytest
 import nextpy as xt
 from nextpy.backend.event import EventChain, EventHandler
 from nextpy.backend.state import BaseState
+from nextpy.backend.vars import Var, VarData
 from nextpy.base import Base
 from nextpy.constants import EventTriggers
 from nextpy.frontend import imports
 from nextpy.frontend.components.base.bare import Bare
+from nextpy.frontend.components.chakra.layout.box import Box
 from nextpy.frontend.components.component import (
     Component,
     CustomComponent,
     StatefulComponent,
     custom_component,
 )
-from nextpy.frontend.components.layout.box import Box
 from nextpy.frontend.imports import ReactImportVar
 from nextpy.frontend.style import Style
-from nextpy.backend.vars import Var, VarData
 
 
 @pytest.fixture
@@ -883,3 +883,33 @@ def test_get_vars(component, exp_vars):
         sorted(exp_vars, key=lambda v: v._var_name),
     ):
         assert comp_var.equals(exp_var)
+
+
+def test_instantiate_all_components():
+    """Test that all components can be instantiated."""
+    # These components all have required arguments and cannot be trivially instantiated.
+    untested_components = {
+        "Card",
+        "Cond",
+        "DebounceInput",
+        "Foreach",
+        "FormControl",
+        "Html",
+        "Icon",
+        "Markdown",
+        "Match",
+        "MultiSelect",
+        "Option",
+        "Popover",
+        "Radio",
+        "Script",
+        "Tag",
+        "Tfoot",
+        "Thead",
+    }
+    for component_name in xt._ALL_COMPONENTS:  # type: ignore
+        if component_name in untested_components:
+            continue
+        component = getattr(xt, component_name)
+        if isinstance(component, type) and issubclass(component, Component):
+            component.create()

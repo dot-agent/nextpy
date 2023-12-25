@@ -1,7 +1,7 @@
 """Interactive components provided by @radix-ui/themes."""
 from typing import Any, Dict, Literal
 
-from nextpy.frontend import dom
+from nextpy import el
 from nextpy.backend.vars import Var
 
 from ..base import (
@@ -39,7 +39,7 @@ class PopoverTrigger(CommonMarginProps, RadixThemesComponent):
     tag = "Popover.Trigger"
 
 
-class PopoverContent(dom.Div, CommonMarginProps, RadixThemesComponent):
+class PopoverContent(el.Div, CommonMarginProps, RadixThemesComponent):
     """Trigger an action or event, such as submitting a form or displaying a dialog."""
 
     tag = "Popover.Content"

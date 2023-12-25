@@ -25,6 +25,7 @@ from .contextmenu import (
     ContextMenuTrigger,
 )
 from .dialog import (
+    DialogClose,
     DialogContent,
     DialogDescription,
     DialogRoot,
@@ -42,6 +43,7 @@ from .dropdownmenu import (
 )
 from .hovercard import HoverCardContent, HoverCardRoot, HoverCardTrigger
 from .iconbutton import IconButton
+from .icons import Icon
 from .inset import Inset
 from .popover import PopoverClose, PopoverContent, PopoverRoot, PopoverTrigger
 from .radiogroup import RadioGroupItem, RadioGroupRoot
@@ -56,6 +58,7 @@ from .select import (
     SelectTrigger,
 )
 from .separator import Separator
+from .slider import Slider
 from .switch import Switch
 from .table import (
     TableBody,
@@ -66,9 +69,10 @@ from .table import (
     TableRow,
     TableRowHeaderCell,
 )
-from .tabs import TabsList, TabsRoot, TabsTrigger
+from .tabs import TabsContent, TabsList, TabsRoot, TabsTrigger
 from .textarea import TextArea
 from .textfield import TextFieldInput, TextFieldRoot, TextFieldSlot
+from .tooltip import Tooltip
 
 # Alert Dialog
 alertdialog = AlertDialog.create
@@ -117,6 +121,7 @@ dialog_trigger = DialogTrigger.create
 dialog_content = DialogContent.create
 dialog_title = DialogTitle.create
 dialog_description = DialogDescription.create
+dialog_close = DialogClose.create
 
 # Dropdown Menu
 dropdownmenu_root = DropdownMenuRoot.create
@@ -131,6 +136,9 @@ dropdownmenu_separator = DropdownMenuSeparator.create
 hovercard_root = HoverCardRoot.create
 hovercard_trigger = HoverCardTrigger.create
 hovercard_content = HoverCardContent.create
+
+# Icon
+icon = Icon.create
 
 # Icon Button
 icon_button = IconButton.create
@@ -163,6 +171,9 @@ select_label = SelectLabel.create
 # Separator
 separator = Separator.create
 
+# Slider
+slider = Slider.create
+
 # Switch
 switch = Switch.create
 
@@ -179,6 +190,7 @@ table_row_header_cell = TableRowHeaderCell.create
 tabs_root = TabsRoot.create
 tabs_list = TabsList.create
 tabs_trigger = TabsTrigger.create
+tabs_content = TabsContent.create
 
 # Text Area
 textarea = TextArea.create
@@ -187,3 +199,6 @@ textarea = TextArea.create
 textfield_root = TextFieldRoot.create
 textfield_input = TextFieldInput.create
 textfield_slot = TextFieldSlot.create
+
+# Tooltip
+tooltip = Tooltip.create

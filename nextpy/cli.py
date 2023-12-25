@@ -10,7 +10,6 @@ import shutil
 import subprocess
 import tempfile
 import time
-import webbrowser
 from datetime import datetime
 from pathlib import Path
 from typing import List, Optional
@@ -22,6 +21,7 @@ from tabulate import tabulate
 from nextpy import constants
 from nextpy.build import dependency
 from nextpy.build.config import get_config
+from nextpy.frontend.custom_components.custom_components import custom_components_cli
 from nextpy.utils import console, telemetry
 
 # Disable typer+rich integration for help panels
@@ -85,11 +85,7 @@ def _init(
     app_name = prerequisites.get_default_app_name() if name is None else name
     console.rule(f"[bold]Initializing {app_name}")
 
-    # Set up the web project.
-    prerequisites.initialize_frontend_dependencies()
-
-    # Migrate Reflex projects to Nextpy.
-    prerequisites.migrate_to_nextpy()
+    prerequisites.check_latest_package_version(constants.Nextpy.MODULE_NAME)
 
     # Set up the app directory, only if the config doesn't exist.
     if not os.path.exists(constants.Config.FILE):
@@ -100,6 +96,12 @@ def _init(
         telemetry.send("init")
     else:
         telemetry.send("reinit")
+
+    # Set up the web project.
+    prerequisites.initialize_frontend_dependencies()
+
+    # Migrate Reflex projects to Nextpy.
+    prerequisites.migrate_to_nextpy()
 
     # Initialize the .gitignore.
     prerequisites.initialize_gitignore()
@@ -181,7 +183,7 @@ def _run(
     if frontend:
         prerequisites.update_next_config()
         # Get the app module.
-        prerequisites.get_app()
+        prerequisites.get_compiled_app()
 
     # Warn if schema is not up to date.
     prerequisites.check_schema_up_to_date()
@@ -297,7 +299,7 @@ def export(
         # Update some parameters for export
         prerequisites.update_next_config(export=True)
         # Ensure module can be imported and app.compile() is called.
-        prerequisites.get_app()
+        prerequisites.get_compiled_app()
         # Set up .web directory and install frontend dependencies.
         build.setup_frontend(Path.cwd())
 
@@ -389,7 +391,7 @@ def db_init():
 
     # Initialize the database.
     _skip_compile()
-    prerequisites.get_app()
+    prerequisites.get_compiled_app()
     model.Model.alembic_init()
     model.Model.migrate(autogenerate=True)
 
@@ -401,7 +403,7 @@ def migrate():
     from nextpy.data import model
 
     _skip_compile()
-    prerequisites.get_app()
+    prerequisites.get_compiled_app()
     if not prerequisites.check_db_initialized():
         return
     model.Model.migrate()
@@ -421,7 +423,7 @@ def makemigrations(
     from nextpy.data import model
 
     _skip_compile()
-    prerequisites.get_app()
+    prerequisites.get_compiled_app()
     if not prerequisites.check_db_initialized():
         return
     with model.Model.get_db_engine().connect() as connection:
@@ -926,7 +928,7 @@ def install(
 @cli.command()
 def lint(files: List[str] = typer.Argument(..., help="The Python files to lint.")):
     from io import StringIO
-    from contextlib import redirect_stdout
+
     from pylint.lint import Run
     from pylint.reporters.text import TextReporter
 
@@ -949,6 +951,12 @@ def lint(files: List[str] = typer.Argument(..., help="The Python files to lint."
     else:
         typer.echo("Linting may have encountered issues:\n" + lint_output)
         raise typer.Exit(code=1)
+
+cli.add_typer(
+    custom_components_cli,
+    name="component",
+    help="Subcommands for creating and publishing Custom Components.",
+)
 
 if __name__ == "__main__":
     cli()

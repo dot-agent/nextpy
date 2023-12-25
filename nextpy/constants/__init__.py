@@ -37,10 +37,14 @@ from .config import (
     GitIgnore,
     RequirementsTxt,
 )
+from .custom_components import (
+    CustomComponents,
+)
 from .event import Endpoint, EventTriggers, SocketEvent
 from .hosting import Hosting
 from .installer import (
     Bun,
+    # CustomComponents,
     Fnm,
     Node,
     PackageJson,

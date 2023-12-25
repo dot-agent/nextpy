@@ -1,6 +1,6 @@
 import pytest
 
-from nextpy.frontend.components.datadisplay.code import CodeBlock
+from nextpy.frontend.components.chakra.datadisplay.code import CodeBlock
 
 
 @pytest.mark.parametrize(

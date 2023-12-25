@@ -4,8 +4,8 @@ from __future__ import annotations
 import inspect
 from typing import TYPE_CHECKING, Any, Callable, List, Type
 
-from nextpy.frontend.components.tags.tag import Tag
 from nextpy.backend.vars import BaseVar, Var
+from nextpy.frontend.components.tags.tag import Tag
 
 if TYPE_CHECKING:
     from nextpy.frontend.components.component import Component
@@ -102,9 +102,9 @@ class IterTag(Tag):
             The rendered component.
         """
         # Import here to avoid circular imports.
-        from nextpy.frontend.components.layout.cond import Cond
-        from nextpy.frontend.components.layout.foreach import Foreach
-        from nextpy.frontend.components.layout.fragment import Fragment
+        from nextpy.frontend.components.base.fragment import Fragment
+        from nextpy.frontend.components.core.cond import Cond
+        from nextpy.frontend.components.core.foreach import Foreach
 
         # Get the render function arguments.
         args = inspect.getfullargspec(self.render_fn).args

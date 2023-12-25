@@ -1,8 +1,8 @@
 import nextpy as xt
 
+
 def hero_section(title, subtitle, cta_text, background_image=None, hero_style=None):
-    """
-    Create a hero section for a webpage.
+    """Create a hero section for a webpage.
 
     Args:
     - title (str): The main title of the hero section.

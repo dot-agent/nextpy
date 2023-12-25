@@ -1,11 +1,11 @@
 """Interactive components provided by @radix-ui/themes."""
 from typing import Any, Dict, Literal
 
-from nextpy.constants import EventTriggers
-from nextpy.frontend import dom
-from nextpy.frontend.components.component import Component
-from nextpy.frontend.components.forms.debounce import DebounceInput
 from nextpy.backend.vars import Var
+from nextpy.constants import EventTriggers
+from nextpy.frontend.components import el
+from nextpy.frontend.components.component import Component
+from nextpy.frontend.components.core.debounce import DebounceInput
 
 from ..base import (
     CommonMarginProps,
@@ -19,7 +19,7 @@ LiteralTextFieldSize = Literal["1", "2", "3"]
 LiteralTextFieldVariant = Literal["classic", "surface", "soft"]
 
 
-class TextFieldRoot(dom.Div, CommonMarginProps, RadixThemesComponent):
+class TextFieldRoot(el.Div, CommonMarginProps, RadixThemesComponent):
     """Captures user input with an optional slot for buttons and icons."""
 
     tag = "TextField.Root"
@@ -37,7 +37,7 @@ class TextFieldRoot(dom.Div, CommonMarginProps, RadixThemesComponent):
     radius: Var[LiteralRadius]
 
 
-class TextFieldInput(dom.Input, TextFieldRoot):
+class TextFieldInput(el.Input, TextFieldRoot):
     """The input part of a TextField, may be used by itself."""
 
     tag = "TextField.Input"

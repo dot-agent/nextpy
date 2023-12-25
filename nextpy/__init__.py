@@ -4,10 +4,13 @@ Anything imported here will be available in the default nextpy import as `xt.*`.
 To signal to typecheckers that something should be reexported,
 we use the Flask "import name as name" syntax
 """
+from __future__ import annotations
+
 import importlib
 from typing import Type
 
 from nextpy.frontend.page import page as page
+from nextpy.utils import console
 from nextpy.utils.format import to_snake_case
 
 _ALL_COMPONENTS = [
@@ -111,6 +114,7 @@ _ALL_COMPONENTS = [
     "List",
     "ListItem",
     "Markdown",
+    "Match",
     "Menu",
     "MenuButton",
     "MenuDivider",
@@ -181,10 +185,6 @@ _ALL_COMPONENTS = [
     "StatGroup",
     "StatHelpText",
     "StatLabel",
-    "StatArrow",
-    "StatGroup",
-    "StatHelpText",
-    "StatLabel",
     "StatNumber",
     "Step",
     "StepDescription",
@@ -232,6 +232,7 @@ _ALL_COMPONENTS += [
     "cancel_upload",
     "components",
     "color_mode_cond",
+    # "custom_components",
     "desktop_only",
     "mobile_only",
     "tablet_only",
@@ -246,17 +247,16 @@ _ALL_COMPONENTS += [
 
 # _MAPPING: Maps module paths as keys to lists of their attributes (classes, functions, variables) as values for dynamic imports.
 _MAPPING = {
-    "nextpy.app": ["app", "App", "UploadFile"],
-    "nextpy.base": ["base", "Base"],
-    "nextpy.backend.admin": ["admin", "AdminDash"],
+    "nextpy.app": ["App", "UploadFile", "app"],
+    "nextpy.backend.admin": ["AdminDash", "admin"],
     "nextpy.backend.event": [
-        "event",
         "EventChain",
         "background",
         "call_script",
         "clear_local_storage",
         "console_log",
         "download",
+        "event",
         "prevent_default",
         "redirect",
         "remove_cookie",
@@ -268,31 +268,55 @@ _MAPPING = {
         "upload_files",
         "window_alert",
     ],
-    "nextpy.backend.middleware": ["middleware", "Middleware"],
+    "nextpy.backend.middleware": ["Middleware", "middleware"],
     "nextpy.backend.route": ["route"],
-    "nextpy.backend.state": ["state", "var", "Cookie", "LocalStorage", "State"],
-    "nextpy.backend.utils": ["utils"],
-    "nextpy.backend.vars": ["vars", "cached_var", "Var"],
+    "nextpy.backend.state": ["Cookie", "LocalStorage", "State", "state", "var"],
+    "nextpy.backend.vars": ["Var", "cached_var", "vars"],
+    "nextpy.base": ["Base", "base"],
     "nextpy.build.compiler": ["compiler"],
     "nextpy.build.compiler.utils": ["get_asset_path"],
-    "nextpy.build.config": ["config", "Config", "DBConfig"],
+    "nextpy.build.config": ["Config", "DBConfig", "config"],
     "nextpy.build.testing": ["testing"],
-    "nextpy.data.model": ["model", "session", "Model"],
+    "nextpy.constants": ["Env", "constants"],
     "nextpy.data.jsondb": ["JsonDatabase"],
-    "nextpy.frontend.components": _ALL_COMPONENTS,
+    "nextpy.data.model": ["Model", "model", "session"],
+    "nextpy.frontend.components": _ALL_COMPONENTS + ["chakra", "next"],
+    "nextpy.frontend.components.framer.motion": ["motion"],
     "nextpy.frontend.components.component": ["memo"],
-    "nextpy.frontend.components.graphing": ["recharts"],
-    "nextpy.frontend.components.animation.motion": ["motion"],
-    "nextpy.frontend.components.datadisplay.moment": ["MomentDelta"],
-    "nextpy.constants": ["constants", "Env"],
+    "nextpy.frontend.components.el": ["el"],
+    "nextpy.frontend.components.moment.moment": ["MomentDelta"],
+    "nextpy.frontend.components.recharts": ["recharts"],
     "nextpy.frontend.page": ["page"],
-    "nextpy.frontend.components.component": ["memo"],
-    "nextpy.frontend.components.graphing": ["recharts"],
-    "nextpy.frontend.components.datadisplay.moment": ["MomentDelta"],
-    "nextpy.frontend.dom": ["dom"],
-    "nextpy.frontend.style": ["style", "color_mode", "toggle_color_mode"],
+    "nextpy.frontend.style": ["color_mode", "style", "toggle_color_mode"],
+    "nextpy.utils": ["utils"],
+    "nextpy.frontend.components.proxy": ["animation"],
 }
-_MAPPING = {value: key for key, values in _MAPPING.items() for value in values}
+
+
+
+def _reverse_mapping(mapping: dict[str, list]) -> dict[str, str]:
+    """Reverse the mapping used to lazy loading, and check for conflicting name.
+
+    Args:
+        mapping: The mapping to reverse.
+
+    Returns:
+        The reversed mapping.
+    """
+    reversed_mapping = {}
+    for key, values in mapping.items():
+        for value in values:
+            if value not in reversed_mapping:
+                reversed_mapping[value] = key
+            else:
+                console.warn(
+                    f"Key {value} is present multiple times in the imports _MAPPING: {key} / {reversed_mapping[value]}"
+                )
+    return reversed_mapping
+
+
+# _MAPPING = {value: key for key, values in _MAPPING.items() for value in values}
+_MAPPING = _reverse_mapping(_MAPPING)
 
 
 def _removeprefix(text, prefix):
@@ -303,10 +327,10 @@ __all__ = [_removeprefix(mod, "nextpy.") for mod in _MAPPING]
 
 
 def __getattr__(name: str) -> Type:
-    """Lazy load all modules.
+    """Lazy load all modules and handle custom aliases.
 
     Args:
-        name: name of the module to load.
+        name: name of the module or attribute to load.
 
     Returns:
         The module or the attribute of the module.
@@ -314,10 +338,11 @@ def __getattr__(name: str) -> Type:
     Raises:
         AttributeError: If the module or the attribute does not exist.
     """
-    # Alias handling for App as SingletonApp
-    # TODO: If more aliases are needed in the future, consider using a __alias_mapping dictionary
-    # if name == "App":
-    #     name = "SingletonApp"
+    # Custom alias handling
+    if name == "animation":
+        module = importlib.import_module("nextpy.frontend.components.proxy")
+        return module.animation
+
 
     try:
         # Check for import of a module that is not in the mapping.

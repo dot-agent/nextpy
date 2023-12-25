@@ -5,18 +5,18 @@ import pytest
 
 import nextpy as xt
 from nextpy.backend.state import BaseState
-from nextpy.frontend.components.layout.box import Box
-from nextpy.frontend.components.layout.cond import Cond, cond
-from nextpy.frontend.components.layout.fragment import Fragment
-from nextpy.frontend.components.layout.responsive import (
+from nextpy.backend.vars import Var
+from nextpy.frontend.components.base.fragment import Fragment
+from nextpy.frontend.components.chakra.layout.box import Box
+from nextpy.frontend.components.chakra.typography.text import Text
+from nextpy.frontend.components.core.cond import Cond, cond
+from nextpy.frontend.components.core.responsive import (
     desktop_only,
     mobile_and_tablet,
     mobile_only,
     tablet_and_desktop,
     tablet_only,
 )
-from nextpy.frontend.components.typography.text import Text
-from nextpy.backend.vars import Var
 
 
 @pytest.fixture

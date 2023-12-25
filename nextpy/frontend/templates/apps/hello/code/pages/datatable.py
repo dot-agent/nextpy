@@ -2,7 +2,7 @@
 from typing import Any
 
 import nextpy as xt
-from nextpy.frontend.components.datadisplay.dataeditor import DataEditorTheme
+from nextpy.frontend.components.glide_datagrid.dataeditor import DataEditorTheme
 
 from ..styles import *
 from ..webui.state import State

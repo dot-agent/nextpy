@@ -1,8 +1,8 @@
 """Interactive components provided by @radix-ui/themes."""
 from typing import Any, Dict, Literal
 
-from nextpy.constants import EventTriggers
 from nextpy.backend.vars import Var
+from nextpy.constants import EventTriggers
 
 from ..base import (
     CommonMarginProps,

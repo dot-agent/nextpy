@@ -1,7 +1,7 @@
 """Interactive components provided by @radix-ui/themes."""
 from typing import Literal
 
-from nextpy.frontend import dom
+from nextpy import el
 from nextpy.backend.vars import Var
 
 from ..base import (
@@ -12,10 +12,10 @@ from ..base import (
     RadixThemesComponent,
 )
 
-LiteralButtonSize = Literal[1, 2, 3, 4]
+LiteralButtonSize = Literal["1", "2", "3", "4"]
 
 
-class Button(dom.Button, CommonMarginProps, RadixThemesComponent):
+class Button(el.Button, CommonMarginProps, RadixThemesComponent):
     """Trigger an action or event, such as submitting a form or displaying a dialog."""
 
     tag = "Button"

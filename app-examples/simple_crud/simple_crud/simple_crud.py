@@ -271,4 +271,4 @@ app.add_page(index, on_load=State.load_product)
 
 app.api.include_router(product_router)
 
-app.compile()
+

@@ -1,6 +1,7 @@
 import pytest
 
-from nextpy.frontend.components.animation.motion import (
+from nextpy.backend.vars import Var
+from nextpy.frontend.components.framer.motion import (
     MotionA,
     MotionArticle,
     MotionAside,
@@ -13,9 +14,7 @@ from nextpy.frontend.components.animation.motion import (
     MotionH2,
     MotionH3,
     MotionH4,
-    MotionInput,
 )
-from nextpy.backend.vars import Var
 
 
 class TestCodeUnderTest:

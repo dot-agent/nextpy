@@ -1,7 +1,7 @@
 """Interactive components provided by @radix-ui/themes."""
 from typing import Literal
 
-from nextpy.frontend import dom
+from nextpy import el
 from nextpy.backend.vars import Var
 
 from ..base import (
@@ -13,7 +13,7 @@ from ..base import (
 )
 
 
-class CalloutRoot(dom.Div, CommonMarginProps, RadixThemesComponent):
+class CalloutRoot(el.Div, CommonMarginProps, RadixThemesComponent):
     """Trigger an action or event, such as submitting a form or displaying a dialog."""
 
     tag = "Callout.Root"
@@ -37,13 +37,13 @@ class CalloutRoot(dom.Div, CommonMarginProps, RadixThemesComponent):
     radius: Var[LiteralRadius]
 
 
-class CalloutIcon(dom.Div, CommonMarginProps, RadixThemesComponent):
+class CalloutIcon(el.Div, CommonMarginProps, RadixThemesComponent):
     """Trigger an action or event, such as submitting a form or displaying a dialog."""
 
     tag = "Callout.Icon"
 
 
-class CalloutText(dom.P, CommonMarginProps, RadixThemesComponent):
+class CalloutText(el.P, CommonMarginProps, RadixThemesComponent):
     """Trigger an action or event, such as submitting a form or displaying a dialog."""
 
     tag = "Callout.Text"

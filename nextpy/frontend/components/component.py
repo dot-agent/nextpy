@@ -28,6 +28,7 @@ from nextpy.backend.event import (
     call_event_handler,
     get_handler_args,
 )
+from nextpy.backend.vars import BaseVar, Var, VarData
 from nextpy.base import Base
 from nextpy.build.compiler.templates import STATEFUL_COMPONENT
 from nextpy.constants import (
@@ -42,10 +43,9 @@ from nextpy.constants import (
 from nextpy.frontend import imports
 from nextpy.frontend.components.tags import Tag
 from nextpy.frontend.imports import ReactImportVar
-from nextpy.frontend.style import Style
+from nextpy.frontend.style import Style, format_as_emotion
 from nextpy.utils import console, format, types
 from nextpy.utils.serializers import serializer
-from nextpy.backend.vars import BaseVar, Var, VarData
 
 
 class BaseComponent(Base, ABC):
@@ -289,6 +289,7 @@ class Component(BaseComponent, ABC):
 
         kwargs["style"] = Style(
             {
+                **self.get_fields()["style"].default,
                 **style,
                 **{attr: value for attr, value in kwargs.items() if attr not in fields},
             }
@@ -345,6 +346,13 @@ class Component(BaseComponent, ABC):
 
         # If the input is a list of event handlers, create an event chain.
         if isinstance(value, List):
+            if not wrapped:
+                console.deprecate(
+                    feature_name="EventChain",
+                    reason="to avoid confusion, only use yield API",
+                    deprecation_version="0.2.8",
+                    removal_version="0.4.0",
+                )
             events: list[EventSpec] = []
             for v in value:
                 if isinstance(v, EventHandler):
@@ -438,6 +446,25 @@ class Component(BaseComponent, ABC):
         from nextpy.build.compiler.compiler import _compile_component
 
         return _compile_component(self)
+
+    def _apply_theme(self, theme: Optional[Component]):
+        """Apply the theme to this component.
+
+        Args:
+            theme: The theme to apply.
+        """
+        pass
+
+    def apply_theme(self, theme: Optional[Component]):
+        """Apply a theme to the component and its children.
+
+        Args:
+            theme: The theme to apply.
+        """
+        self._apply_theme(theme)
+        for child in self.children:
+            if isinstance(child, Component):
+                child.apply_theme(theme)
 
     def _render(self, props: dict[str, Any] | None = None) -> Tag:
         """Define how to render the component in React.
@@ -597,7 +624,7 @@ class Component(BaseComponent, ABC):
         Returns:
             The dictionary of the component style as value and the style notation as key.
         """
-        return {"style": self.style}
+        return {"css": Var.create(format_as_emotion(self.style))}
 
     def render(self) -> Dict:
         """Render the component.
@@ -779,6 +806,10 @@ class Component(BaseComponent, ABC):
         for child in self.children:
             dynamic_imports |= child.get_dynamic_imports()
 
+        for prop in self.get_component_props():
+            if getattr(self, prop) is not None:
+                dynamic_imports |= getattr(self, prop).get_dynamic_imports()
+
         # Return the dynamic imports
         return dynamic_imports
 
@@ -801,8 +832,7 @@ class Component(BaseComponent, ABC):
             The dependencies imports of the component.
         """
         return {
-            dep: [ReactImportVar(tag=None, render=False)]
-            for dep in self.lib_dependencies
+            dep: [ReactImportVar(tag=None, render=False)] for dep in self.lib_dependencies
         }
 
     def _get_hooks_imports(self) -> imports.ImportDict:
@@ -816,9 +846,7 @@ class Component(BaseComponent, ABC):
         if self._get_ref_hook():
             # Handle hooks needed for attaching react refs to DOM nodes.
             _imports.setdefault("react", set()).add(ReactImportVar(tag="useRef"))
-            _imports.setdefault(f"/{Dirs.STATE_PATH}", set()).add(
-                ReactImportVar(tag="refs")
-            )
+            _imports.setdefault(f"/{Dirs.STATE_PATH}", set()).add(ReactImportVar(tag="refs"))
 
         if self._get_mount_lifecycle_hook():
             # Handle hooks for `on_mount` / `on_unmount`.
@@ -1274,9 +1302,7 @@ class NoSSRComponent(Component):
             The imports for dynamically importing the component at module load time.
         """
         # Next.js dynamic import mechanism.
-        dynamic_import = {
-            "next/dynamic": [ReactImportVar(tag="dynamic", is_default=True)]
-        }
+        dynamic_import = {"next/dynamic": [ReactImportVar(tag="dynamic", is_default=True)]}
 
         # The normal imports for this component.
         _imports = super()._get_imports()
@@ -1362,7 +1388,7 @@ class StatefulComponent(BaseComponent):
         Returns:
             The stateful component or None if the component should not be memoized.
         """
-        from nextpy.frontend.components.layout.foreach import Foreach
+        from nextpy.frontend.components.core.foreach import Foreach
 
         if component._memoization_mode.disposition == MemoizationDisposition.NEVER:
             # Never memoize this component.
@@ -1445,8 +1471,8 @@ class StatefulComponent(BaseComponent):
             The Var from the child component or the child itself (for regular cases).
         """
         from nextpy.frontend.components.base.bare import Bare
-        from nextpy.frontend.components.layout.cond import Cond
-        from nextpy.frontend.components.layout.foreach import Foreach
+        from nextpy.frontend.components.core.cond import Cond
+        from nextpy.frontend.components.core.foreach import Foreach
 
         if isinstance(child, Bare):
             return child.contents

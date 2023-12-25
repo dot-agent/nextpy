@@ -1,8 +1,8 @@
 import nextpy as xt
 
+
 def sidebar(logo_src="/favicon.ico", title="Sidebar", menu_items=None, sidebar_style=None):
-    """
-    Create a customizable sidebar module.
+    """Create a customizable sidebar module.
 
     Args:
     - logo_src (str): Source path for the logo image.

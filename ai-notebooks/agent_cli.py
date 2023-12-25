@@ -1,7 +1,7 @@
-from nextpy.ai.agent.completion import TextCompletionAgent
-
 # import environment variables
 from dotenv import load_dotenv
+
+from nextpy.ai.agent.completion import TextCompletionAgent
 
 load_dotenv()
 

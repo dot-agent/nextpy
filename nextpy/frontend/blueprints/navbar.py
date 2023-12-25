@@ -1,5 +1,6 @@
 import nextpy as xt
 
+
 def navbar(logo_src="favicon.ico", title="My App", menu_items=None):
     # Default menu items if none provided
     if menu_items is None:

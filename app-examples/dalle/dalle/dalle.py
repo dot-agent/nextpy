@@ -107,4 +107,4 @@ app = xt.App(
     ],
 )
 app.add_page(index, title="nextpy:DALL·E")
-app.compile()
+

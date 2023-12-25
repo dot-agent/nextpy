@@ -4,7 +4,7 @@ https://www.radix-ui.com/themes/docs/theme/typography
 """
 from __future__ import annotations
 
-from nextpy.frontend import dom
+from nextpy import el
 from nextpy.backend.vars import Var
 
 from ..base import (
@@ -20,7 +20,7 @@ from .base import (
 )
 
 
-class Text(dom.Span, CommonMarginProps, RadixThemesComponent):
+class Text(el.Span, CommonMarginProps, RadixThemesComponent):
     """A foundational text primitive based on the <span> element."""
 
     tag = "Text"

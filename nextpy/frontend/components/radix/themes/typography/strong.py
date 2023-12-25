@@ -4,7 +4,7 @@ https://www.radix-ui.com/themes/docs/theme/typography
 """
 from __future__ import annotations
 
-from nextpy.frontend import dom
+from nextpy import el
 
 from ..base import (
     CommonMarginProps,
@@ -12,7 +12,7 @@ from ..base import (
 )
 
 
-class Strong(dom.Strong, CommonMarginProps, RadixThemesComponent):
+class Strong(el.Strong, CommonMarginProps, RadixThemesComponent):
     """Marks text to signify strong importance."""
 
     tag = "Strong"

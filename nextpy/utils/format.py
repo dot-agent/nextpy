@@ -7,12 +7,12 @@ import json
 import os
 import re
 import sys
-from typing import TYPE_CHECKING, Any, Union
+from typing import TYPE_CHECKING, Any, List, Union
 
 from nextpy import constants
+from nextpy.backend.vars import BaseVar, Var
 from nextpy.utils import exceptions, serializers, types
 from nextpy.utils.serializers import serialize
-from nextpy.backend.vars import BaseVar, Var
 
 if TYPE_CHECKING:
     from nextpy.backend.event import EventChain, EventHandler, EventSpec
@@ -125,7 +125,7 @@ def to_snake_case(text: str) -> str:
     return re.sub("([a-z0-9])([A-Z])", r"\1_\2", s1).lower().replace("-", "_")
 
 
-def to_camel_case(text: str) -> str:
+def to_camel_case(text: str, allow_hyphens: bool = False) -> str:
     """Convert a string to camel case.
 
     The first word in the text is converted to lowercase and
@@ -133,12 +133,14 @@ def to_camel_case(text: str) -> str:
 
     Args:
         text: The string to convert.
+        allow_hyphens: Whether to allow hyphens in the string.
 
     Returns:
         The camel case string.
     """
-    words = re.split("[_-]", text.lstrip("-_"))
-    leading_underscores_or_hyphens = "".join(re.findall(r"^[_-]+", text))
+    char = "_" if allow_hyphens else "-_"
+    words = re.split(f"[{char}]", text.lstrip(char))
+    leading_underscores_or_hyphens = "".join(re.findall(rf"^[{char}]+", text))
     # Capitalize the first letter of each word except the first one
     converted_word = words[0] + "".join(x.capitalize() for x in words[1:])
     return leading_underscores_or_hyphens + converted_word
@@ -269,6 +271,40 @@ def format_cond(
     # Format component conds.
     return wrap(f"{cond} ? {true_value} : {false_value}", "{")
 
+
+def format_match(cond: str | Var, match_cases: List[BaseVar], default: Var) -> str:
+    """Format a match expression whose return type is a Var.
+
+    Args:
+        cond: The condition.
+        match_cases: The list of cases to match.
+        default: The default case.
+
+    Returns:
+        The formatted match expression
+
+    """
+    switch_code = f"(() => {{ switch (JSON.stringify({cond})) {{"
+
+    for case in match_cases:
+        conditions = case[:-1]
+        return_value = case[-1]
+
+        case_conditions = " ".join(
+            [
+                f"case JSON.stringify({condition._var_string_without_curly_braces}):"
+                for condition in conditions
+            ]
+        )
+        case_code = f"{case_conditions}  return ({return_value._var_string_without_curly_braces});  break;"
+        switch_code += case_code
+
+    switch_code += (
+        f"default:  return ({default._var_string_without_curly_braces});  break;"
+    )
+    switch_code += "};})()"
+
+    return switch_code
 
 def format_prop(
     prop: Union[Var, EventChain, ComponentStyle, str],
@@ -625,17 +661,21 @@ def unwrap_vars(value: str) -> str:
         return prefix + re.sub('\\\\"', '"', m.group(2))
 
     # This substitution is necessary to unwrap var values.
-    return re.sub(
-        pattern=r"""
+    return (
+        re.sub(
+            pattern=r"""
             (?<!\\)      # must NOT start with a backslash
             "            # match opening double quote of JSON value
             (<nextpy.Var>.*?</nextpy.Var>)?  # Optional encoded VarData (non-greedy)
             {(.*?)}      # extract the value between curly braces (non-greedy)
             "            # match must end with an unescaped double quote
         """,
-        repl=unescape_double_quotes_in_var,
-        string=value,
-        flags=re.VERBOSE,
+            repl=unescape_double_quotes_in_var,
+            string=value,
+            flags=re.VERBOSE,
+        )
+        .replace('"`', "`")
+        .replace('`"', "`")
     )
 
 

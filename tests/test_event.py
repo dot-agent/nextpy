@@ -5,8 +5,8 @@ import pytest
 from nextpy.backend import event
 from nextpy.backend.event import Event, EventHandler, EventSpec, fix_events
 from nextpy.backend.state import BaseState
-from nextpy.utils import format
 from nextpy.backend.vars import Var
+from nextpy.utils import format
 
 
 def make_var(value) -> Var:

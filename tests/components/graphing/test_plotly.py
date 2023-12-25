@@ -2,8 +2,7 @@ import numpy as np
 import plotly.graph_objects as go
 import pytest
 
-from nextpy.frontend.components.graphing.plotly import serialize_figure  # type: ignore
-from nextpy.utils.serializers import serialize
+from nextpy.utils.serializers import serialize, serialize_figure
 
 
 @pytest.fixture

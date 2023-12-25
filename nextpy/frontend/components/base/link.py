@@ -1,8 +1,8 @@
 """Display the title of the current page."""
 
 
-from nextpy.frontend.components.component import Component
 from nextpy.backend.vars import Var
+from nextpy.frontend.components.component import Component
 
 
 class RawLink(Component):

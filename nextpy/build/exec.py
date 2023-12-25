@@ -121,6 +121,7 @@ def run_frontend(root: Path, port: str):
     start_watching_assets_folder(root)
     # validate dependencies before run
     prerequisites.validate_frontend_dependencies(init=False)
+
     # Run the frontend in development mode.
     console.rule("[bold green]App Running")
     os.environ["PORT"] = str(get_config().frontend_port if port is None else port)
@@ -160,7 +161,7 @@ def run_backend(
     import uvicorn
 
     config = get_config()
-    app_module = f"{config.app_name}.{config.app_name}:{constants.CompileVars.APP}"
+    app_module = f"nextpy.backend.app_shim:{constants.CompileVars.APP}"
 
     # Create a .nocompile file to skip compile for backend.
     if os.path.exists(constants.Dirs.WEB):
@@ -176,7 +177,6 @@ def run_backend(
         reload=True,
         reload_dirs=[config.app_name],
     )
-
 
 
 def run_backend_prod(
@@ -197,7 +197,7 @@ def run_backend_prod(
     config = get_config()
     RUN_BACKEND_PROD = f"gunicorn --worker-class {config.gunicorn_worker_class} --preload --timeout {config.timeout} --log-level critical".split()
     RUN_BACKEND_PROD_WINDOWS = f"uvicorn --timeout-keep-alive {config.timeout}".split()
-    app_module = f"{config.app_name}.{config.app_name}:{constants.CompileVars.APP}"
+    app_module = f"nextpy.backend.app_shim:{constants.CompileVars.APP}"
     command = (
         [
             *RUN_BACKEND_PROD_WINDOWS,

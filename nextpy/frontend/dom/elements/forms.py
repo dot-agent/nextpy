@@ -1,8 +1,8 @@
 """Element classes. This is an auto-generated file. Do not edit. See ../precompile.py."""
 from typing import Union
 
-from nextpy.frontend.dom.element import Element
 from nextpy.backend.vars import Var
+from nextpy.frontend.dom.element import Element
 
 from .base import BaseHTML
 

@@ -5,9 +5,9 @@ from __future__ import annotations
 from typing import Any, Dict, List, Optional, Set, Tuple, Union
 
 from nextpy.backend.event import EventChain
+from nextpy.backend.vars import Var
 from nextpy.base import Base
 from nextpy.utils import format, types
-from nextpy.backend.vars import Var
 
 
 class Tag(Base):

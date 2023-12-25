@@ -1,6 +1,6 @@
 from xtconfig import config
-import nextpy as xt
 
+import nextpy as xt
 
 # Style dictionary 
 style = {
@@ -38,6 +38,7 @@ filename = f"{config.app_name}/{config.app_name}.py"
 
 class State(xt.State):
     """The app state."""
+
     pass
 
 def index() -> xt.Component:
@@ -64,4 +65,3 @@ app = xt.App(
     ],
 )
 app.add_page(index)
-app.compile()

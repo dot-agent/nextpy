@@ -23,3 +23,9 @@ report.html
 prof
 dist
 test.py
+requirements.txt
+users.json
+users.json.lock
+test.py
+nextpy.log
+

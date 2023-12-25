@@ -1,7 +1,7 @@
 """Interactive components provided by @radix-ui/themes."""
 from typing import Literal
 
-from nextpy.frontend import dom
+from nextpy import el
 from nextpy.backend.vars import Var
 
 from ..base import (
@@ -14,19 +14,16 @@ from ..base import (
 LiteralSwitchSize = Literal["1", "2", "3", "4"]
 
 
-class Badge(dom.Span, CommonMarginProps, RadixThemesComponent):
+class Badge(el.Span, CommonMarginProps, RadixThemesComponent):
     """A toggle switch alternative to the checkbox."""
 
     tag = "Badge"
-
-    # The ratio of the width to the height of the element
-    ration: Var[float]
 
     # The variant of the avatar
     variant: Var[Literal["solid", "soft", "surface", "outline"]]
 
     # The size of the avatar
-    size: Var[Literal[1, 2]]
+    size: Var[Literal["1", "2"]]
 
     # Color theme of the avatar
     color: Var[LiteralAccentColor]

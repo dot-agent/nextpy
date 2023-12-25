@@ -6,12 +6,12 @@ import pytest
 from pandas import DataFrame
 
 from nextpy.backend.state import BaseState
-from nextpy.base import Base
 from nextpy.backend.vars import (
     BaseVar,
     ComputedVar,
     Var,
 )
+from nextpy.base import Base
 
 test_vars = [
     BaseVar(_var_name="prop1", _var_type=int),
@@ -22,6 +22,13 @@ test_vars = [
     ),
     BaseVar(_var_name="local2", _var_type=str, _var_is_local=True),
 ]
+
+
+class ATestState(BaseState):
+    """Test state."""
+
+    value: str
+    dict_val: Dict[str, List] = {}
 
 
 @pytest.fixture
@@ -1126,3 +1133,23 @@ def test_invalid_var_operations(operand1_var: Var, operand2_var, operators: List
 
         with pytest.raises(TypeError):
             operand1_var.operation(op=operator, other=operand2_var, flip=True)
+
+
+
+@pytest.mark.parametrize(
+    "var, expected",
+    [
+        (Var.create("string_value", _var_is_string=True), "`string_value`"),
+        (Var.create(1), "1"),
+        (Var.create([1, 2, 3]), "[1, 2, 3]"),
+        (Var.create({"foo": "bar"}), '{"foo": "bar"}'),
+        (Var.create(ATestState.value, _var_is_string=True), "a_test_state.value"),
+        (
+            Var.create(f"{ATestState.value} string", _var_is_string=True),
+            "`${a_test_state.value} string`",
+        ),
+        (Var.create(ATestState.dict_val), "a_test_state.dict_val"),
+    ],
+)
+def test_var_string_without_curly_braces(var, expected):
+    assert var._var_string_without_curly_braces == expected

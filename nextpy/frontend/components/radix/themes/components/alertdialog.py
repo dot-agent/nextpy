@@ -1,7 +1,7 @@
 """Interactive components provided by @radix-ui/themes."""
 from typing import Any, Dict, Literal
 
-from nextpy.frontend import dom
+from nextpy import el
 from nextpy.backend.vars import Var
 
 from ..base import (
@@ -38,7 +38,7 @@ class AlertDialogTrigger(CommonMarginProps, RadixThemesComponent):
     tag = "AlertDialog.Trigger"
 
 
-class AlertDialogContent(dom.Div, CommonMarginProps, RadixThemesComponent):
+class AlertDialogContent(el.Div, CommonMarginProps, RadixThemesComponent):
     """A toggle switch alternative to the checkbox."""
 
     tag = "AlertDialog.Content"

@@ -4,7 +4,7 @@ https://www.radix-ui.com/themes/docs/theme/typography
 """
 from __future__ import annotations
 
-from nextpy.frontend import dom
+from nextpy import el
 
 from ..base import (
     CommonMarginProps,
@@ -12,7 +12,7 @@ from ..base import (
 )
 
 
-class Quote(dom.Q, CommonMarginProps, RadixThemesComponent):
+class Quote(el.Q, CommonMarginProps, RadixThemesComponent):
     """A short inline quotation."""
 
     tag = "Quote"

@@ -41,12 +41,12 @@ from nextpy.backend.event import (
     fix_events,
     window_alert,
 )
+from nextpy.backend.vars import BaseVar, ComputedVar, Var
 from nextpy.base import Base
 from nextpy.build import prerequisites
-from nextpy.utils import console, format, types
+from nextpy.utils import format, types
 from nextpy.utils.exceptions import ImmutableStateError, LockExpiredError
 from nextpy.utils.serializers import SerializedType, serialize, serializer
-from nextpy.backend.vars import BaseVar, ComputedVar, Var
 
 Delta = Dict[str, Any]
 var = ComputedVar
@@ -1274,6 +1274,7 @@ class State(BaseState):
         Returns:
             The list of events to queue for on load handling.
         """
+        # Do not app.compile_()!  It should be already compiled by now.
         app = getattr(prerequisites.get_app(), constants.CompileVars.APP)
         load_events = app.get_load_events(self.router.page.path)
         if not load_events and self.is_hydrated:
@@ -1322,6 +1323,7 @@ class StateProxy(wrapt.ObjectProxy):
             state_instance: The state instance to proxy.
         """
         super().__init__(state_instance)
+        # compile is not relevant to backend logic
         self._self_app = getattr(prerequisites.get_app(), constants.CompileVars.APP)
         self._self_substate_path = state_instance.get_full_name().split(".")
         self._self_actx = None
@@ -1745,6 +1747,17 @@ class StateManagerRedis(StateManager):
             if state_is_locked:
                 # only delete our lock
                 await self.redis.delete(lock_key)
+
+    async def close(self):
+        """Explicitly close the redis connection and connection_pool.
+
+        It is necessary in testing scenarios to close between asyncio test cases
+        to avoid having lingering redis connections associated with event loops
+        that will be closed (each test case uses its own event loop).
+
+        Note: Connections will be automatically reopened when needed.
+        """
+        await self.redis.close(close_connection_pool=True)
 
 
 class ClientStorageBase:

@@ -4,7 +4,7 @@ https://www.radix-ui.com/themes/docs/theme/typography
 """
 from __future__ import annotations
 
-from nextpy.frontend import dom
+from nextpy import el
 from nextpy.backend.vars import Var
 
 from ..base import (
@@ -16,7 +16,7 @@ from .base import (
 )
 
 
-class Kbd(dom.Kbd, CommonMarginProps, RadixThemesComponent):
+class Kbd(el.Kbd, CommonMarginProps, RadixThemesComponent):
     """Represents keyboard input or a hotkey."""
 
     tag = "Kbd"

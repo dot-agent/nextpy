@@ -1,7 +1,7 @@
 """Interactive components provided by @radix-ui/themes."""
 from typing import Any, Dict, Literal
 
-from nextpy.frontend import dom
+from nextpy import el
 from nextpy.backend.vars import Var
 
 from ..base import (
@@ -45,7 +45,7 @@ class HoverCardTrigger(CommonMarginProps, RadixThemesComponent):
     tag = "HoverCard.Trigger"
 
 
-class HoverCardContent(dom.Div, CommonMarginProps, RadixThemesComponent):
+class HoverCardContent(el.Div, CommonMarginProps, RadixThemesComponent):
     """Trigger an action or event, such as submitting a form or displaying a dialog."""
 
     tag = "HoverCard.Content"

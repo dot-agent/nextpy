@@ -1,4 +1,4 @@
-""" Manually edited, do not regen."""
+""" Generated with stubgen from mypy, then manually edited, do not regen."""
 
 import asyncio
 from fastapi import FastAPI
@@ -7,12 +7,13 @@ from nextpy import constants as constants
 from nextpy.backend.admin import AdminDash as AdminDash
 from nextpy.base import Base as Base
 from nextpy.build.compiler import compiler as compiler
+from nextpy.build import prerequisites as prerequisites
 from nextpy.frontend.components import connection_modal as connection_modal
 from nextpy.frontend.components.component import (
     Component as Component,
     ComponentStyle as ComponentStyle,
 )
-from nextpy.frontend.components.layout.fragment import Fragment as Fragment
+from nextpy.frontend.components.base.fragment import Fragment as Fragment
 from nextpy.build.config import get_config as get_config
 from nextpy.backend.event import (
     Event as Event,
@@ -41,9 +42,6 @@ from nextpy.utils import (
     console as console,
     format as format,
     types as types,
-)
-from nextpy.build import (
-    prerequisites as prerequisites,
 )
 from socketio import ASGIApp, AsyncNamespace, AsyncServer
 from typing import (
@@ -122,6 +120,7 @@ class App(Base):
     def setup_admin_dash(self) -> None: ...
     def get_frontend_packages(self, imports: Dict[str, str]): ...
     def compile(self) -> None: ...
+    def compile_(self) -> None: ...
     def modify_state(self, token: str) -> AsyncContextManager[State]: ...
     def _process_background(
         self, state: State, event: Event

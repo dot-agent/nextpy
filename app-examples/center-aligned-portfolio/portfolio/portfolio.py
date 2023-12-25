@@ -135,6 +135,6 @@ def landing() -> xt.Component:
 
 
 app = xt.App(style = styles.app_general_style)
-app.compile()
+
 
 

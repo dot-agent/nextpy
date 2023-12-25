@@ -3,10 +3,10 @@ from __future__ import annotations
 
 from typing import Any, Iterator
 
+from nextpy.backend.vars import Var
 from nextpy.frontend.components.component import Component
 from nextpy.frontend.components.tags import Tag
 from nextpy.frontend.components.tags.tagless import Tagless
-from nextpy.backend.vars import Var
 
 
 class Bare(Component):

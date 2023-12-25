@@ -3,7 +3,7 @@ from __future__ import annotations
 
 from typing import Literal
 
-from nextpy.frontend import dom
+from nextpy import el
 from nextpy.backend.vars import Var
 
 from ..base import (
@@ -17,7 +17,7 @@ LiteralGridDisplay = Literal["none", "inline-grid", "grid"]
 LiteralGridFlow = Literal["row", "column", "dense", "row-dense", "column-dense"]
 
 
-class Grid(dom.Div, RadixThemesComponent):
+class Grid(el.Div, RadixThemesComponent):
     """Component for creating grid layouts."""
 
     tag = "Grid"

@@ -4,6 +4,8 @@
 <hr>
 
 <h3> Pythonic Web App framework: For Humans & LLMs</h3>
+<p align="center"><i>Simple like Streamlit + Fast and Flexible like Next.js</i></p>
+   
 
 ```diff
 + 🤖 Searching for 'OpenAMS' or 'OpenAgent'? They're now seamlessly integrated into Nextpy. +
@@ -11,9 +13,9 @@
 
 </div>
 
-## Q: Is it production-ready?
+## Q: Is it production-ready? 
 
-Congratulations on discovering Nextpy before its beta launch! 🧭 While it's stable and we're rigorously testing it in our own production, we recommend a cautious approach for immediate production use. Be aware of its unique quirks and minor bugs, currently on our 'Array of Minor Annoyances' list.
+Congratulations on discovering Nextpy before its public launch! 🧭 While the documented features are production-ready (powering our own systems!), some undocumented ones might have quirks. We're actively smoothing them out, and live  [Discord support](https://discord.com/invite/g9PFpVztZg) is just a ping away!
 
 **Ready to Dive In?**
 
@@ -21,82 +23,138 @@ Ahoy, adventurer! 🏴‍☠️ We're thrilled to have you aboard. Let's create 
 
 ![-----------------------------------------------------](https://res.cloudinary.com/dzznkbdrb/image/upload/v1694798498/divider_1_rej288.gif)
 
-## Origin tale of Next.py
+## ⚡ What is Next.py ?
+Nextpy is a Python Web App Framework designed for the Age of AI Agents. Built on the best ideas from prior frameworks, it's simple like Streamlit but has the perfomance and flexibility of Next.js.
 
-In our quest to create apps that write themselves, we delved deep into a labyrinth of coding tools, frameworks, and libraries. Our experiments spanned all major large language models (LLMs), thousands of prompts, and every major web development framework, from React to Streamlit. 
+### 💡 Key Features
 
+#### Simplifying App Development:🧩
+- **🐍 Unleash Python's Full Potential** - Eliminate complexities and build everything—frontend and backend—in Python, seamlessly integrating any Python library.
+- **🎨 Rich UI Library** - Over 100 fully customizable built-in components for rapid UI development.
+- **⚛️ Tap into React's Power with Pythonic Wrappers** - Harness the vast React ecosystem directly within Python, utilizing any React library **_without JavaScript knowledge._**
+- **🚀 Built-in Performance Optimizations** - Deliver exceptional user experiences with automatic image, font, and script optimizations for lightning-fast loading speeds and responsiveness. See the difference for yourself at [nextpy.org](https://nextpy.org).
 
-> [!TIP]
->During this process, we learned that regardless of the LLMs, prompts, or fine-tuning used, the underlying app framework can significantly impact the efficiency of code generation. 
+#### Better AI Generations: ‍🤖
 
+- **🧠 More Effective Than Chaining or Prompt Engineering** - Next.py aligns with LLM processing patterns, enabling precise output control and optimal model utilization.
+- **💡 Optimized for Code Generation** - Regardless of the LLMs, prompts, or fine-tuning used, the underlying app framework significantly impacts the efficiency of code generation. Next.py's architecture is specifically engineered to maximize efficiency.
+- **💾 Session State with LLM** - Efficiently maintain state with LLMs, leveraging KV caches to convert multiple output tokens into prompt token batches. This approach reduces redundant generations, accelerating the handling of lengthy and intricate prompts. **_(only for open-source models)_**
+- **🧪 Detect Syntax Errors**: Test LLM-generated code, identifying and correcting LLM hallucinations, invalid Nextpy methods, and automatically generating prompts for seamless fixes.
 
-Initially, reflex's flexibility seemed promising, aligning with several of our requirements. However, as we delved deeper into apps development, the absence of crucial features forced us to write large amounts of "glue code" to compensate, ultimately slowing down our development speed.
+#### Developer-First: ❤️
 
-For months, we avoided reinventing the wheel, Frankenstein-ing disparate tools to stitch together our vision. However, the ROI no longer made sense after a certain point. So, we selectively picked the best ideas from prior frameworks and combined them to build a high-performance web app framework. It has the simplicity of streamlit and the speed and flexibility of Next.js. Our goal is to develop Next.py into the premier framework for both humans and AI agents.
-
-
-
+- **📘 Transferable Knowledge** - Learning Next.py instills framework-agnostic fundamentals, enhancing your app development expertise and enabling you to excel across any frameworks.
+- **🛠️ Extensible** - If you know how to do something in Python or plain English, you can integrate it with nextpy.
 
 ![-----------------------------------------------------](https://res.cloudinary.com/dzznkbdrb/image/upload/v1694798498/divider_1_rej288.gif)
 
-## ⚙️ Installation
+## 🚀 Quick Start (2 mins)
 
-To install, open a terminal and run (Python 3.7 or higher required):
+**1. Installing Nextpy**
+
+Open your terminal and prepare for an adventure of a lifetime!
 
 ```bash
 pip install nextpy
 ```
 
-## 🚀 Quickstart (5 mins)
+**(Remember, Python 3.7 or later is required.)**
 
-Kickstart your first Nextpy app with this easy guide. We'll guide you through the essential steps to get a Nextpy app running quickly.
+**2. Initializing Your App**
 
-For a more in-depth project, explore our app examples.
+Navigate to the desired directory for your project in the terminal. Use the `nextpy init` command to initialize a template app in your new directory.
 
-### Setting Up
+```bash
+nextpy init
+```
 
-1. **Create a New Directory:**
-   Open a terminal and create a new directory for your app:
+**3. Choose your template:**
 
-   ```bash
-   mkdir myapp
-   ```
+For now, just press enter to automatically default to the blank template.
+```md
+    Blank Template: A simple single page template
+    Base Template: A multi-page app with a sidebar
+```
 
-2. **Navigate to Your Directory:**
-   Switch to your newly created directory:
+**4. Running the App**
 
-   ```bash
-   cd myapp
-   ```
+In the same directory where you previously ran nextpy init, enter the following command:
 
-3. **Initialize Your App:**
-   Start your app with this command:
-   ```bash
-   nextpy init
-   ```
-   Choose from:
-   - **Blank Template:** For a fresh start.
-   - **Base Template:** For a pre-setup experience.
+```bash
+nextpy run
+```
 
-### Running Your App
+**5. View the App:**
 
-1. **Start the App:**
-   Inside your app's directory, run:
+Check out your app by visiting [http://localhost:3000](http://localhost:3000)
 
-   ```bash
-   nextpy run
-   ```
+> [!NOTE]
+> Your application is now fully functional. To view the frontend, navigate to `localhost:3000`. The backend server is accessible at `localhost:8000`.
+> While it's unlikely you'll ever directly interact with it, the backend API documentation can be found at `localhost:8000/docs`, and the openapi.json file is located at `localhost:8000/openapi.json`.
 
-2. **View the App:**
-   Check out your app by visiting [http://localhost:3000](http://localhost:3000) in a browser.
 
+## 🎨 Start with a template!
+
+We speedup your development with a [ever growing list of community templates](https://github.com/dot-agent/nextpy/tree/main/app-examples). Some examples:
+
+<table border="0">
+  <tr>
+    <td>
+      <a target="_blank" href="https://nextpy.org/">
+        <img src="https://res.cloudinary.com/doojikdqd/image/upload/v1703429508/github_nextpy/glide_datagrid_2x_fdxoyy.png" style="max-height:150px; width:auto; display:block;">
+      </a>
+    </td>
+    <td>
+      <a target="_blank" href="https://nextpy.org/">
+        <img src="https://res.cloudinary.com/doojikdqd/image/upload/v1703429508/github_nextpy/portfolio_2x_y4lzet.png" style="max-height:150px; width:auto; display:block;">
+      </a>
+    </td>
+     <td>
+      <a target="_blank" href="https://nextpy.org/">
+        <img src="https://res.cloudinary.com/doojikdqd/image/upload/v1703429509/github_nextpy/chart_2x_eh0q9x.png" style="max-height:150px; width:auto; display:block;">
+      </a>
+    </td>
+     <td>
+      <a target="_blank" href="https://nextpy.org/">
+        <img src="https://res.cloudinary.com/doojikdqd/image/upload/v1703429509/github_nextpy/chat_app_2x_cmsaht.png" style="max-height:150px; width:auto; display:block;">
+      </a>
+    </td>
+     <td>
+      <a target="_blank" href="https://nextpy.org/">
+        <img src="https://res.cloudinary.com/doojikdqd/image/upload/v1703429509/github_nextpy/crud_2x_bcxiyp.png" style="max-height:150px; width:auto; display:block;">
+      </a>
+    </td>
+     <td>
+      <a target="_blank" href="https://nextpy.org/">
+        <img src="https://res.cloudinary.com/doojikdqd/image/upload/v1703429508/github_nextpy/login_2x_hgjpo2.png" style="max-height:150px; width:auto; display:block;">
+      </a>
+    </td>
+  </tr>
+  <tr>
+    <td>Powerful tables</td>
+    <td>Portfolio Sites</td>
+    <td>Interactive Charts</td>
+    <td>AI chat</td>
+    <td>Crud Apps</td>
+    <td>Onboarding</td>
+  </tr>
+</table>
+
+### Setting Up the Template
+1. Copy the template files to your local folder.
+2. Install necessary dependencies with **`pip install -r requirements.txt`**.
+3. Initialize your app by running **`nextpy init`**.
+4. Launch the app with **`nextpy run`** to see it in action. To check the site visit `localhost:3000`
+
+
+# ➖ or ➖ 
 ---
 
-### Building a Joke Generator App
+### 🤣 Building a Joke Generator App (5 mins)
 
 Edit `myapp/myapp.py` to create your app.
 
-#### Import Libraries
+#### 1. Import Libraries
 
 ```python
 import nextpy as xt
@@ -105,7 +163,7 @@ import pyjokes
 
 Start by importing `nextpy` for development and `pyjokes` for random jokes.
 
-#### Set Up the App State
+#### 2. Set Up the App State
 
 ```python
 class State(xt.State):
@@ -117,41 +175,67 @@ class State(xt.State):
 
 Create a `State` class with a `joke` variable. Use `generate_joke` to fetch new jokes.
 
-#### Design the Main Page
+#### 3. Design the Main Page
 
 ```python
 def index():
-    return xt.vstack(
+    layout = xt.vstack(
         xt.text(State.joke, font_size="2em"),
-        xt.button(
-            "Generate Joke",
-            on_click=State.generate_joke,
-        ),
+        xt.button("Generate Joke", on_click=State.generate_joke),
+    )
+    return layout
+```
+
+The `index` function arranges a joke display and a button. `vstack` is used to stack components vertically, while `hstack` is used to stack components horizontally.
+
+#### 4. Optional Styling
+```md
+def index():
+    layout = xt.vstack(
+        xt.text(State.joke, font_size="2em"),
+        xt.button("Generate Joke", on_click=State.generate_joke),
+
         spacing="1em",
         align_items="center",
         justify_content="center",
         height="100vh",
-    )
+   )
+    return layout
 ```
+The `spacing` attribute adds space between the `text` and `button` elements, while `align_items` and `justify_content` ensure that these elements are centered. The stack's `height` is set to 100% of the Viewport Height (`100vh`), which allows the vertical stack to fill the entire height of your screen.
 
-The `index` function arranges a joke display and a button, centered on the screen.
-
-#### Build and Run the App
+#### 5. Setup the app
 
 ```python
 app = xt.App()
 app.add_page(index)
-app.compile()
+
 ```
 
-Set up the app, add the main page, and prepare it for launch.
+Set up the app, add the main page. To view the frontend, navigate to `localhost:3000`. 
 
-> [!NOTE]
-> Your app, completed in under 25 lines, will be accessible at `localhost:3000` with the server running on `localhost:8000`.
 
 ![-----------------------------------------------------](https://res.cloudinary.com/dzznkbdrb/image/upload/v1694798498/divider_1_rej288.gif)
 
+
+
+
+
+## Why another framework?
+
+In our quest to create apps that write themselves, we delved deep into a labyrinth of coding tools, frameworks, and libraries. Our experiments spanned all major large language models (LLMs), thousands of prompts, and every major web development framework, from React to Streamlit.
+
+
+> [!TIP]
+>During this process, we learned that regardless of the LLMs, prompts, or fine-tuning used, the underlying app framework can significantly impact the efficiency of code generation. 
+
+
+Initially, reflex's flexibility seemed promising, aligning with several of our requirements. However, as we delved deeper into apps development, the absence of crucial features forced us to write large amounts of "glue code" to compensate, ultimately slowing down our development speed.
+
+For months, we avoided reinventing the wheel, Frankenstein-ing disparate tools to stitch together our vision. However, the ROI no longer made sense after a certain point. So, we selectively picked the best ideas from prior frameworks and combined them to build a high-performance web app framework. It has the simplicity of streamlit and the speed and flexibility of Next.js. Our goal is to develop Next.py into the most efficeint app development framework for both humans and AI agents.
+
 ## 🙏 Thanks
+
 
 Nextpy Framework is a state-of-the-art app development framerwork optimized for AI-based code generation, built on the open-source community’s spirit of cooperation. It integrates key components from landmark projects like Guidance, Llama-Index, FastAPI-Mail, LangChain, ReactPy, Reflex, Chakra, Radix, Numpy and Next.js, while also drawing insights from the React and Rust ecosystems. This fusion ideas has been pivotal in shaping Nextpy into a framework that's not just AI-friendly but also a trailblazer in generative web development tools.
 

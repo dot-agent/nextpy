@@ -53,5 +53,5 @@ def index() -> xt.Component:
 
 # Create the app and compile it.
 app = xt.App(style=styles.base_style)
-app.compile()
+
 

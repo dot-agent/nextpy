@@ -107,4 +107,4 @@ app = xt.App(
     stylesheets=[
         "https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,700&family=Inter&display=swap",]
 )
-app.compile()
+

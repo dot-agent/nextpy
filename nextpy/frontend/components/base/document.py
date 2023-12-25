@@ -1,7 +1,6 @@
 """Document components."""
 
 from nextpy.frontend.components.component import Component
-from nextpy.frontend.components.libs.chakra import ChakraComponent
 
 
 class NextDocumentLib(Component):
@@ -32,10 +31,3 @@ class NextScript(NextDocumentLib):
     """The document main scripts."""
 
     tag = "NextScript"
-
-
-class ColorModeScript(ChakraComponent):
-    """Chakra color mode script."""
-
-    tag = "ColorModeScript"
-    initialColorMode = "light"

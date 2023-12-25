@@ -9,6 +9,7 @@ import os
 import re
 import sys
 import textwrap
+import typing
 from inspect import getfullargspec
 from pathlib import Path
 from types import ModuleType
@@ -17,9 +18,9 @@ from typing import Any, Callable, Iterable, Type, get_args
 import black
 import black.mode
 
+from nextpy.backend.vars import Var
 from nextpy.frontend.components.component import Component
 from nextpy.utils import types as xt_types
-from nextpy.backend.vars import Var
 
 logger = logging.getLogger("pyi_generator")
 
@@ -29,6 +30,7 @@ EXCLUDED_FILES = [
     "bare.py",
     "foreach.py",
     "cond.py",
+    "match.py",
     "multiselect.py",
     "literals.py",
 ]
@@ -130,6 +132,10 @@ def _generate_imports(typing_imports: Iterable[str]) -> list[ast.ImportFrom]:
                 from nextpy.frontend.style import Style"""
             )
         ).body,
+        # *[
+        #     ast.ImportFrom(module=name, names=[ast.alias(name=val) for val in values])
+        #     for name, values in EXTRA_IMPORTS.items()
+        # ],
     ]
 
 
@@ -267,6 +273,20 @@ def _extract_class_props_as_ast_nodes(
     return kwargs
 
 
+def _get_parent_imports(func):
+    _imports = {"nextpy.backend.vars": ["Var"]}
+    for type_hint in inspect.get_annotations(func).values():
+        try:
+            match = re.match(r"\w+\[([\w\d]+)\]", type_hint)
+        except TypeError:
+            continue
+        if match:
+            type_hint = match.group(1)
+            if type_hint in importlib.import_module(func.__module__).__dir__():
+                _imports.setdefault(func.__module__, []).append(type_hint)
+    return _imports
+
+
 def _generate_component_create_functiondef(
     node: ast.FunctionDef | None,
     clz: type[Component],
@@ -282,7 +302,16 @@ def _generate_component_create_functiondef(
     Returns:
         The create functiondef node for the ast.
     """
-    # kwargs defined on the actual create function
+    # add the imports needed by get_type_hint later
+    type_hint_globals.update(
+        {name: getattr(typing, name) for name in DEFAULT_TYPING_IMPORTS}
+    )
+
+    if clz.__module__ != clz.create.__module__:
+        _imports = _get_parent_imports(clz.create)
+        for name, values in _imports.items():
+            exec(f"from {name} import {','.join(values)}", type_hint_globals)
+
     kwargs = _extract_func_kwargs_as_ast_nodes(clz.create, type_hint_globals)
 
     # kwargs associated with props defined in the class and its parents
@@ -548,7 +577,6 @@ class PyiGenerator:
     modules: list = []
     root: str = ""
     current_module: Any = {}
-    default_typing_imports: set = DEFAULT_TYPING_IMPORTS
 
     def _write_pyi_file(self, module_path: Path, source: str):
         pyi_content = [
@@ -580,7 +608,7 @@ class PyiGenerator:
     def _scan_file(self, module_path: Path):
         module_import = str(module_path.with_suffix("")).replace("/", ".")
         module = importlib.import_module(module_import)
-
+        logger.debug(f"Read {module_path}")
         class_names = {
             name: obj
             for name, obj in vars(module).items()
