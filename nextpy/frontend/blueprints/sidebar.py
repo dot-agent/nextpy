@@ -1,3 +1,5 @@
+"""Builds a sidebar section for a webpage."""
+
 import nextpy as xt
 
 

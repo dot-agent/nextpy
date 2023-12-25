@@ -1,3 +1,4 @@
+"""Builds a hero section for a webpage."""
 import nextpy as xt
 
 

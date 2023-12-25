@@ -1,15 +1,23 @@
+"""Leaflet mapping components.""."""
 from nextpy.backend.vars import Var
 from nextpy.frontend.components.component import Component
 from nextpy.frontend.style import Style
 
 
 class LeafletLib(Component):
+    """Base class for Leaflet components in NextPy."""
+
     library = "react-leaflet"
     def _get_imports(self):
         return {}
 
     @classmethod
     def create(cls, *children, **props):
+        """Create a Leaflet component, handling style props.
+        
+        Transfers style props to custom_style prop.
+        Calls superclass create() method to build component.
+        """
         custom_style = props.pop("style", {})
 
         # Transfer style props to the custom style prop.
@@ -34,6 +42,7 @@ class LeafletLib(Component):
 
 
 class MapContainer(LeafletLib):
+    """Creates a map container with a Leaflet map."""
     
     tag = "MapContainer"
 
@@ -49,7 +58,8 @@ const MapContainer = dynamic(() => import('react-leaflet').then((mod) => mod.Map
 
 
 class TileLayer(LeafletLib):
-    
+    """Displays tile layers on the map."""
+
     tag = "TileLayer"
 
     def _get_custom_code(self) -> str:
@@ -60,12 +70,14 @@ class TileLayer(LeafletLib):
 
 
 class UseMap(LeafletLib):
+    """Hook to access map state and functions."""
     
     tag = "useMap"
 
 
 class Marker(LeafletLib):
-    
+    """Displays clickable/draggable icons on the map."""
+
     tag = "Marker"
 
     def _get_custom_code(self) -> str:
@@ -76,7 +88,8 @@ class Marker(LeafletLib):
 
 
 class Popup(LeafletLib):
-    
+    """Used to open popups in certain places on the map."""
+
     tag = "Popup"
 
     def _get_custom_code(self) -> str:

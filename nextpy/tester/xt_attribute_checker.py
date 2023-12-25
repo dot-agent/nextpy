@@ -1,3 +1,5 @@
+"""Checker that looks for invalid attributes passed to nextpy functions."""
+
 # TODO: add tests for this
 import difflib
 from typing import TYPE_CHECKING, Optional
@@ -508,6 +510,8 @@ VALID_ATTRIBUTES = set(
 
 
 class NextpyAttributeChecker(BaseChecker):
+    """Checker class for validating nextpy attribute usage."""
+
     name = "nextpy-attribute-checker"
     msgs = {
         "E9008": (
@@ -519,6 +523,11 @@ class NextpyAttributeChecker(BaseChecker):
     priority = -1
 
     def __init__(self, linter: Optional["PyLinter"] = None) -> None:
+        """Initialize the checker.
+
+        Args:
+            linter: The Pylinter instance.
+        """
         if linter is None:
             raise ValueError("A PyLinter instance is required for NextpyAttributeChecker")
         super().__init__(linter)
@@ -526,6 +535,11 @@ class NextpyAttributeChecker(BaseChecker):
 
 
     def visit_attribute(self, node: astroid.Attribute) -> None:
+        """Visit an attribute node and check for invalid nextpy attributes.
+
+        Args:
+            node: The attribute node.
+        """
         if isinstance(node.expr, astroid.Name) and (
             node.expr.name == "nextpy" or node.expr.name == "xt"
         ):
@@ -543,6 +557,14 @@ class NextpyAttributeChecker(BaseChecker):
                 )
 
     def find_closest_attribute(self, attr_name: str) -> str:
+        """Find closest matching attribute to the given attribute name.
+
+        Args:
+            attr_name: The attribute name to find a close match for.
+
+        Returns:
+            The closest matching attribute name if found, else a default string.
+        """
         closest_matches = difflib.get_close_matches(
             attr_name, self.allowed_attributes, n=1
         )

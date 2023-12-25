@@ -1,7 +1,19 @@
+"""Builds a navbar section for a webpage."""
 import nextpy as xt
 
 
 def navbar(logo_src="favicon.ico", title="My App", menu_items=None):
+    """Builds a navbar with logo, title, and menu items.
+    
+    Args:
+        logo_src (str): Path to logo image file.
+        title (str): Title text for navbar.
+        menu_items (list): List of xt.menu_button items.
+    
+
+    Returns:
+        nextpy.Element: The navbar component.
+    """
     # Default menu items if none provided
     if menu_items is None:
         menu_items = [xt.menu_button("Menu")]

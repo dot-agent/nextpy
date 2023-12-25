@@ -1,3 +1,5 @@
+"""Leaflet mapping components."""
+
 from .leaflet import (
     MapContainer,
     Marker,

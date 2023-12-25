@@ -312,8 +312,9 @@ class JsonDatabase:
         if self.id_fieldname in data:
             try:
                 data[self.id_fieldname] = int(data[self.id_fieldname])
-            except ValueError:
-                raise ValueError(f"The '{self.id_fieldname}' field must be convertible to an integer.")
+            except ValueError as err:  # Capture the original ValueError in `err`  
+                # Now raise a new ValueError with `from err` to chain the exceptions  
+               raise ValueError(f"The '{self.id_fieldname}' field must be convertible to an integer.") from err
 
         # Create an SQLModel instance using the dictionary.
         instance = self.model.model_validate(data)

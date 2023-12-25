@@ -927,6 +927,7 @@ def install(
 
 @cli.command()
 def lint(files: List[str] = typer.Argument(..., help="The Python files to lint.")):
+    """Lint nextpy app code."""
     from io import StringIO
 
     from pylint.lint import Run

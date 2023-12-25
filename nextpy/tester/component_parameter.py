@@ -1,3 +1,5 @@
+"""Checker that looks for invalid parameters passed to xt component functions."""
+
 from __future__ import annotations
 
 import difflib
@@ -28,10 +30,13 @@ MSGS: dict[str, MessageDefinitionTuple] = {
 
 
 class InvalidParameterChecker(BaseChecker):
+    """Checker that looks for invalid parameters passed to xt component functions."""
+
     name = "invalid-parameter"
     msgs = MSGS
 
     def visit_call(self, node: nodes.Call) -> None:
+        """Visit a function call node to check for invalid parameters."""
         if (
             isinstance(node.func, nodes.Attribute)
             and node.func.attrname in VALID_PARAMETERS
@@ -56,9 +61,11 @@ class InvalidParameterChecker(BaseChecker):
                         )
 
     def find_closest_attribute(self, attr_name: str, valid_attrs: set[str]) -> str:
+        """Find closest matching attribute name from a set of valid names."""
         closest_matches = difflib.get_close_matches(attr_name, valid_attrs, n=1)
         return closest_matches[0] if closest_matches else "no similar attribute found"
 
 
 def register(linter: PyLinter) -> None:
+    """Register the checker."""
     linter.register_checker(InvalidParameterChecker(linter))
