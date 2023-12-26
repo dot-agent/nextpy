@@ -1,4 +1,4 @@
-# JsonDatabase: A Beginner's Guide
+# JsonDatabase
 
 ## Introduction
 The `JsonDatabase` class provides a simple, JSON file-based database system. It's particularly useful for small projects or situations where a full-scale database system is unnecessary. This guide will introduce you to the `JsonDatabase` class, explaining its core functionality and showing you how to use it with simple examples.
