@@ -15,11 +15,33 @@
 
 ## Q: Is it production-ready? 
 
-Congratulations on discovering Nextpy before its public launch! 🧭 While the documented features are production-ready (powering our own systems!), some undocumented ones might have quirks. We're actively smoothing them out, and live  [Discord support](https://discord.com/invite/g9PFpVztZg) is just a ping away!
+Congratulations on discovering Nextpy before its public launch! 🧭 While the documented features are production-ready [powering our own systems!](https://nextpy.org/), some undocumented ones might have quirks. We're actively smoothing them out, and live  [Discord support](https://discord.com/invite/g9PFpVztZg) is just a ping away!
 
-**Ready to Dive In?**
+![-----------------------------------------------------](https://res.cloudinary.com/dzznkbdrb/image/upload/v1694798498/divider_1_rej288.gif)
 
-Ahoy, adventurer! 🏴‍☠️ We're thrilled to have you aboard. Let's create something extraordinary together! ✨
+## Project Roadmap & Contributions
+
+**We welcome contributors of all skill levels!**
+
+**Upcoming Features**
+
+1. **Frontend Magic Component**
+   - **PDF Resume to Personal Site**: Introducing a "magic component" that enables the seamless conversion of PDF resumes into comprehensive, full-stack personal websites.
+
+2. **Backend Modules**
+   - **User Authentication and Email Integration**: Implementing robust login functionality and efficient email subscription modules.
+   - **Support for Blogging and E-commerce**: Crafting advanced modules to facilitate blog management and e-commerce activities.
+
+3. **Build and Performance Optimization**
+   - **Compiler Enhancement with Rust**: Transitioning our existing compiler to Rust to achieve superior performance and efficiency.
+
+4. **AI**
+   - **Nextpy LLM Development**: Focused efforts on developing Nextpy, a leading-edge Python Language Learning Model (LLM).
+   - **End-User Copilot Feature**: A chat-based copilot for app users that lets them interact with your product and do things by text. We have all the modules ready for this, we just need to simplify the abstraction. Just set `copilot = True` in xtconfig and you’re should be good to go.
+
+### Get Involved
+
+Eager to make a difference? Start by forking our repository and sending in your pull requests. We're excited to welcome you to our community. Together, we'll craft something truly remarkable! ✨
 
 ![-----------------------------------------------------](https://res.cloudinary.com/dzznkbdrb/image/upload/v1694798498/divider_1_rej288.gif)
 
