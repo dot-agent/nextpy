@@ -15,7 +15,7 @@
 **Example: Creating a Unique Avatar**
 
 ```python
-pythonCopy code
+
 xt.avatar(name="Adventurer Alex")
 
 ```
@@ -30,7 +30,7 @@ xt.avatar(name="Adventurer Alex")
 **Example: Stylish Button**
 
 ```python
-pythonCopy code
+
 xt.button(
     "Press Me!",
     border_radius="10px",
@@ -51,7 +51,7 @@ xt.button(
 **Example: Welcoming Box**
 
 ```python
-pythonCopy code
+
 xt.box(
     "Welcome to Nextpy!",
     id="welcome-area",
@@ -69,7 +69,7 @@ xt.box(
 **Example: Toggleable Badge**
 
 ```python
-pythonCopy code
+
 class DynamicState(xt.State):
     label: str = "Click to Change"
     color: str = "blue"
@@ -95,7 +95,7 @@ def index():
 **Example: Responsive Slider**
 
 ```python
-pythonCopy code
+
 class GameLevelState(xt.State):
     level: int = 30
 
