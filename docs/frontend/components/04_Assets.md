@@ -16,7 +16,7 @@
 - Imagine you've captured a stunning image of a Nextpy dragon, saved as **`nextpy_dragon.svg`** in your assets trove.
 
 ```python
-pythonCopy code
+
 xt.image(src="/nextpy_dragon.svg", width="100px")
 
 ```
@@ -36,7 +36,7 @@ xt.image(src="/nextpy_dragon.svg", width="100px")
 - For simple treasures, a portal link suffices.
 
 ```python
-pythonCopy code
+
 xt.link("Download Treasure", href="/golden_artifact.png")
 
 ```
@@ -48,7 +48,7 @@ xt.link("Download Treasure", href="/golden_artifact.png")
 - Summon downloads with more sorcery using **`xt.download`**.
 
 ```python
-pythonCopy code
+
 xt.button(
     "Summon File",
     on_click=xt.download(url="/mystic_scroll.png"),
@@ -63,7 +63,7 @@ xt.button(
 - **`xt.download`** can cleverly rename the downloaded file, like renaming a potion for its effects.
 
 ```python
-pythonCopy code
+
 xt.button(
     "Download and Relabel",
     on_click=xt.download(
@@ -85,7 +85,7 @@ xt.button(
 - Create a portal for users to send their files into your app.
 
 ```python
-pythonCopy code
+
 def index():
     return xt.fragment(
         xt.upload(xt.text("Send Your Files"), xt.icon(tag="cloud_upload")),
