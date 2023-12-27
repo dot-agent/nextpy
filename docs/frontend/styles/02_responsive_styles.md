@@ -12,7 +12,7 @@
 **Example: A Rainbow of Text Colors**
 
 ```python
-pythonCopy code
+
 xt.text(
     "Chameleon Text",
     color=["sunset orange", "rose red", "lavender purple", "ocean blue", "forest green"],
@@ -27,7 +27,7 @@ xt.text(
 - Breakpoints in Nextpy act like cues in a play, indicating when the scene (style) should change:
 
 ```python
-pythonCopy code
+
 "sm": '30em'  # The cozy mobile nook
 "md": '48em'  # The versatile tablet stage
 "lg": '62em'  # The spacious desktop auditorium
@@ -43,7 +43,7 @@ pythonCopy code
 **Example: A Theatrical Component Ensemble**
 
 ```python
-pythonCopy code
+
 xt.vstack(
     xt.desktop_only(xt.text("The Desktop Monologue")),
     xt.tablet_only(xt.text("The Tablet Soliloquy")),
@@ -63,7 +63,7 @@ xt.vstack(
 **Example: A Symphony of Visibility**
 
 ```python
-pythonCopy code
+
 xt.vstack(
     xt.text("The Invisible Act", color="emerald", display=["none", "none", "none", "none", "block"]),
     xt.text("The Partial Reveal", color="sapphire", display=["none", "none", "none", "block", "block"]),
