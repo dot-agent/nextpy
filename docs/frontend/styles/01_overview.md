@@ -13,7 +13,6 @@
 **Example: Establishing a Global Theme**
 
 ```python
-pythonCopy code
 style = {
     "font_family": "Helvetica Neue, sans-serif",
     "font_size": "18px",
@@ -31,7 +30,6 @@ app = xt.App(style=style)
 **Example: Tailoring Component Styles**
 
 ```python
-pythonCopy code
 style = {
     xt.Text: {"font_family": "Georgia, serif"},
     xt.Heading: {"font_weight": "600", "color": "midnightblue"},
@@ -51,7 +49,6 @@ app = xt.App(style=style)
 **Example: Accessorizing with Inline Styles**
 
 ```python
-pythonCopy code
 xt.text(
     "Welcome to Nextpy",
     color="forestgreen",
@@ -69,7 +66,6 @@ xt.text(
 **Example: Enabling Fashionable Tailwind**
 
 ```python
-pythonCopy code
 config = AppConfig(
     app_name="nextpy_fashion",
     tailwind={"theme": {"extend": {}}, "plugins": ["@tailwindcss/forms"]}
@@ -84,7 +80,6 @@ config = AppConfig(
 - Opting out of Tailwind CSS is as simple as changing a wardrobe.
 
 ```python
-pythonCopy code
 config = xt.Config(app_name="nextpy_classic", tailwind=None)
 
 ```
@@ -96,7 +91,6 @@ config = xt.Config(app_name="nextpy_classic", tailwind=None)
 **Example: Magical Hover Effects**
 
 ```python
-pythonCopy code
 xt.text("Magic Text", _hover={"color": "goldenrod", "font_weight": "bold"})
 
 ```
@@ -110,7 +104,6 @@ xt.text("Magic Text", _hover={"color": "goldenrod", "font_weight": "bold"})
 **Example: Versatile Text Styling**
 
 ```python
-pythonCopy code
 text_style = {"color": "navy", "font_size": "1.1em"}
 xt.text("Chapter One", style=text_style)
 xt.text("Chapter Two", style=text_style)
@@ -126,7 +119,6 @@ xt.text("Chapter Two", style=text_style)
 **Example: Layered Styling**
 
 ```python
-pythonCopy code
 style1 = {"background_color": "lavender"}
 style2 = {"border": "3px dashed plum", "padding": "15px"}
 
