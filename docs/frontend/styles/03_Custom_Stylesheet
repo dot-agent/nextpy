@@ -7,7 +7,8 @@
 
 **Example: Enlivening with Animate.css**
 
-```
+```python
+
 app = xt.App(
     stylesheets=[
         "https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css",
@@ -24,7 +25,8 @@ app = xt.App(
 
 **Example: Crafting Your Style**
 
-```
+```python
+
 app = xt.App(
     stylesheets=["styles.css"],  # A treasure map to your own style in assets/
 )
@@ -42,7 +44,8 @@ app = xt.App(
 
 **Example: Showcasing Google Fonts**
 
-```
+```python
+
 xt.text(
     "Explore IBM Plex Mono",
     font_family="IBM Plex Mono",
@@ -63,7 +66,8 @@ xt.text(
     - Add your **`MyFont.otf`** font into the **`assets/fonts`** treasure trove.
 2. **Weaving a CSS Spell for Your Font:**
     
-    ```
+    ```css
+    
     @font-face {
         font-family: MyFont;
         src: url("MyFont.otf") format("opentype");
@@ -78,7 +82,8 @@ xt.text(
     
 3. **Linking the Stylesheet to Your App:**
     
-    ```
+    ```python
+   
     app = xt.App(
         stylesheets=["fonts/myfont.css"],  # The secret path to your font's style
     )
@@ -90,7 +95,8 @@ xt.text(
 
 **Example: Parading the Local Font**
 
-```
+```python
+
 xt.text("Greetings in MyFont", font_family="MyFont")
 
 ```
