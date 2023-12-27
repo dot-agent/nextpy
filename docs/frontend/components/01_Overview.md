@@ -15,7 +15,7 @@
 **Example 1: Simple Text Component**
 
 ```python
-pythonCopy code
+
 xt.text("Welcome to Nextpy", color="blue", font_size="1.5em")
 
 ```
@@ -29,7 +29,7 @@ xt.text("Welcome to Nextpy", color="blue", font_size="1.5em")
 - One displays a fixed progress value (50%), and the other an indeterminate progress.
 
 ```python
-pythonCopy code
+
 xt.hstack(
     xt.circular_progress(
         xt.circular_progress_label("50%", color="green"),
@@ -54,7 +54,7 @@ xt.hstack(
 **Example: Creating Pages**
 
 ```python
-pythonCopy code
+
 def home():
     return xt.text("Home Page")
 
