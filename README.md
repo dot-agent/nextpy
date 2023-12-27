@@ -15,11 +15,22 @@
 
 ## Q: Is it production-ready? 
 
-Congratulations on discovering Nextpy before its public launch! 🧭 While the documented features are production-ready (powering our own systems!), some undocumented ones might have quirks. We're actively smoothing them out, and live  [Discord support](https://discord.com/invite/g9PFpVztZg) is just a ping away!
+Congratulations on discovering Nextpy before its public launch! 🧭 While the documented features are production-ready (powering our own systems!)[https://nextpy.org/], some undocumented ones might have quirks. We're actively smoothing them out, and live  [Discord support](https://discord.com/invite/g9PFpVztZg) is just a ping away!
 
-**Ready to Dive In?**
+## Project Roadmap & Contributions
 
-Ahoy, adventurer! 🏴‍☠️ We're thrilled to have you aboard. Let's create something extraordinary together! ✨
+**We welcome contributors of all skill levels!**
+
+1. **Login & Email Subscription**: Implement user authentication and email newsletter features.
+2. **PDF Resume to Personal Site** - Add a magic component to build Personal sites from just pdf file
+3. **Train Nextpy LLM**: Create the best Python LLM.
+4. **Backend for Blog/E-commerce**: Develop modules for blogging and online retail.
+5. **Rewrite the Compiler in Rust**: Transition our compiler to Rust for better performance.
+6. **Copilot Integration**: Integrate Copilot for advanced coding assistance.
+
+### Get Involved
+
+Eager to make a difference? Start by forking our repository and sending in your pull requests. We're excited to welcome you to our community. Together, we'll craft something truly remarkable! ✨
 
 ![-----------------------------------------------------](https://res.cloudinary.com/dzznkbdrb/image/upload/v1694798498/divider_1_rej288.gif)
 
