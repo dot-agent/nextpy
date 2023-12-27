@@ -13,7 +13,7 @@
 **Example: Crafting Pages with Personality**
 
 ```python
-pythonCopy code
+
 @xt.page()
 def home():
     return xt.text("Welcome to the Home Page Oasis")
@@ -37,7 +37,7 @@ def secret_garden():
 **Example: Discovering a Nested Treasure**
 
 ```python
-pythonCopy code
+
 @xt.page(route="/adventure/island")
 def island_adventure():
     return xt.text("Embark on the Island Adventure")
@@ -51,7 +51,7 @@ def island_adventure():
 **Example: Storybook Routes**
 
 ```python
-pythonCopy code
+
 class State(xt.State):
     @xt.var
     def chapter(self) -> str:
@@ -72,7 +72,7 @@ def story_chapter():
 **Example: The Route that Catches All**
 
 ```python
-pythonCopy code
+
 @xt.page(route='/mystery/[...clues]')
 def mystery_path():
     # Your intriguing logic here
@@ -86,7 +86,7 @@ def mystery_path():
 **Example: Navigating the Digital Map**
 
 ```python
-pythonCopy code
+
 class State(xt.State):
     def find_location(self):
         current_path = self.router.page.path
@@ -101,7 +101,7 @@ class State(xt.State):
 **Example: Setting the Stage**
 
 ```python
-pythonCopy code
+
 @xt.page(
     title="The Enchanted App",
     description="Journey through a magical Nextpy creation",
@@ -120,7 +120,7 @@ def enchanted_page():
 **Example: The Curtain Rises**
 
 ```python
-pythonCopy code
+
 class State(xt.State):
     def on_page_load(self):
         # Fetching magical data...
