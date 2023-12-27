@@ -8,7 +8,7 @@
 **Example: Crafting a Lunar Toggle Button**
 
 ```python
-pythonCopy code
+
 xt.button(
     xt.icon(tag="moon"),
     on_click=xt.toggle_color_mode,
