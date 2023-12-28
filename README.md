@@ -13,42 +13,21 @@
 
 </div>
 
-## Q: Is it production-ready? 
+## 🤔 What is Nextpy?
 
-Congratulations on discovering Nextpy before its public launch! 🧭 While the documented features are production-ready [powering our own systems!](https://nextpy.org/), some undocumented ones might have quirks. We're actively smoothing them out, and live  [Discord support](https://discord.com/invite/g9PFpVztZg) is just a ping away!
+Build any web app —effortlessly.⚡Nextpy simplifies Pythonic development for Backends, Frontends, AI integrations, APIs, and more.
 
-![-----------------------------------------------------](https://res.cloudinary.com/dzznkbdrb/image/upload/v1694798498/divider_1_rej288.gif)
+🔍 Our work on OpenAgent led to a discovery: the efficiency of AI code generation is significantly impacted by the underlying app framework, regardless of the LLMs, context windows, prompts, or fine-tuning methods. So, we've been stramlining abstractions for AI code gen, but the real surprise? 🤯 We accidentally made python web app development even more intuitive for humans.
 
-## Project Roadmap & Contributions
 
-**We welcome contributors of all skill levels!**
+- 🏗️ **What You Can Build:** Beautiful portiflios, portals, data apps, internal tools, APIs etc.
 
-**Upcoming Features**
+- 📚 **_& The best part? Transferable Knowledge:_**  Building with nextpy ```progressively``` teaches you the best python libraries- Pydantic, FastAPI, SQLModel, SQLAlchemy, Uvicorn, AI , Databases etc.
 
-1. **Frontend Magic Component**
-   - **PDF Resume to Personal Site**: Introducing a "magic component" that enables the seamless conversion of PDF resumes into comprehensive, full-stack personal websites.
-
-2. **Backend Modules**
-   - **User Authentication and Email Integration**: Implementing robust login functionality and efficient email subscription modules.
-   - **Support for Blogging and E-commerce**: Crafting advanced modules to facilitate blog management and e-commerce activities.
-
-3. **Build and Performance Optimization**
-   - **Compiler Enhancement with Rust**: Transitioning our existing compiler to Rust to achieve superior performance and efficiency.
-
-4. **AI**
-   - **Nextpy LLM Development**: Focused efforts on developing Nextpy, a leading-edge Python Language Learning Model (LLM).
-   - **End-User Copilot Feature**: A chat-based copilot for app users that lets them interact with your product and do things by text. We have all the modules ready for this, we just need to simplify the abstraction. Just set `copilot = True` in xtconfig and you’re should be good to go.
-
-### Get Involved
-
-Eager to make a difference? Start by forking our repository and sending in your pull requests. We're excited to welcome you to our community. Together, we'll craft something truly remarkable! ✨
 
 ![-----------------------------------------------------](https://res.cloudinary.com/dzznkbdrb/image/upload/v1694798498/divider_1_rej288.gif)
 
-## ⚡ What is Next.py ?
-Nextpy is a Python Web App Framework designed for the Age of AI Agents. Built on the best ideas from prior frameworks, it's simple like Streamlit but has the perfomance and flexibility of Next.js.
-
-### 💡 Key Features
+## 💡 Key Features
 
 #### Simplifying App Development:🧩
 - **🐍 Unleash Python's Full Potential** - Eliminate complexities and build everything—frontend and backend—in Python, seamlessly integrating any Python library.
@@ -240,7 +219,31 @@ Set up the app, add the main page. To view the frontend, navigate to `localhost:
 ![-----------------------------------------------------](https://res.cloudinary.com/dzznkbdrb/image/upload/v1694798498/divider_1_rej288.gif)
 
 
+## 🛣️ Project Roadmap
 
+**🌟 Upcoming Features**
+
+1. **Frontend Magic Components**
+   - 🪄 **PDF Resume to Personal Site**: Create a "magic component" that converts PDF resumes into customizable, full-stack personal websites.
+
+2. **Backend Modules**
+   - 🔐 **User Authentication and Email Integration**: Add modules for robust login functionality and email subscription.
+   - 🛒 **Modules for Blogging and E-commerce**: Add backend modules to facilitate blog management and e-commerce webapps.
+
+3. **Build and Performance Optimization**
+   - 🔧 **Compiler Enhancement with Rust or mojo**: Transitioning our existing compiler to Rust or mojo to achieve faster performance.
+
+4. **Generative AI**
+   - 🐍 **Nextpy LLM**: Build the best Python LLM.
+   - 💬 **End-User Copilot Feature**: A chat-based copilot for app users that lets them interact with your product and do things by text. We have all the modules ready for this, we just need to simplify the abstraction. Just set `copilot = True` in xtconfig and you’re should be good to go.
+
+## 🤗 Get Involved
+
+**We welcome contributors of all skill levels! 🤝**
+
+Want to make a difference? Start by forking our repository and sending in your pull requests. We're excited to welcome you to our community. Together, we'll craft something truly remarkable! ✨
+
+![-----------------------------------------------------](https://res.cloudinary.com/dzznkbdrb/image/upload/v1694798498/divider_1_rej288.gif)
 
 
 ## Why another framework?
