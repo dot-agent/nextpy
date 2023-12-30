@@ -1,3 +1,6 @@
+# This file has been modified by the Nextpy Team in 2023 using AI tools and automation scripts. 
+# We have rigorously tested these modifications to ensure reliability and performance. Based on successful test results, we are confident in the quality and stability of these changes.
+
 """Logger class.
 
 This class is used to log messages to the console and/or a file. It provides functionalities to log messages with different severity levels, and can also save these logs to a file if desired. The logs are stored internally and can be retrieved for inspection.

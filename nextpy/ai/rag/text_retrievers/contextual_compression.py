@@ -1,3 +1,6 @@
+# This file has been modified by the Nextpy Team in 2023 using AI tools and automation scripts. 
+# We have rigorously tested these modifications to ensure reliability and performance. Based on successful test results, we are confident in the quality and stability of these changes.
+
 """Retriever that wraps a base retriever and filters the results."""
 from typing import List
 

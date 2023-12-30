@@ -1,3 +1,6 @@
+# This file has been modified by the Nextpy Team in 2023 using AI tools and automation scripts. 
+# We have rigorously tested these modifications to ensure reliability and performance. Based on successful test results, we are confident in the quality and stability of these changes.
+
 """Handle dynamic routes in static exports via client-side routing.
 
 Works with /utils/client_side_routing.js to handle the redirect and state.
