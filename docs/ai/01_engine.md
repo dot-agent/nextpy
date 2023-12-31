@@ -1,8 +1,17 @@
-# Tutorial: Syntax of the `engine` Language  
+# Engine   
    
-This tutorial provides a walkthrough of the syntax of the `engine` language, which is based on the Handlebars templating language.  
+The engine is designed to process prompts efficiently for large language models (LLMs), offering users the ability to create very controlled text generation . This tool integrates the flexibility of regular expressions and context-free grammars (CFGs) to restrict and guide output. Additionally, it provides mechanisms to interweave control structures like conditionals and loops with text generation, allowing for more complex interactions.  
    
-## Importing the Required Libraries  
+For opensource models using key-value (KV) caches, the engine can maintain state across interactions with LLMs, which is particularly useful when dealing with long and complicated prompts. This stateful approach minimizes redundant generation steps, leading to faster responses when handling detailed prompts. 
+
+This module furthers the development of what is now an depricated version of guidance. It leverages templating mechanisms to centralize the logic of prompt creation, leading to a workflow that is both more streamlined and maintainable. 
+   
+Key Features:  
+- **Prompt Templates**: These are the core of the engine, allowing for dynamic text generation by using placeholders that can be filled with variable content.  
+- **Handlebars-Based Syntax**: An intuitive and widely-used syntax that simplifies the creation of flexible templates.  
+- **LLM Integration**: Direct and efficient interaction with state-of-the-art LLMs to produce high-quality text outputs.  
+   
+## Importing the engine
    
 ```python  
 from nextpy.ai import engine  

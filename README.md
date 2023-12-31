@@ -17,7 +17,7 @@
 
 Build any web app —effortlessly.⚡Nextpy simplifies Pythonic development for Backends, Frontends, AI integrations, APIs, and more.
 
-🔍 Our work on OpenAgent led to a discovery: the efficiency of AI code generation is significantly impacted by the underlying app framework, regardless of the LLMs, context windows, prompts, or fine-tuning methods. So, we've been stramlining abstractions for AI code gen, but the real surprise? 🤯 We accidentally made python web app development even more intuitive for humans.
+🔍 Our work on OpenAgent led to a discovery: the efficiency of AI code generation is significantly impacted by the underlying app framework, regardless of the LLMs, context windows, prompts, or fine-tuning methods. So, we've been streamlining abstractions for AI code gen, but the real surprise? 🤯 That made pythonic web app development even more intuitive for humans.
 
 
 - 🏗️ **What You Can Build:** Beautiful portiflios, portals, data apps, internal tools, APIs etc.
