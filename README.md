@@ -13,17 +13,14 @@
 
 </div>
 
-## 🤔 What is Nextpy?
+## 🤔 Nextpy : Future of app development  
 
-Build any web app —effortlessly.⚡Nextpy simplifies Pythonic development for Backends, Frontends, AI integrations, APIs, and more.
+Build any web app —effortlessly and quickly ⚡. It simplifies Pythonic development for everything from backends to frontends (yes, visually 🦚stunning frontends in Python!), AI integrations, APIs, and beyond—empowering both humans and AI agents.
 
-🔍 Our work on OpenAgent led to a discovery: the efficiency of AI code generation is significantly impacted by the underlying app framework, regardless of the LLMs, context windows, prompts, or fine-tuning methods. So, we've been streamlining abstractions for AI code gen, but the real surprise? 🤯 That made pythonic web app development even more intuitive for humans.
+Nextpy is designed to solve compatibility issues and improve code generation. It is built on our insight🔍 that the choice of app framework significantly affects the efficiency of AI code generation, regardless of other factors such as LLMs, prompts, or fine-tuning methods.
 
-
-- 🏗️ **What You Can Build:** Beautiful portiflios, portals, data apps, internal tools, APIs etc.
-
-- 📚 **_& The best part? Transferable Knowledge:_**  Building with nextpy ```progressively``` teaches you the best python libraries- Pydantic, FastAPI, SQLModel, SQLAlchemy, Uvicorn, AI , Databases etc.
-
+- ⏰ **What You Can Build in 1 hour:** Beautiful portfolios, portals, data apps, internal tools, APIs etc.
+- 📚 ***& The best part? Transferable Knowledge:*** Building with nextpy `progressively` teaches you the best python libraries- FastAPI, Pydantic, SQLModel, Pandas, Jinja2, SQLAlchemy, etc.
 
 ![-----------------------------------------------------](https://res.cloudinary.com/dzznkbdrb/image/upload/v1694798498/divider_1_rej288.gif)
 
@@ -247,19 +244,21 @@ Want to make a difference? Start by forking our repository and sending in your p
 
 
 ## Why another framework?
+In our quest to create apps that write themselves, we delved deep into a labyrinth of coding tools, frameworks, and libraries. Our experiments spanned all major large language models (LLMs), thousands of prompts, and every major web development framework, from React to Streamlit.
 
-In our quest to create self-writing applications, we delved deep into a labyrinth of coding tools, frameworks, and libraries. Our experiments spanned all major large language models (LLMs), thousands of prompts, and every major web development framework, from React to Streamlit.
-
-
+Insight
 > [!TIP]
-> We discovered that the choice of the underlying app framework can greatly influence the efficiency of code generation, regardless of the LLMs, prompts, or fine-tuning techniques employed. 
+> We found that the choice of the foundational app framework significantly influences code generation efficiency, irrespective of the LLMs, prompts, or fine-tuning methods.
 
+Initially, reflex's flexibility seemed promising, aligning with several of our requirements. However, as we experimented with different web apps, crucial feature gaps emerged. Bridging these gaps necessitated extensive "glue code," which dramatically slowed down development.
 
-Initially, reflex's flexibility seemed promising, aligning with several of our requirements. However, as we expremented with different web apps, crucial feature gaps emerged. Bridging these gaps necessitated extensive "glue code," which dramatically slowed down development.
+For months, we resisted the urge to reinvent the wheel and tried to assemble different tools to bring our vision to life. Instead of creating a framework from scratch, we aimed to create an opinionated app starter kit by selectively incorporating the best features from top frameworks. Although we still view this project as a **full stack app starter kit** rather than a framework, the distinction is becoming somewhat blurred as we have developed several custom modules and made specific design decisions.
 
-For months, we resisted reinventing the wheel, piecing together disparate tools to forge our vision. But eventually, the ROI no longer justified this approach. Consequently, we began selectively integrating the best features from existing frameworks to craft a superior web app framework. This new framework combines Streamlit's simplicity with the speed and adaptability of Next.js. For the backend, we've chosen FastAPI for its straightforwardness, coupled with Pydantic for its robust type-checking. We've also embraced SQLModel for database connectivity. Our frontend was constructed using a customized version of the Reflex library, into which we've incorporated new components. We are currently in the process of rewriting the core Python-to-JavaScript compiler to maximize speed. Moreover, we have developed a simple, JSON-based database that leverages JSON as the data storage medium while providing SQL-like capabilities.
+This novel framework merges the simplicity of Streamlit with the speed and adaptability of Next.js. For the backend, we opted for FastAPI for its simplicity, coupled with Pydantic for robust type-checking. Our frontend was crafted using a tailored version of the Reflex library, incorporating new components. Currently, we are in the process of overhauling the core Python-to-JavaScript compiler to optimize speed. Additionally, we embraced SQLModel & SQLAlchemy for database connectivity. Furthermore, we have developed selected features specifically for generative AI. We have created a JSON-based database that uses JSON as the data storage medium, while also providing SQL-like capabilities.
 
-Our mission is to make Next.py the most efficient app framework, empowering both humans and AI agents.
+**Our mission?** Make Next.py the most efficient app framework, for humans and AI alike!
+
+Want to know more? Check out our manifesto! https://nextpy.org/manifesto/
 
 ## 🙏 Thanks
 
