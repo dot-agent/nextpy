@@ -1,5 +1,7 @@
 # 🚀 Quick Install (2 mins)
 
+[![Build a python webapp in 3 minutes](https://github.com/anubrag/nextpy/assets/25473195/c41ea5b7-d270-451a-a0d0-8308ff9dbfdc)](https://www.youtube.com/watch?v=5Ex-c9wwiYE)
+
 **1. Installing Nextpy**
 
 Open your terminal and prepare for an adventure of a lifetime!

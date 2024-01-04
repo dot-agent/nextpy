@@ -78,7 +78,10 @@ Nextpy는 호환성 문제를 해결하고 코드 생성을 개선하기 위해 
 
 ![-----------------------------------------------------](https://res.cloudinary.com/dzznkbdrb/image/upload/v1694798498/divider_1_rej288.gif)
 
-## 🚀 빠른 시작 (2분 소요)
+## 🚀 빠른 시작 (3분 소요)
+
+[![Build a python webapp in 3 minutes](https://github.com/anubrag/nextpy/assets/25473195/c41ea5b7-d270-451a-a0d0-8308ff9dbfdc)](https://www.youtube.com/watch?v=5Ex-c9wwiYE)
+
 
 **1. Nextpy 설치하기**
 
