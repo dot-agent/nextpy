@@ -5,6 +5,7 @@ import nextpy as xt
 from portfolio.components.navbar import navbar
 from portfolio.components.hero import hero
 from portfolio.components.contact import contact
+from portfolio import styles
 
 docs_url = "https://docs.dotagent.dev/nextpy/getting-started/introduction"
 filename = f"{config.app_name}/{config.app_name}.py"
@@ -21,142 +22,118 @@ def Card():
         xt.vstack(
             xt.text(
                 "Latest work",
-                font_family="Epilogue",
                 class_name="text-center text-xl md:text-3xl mt-16 md:mt-24 font-bold",
             ),
             xt.box(
                 xt.box(
                     xt.image(
                         src="/book.jpg",
-                        class_name="w-96 h-96 md:w-56 md:h-56 lg:w-80 lg:h-80",
+                        class_name="w-96 h-96 md:w-56 object-cover md:h-56 lg:w-80 lg:h-80",
                     ),
                     xt.text(
                         "Project title",
-                        font_family="Epilogue",
                         class_name="py-2 lg:text-base text-sm font-bold",
                     ),
                     xt.text(
                         "UI, Art drection",
-                        font_family="Epilogue",
                         class_name="text-xs md:text-sm",
                     ),
                 ),
                 xt.box(
                     xt.image(
                         src="/abstract.jpg",
-                        object_fit="cover",
-                        class_name="w-96 h-96  md:w-56 md:h-56  lg:w-80 lg:h-80 ",
+                        class_name="w-96 h-96 md:w-56 md:h-56 object-cover lg:w-80 lg:h-80 ",
                     ),
                     xt.text(
                         "Project title",
-                        font_family="Epilogue",
                         class_name="py-2 lg:text-base text-sm font-bold",
                     ),
                     xt.text(
                         "UI, Art drection",
-                        font_family="Epilogue",
                         class_name="text-xs md:text-sm",
                     ),
                 ),
                 xt.box(
                     xt.image(
                         src="/magzine.jpg",
-                        object_fit="cover",
-                        class_name="w-96 h-96 md:w-56 md:h-56   lg:w-80 lg:h-80",
+                        class_name="w-96 h-96 md:w-56 md:h-56 object-cover lg:w-80 lg:h-80",
                     ),
                     xt.text(
                         "Project title",
-                        font_family="Epilogue",
                         class_name="py-2 lg:text-base text-sm font-bold",
                     ),
                     xt.text(
                         "UI, Art drection",
-                        font_family="Epilogue",
                         class_name="text-xs md:text-sm",
                     ),
                 ),
                 xt.box(
                     xt.image(
                         src="/isalah.jpg",
-                        object_fit="cover",
-                        class_name="w-96 h-96 md:w-56 md:h-56   lg:w-80 lg:h-80",
+                        class_name="w-96 h-96 md:w-56 md:h-56 object-cover lg:w-80 lg:h-80",
                     ),
                     xt.text(
                         "Project title",
-                        font_family="Epilogue",
                         class_name="py-2 lg:text-base text-sm font-bold",
                     ),
                     xt.text(
                         "UI, Art drection",
-                        font_family="Epilogue",
                         class_name="text-xs md:text-sm",
                     ),
                 ),
                 xt.box(
                     xt.image(
                         src="/book2.jpg",
-                        object_fit="cover",
-                        class_name="w-96 h-96 md:w-56 md:h-56  lg:w-80 lg:h-80",
+                        class_name="w-96 h-96 md:w-56 md:h-56 object-cover lg:w-80 lg:h-80",
                     ),
                     xt.text(
                         "Project title",
-                        font_family="Epilogue",
                         class_name="py-2 lg:text-base text-sm font-bold",
                     ),
                     xt.text(
                         "UI, Art drection",
-                        font_family="Epilogue",
                         class_name="text-xs md:text-sm",
                     ),
                 ),
                 xt.box(
                     xt.image(
                         src="/book3.jpg",
-                        object_fit="cover",
-                        class_name="w-96 h-96 md:w-56 md:h-56  lg:w-80 lg:h-80",
+                        class_name="w-96 h-96 md:w-56 md:h-56 object-cover lg:w-80 lg:h-80",
                     ),
                     xt.text(
                         "Project title",
-                        font_family="Epilogue",
                         class_name="py-2 lg:text-base text-sm font-bold",
                     ),
                     xt.text(
                         "UI, Art drection",
-                        font_family="Epilogue",
                         class_name="text-xs md:text-sm",
                     ),
                 ),
                 xt.box(
                     xt.image(
                         src="/magzine.jpg",
-                        object_fit="cover",
-                        class_name="w-96 h-96 md:w-56 md:h-56  lg:w-80 lg:h-80",
+                        class_name="w-96 h-96 md:w-56 md:h-56 object-cover lg:w-80 lg:h-80",
                     ),
                     xt.text(
                         "Project title",
-                        font_family="Epilogue",
                         class_name="py-2 lg:text-base text-sm font-bold",
                     ),
                     xt.text(
                         "UI, Art drection",
-                        font_family="Epilogue",
                         class_name="text-xs md:text-sm",
                     ),
                 ),
                 xt.box(
                     xt.image(
                         src="/abstract.jpg",
-                        object_fit="cover",
-                        class_name="w-96 h-96 md:w-56 md:h-56  lg:w-80 lg:h-80",
+                        class_name="w-96 h-96 md:w-56 md:h-56 object-cover lg:w-80 lg:h-80",
                     ),
                     xt.text(
                         "Project title",
-                        font_family="Epilogue",
                         class_name="py-2 lg:text-base text-sm font-bold",
                     ),
                     xt.text(
                         "UI, Art drection",
-                        font_family="Epilogue",
                         class_name="text-xs md:text-sm",
                     ),
                 ),
@@ -178,9 +155,9 @@ def index() -> xt.Component:
 
 # Add state and page to the app.
 app = xt.App(
+    style=styles.base_style,
     stylesheets=[
         "https://fonts.googleapis.com/css2?family=Epilogue&family=Nova+Square&display=swap",
     ],
 )
 app.add_page(index)
-
