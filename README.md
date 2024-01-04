@@ -1,6 +1,38 @@
 <div align="center">
 <img src="https://raw.githubusercontent.com/dotagent-ai/assets/main/nextpy_logo_light_theme.svg#gh-light-mode-only" alt="Nextpy Logo" width="320px">
 <img src="https://raw.githubusercontent.com/dotagent-ai/assets/main/nextpy_logo_dark_theme.svg#gh-dark-mode-only" alt="Nextpy Logo" width="320px">
+<p align="center">
+    <a href="docs/🌎/繁體中文/README.md">繁體中文</a>
+    .
+    <a href="docs/🌎/简体中文/README.md">简体中文 </a>
+    .
+    <a href="docs/🌎/Français/README.md">Français </a>
+    ·
+    <a href="docs/🌎/German/README.md">German</a>
+    ·
+    <a href="docs/🌎/Italiano/README.md">Italiano</a>
+    ·
+    <a href="docs/🌎/Português/README.md">Português</a>
+    ·
+    <a href="docs/🌎/Tamil/README.md">Tamil</a>
+    ·
+    <a href="docs/🌎/Ukrainian/README.md">Ukrainian</a>
+    ·
+    <a href="docs/🌎/русский/README.md">русский</a>
+    ·
+    <a href="docs/🌎/عربي/README.md">عربي</a>
+    ·
+    <a href="docs/🌎/Español/README.md">Español</a>
+    ·
+    <a href="docs/🌎/हिंदी/README.md">हिंदी</a>
+    ·
+    <a href="docs/🌎/Türkçe/README.md">Türkçe</a>
+    ·
+    <a href="docs/🌎/한국어/README.md">한국어</a>
+    
+  </p>
+
+
 <hr>
 
 <h3> Pythonic Web App framework: For Humans & LLMs</h3>
