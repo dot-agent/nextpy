@@ -78,7 +78,10 @@ Nextpy 設計用於解決相容性問題並改進代碼生成。它建立在我�
 
 ![-----------------------------------------------------](https://res.cloudinary.com/dzznkbdrb/image/upload/v1694798498/divider_1_rej288.gif)
 
-## 🚀 快速開始 (2分鐘)
+## 🚀 快速開始 (3分鐘)
+
+[![Build a python webapp in 3 minutes](https://github.com/anubrag/nextpy/assets/25473195/c41ea5b7-d270-451a-a0d0-8308ff9dbfdc)](https://www.youtube.com/watch?v=5Ex-c9wwiYE)
+
 
 **1. 安裝 Nextpy**
 

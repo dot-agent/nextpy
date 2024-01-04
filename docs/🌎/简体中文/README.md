@@ -79,7 +79,10 @@ Nextpy 旨在解决兼容性问题并提高代码生成效率。它建立在我�
 
 ![-----------------------------------------------------](https://res.cloudinary.com/dzznkbdrb/image/upload/v1694798498/divider_1_rej288.gif)
 
-## 🚀 快速开始（2分钟）
+## 🚀 快速开始（3分钟）
+
+[![Build a python webapp in 3 minutes](https://github.com/anubrag/nextpy/assets/25473195/c41ea5b7-d270-451a-a0d0-8308ff9dbfdc)](https://www.youtube.com/watch?v=5Ex-c9wwiYE)
+
 
 **1. 安装 Nextpy**
 

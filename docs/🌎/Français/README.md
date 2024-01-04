@@ -78,7 +78,10 @@ Nextpy est conçu pour résoudre les problèmes de compatibilité et améliorer 
 
 ![-----------------------------------------------------](https://res.cloudinary.com/dzznkbdrb/image/upload/v1694798498/divider_1_rej288.gif)
 
-## 🚀 Démarrage rapide (2 min)
+## 🚀 Démarrage rapide (3 mins)
+
+[![Build a python webapp in 3 minutes](https://github.com/anubrag/nextpy/assets/25473195/c41ea5b7-d270-451a-a0d0-8308ff9dbfdc)](https://www.youtube.com/watch?v=5Ex-c9wwiYE)
+
 
 **1. Installation de Nextpy**
 
