@@ -1,10 +1,46 @@
 # Learn State Management: Mood switcher app
+![image](https://github.com/dot-agent/nextpy/assets/25473195/117a7300-8fa9-4949-8699-18c36d206d53)
 
-Let's create a fun and interactive example with Nextpy—a "Mood Switcher" that changes emoji expressions based on user clicks.
 
-## Interactive Mood Switcher Example
+Let's learn basics of state mangement by building a mood switcher app. Our app will display an emoji representing a mood. When the user clicks on the emoji, it will switch to a different mood, cycling through a predefined list of moods. Here's the final code structure:
 
-Our objective is to display an emoji representing a mood. When the user clicks on the emoji, it will switch to a different mood, cycling through a predefined list of moods.
+### Complete Code Overview:
+
+```python
+import nextpy as xt
+
+class MoodState(xt.State):
+    moods: list[str] = ["😊", "😂", "🤔", "😢", "😠"]
+    index: int = 0
+
+    def next_mood(self):
+        self.index = (self.index + 1) % len(self.moods)
+
+    @xt.var
+    def current_mood(self) -> str:
+        # Return the emoji at the current index
+        return self.moods[self.index]
+    
+def mood_switcher():
+    return xt.text(
+        MoodState.current_mood,  # Use the current_mood computed var for the emoji
+        on_click=MoodState.next_mood,  # Link the click event to the next_mood method
+        style={"cursor": "pointer", "font-size": "4rem"}  # Style to indicate interactivity and increase size
+    )
+
+def index():
+    return xt.vstack(
+        xt.text("Click the emoji to change the mood!"),
+        mood_switcher(),
+        spacing="20px",  # Add some spacing between elements
+    )
+
+# Add state and page to the app.
+app = xt.App()
+app.add_page(index)
+
+```
+## Step-by-Step Explanation
 
 ### Step 1: Define the State Class
 
@@ -52,7 +88,7 @@ class MoodState(xt.State):
     def next_mood(self):
         self.index = (self.index + 1) % len(self.moods)
 
-    @property
+    @xt.var
     def current_mood(self) -> str:
         # Return the emoji at the current index
         return self.moods[self.index]
@@ -67,7 +103,7 @@ Let's create a component that displays the emoji and responds to clicks:
 
 ```python
 def mood_switcher():
-    return xt.Text(
+    return xt.text(
         MoodState.current_mood,  # Use the current_mood computed var for the emoji
         on_click=MoodState.next_mood,  # Link the click event to the next_mood method
         style={"cursor": "pointer", "font-size": "4rem"}  # Style to indicate interactivity and increase size
@@ -91,10 +127,26 @@ def index():
 
 ```
 
-The `index` function uses `VStack` to vertically stack a text prompt and our `mood_switcher` component, with added spacing for better visual separation.
+The `index` function uses `vstack` to vertically stack a text prompt and our `mood_switcher` component, with added spacing for better visual separation.
+
+### Step 6: Setting Up Our Application
+Finally, initialize the app and add the index page:
+
+```python
+app = xt.App()  # Initialize the application
+app.add_page(index)  # Add the index page to the application
+```
 
 ### Running the Mood Switcher
 
 Run your Nextpy app, and you'll see the Mood Switcher in action. Every click on the emoji will switch to the next one, creating a simple yet engaging interaction that demonstrates the use of state in a Nextpy application.
 
-This Mood Switcher example showcases how stateful components can be used to create interactive and playful elements in your web applications. The same principles can be applied to develop a wide range of dynamic user interfaces with Nextpy.
+
+### Key takeaways:**
+
+- **Stateful components:** Use state to create dynamic and interactive elements in Nextpy apps.
+- **Event handlers:** Respond to user interactions and update the app's state accordingly.
+- **Computed variables:** Derive values based on state, keeping components reactive to changes.
+
+
+Want to dive deeper into this topic? Explore more at [Nextpy's State Introduction documentation](https://github.com/dot-agent/nextpy/blob/main/docs/backend/1_state_intro.md) on GitHub. 
