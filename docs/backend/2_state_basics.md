@@ -41,10 +41,10 @@ Computed vars are derived from base vars and are recalculated automatically when
 class CounterState(xt.State):
     count: int = 0
 
-    @property
+    @xt.var
     def message(self) -> str:
         # This is a computed var that returns a message based on the count
-        return "Even" if self.count % 2 == 0 else "Odd
+        return "Even" if self.count % 2 == 0 else "Odd"
 
 ```
 
@@ -59,8 +59,8 @@ class CounterState(xt.State):
     count: int = 0
 
     def increment(self):
-        # Event handler that increments the count
-        self.count +
+    # Event handler that increments the count
+        self.count += 1
 
 ```
 
