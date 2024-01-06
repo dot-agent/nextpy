@@ -72,19 +72,22 @@ You can import and access the substate classes from other modules if you need to
 ```python
 # main.py
 import nextpy as xt
-from home_counter import HomeCounterState
-from about_counter import AboutCounterState
+from home_counter import HomeCounterState, home_counter
+from about_counter import AboutCounterState, about_counter
 
-def main_page():
+def index():
     return xt.vstack(
-        xt.Box(home_counter()),
-        xt.Box(about_counter()),
+        xt.box(home_counter()),
+        xt.box(about_counter()),
         xt.text(f"Total Count: {HomeCounterState.count + AboutCounterState.count}"),
     )
+    
+app = xt.App()
+app.add_page(index)
 
 ```
 
-In `main_page`, we import both `HomeCounterState` and `AboutCounterState` to display the total count from both counters combined.
+In `index`, we import both `HomeCounterState` and `AboutCounterState` to display the total count from both counters combined.
 
 ## State Inheritance
 
@@ -121,6 +124,14 @@ def specialized_counter():
         xt.text(SpecializedCounterState.count),
         xt.button("+10", on_click=SpecializedCounterState.special_increment),
     )
+
+def index():
+    return xt.vstack(
+    specialized_counter(),
+    )
+
+app = xt.App()
+app.add_page(index)
 
 ```
 

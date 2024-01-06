@@ -50,6 +50,8 @@ def index():
         xt.button("+", on_click=CounterState.increment),
     )
 
+app = xt.App()
+app.add_page(index)
 ```
 
 In this counter example, clicking the "+" and "-" buttons triggers the `increment` and `decrement` event handlers, respectively, updating the `count`.
@@ -194,13 +196,15 @@ class CounterState(xt.State):
 
     def start_sequence(self):
         self.set_count(10)  # Initialize count
-        return self.decrement_sequence  # Trigger countdown
+        return CounterState.decrement_sequence  # Return class method
 
+    @xt.background 
     async def decrement_sequence(self):
         while self.count > 0:
             await asyncio.sleep(1)
-            self.count -= 1
-            yield
+            async with self:  # Required for state modification in background tasks
+                self.count -= 1
+            yield  # Yield to send the update to the frontend
 
 def index():
     return xt.vstack(
@@ -210,6 +214,7 @@ def index():
 
 ```
 
+**Note:** You should use the @xt.background decorator on an asynchronous method within your state class 2. Since your decrement_sequence function is designed to update the state over time, it should be marked as a background task and it should be an asynchronous method.
 **Note:** Clicking "Start Countdown" initializes the counter to 10 and triggers a countdown.
 
 ### Returning Events from Handlers
@@ -224,7 +229,6 @@ Event handlers in Nextpy can also trigger new events, creating a chain of action
 4. **Class Name Usage:** Use the class or substate name to return events, not `self`.
 
 ```python
-import asyncio
 import nextpy as xt
 
 class TaskQueueState(xt.State):
@@ -235,18 +239,17 @@ class TaskQueueState(xt.State):
         if self.current_task < self.total_tasks:
             self.current_task += 1
             # Return the name of this handler to trigger it again
-            return self.check_next_task
+            return TaskQueueState.check_next_task
         # No more tasks to complete
         return None
 
-    async def check_next_task(self):
-        await asyncio.sleep(1)  # Simulate task processing time
+    def check_next_task(self):
+        # This function could be used to check the condition to continue the task
         if self.current_task < self.total_tasks:
             # If there are more tasks, complete the next task
-            return self.complete_task
+            return TaskQueueState.complete_task
         # All tasks are completed
         self.current_task = 0  # Reset the task queue
-        yield
 
 def index():
     return xt.vstack(
@@ -254,6 +257,7 @@ def index():
         xt.button("Complete Task", on_click=TaskQueueState.complete_task),
         xt.text(f"Total Tasks: {TaskQueueState.total_tasks}")
     )
+
 
 ```
 
@@ -272,7 +276,7 @@ class CounterState(xt.State):
     def increment_and_alert(self):
         self.count += 1
         if self.count == 5:
-            return xt.WindowAlert("Counter reached 5!")
+            return xt.window_alert("Counter reached 5!")
 
 def index():
     return xt.vstack(

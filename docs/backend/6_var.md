@@ -33,6 +33,14 @@ def product_example():
         ),
     )
 
+def index():
+    return xt.fragment(
+        product_example(),
+    )
+
+app = xt.App()
+app.add_page(index)
+
 ```
 
 ### JSON Serialization of Vars
