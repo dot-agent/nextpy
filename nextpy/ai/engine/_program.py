@@ -154,6 +154,7 @@ class Program:
         log=None,
         memory=None,
         memory_threshold=1,
+        memory_llm=None,
         **kwargs,
     ):
         """Create a new Program object from a program string.
@@ -222,19 +223,19 @@ class Program:
         self.await_missing = await_missing
         self.log = log
         self.memory = memory
-        self.memory_threshold = memory_threshold
 
         if self.memory is not None:
             if not isinstance(self.memory, BaseMemory):
                 raise TypeError("Memory type is not compatible")
 
+            # If user has not passed separate llm for memory, use engine's
+            self.memory.llm = memory_llm if memory_llm is not None else llm
+            self.memory.memory_threshold = memory_threshold
+
             if self._text.find("ConversationHistory") == -1:
                 self._text = add_variable(self._text)
 
-        if self.memory is not None:
-            ConversationHistory = self.memory.get_memory(
-                memory_threshold=self.memory_threshold
-            )
+            ConversationHistory = self.memory.get_memory()
             kwargs["ConversationHistory"] = ConversationHistory
             self.ConversationHistory = ConversationHistory
 
@@ -382,9 +383,7 @@ class Program:
 
         if self.memory is not None:
             if not from_agent:
-                self.ConversationHistory = self.memory.get_memory(
-                    memory_threshold=self.memory_threshold
-                )
+                self.ConversationHistory = self.memory.get_memory()
             kwargs["ConversationHistory"] = self.ConversationHistory
 
         log.debug(f"in __call__ with kwargs: {kwargs}")

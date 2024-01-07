@@ -14,6 +14,8 @@ class BaseMemory(ABC, BaseModel):
     This class defines the interface for setting, getting, and checking existence of data in memory.
     """
 
+    llm: Any = None
+    memory_threshold: int = 1
     # All memories are stored in this list
     messages: List[Dict[BaseMessage, Any]] = Field(default=list())
 

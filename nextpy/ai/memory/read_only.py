@@ -11,9 +11,6 @@ class ReadOnlyMemory(BaseMemory):
 
     memory: BaseMemory
 
-    def __init__(self, memory: BaseMemory):
-        self.memory = memory
-
     def add_memory(self, prompt: str, llm_response: Any) -> None:
         """cannot edit a read only memory."""
         pass
