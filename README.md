@@ -49,31 +49,31 @@
 
 Build any web app —effortlessly and quickly ⚡. It simplifies Pythonic development for everything from backends to frontends (yes, visually 🦚stunning frontends in Python!), AI integrations, APIs, and beyond—empowering both humans and AI agents.
 
-Nextpy is designed to solve compatibility issues and improve code generation. It is built on our insight🔍 that the choice of app framework significantly affects the efficiency of AI code generation, regardless of other factors such as LLMs, prompts, or fine-tuning methods.
+Nextpy is designed to solve compatibility issues and improve code generation. It is built on our insight🔍 that the choice of underlying frameworks significantly affects the efficiency of AI code generation, regardless of other factors such as LLMs, prompts, or fine-tuning methods.
 
-- ⏰ **What You Can Build in 1 hour:** Beautiful portfolios, portals, data apps, internal tools, APIs etc.
-- 📚 ***& The best part? Transferable Knowledge:*** Building with nextpy `progressively` teaches you the best python libraries- FastAPI, Pydantic, SQLModel, Pandas, Jinja2, SQLAlchemy, etc.
+- ⏰ **What You Can Build in 1 hour:** Beautiful portfolios, dashboards, portals, data apps, internal tools, APIs etc.
+- 📚 ***& The best part? Transferable Knowledge:*** Building with nextpy `progressively` teaches you framework-agnostic fundamentals and the best python libraries- FastAPI, Pydantic, SQLModel, Pandas, Jinja2, SQLAlchemy, etc.
 
 ![-----------------------------------------------------](https://res.cloudinary.com/dzznkbdrb/image/upload/v1694798498/divider_1_rej288.gif)
 
 ## 💡 Key Features
 
-#### Simplifying App Development:🧩
+### Simplifying App Development:🧩
 - **🐍 Unleash Python's Full Potential** - Eliminate complexities and build everything—frontend and backend—in Python, seamlessly integrating any Python library.
 - **🎨 Rich UI Library** - Over 100 fully customizable built-in components for rapid UI development.
 - **⚛️ Tap into React's Power with Pythonic Wrappers** - Harness the vast React ecosystem directly within Python, utilizing any React library **_without JavaScript knowledge._**
 - **🚀 Built-in Performance Optimizations** - Deliver exceptional user experiences with automatic image, font, and script optimizations for lightning-fast loading speeds and responsiveness. See the difference for yourself at [nextpy.org](https://nextpy.org).
 
-#### Better AI Generations: ‍🤖
+### Better AI Generations: ‍🤖
 
 - **🧠 More Effective Than Chaining or Prompt Engineering** - Next.py aligns with LLM processing patterns, enabling precise output control and optimal model utilization.
 - **💡 Optimized for Code Generation** - Regardless of the LLMs, prompts, or fine-tuning used, the underlying app framework significantly impacts the efficiency of code generation. Next.py's architecture is specifically engineered to maximize efficiency.
 - **💾 Session State with LLM** - Efficiently maintain state with LLMs, leveraging KV caches to convert multiple output tokens into prompt token batches. This approach reduces redundant generations, accelerating the handling of lengthy and intricate prompts. **_(only for open-source models)_**
 - **🧪 Detect Syntax Errors**: Test LLM-generated code, identifying and correcting LLM hallucinations, invalid Nextpy methods, and automatically generating prompts for seamless fixes.
 
-#### Developer-First: ❤️
+### Developer-First: ❤️
 
-- **📘 Transferable Knowledge** - Learning Next.py instills framework-agnostic fundamentals, enhancing your app development expertise and enabling you to excel across any frameworks.
+- **📘 Transferable Knowledge** - Learning Next.py teaches you framework-agnostic fundamentals and the best Python libraries, improving your python development expertise and enabling you to excel across any framework.
 - **🛠️ Extensible** - If you know how to do something in Python or plain English, you can integrate it with nextpy.
 
 ![-----------------------------------------------------](https://res.cloudinary.com/dzznkbdrb/image/upload/v1694798498/divider_1_rej288.gif)
