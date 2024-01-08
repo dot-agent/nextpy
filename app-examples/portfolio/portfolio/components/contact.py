@@ -26,7 +26,7 @@ def contact():
                     class_name="w-7 h-7 object-cover md:w-9 md:h-9",
                 ),
                 xt.image(
-                    src="/nstagram.svg",
+                    src="/instagram.svg",
                     class_name="w-7 h-7 object-cover md:w-9 md:h-9",
                 ),
                 xt.image(
