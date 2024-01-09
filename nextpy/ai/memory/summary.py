@@ -40,7 +40,7 @@ class SummaryMemory(BaseMemory, BaseModel):
 
     def get_memory(self, **kwargs) -> str:
         """Retrieve entire memory from the store."""
-        # Create llm instance
+
         llm = engine.llms.OpenAI(model="gpt-3.5-turbo")
 
         new_messages = [
@@ -59,11 +59,9 @@ class SummaryMemory(BaseMemory, BaseModel):
                     + "\n"
                 )
                 self.messages_in_summary.append(conversation)
-
-            summarizer = engine(template=SUMMARIZER_TEMPLATE, llm=llm, stream=False)
+            summarizer = engine(template=SUMMARIZER_TEMPLATE, stream=False, llm=self.llm if self.llm is not None else llm)
             summarized_memory = summarizer(
                 summary=self.current_summary, new_lines=messages_to_text,
-                llm=self.llm
             )
             self.current_summary = extract_text(summarized_memory.text)
             summarized_memory = "Current conversation:\n" + self.current_summary
