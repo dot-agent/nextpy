@@ -25,7 +25,7 @@ def Navbar():
                     xt.text("About"),
                     xt.text("Works"),
                     xt.text("Contact"),
-                    class_name="hidden md:flex gap-6 md:items-center md:space-x-6",
+                    class_name="hidden md:flex gap-6 md:items-center md:space-x-6 text-white text-sm font-semibold",
                     font_family="Inter",
                     spacing="1.5rem",
                 ),
@@ -74,6 +74,7 @@ def ProfileCard():
                         "David" + "\n" + "Henderson.",
                         font_size="36px",
                         line_height="40px",
+                        color="#FFFFFF",
                     ),
                     xt.box(
                         xt.text(
@@ -97,7 +98,7 @@ def ProfileCard():
 
 def strip_card():
     return xt.box(
-        xt.text("LATEST WORK AND FEATURED", font_size="14px"),
+        xt.text("LATEST WORK AND FEATURED", font_size="14px", class_name="text-[#BCBCBC]"),
         font_family="Inter",
         class_name="py-4 px-6 bg-gradient-to-r from-[#202020] via-[#191919] to-[#161616] rounded-3xl ",
     )
@@ -155,7 +156,7 @@ def services_card():
             xt.hstack(
                 xt.box(
                     xt.text("SPECIALIZATION", color="#BCBCBC", font_size="12px"),
-                    xt.text("Services Offering", font_size="20px"),
+                    xt.text("Services Offering", font_size="20px", color="#FFFFFF"),
                 ),
                 xt.image(src="icon.svg", width="45px"),
                 width="100%",
@@ -175,7 +176,7 @@ def experience_card():
     return xt.box(
         xt.flex(
             xt.vstack(
-                xt.text("07", font_size="36px"),
+                xt.text("07", font_size="36px", line_height="40px", color="#FFFFFF"),
                 xt.text(
                     "YEARS" + "\n" + "EXPERIENCE",
                     color="#BCBCBC",
@@ -185,7 +186,7 @@ def experience_card():
                 class_name="w-full md:w-auto lg:w-40 bg-gradient-to-r from-[#212121] via-[#222222] to-[#242424] rounded-3xl py-10 px-8",
             ),
             xt.vstack(
-                xt.text("+125", font_size="36px"),
+                xt.text("+125", font_size="36px", line_height="40px", color="#FFFFFF"),
                 xt.text(
                     "CLIENTS" + "\n" + "WORLDWIDE",
                     color="#BCBCBC",
@@ -195,7 +196,7 @@ def experience_card():
                 class_name="w-full md:w-auto lg:w-40 bg-gradient-to-r from-[#212121] via-[#222222] to-[#242424] rounded-3xl py-10 px-8",
             ),
             xt.vstack(
-                xt.text("+210", font_size="36px"),
+                xt.text("+210", font_size="36px", line_height="40px", color="#FFFFFF"),
                 xt.text(
                     "TOTAL" + "\n" + "PROJECTS",
                     color="#BCBCBC",
@@ -204,14 +205,14 @@ def experience_card():
                 text_align="center",
                 class_name="w-full md:w-auto lg:w-40 bg-gradient-to-r from-[#212121] via-[#222222] to-[#242424] rounded-3xl py-10 px-8",
             ),
-            class_name="flex h-full flex-row flex-wrap items-center justify-between gap-6 md:gap-0",
+            class_name="flex h-full flex-row flex-wrap items-center justify-between gap-6 md:gap-0 lg:justify-center lg:gap-4",
             # wrap="wrap",
             # justify_content="space-between",
             # align_items="center",
             # spacing="1rem"
         ),
         font_family="Inter",
-        class_name="p-4 md:p-6 bg-gradient-to-r from-[#202020] via-[#191919] to-[#161616] rounded-3xl ",
+        class_name="p-4 md:p-6 bg-gradient-to-r from-[#202020] via-[#191919] to-[#161616] rounded-3xl gap-4 lg:p-3",
     )
 
 
@@ -227,8 +228,8 @@ def work_together_card():
             xt.vstack(
                 xt.hstack(
                     xt.box(
-                        xt.text("Let's"),
-                        xt.span("work "),
+                        xt.text("Let's", color="#FFFFFF"),
+                        xt.span("work " , color="#FFFFFF"),
                         xt.span("together.", color="#5B78F6"),
                         line_height="52px",
                         font_size="44px",
@@ -263,7 +264,7 @@ def index() -> xt.Component:
                         card_with_image_and_title(
                             "my-works.png", "Projects", "SHOWCASE"
                         ),
-                        class_name="grid grid-cols-1 md:grid-cols-2 gap-6",
+                        class_name="grid grid-cols-1 md:grid-cols-2 gap-6 text-white",
                     ),
                     class_name="grid grid-cols-1 gap-6",
                 ),
@@ -276,7 +277,7 @@ def index() -> xt.Component:
                     class_name="col-span-2",
                 ),
                 card_with_image_and_title("social.png", "Profiles", "STAY WITH ME"),
-                class_name="grid grid-cols-1 md:grid-cols-4 md:gap-x-6 gap-y-6",
+                class_name="grid grid-cols-1 md:grid-cols-4 md:gap-x-6 gap-y-6 text-white",
             ),
             xt.box(
                 experience_card(),
