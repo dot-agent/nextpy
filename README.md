@@ -52,8 +52,8 @@ Nextpy is designed to solve compatibility issues and improve code generation. It
 
 - ⏰ **What You Can Build in 1 hour:** Beautiful portfolios, dashboards, portals, data apps, internal tools, APIs etc.
 - 📚 ***& The best part? Transferable Knowledge:*** Building with nextpy `progressively` teaches you framework-agnostic fundamentals and the best python libraries- FastAPI, Pydantic, SQLModel, Pandas, Jinja2, SQLAlchemy, etc.
-- ⚡ **4-10x faster than Streamlit:** Our compiled app achieves a staggering 4-10x performance leap over Streamlit. See the difference for yourself at [nextpy.org](https://nextpy.org), boasting a PageSpeed score of 95/100
-![image](https://res.cloudinary.com/doojikdqd/image/upload/v1704937088/github_nextpy/nexpy_pagespeed_g722f0.png)
+- ⚡ **4-10x faster than Streamlit:** Our compiled app achieves a staggering 4-10x performance leap over Streamlit. See the difference for yourself at [nextpy.org](https://nextpy.org), boasting a PageSpeed score of 99/100
+![image](https://res.cloudinary.com/doojikdqd/image/upload/v1704972857/github_nextpy/file_2024-01-11_11.30.21_dqfcx3.png)
 
 
 ![-----------------------------------------------------](https://res.cloudinary.com/dzznkbdrb/image/upload/v1694798498/divider_1_rej288.gif)
