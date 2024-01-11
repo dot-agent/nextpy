@@ -35,8 +35,7 @@
 
 <hr>
 
-<h3> Pythonic Web App framework: For Humans & LLMs</h3>
-<p align="center"><i>Simple like Streamlit + Fast and Flexible like Next.js</i></p>
+<h3><i>Streamlit's simplicity (but 4-10x faster) + FastAPI's full power + (Pydantic & SQL Alchemy)'s robustness</i></h3>
    
 
 ```diff
@@ -45,7 +44,7 @@
 
 </div>
 
-## 🤔 Nextpy : Future of app development  
+## 🤩 Nextpy : Fast, Pure Pythonic Web Apps
 
 Build any web app —effortlessly and quickly ⚡. It simplifies Pythonic development for everything from backends to frontends (yes, visually 🦚stunning frontends in Python!), AI integrations, APIs, and beyond—empowering both humans and AI agents.
 
@@ -53,6 +52,9 @@ Nextpy is designed to solve compatibility issues and improve code generation. It
 
 - ⏰ **What You Can Build in 1 hour:** Beautiful portfolios, dashboards, portals, data apps, internal tools, APIs etc.
 - 📚 ***& The best part? Transferable Knowledge:*** Building with nextpy `progressively` teaches you framework-agnostic fundamentals and the best python libraries- FastAPI, Pydantic, SQLModel, Pandas, Jinja2, SQLAlchemy, etc.
+- ⚡ **4-10x faster than Streamlit:** Our compiled app achieves a staggering 4-10x performance leap over Streamlit. See the difference for yourself at [nextpy.org](https://nextpy.org), boasting a PageSpeed score of 95/100
+![image](https://res.cloudinary.com/doojikdqd/image/upload/v1704937088/github_nextpy/nexpy_pagespeed_g722f0.png)
+
 
 ![-----------------------------------------------------](https://res.cloudinary.com/dzznkbdrb/image/upload/v1694798498/divider_1_rej288.gif)
 
@@ -63,6 +65,10 @@ Nextpy is designed to solve compatibility issues and improve code generation. It
 - **🎨 Rich UI Library** - Over 100 fully customizable built-in components for rapid UI development.
 - **⚛️ Tap into React's Power with Pythonic Wrappers** - Harness the vast React ecosystem directly within Python, utilizing any React library **_without JavaScript knowledge._**
 - **🚀 Built-in Performance Optimizations** - Deliver exceptional user experiences with automatic image, font, and script optimizations for lightning-fast loading speeds and responsiveness. See the difference for yourself at [nextpy.org](https://nextpy.org).
+- **👁️‍🗨️ Accessibility Out of the Box** - Achieving accessibility can be complex. We've selected the best UI React components, like Radix, to ensure accessibility is a standard feature, not an afterthought.
+
+![image](https://res.cloudinary.com/doojikdqd/image/upload/v1704936923/github_nextpy/accessible-nextpy_ij7lqu.gif)
+
 
 ### Better AI Generations: ‍🤖
 
