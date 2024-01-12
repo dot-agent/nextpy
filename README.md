@@ -51,7 +51,9 @@ Build any web app —effortlessly and quickly ⚡. It simplifies Pythonic develo
 Nextpy is designed to solve compatibility issues and improve code generation. It is built on our insight🔍 that the choice of underlying frameworks significantly affects the efficiency of AI code generation, regardless of other factors such as LLMs, prompts, or fine-tuning methods.
 
 - ⏰ **What You Can Build in 1 hour:** Beautiful portfolios, dashboards, portals, data apps, internal tools, APIs etc.
+
 - 📚 ***& The best part? Transferable Knowledge:*** Building with nextpy `progressively` teaches you framework-agnostic fundamentals and the best python libraries- FastAPI, Pydantic, SQLModel, Pandas, Jinja2, SQLAlchemy, etc.
+
 - ⚡ **4-10x faster than Streamlit:** Our compiled app achieves a staggering 4-10x performance leap over Streamlit. See the difference for yourself at [nextpy.org](https://nextpy.org), boasting a PageSpeed score of 99/100
 ![image](https://res.cloudinary.com/doojikdqd/image/upload/v1704975583/github_nextpy/file_2024-01-11_11.30.21_dqfcx3.png)
 
@@ -62,9 +64,13 @@ Nextpy is designed to solve compatibility issues and improve code generation. It
 
 ### Simplifying App Development:🧩
 - **🐍 Unleash Python's Full Potential** - Eliminate complexities and build everything—frontend and backend—in Python, seamlessly integrating any Python library.
+
 - **🎨 Rich UI Library** - Over 100 fully customizable built-in components for rapid UI development.
+
 - **⚛️ Tap into React's Power with Pythonic Wrappers** - Harness the vast React ecosystem directly within Python, utilizing any React library **_without JavaScript knowledge._**
+
 - **🚀 Built-in Performance Optimizations** - Deliver exceptional user experiences with automatic image, font, and script optimizations for lightning-fast loading speeds and responsiveness. See the difference for yourself at [nextpy.org](https://nextpy.org).
+
 - **👁️‍🗨️ Accessibility Out of the Box** - Achieving accessibility can be complex. We've selected the best UI React components, like Radix, to ensure accessibility is a standard feature, not an afterthought.
 
 ![image](https://res.cloudinary.com/doojikdqd/image/upload/v1704936923/github_nextpy/accessible-nextpy_ij7lqu.gif)
@@ -73,13 +79,17 @@ Nextpy is designed to solve compatibility issues and improve code generation. It
 ### Better AI Generations: ‍🤖
 
 - **🧠 More Effective Than Chaining or Prompt Engineering** - Next.py aligns with LLM processing patterns, enabling precise output control and optimal model utilization.
+
 - **💡 Optimized for Code Generation** - Regardless of the LLMs, prompts, or fine-tuning used, the underlying app framework significantly impacts the efficiency of code generation. Next.py's architecture is specifically engineered to maximize efficiency.
+
 - **💾 Session State with LLM** - Efficiently maintain state with LLMs, leveraging KV caches to convert multiple output tokens into prompt token batches. This approach reduces redundant generations, accelerating the handling of lengthy and intricate prompts. **_(only for open-source models)_**
+
 - **🧪 Detect Syntax Errors**: Test LLM-generated code, identifying and correcting LLM hallucinations, invalid Nextpy methods, and automatically generating prompts for seamless fixes.
 
 ### Developer-First: ❤️
 
 - **📘 Transferable Knowledge** - Learning Next.py teaches you framework-agnostic fundamentals and the best Python libraries, improving your python development expertise and enabling you to excel across any framework.
+
 - **🛠️ Extensible** - If you know how to do something in Python or plain English, you can integrate it with nextpy.
 
 ![-----------------------------------------------------](https://res.cloudinary.com/dzznkbdrb/image/upload/v1694798498/divider_1_rej288.gif)
