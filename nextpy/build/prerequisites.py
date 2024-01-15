@@ -771,7 +771,7 @@ def initialize_frontend_dependencies():
     # Create the nextpy directory.
     path_ops.mkdir(constants.Nextpy.DIR)
     # validate dependencies before install
-    validate_frontend_dependencies()
+    # validate_frontend_dependencies()
     # Install the frontend dependencies.
     processes.run_concurrently(install_node, install_bun)
     # Set up the web directory.
