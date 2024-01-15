@@ -558,6 +558,8 @@ class App(Base):
         Example:
             >>> get_frontend_packages({"react": "16.14.0", "react-dom": "16.14.0"})
         """
+        if getattr(self, '_has_installed_frontend_packages', False):
+            return
         page_imports = {
             i
             for i, tags in imports.items()
@@ -586,6 +588,7 @@ class App(Base):
             _frontend_packages.append(package)
         page_imports.update(_frontend_packages)
         prerequisites.install_frontend_packages(page_imports)
+        self._has_installed_frontend_packages = True
 
     def _app_root(self, app_wrappers: dict[tuple[int, str], Component]) -> Component:
         for component in tuple(app_wrappers.values()):
