@@ -113,7 +113,7 @@ class Next(SimpleNamespace):
     import pyjokes
 
     random_joke = pyjokes.get_joke()
-    print(f"Brace for puns while we compile.:\n{random_joke} 😂\n")
+    print(f"Compiling takes time, but the compiled app is super fast⚡:\n😂{random_joke} 😂\n")
 
     # The node modules directory.
     NODE_MODULES = "node_modules"

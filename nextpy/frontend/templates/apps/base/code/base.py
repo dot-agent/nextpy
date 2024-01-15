@@ -10,5 +10,9 @@ from code.pages import *
 
 import nextpy as xt
 
-# Create the app and compile it.
+class State(xt.State):
+    """Define empty state to allow access to rx.State.router."""
+
+
+# Create the app.
 app = xt.App(style=styles.base_style)

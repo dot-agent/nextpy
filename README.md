@@ -35,10 +35,11 @@
 <br>
 
 <a href="https://discord.gg/asTZktHrcH" target="blank">
-<img alt="Discord" src="https://img.shields.io/discord/1111984809821089883?style=social&logo=discord&label=Join%20Discord%20to%20access%20the%20nextpy%20bot%F0%9F%A4%96" width="500px">
+<img alt="Discord" src="https://img.shields.io/discord/1111984809821089883?style=for-the-badge&logo=discord&logoColor=white&label=Live%20Support%20%26%20Coding%20Bots%20on%20Discord&labelColor=%23684DFF&link=https%3A%2F%2Fdiscord.gg%2FasTZktHrcH">
+
 </a>
 
-<hr>
+![-----------------------------------------------------](https://res.cloudinary.com/dzznkbdrb/image/upload/v1694798498/divider_1_rej288.gif)
 
 <h3><i>Streamlit's simplicity (but 4-10x faster) + FastAPI's full power + (Pydantic & SQL Alchemy)'s robustness</i></h3>
    

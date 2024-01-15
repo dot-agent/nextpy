@@ -1327,6 +1327,9 @@ class StateProxy(wrapt.ObjectProxy):
         """
         super().__init__(state_instance)
         # compile is not relevant to backend logic
+        #TODO: We're currently using this weirdo mechanism for installing initial packages
+        # gets to load_module -> compile -> get_frontend_packages -> install_frontend_packages
+        # We can improve this
         self._self_app = getattr(prerequisites.get_app(), constants.CompileVars.APP)
         self._self_substate_path = state_instance.get_full_name().split(".")
         self._self_actx = None
@@ -2142,3 +2145,14 @@ class ImmutableMutableProxy(MutableProxy):
         return super()._mark_dirty(
             wrapped=wrapped, instance=instance, args=args, kwargs=kwargs
         )
+    
+def code_uses_state_contexts(javascript_code: str) -> bool:
+    """Check if the rendered Javascript uses state contexts.
+
+    Args:
+        javascript_code: The Javascript code to check.
+
+    Returns:
+        True if the code attempts to access a member of StateContexts.
+    """
+    return bool("useContext(StateContexts" in javascript_code)

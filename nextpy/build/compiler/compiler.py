@@ -438,3 +438,117 @@ def compile_tailwind(
 def purge_web_pages_dir():
     """Empty out .web directory."""
     utils.empty_dir(constants.Dirs.WEB_PAGES, keep_files=["_app.js"])
+
+
+class ExecutorSafeFunctions:
+    """A helper class designed for easier parallel processing during compilation tasks.
+
+    Key Points:
+    - This class is accessible globally, meaning it can be used anywhere in your code.
+    - It's especially useful when you're working with multiple processes, like with a ProcessPoolExecutor.
+    - Here's how it works:
+      1. Before creating a new (child) process, we save any necessary input data in this class.
+      2. When a new process starts (forks), it gets its own copy of this class, including the saved input data.
+      3. The child process uses this copied data to know what it needs to work on.
+
+    Why is this useful?
+    - Sometimes, you can't directly send input data to a new process because it's not in a format that can be easily transferred (not 'picklable'). 
+    - Our method bypasses this problem by storing the data in the class, so there's no need to transfer it in the traditional way.
+    
+    Attributes:
+            COMPILE_PAGE_ARGS_BY_ROUTE (dict): A mapping of routes to their respective page compilation arguments.
+            COMPILE_APP_APP_ROOT (Component | None): The root component of the app, used in app compilation.
+            CUSTOM_COMPONENTS (set[CustomComponent] | None): A set of custom components used in the compilation process.
+            HEAD_COMPONENTS (list[Component] | None): A list of components that form the document head.
+            STYLE (ComponentStyle | None): The style configuration for components.
+            STATE (type[BaseState] | None): The state type used in context compilation.
+
+    Limitations:
+    - It can't handle data that can't be transferred (unpicklable) as output.
+    - Changes made in a child process won't affect the original data in the parent process.
+
+    """
+
+    COMPILE_PAGE_ARGS_BY_ROUTE = {}
+    COMPILE_APP_APP_ROOT: Component | None = None
+    CUSTOM_COMPONENTS: set[CustomComponent] | None = None
+    HEAD_COMPONENTS: list[Component] | None = None
+    STYLE: ComponentStyle | None = None
+    STATE: type[BaseState] | None = None
+
+    @classmethod
+    def compile_page(cls, route: str):
+        """Compile a page.
+
+        Args:
+            route: The route of the page to compile.
+
+        Returns:
+            The path and code of the compiled page.
+        """
+        return compile_page(*cls.COMPILE_PAGE_ARGS_BY_ROUTE[route])
+
+    @classmethod
+    def compile_app(cls):
+        """Compile the app.
+
+        Returns:
+            The path and code of the compiled app.
+
+        Raises:
+            ValueError: If the app root is not set.
+        """
+        if cls.COMPILE_APP_APP_ROOT is None:
+            raise ValueError("COMPILE_APP_APP_ROOT should be set")
+        return compile_app(cls.COMPILE_APP_APP_ROOT)
+
+    @classmethod
+    def compile_custom_components(cls):
+        """Compile the custom components.
+
+        Returns:
+            The path and code of the compiled custom components.
+
+        Raises:
+            ValueError: If the custom components are not set.
+        """
+        if cls.CUSTOM_COMPONENTS is None:
+            raise ValueError("CUSTOM_COMPONENTS should be set")
+        return compile_components(cls.CUSTOM_COMPONENTS)
+
+    @classmethod
+    def compile_document_root(cls):
+        """Compile the document root.
+
+        Returns:
+            The path and code of the compiled document root.
+
+        Raises:
+            ValueError: If the head components are not set.
+        """
+        if cls.HEAD_COMPONENTS is None:
+            raise ValueError("HEAD_COMPONENTS should be set")
+        return compile_document_root(cls.HEAD_COMPONENTS)
+
+    @classmethod
+    def compile_theme(cls):
+        """Compile the theme.
+
+        Returns:
+            The path and code of the compiled theme.
+
+        Raises:
+            ValueError: If the style is not set.
+        """
+        if cls.STYLE is None:
+            raise ValueError("STYLE should be set")
+        return compile_theme(cls.STYLE)
+
+    @classmethod
+    def compile_contexts(cls):
+        """Compile the contexts.
+
+        Returns:
+            The path and code of the compiled contexts.
+        """
+        return compile_contexts(cls.STATE)

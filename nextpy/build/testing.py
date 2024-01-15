@@ -167,6 +167,7 @@ class AppHarness:
             nextpy.build.config.get_config(reload=True)
             # reset xt.State subclasses
             State.class_subclasses.clear()
+            os.environ.pop(nextpy.constants.PYTEST_CURRENT_TEST, None)
             # self.app_module.app.
             self.app_module = nextpy.build.prerequisites.get_compiled_app(reload=True)
         self.app_instance = self.app_module.app

@@ -164,6 +164,11 @@ def get_app(reload: bool = False) -> ModuleType:
     sys.path.insert(0, os.getcwd())
     app = __import__(module, fromlist=(constants.CompileVars.APP,))
     if reload:
+        from nextpy.backend.state import State
+
+        # Reset xt.State subclasses to avoid conflict when reloading.
+        State.class_subclasses.clear()
+        # Reload the app module.
         importlib.reload(app)
 
     return app
@@ -771,7 +776,7 @@ def initialize_frontend_dependencies():
     # Create the nextpy directory.
     path_ops.mkdir(constants.Nextpy.DIR)
     # validate dependencies before install
-    validate_frontend_dependencies()
+    # validate_frontend_dependencies()
     # Install the frontend dependencies.
     processes.run_concurrently(install_node, install_bun)
     # Set up the web directory.

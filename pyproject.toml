@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "nextpy"
-version = "0.3.0"
+version = "0.3.2"
 description = "⚡The Pure Python Framework for Web Apps, Meticulously Optimized for 🤖AI agents🤖. World's first AMS🥇"
 license = "Apache-2.0"
 authors = ["Team dotagent <anurag@dotagent.ai>"]
