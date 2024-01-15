@@ -1,6 +1,7 @@
 <div align="center">
 <img src="https://raw.githubusercontent.com/dotagent-ai/assets/main/nextpy_logo_light_theme.svg#gh-light-mode-only" alt="Nextpy Logo" width="320px">
 <img src="https://raw.githubusercontent.com/dotagent-ai/assets/main/nextpy_logo_dark_theme.svg#gh-dark-mode-only" alt="Nextpy Logo" width="320px">
+
 <p align="center">
     <a href="docs/🌎/繁體中文/README.md">繁體中文</a>
     .
@@ -31,7 +32,11 @@
     <a href="docs/🌎/한국어/README.md">한국어</a>
     
   </p>
+<br>
 
+<a href="https://discord.gg/asTZktHrcH" target="blank">
+<img alt="Discord" src="https://img.shields.io/discord/1111984809821089883?style=social&logo=discord&label=Join%20Discord%20to%20access%20the%20nextpy%20bot%F0%9F%A4%96" width="500px">
+</a>
 
 <hr>
 
