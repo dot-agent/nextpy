@@ -1327,6 +1327,9 @@ class StateProxy(wrapt.ObjectProxy):
         """
         super().__init__(state_instance)
         # compile is not relevant to backend logic
+        #TODO: We're currently using this weirdo mechanism for installing initial packages
+        # gets to load_module -> compile -> get_frontend_packages -> install_frontend_packages
+        # We can improve this
         self._self_app = getattr(prerequisites.get_app(), constants.CompileVars.APP)
         self._self_substate_path = state_instance.get_full_name().split(".")
         self._self_actx = None
