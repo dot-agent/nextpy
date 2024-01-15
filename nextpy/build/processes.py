@@ -224,8 +224,6 @@ def stream_logs(message: str, process: subprocess.Popen, progress=None):
         console.debug(message, progress=progress)
         if process.stdout is None:
             return
-        if process.stdout.closed :
-            return
         for line in process.stdout:
             console.debug(line, end="", progress=progress)
             logs.append(line)

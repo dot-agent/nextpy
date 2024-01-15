@@ -617,39 +617,29 @@ def install_frontend_packages(packages: set[str]):
         >>> install_frontend_packages(["react", "react-dom"])
     """
     # Install the base packages.
-    # process = processes.new_process(
-    #     [get_install_package_manager(), "install", "--loglevel", "silly"],
-    #     cwd=constants.Dirs.WEB,
-    #     shell=constants.IS_WINDOWS,
-    # )
+    process = processes.new_process(
+        [get_install_package_manager(), "install", "--loglevel", "silly"],
+        cwd=constants.Dirs.WEB,
+        shell=constants.IS_WINDOWS,
+    )
 
-    # processes.show_status("Installing base frontend packages", process)
-    if not hasattr(install_frontend_packages, "isFirstRun"):
-        setattr(install_frontend_packages, "isFirstRun", None)
-        ## Install the base packages.
+    processes.show_status("Installing base frontend packages", process)
+
+    config = get_config()
+    if config.tailwind is not None:
+        # install tailwind and tailwind plugins as dev dependencies.
         process = processes.new_process(
-            [get_install_package_manager(), "install", "--loglevel", "silly"],
+            [
+                get_install_package_manager(),
+                "add",
+                "-d",
+                constants.Tailwind.VERSION,
+                *((config.tailwind or {}).get("plugins", [])),
+            ],
             cwd=constants.Dirs.WEB,
             shell=constants.IS_WINDOWS,
         )
-
-        processes.show_status("Installing base frontend packages", process)
-
-        config = get_config()
-        if config.tailwind is not None:
-            # install tailwind and tailwind plugins as dev dependencies.
-            process = processes.new_process(
-                [
-                    get_install_package_manager(),
-                    "add",
-                    "-d",
-                    constants.Tailwind.VERSION,
-                    *((config.tailwind or {}).get("plugins", [])),
-                ],
-                cwd=constants.Dirs.WEB,
-                shell=constants.IS_WINDOWS,
-            )
-            processes.show_status("Installing tailwind", process)
+        processes.show_status("Installing tailwind", process)
 
     # Install custom packages defined in frontend_packages
     if len(packages) > 0:
