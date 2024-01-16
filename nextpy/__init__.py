@@ -288,9 +288,17 @@ _MAPPING = {
     "nextpy.frontend.components.component": ["memo"],
     "nextpy.frontend.components.el": ["el"],
     "nextpy.frontend.components.moment.moment": ["MomentDelta"],
-    "nextpy.frontend.components.recharts": ["recharts"],
     "nextpy.frontend.page": ["page"],
     "nextpy.frontend.style": ["color_mode", "style", "toggle_color_mode"],
+    "nextpy.frontend.components.recharts": [
+        "area_chart", "bar_chart", "line_chart", "composed_chart", "pie_chart",
+        "radar_chart", "radial_bar_chart", "scatter_chart", "funnel_chart", "treemap",
+        "area", "bar", "line", "scatter", "x_axis", "y_axis", "z_axis", "brush",
+        "cartesian_axis", "cartesian_grid", "reference_line", "reference_dot",
+        "reference_area", "error_bar", "funnel", "responsive_container", "legend",
+        "graphing_tooltip", "label", "label_list", "pie", "radar", "radial_bar",
+        "polar_angle_axis", "polar_grid", "polar_radius_axis",
+    ],
     "nextpy.utils": ["utils"],
     "nextpy.frontend.components.proxy": ["animation"],
 }
