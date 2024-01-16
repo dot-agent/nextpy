@@ -99,7 +99,7 @@ def run_process_and_launch_url(run_command: list[str]):
                         console.print(f"App running at: [bold green]{url}")
                         first_run = False
                     else:
-                        console.print("New packages detected: Updating app...")
+                        console.print("New packages detected: Please Ctrl+C & nextpy run...")
                 else:
                     new_hash = detect_package_change(json_file_path)
                     if new_hash != last_hash:
