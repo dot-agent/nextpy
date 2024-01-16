@@ -27,26 +27,26 @@ data_1_show = """[
 ]"""
 
 
-graph_1_code = """xt.recharts.composed_chart(
-    xt.recharts.area(
+graph_1_code = """xt.composed_chart(
+    xt.area(
         data_key="uv", stroke="#8884d8", fill="#8884d8"
     ),
-    xt.recharts.bar(
+    xt.bar(
         data_key="amt", bar_size=20, fill="#413ea0"
     ),
-    xt.recharts.line(
+    xt.line(
         data_key="pv", type_="monotone", stroke="#ff7300"
     ),
-    xt.recharts.x_axis(data_key="name"),
-    xt.recharts.y_axis(),
-    xt.recharts.cartesian_grid(stroke_dasharray="3 3"),
-    xt.recharts.graphing_tooltip(),
+    xt.x_axis(data_key="name"),
+    xt.y_axis(),
+    xt.cartesian_grid(stroke_dasharray="3 3"),
+    xt.graphing_tooltip(),
     data=data,
 )"""
 
 
-graph_2_code = """xt.recharts.pie_chart(
-    xt.recharts.pie(
+graph_2_code = """xt.pie_chart(
+    xt.pie(
         data=PieChartState.resources,
         data_key="count",
         name_key="type_",
@@ -57,7 +57,7 @@ graph_2_code = """xt.recharts.pie_chart(
         fill="#8884d8",
         label=True,
     ),
-    xt.recharts.graphing_tooltip(),
+    xt.graphing_tooltip(),
 ),
 xt.vstack(
     xt.foreach(
@@ -125,14 +125,14 @@ def graphing_page() -> xt.Component:
                 font_size="2em",
             ),
             xt.stack(
-                xt.recharts.composed_chart(
-                    xt.recharts.area(data_key="uv", stroke="#8884d8", fill="#8884d8"),
-                    xt.recharts.bar(data_key="amt", bar_size=20, fill="#413ea0"),
-                    xt.recharts.line(data_key="pv", type_="monotone", stroke="#ff7300"),
-                    xt.recharts.x_axis(data_key="name"),
-                    xt.recharts.y_axis(),
-                    xt.recharts.cartesian_grid(stroke_dasharray="3 3"),
-                    xt.recharts.graphing_tooltip(),
+                xt.composed_chart(
+                    xt.area(data_key="uv", stroke="#8884d8", fill="#8884d8"),
+                    xt.bar(data_key="amt", bar_size=20, fill="#413ea0"),
+                    xt.line(data_key="pv", type_="monotone", stroke="#ff7300"),
+                    xt.x_axis(data_key="name"),
+                    xt.y_axis(),
+                    xt.cartesian_grid(stroke_dasharray="3 3"),
+                    xt.graphing_tooltip(),
                     data=data_1,
                     # height="15em",
                 ),
@@ -176,8 +176,8 @@ def graphing_page() -> xt.Component:
             ),
             xt.heading("Interactive Example", font_size="2em"),
             xt.hstack(
-                xt.recharts.pie_chart(
-                    xt.recharts.pie(
+                xt.pie_chart(
+                    xt.pie(
                         data=PieChartState.resources,
                         data_key="count",
                         name_key="type_",
@@ -188,7 +188,7 @@ def graphing_page() -> xt.Component:
                         fill="#8884d8",
                         label=True,
                     ),
-                    xt.recharts.graphing_tooltip(),
+                    xt.graphing_tooltip(),
                 ),
                 xt.vstack(
                     xt.foreach(

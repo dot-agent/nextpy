@@ -16,4 +16,6 @@ from .moment import *
 from .next import NextLink, next_link
 from .plotly import *
 from .react_player import *
+from .recharts import *
 from .suneditor import *
+
