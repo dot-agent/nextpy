@@ -1,4 +1,4 @@
-# This file has been modified by the Nextpy Team in 2023 using AI tools and automation scripts. 
+# This file has been modified by the Nextpy Team in 2023 using AI tools and automation scripts.
 # We have rigorously tested these modifications to ensure reliability and performance. Based on successful test results, we are confident in the quality and stability of these changes.
 
 from nextpy.backend import admin as admin
@@ -257,7 +257,9 @@ from nextpy.frontend.components import center as center
 from nextpy.frontend.components import checkbox as checkbox
 from nextpy.frontend.components import checkbox_group as checkbox_group
 from nextpy.frontend.components import circular_progress as circular_progress
-from nextpy.frontend.components import circular_progress_label as circular_progress_label
+from nextpy.frontend.components import (
+    circular_progress_label as circular_progress_label,
+)
 from nextpy.frontend.components import circle as circle
 from nextpy.frontend.components import code as code
 from nextpy.frontend.components import code_block as code_block
@@ -341,8 +343,12 @@ from nextpy.frontend.components import moment as moment
 from nextpy.frontend.components import multi_select as multi_select
 from nextpy.frontend.components import multi_select_option as multi_select_option
 from nextpy.frontend.components import next_link as next_link
-from nextpy.frontend.components import number_decrement_stepper as number_decrement_stepper
-from nextpy.frontend.components import number_increment_stepper as number_increment_stepper
+from nextpy.frontend.components import (
+    number_decrement_stepper as number_decrement_stepper,
+)
+from nextpy.frontend.components import (
+    number_increment_stepper as number_increment_stepper,
+)
 from nextpy.frontend.components import number_input as number_input
 from nextpy.frontend.components import number_input_field as number_input_field
 from nextpy.frontend.components import number_input_stepper as number_input_stepper
@@ -365,7 +371,9 @@ from nextpy.frontend.components import progress as progress
 from nextpy.frontend.components import radio as radio
 from nextpy.frontend.components import radio_group as radio_group
 from nextpy.frontend.components import range_slider as range_slider
-from nextpy.frontend.components import range_slider_filled_track as range_slider_filled_track
+from nextpy.frontend.components import (
+    range_slider_filled_track as range_slider_filled_track,
+)
 from nextpy.frontend.components import range_slider_thumb as range_slider_thumb
 from nextpy.frontend.components import range_slider_track as range_slider_track
 from nextpy.frontend.components import responsive_grid as responsive_grid
@@ -455,6 +463,7 @@ from nextpy.build.config import Config as Config
 from nextpy.build.config import DBConfig as DBConfig
 from nextpy import constants as constants
 from nextpy.constants import Env as Env
+
 # from nextpy.frontend.custom_components import custom_components as custom_components
 from nextpy.frontend.components import el as el
 from nextpy.backend import event as event
