@@ -15,7 +15,7 @@ from gridx_portfolio.components.cards import (
     work_together_card,
 )
 
-
+@xt.page(title="GridX Portfolio", description="A portfolio website built with Nextpy")
 def index() -> xt.Component:
     return xt.fragment(
         Navbar(),

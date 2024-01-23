@@ -1,5 +1,6 @@
 import nextpy as xt
 
+
 def ProfileCard():
     return xt.box(
         xt.flex(
@@ -40,7 +41,9 @@ def ProfileCard():
 
 def strip_card():
     return xt.box(
-        xt.text("LATEST WORK AND FEATURED", font_size="14px", class_name="text-[#BCBCBC]"),
+        xt.text(
+            "LATEST WORK AND FEATURED", font_size="14px", class_name="text-[#BCBCBC]"
+        ),
         class_name="py-4 px-6 bg-gradient-to-r from-[#202020] via-[#191919] to-[#161616] rounded-3xl ",
     )
 
@@ -62,32 +65,32 @@ def card_with_image_and_title(image_src, title, description):
                 align_items="center",
                 width="100%",
             ),
-            class_name='min-h-[280px] md:min-h-0 flex justify-between',
+            class_name="min-h-[280px] md:min-h-0 flex justify-between",
             spacing="1em",
         ),
         class_name="p-4 md:p-6 bg-gradient-to-r from-[#202020] via-[#191919] to-[#161616] rounded-3xl ",
     )
 
 
+class ImageGalleryState(xt.State):
+    image_paths = [
+        "camera.png",
+        "design-pencil.png",
+        "color-filter.png",
+        "dev-mode-phone.png",
+    ]
+
+
 def services_card():
     return xt.box(
         xt.vstack(
             xt.hstack(
-                xt.image(
-                    src="camera.png",
-                    class_name="w-full max-w-[40px] h-[40px]",
-                ),
-                xt.image(
-                    src="design-pencil.png",
-                    class_name="w-full max-w-[40px] h-[40px]",
-                ),
-                xt.image(
-                    src="color-filter.png",
-                    class_name="w-full max-w-[40px] h-[40px]",
-                ),
-                xt.image(
-                    src="dev-mode-phone.png",
-                    class_name="w-full max-w-[40px] h-[40px]",
+                xt.foreach(
+                    ImageGalleryState.image_paths,
+                    lambda image_path: xt.image(
+                        src=image_path,
+                        class_name="w-full max-w-[40px] h-[40px]",
+                    ),
                 ),
                 p=["0.5rem", "0.5rem", "2rem", "2rem", "2rem"],
                 width="100%",
@@ -146,7 +149,6 @@ def experience_card():
                 class_name="w-full md:w-auto lg:w-40 bg-gradient-to-r from-[#212121] via-[#222222] to-[#242424] rounded-3xl py-10 px-8",
             ),
             class_name="flex h-full flex-row flex-wrap items-center justify-between gap-6 md:gap-0 lg:justify-center lg:gap-4",
-    
         ),
         class_name="p-4 md:p-6 bg-gradient-to-r from-[#202020] via-[#191919] to-[#161616] rounded-3xl gap-4 lg:p-3",
     )
@@ -165,7 +167,7 @@ def work_together_card():
                 xt.hstack(
                     xt.box(
                         xt.text("Let's", color="#FFFFFF"),
-                        xt.span("work " , color="#FFFFFF"),
+                        xt.span("work ", color="#FFFFFF"),
                         xt.span("together.", color="#5B78F6"),
                         line_height="52px",
                         font_size="44px",
@@ -175,7 +177,6 @@ def work_together_card():
                     justify_content="space-between",
                     align_items="end",
                 ),
-                # spacing="1em",
                 align_items="start",
             ),
             class_name="p-4 md:p-6",

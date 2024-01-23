@@ -1,15 +1,27 @@
 import nextpy as xt
 
+
+class NavbarState(xt.State):
+    links = [
+        "Home",
+        "About",
+        "Works",
+        "Contact",
+    ]
+
+
 def Navbar():
     return xt.box(
         xt.hstack(
             xt.image(src="logo.svg", width="90px"),
             xt.desktop_only(
                 xt.hstack(
-                    xt.text("Home"),
-                    xt.text("About"),
-                    xt.text("Works"),
-                    xt.text("Contact"),
+                    xt.foreach(
+                        NavbarState.links,
+                        lambda links: xt.link(
+                            xt.text(links), src="#", _hover={"text_decoration": "none"}
+                        ),
+                    ),
                     class_name="hidden md:flex gap-6 md:items-center md:space-x-6 text-white text-base ",
                     spacing="1.5rem",
                 ),
