@@ -53,6 +53,7 @@ charset-normalizer = "^3.3.2"
 aiosmtplib = "^3.0.1"
 reacton = "^1.8.2"
 
+
 [tool.poetry.group.dev.dependencies]
 pytest = "^7.1.2"
 pytest-mock = "^3.10.0"

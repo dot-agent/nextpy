@@ -8,20 +8,20 @@ In Nextpy, state variables are represented by `Var` objects. These `Var` objects
 
 ### Non-working Example: Using a Python-specific Function
 
-Let's consider an example where we want to use Python's built-in `len()` function on a `Var` that represents a string.
+Let's consider an example where we want to use Python's built-in `len()` function on a `Var` that represents a list.
 
 ```python
 class State(xt.State):
-    text: str = "Hello, Nextpy!"
+    fruits: list = ["Apple", "Banana", "Papaya"]
 
 def index():
     # This will not work because `len()` is a Python-specific function.
     # It cannot be translated into a JavaScript equivalent for the frontend.
-    xt.text(f"Length of the text: {len(State.text)}")
+    return xt.text(f"Count of items in the list: {len(State.fruits)}")
 
 ```
 
-In this example, we're trying to use `len(State.text)` to get the length of the string stored in `State.text`. However, this will result in an error because `len()` is a Python-specific function and does not have a direct JavaScript equivalent. This means it cannot be compiled into JavaScript for the frontend.
+In this example, we're trying to use `len(State.fruits)` to get the length of the list stored in `State.fruits`. However, this will result in an error because `len()` is a Python-specific function and does not have a direct JavaScript equivalent. This means it cannot be compiled into JavaScript for the frontend.
 
 ### Solution: Using Supported Var Operations
 
@@ -31,15 +31,16 @@ Here's the corrected example:
 
 ```python
 class State(xt.State):
-    text: str = "Hello, Nextpy!"
+    fruits: list = ["Apple", "Banana", "Papaya"]
 
 def index():
-    # Using the supported `length()` method for Vars
-    xt.text(f"Length of the text: {State.text.length()}")
+    return xt.text(f"Count of items in the list: {State.fruits.length()}")
 
 ```
 
-In this revised example, `State.text.length()` is used to get the length of the string. This operation is supported by Nextpy and can be properly compiled into JavaScript, ensuring that the frontend works as expected.
+In this revised example, `State.fruits.length()` is used to get the length of the list. This operation is supported by Nextpy and can be properly compiled into JavaScript, ensuring that the frontend works as expected.
+
+Note: `State.fruits.length()` can only be used to find the length of a "list" `Var`.
 
 ### Core Methods of `nextpy.backend.vars.Var`
 
