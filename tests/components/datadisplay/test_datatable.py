@@ -5,7 +5,7 @@ import pandas as pd
 import pytest
 
 import nextpy as xt
-from nextpy.interfaces.web.react_components.gridjs.datatable import DataTable
+from nextpy.interfaces.web.components.gridjs.datatable import DataTable
 from nextpy.utils import types
 from nextpy.utils.serializers import serialize, serialize_dataframe
 

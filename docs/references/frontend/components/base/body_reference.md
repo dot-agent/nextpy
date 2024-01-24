@@ -25,7 +25,7 @@ The `Body` component is used in scenarios such as:
 Here is a simple example of how to use the `Body` component:
 
 ```python
-from nextpy.interfaces.web.react_components.base.body import Body
+from nextpy.interfaces.web.components.base.body import Body
 
 # Create a Body component with a child component
 body = Body.create(
@@ -39,7 +39,7 @@ body = Body.create(
 For a more advanced usage that involves event handling and custom attributes:
 
 ```python
-from nextpy.interfaces.web.react_components.base.body import Body
+from nextpy.interfaces.web.components.base.body import Body
 from nextpy.backend.event import EventHandler
 
 def on_click_handler(event):

@@ -6,7 +6,7 @@ from typing import Dict, List
 import pytest
 
 from nextpy.backend.vars import BaseVar, Var
-from nextpy.interfaces.web.react_components.tags import CondTag, Tag, tagless
+from nextpy.interfaces.web.components.tags import CondTag, Tag, tagless
 
 
 @pytest.mark.parametrize(

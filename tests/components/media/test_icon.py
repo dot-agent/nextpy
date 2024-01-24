@@ -3,7 +3,7 @@
 
 import pytest
 
-from nextpy.interfaces.web.react_components.chakra.media.icon import ICON_LIST, Icon
+from nextpy.interfaces.web.components.chakra.media.icon import ICON_LIST, Icon
 from nextpy.utils import format
 
 

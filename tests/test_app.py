@@ -18,7 +18,7 @@ from starlette_admin.auth import AuthProvider
 from starlette_admin.contrib.sqla.admin import Admin
 from starlette_admin.contrib.sqla.view import ModelView
 
-import nextpy.interfaces.web.react_components.radix.themes as rdxt
+import nextpy.interfaces.web.components.radix.themes as rdxt
 from nextpy import constants
 from nextpy.app import (
     App,
@@ -39,7 +39,7 @@ from nextpy.backend.state import (
 )
 from nextpy.backend.vars import ComputedVar
 from nextpy.data.model import Model
-from nextpy.interfaces.web.react_components import Box, Component, Cond, Fragment, Text
+from nextpy.interfaces.web.components import Box, Component, Cond, Fragment, Text
 from nextpy.interfaces.web.style import Style
 from nextpy.utils import format
 

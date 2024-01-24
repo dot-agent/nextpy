@@ -11,7 +11,7 @@
 ### Basic Implementation
 
 ```python
-from nextpy.interfaces.web.react_components.base.app_wrap import AppWrap
+from nextpy.interfaces.web.components.base.app_wrap import AppWrap
 from nextpy.frontend.style import Style
 
 # Basic usage of AppWrap to group components with an applied style

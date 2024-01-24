@@ -25,7 +25,7 @@ The `Center` component serves the purpose of simplifying the alignment of elemen
 ### Basic Implementation
 
 ```python
-from nextpy.interfaces.web.react_components.core.layout.center import Center
+from nextpy.interfaces.web.components.core.layout.center import Center
 
 centered_content = Center.create(
     "This is a centered text block."
@@ -35,7 +35,7 @@ centered_content = Center.create(
 ### Advanced Implementation
 
 ```python
-from nextpy.interfaces.web.react_components.core.layout.center import Center
+from nextpy.interfaces.web.components.core.layout.center import Center
 from nextpy.frontend.style import Style
 
 centered_content_with_style = Center.create(

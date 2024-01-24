@@ -5,7 +5,7 @@
 from typing import Any
 
 import nextpy as xt
-from nextpy.interfaces.web.react_components.glide_datagrid.dataeditor import DataEditorTheme
+from nextpy.interfaces.web.components.glide_datagrid.dataeditor import DataEditorTheme
 
 from ..styles import *
 from ..webui.state import State

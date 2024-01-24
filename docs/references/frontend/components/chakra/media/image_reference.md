@@ -49,7 +49,7 @@ A more advanced example of the `Image` component might include handling events a
 
 ```python
 from nextpy.components.chakra.media.image import Image
-from nextpy.interfaces.web.react_components.basic import Text
+from nextpy.interfaces.web.components.basic import Text
 
 # Advanced image usage with fallback and events
 image_with_fallback = Image.create(

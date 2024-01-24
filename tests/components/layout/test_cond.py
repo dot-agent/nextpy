@@ -9,11 +9,11 @@ import pytest
 import nextpy as xt
 from nextpy.backend.state import BaseState
 from nextpy.backend.vars import Var
-from nextpy.interfaces.web.react_components.base.fragment import Fragment
-from nextpy.interfaces.web.react_components.chakra.layout.box import Box
-from nextpy.interfaces.web.react_components.chakra.typography.text import Text
-from nextpy.interfaces.web.react_components.core.cond import Cond, cond
-from nextpy.interfaces.web.react_components.core.responsive import (
+from nextpy.interfaces.web.components.base.fragment import Fragment
+from nextpy.interfaces.web.components.chakra.layout.box import Box
+from nextpy.interfaces.web.components.chakra.typography.text import Text
+from nextpy.interfaces.web.components.core.cond import Cond, cond
+from nextpy.interfaces.web.components.core.responsive import (
     desktop_only,
     mobile_and_tablet,
     mobile_only,

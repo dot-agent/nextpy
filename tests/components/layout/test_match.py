@@ -8,7 +8,7 @@
 # import nextpy as xt
 # from nextpy.backend.state import BaseState
 # from nextpy.backend.vars import BaseVar
-# from nextpy.interfaces.web.react_components.core.match import Match
+# from nextpy.interfaces.web.components.core.match import Match
 # from nextpy.utils.exceptions import MatchTypeError
 
 
@@ -249,7 +249,7 @@
 #                 xt.text("default value"),
 #             ),
 #             "Match cases should have the same return types. Case 3 with return value `red` of type "
-#             "<class 'nextpy.backend.BaseVar'> is not <class 'nextpy.interfaces.web.react_components.component.BaseComponent'>",
+#             "<class 'nextpy.backend.BaseVar'> is not <class 'nextpy.interfaces.web.components.component.BaseComponent'>",
 #         ),
 #         (
 #             (
@@ -262,7 +262,7 @@
 #                 xt.text("default value"),
 #             ),
 #             "Match cases should have the same return types. Case 3 with return value `<Text> {`first value`} </Text>` "
-#             "of type <class 'nextpy.interfaces.web.react_components.chakra.typography.text.Text'> is not <class 'nextpy.backend.BaseVar'>",
+#             "of type <class 'nextpy.interfaces.web.components.chakra.typography.text.Text'> is not <class 'nextpy.backend.BaseVar'>",
 #         ),
 #     ],
 # )

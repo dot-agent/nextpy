@@ -283,15 +283,15 @@ _MAPPING = {
     "nextpy.constants": ["Env", "constants"],
     "nextpy.data.jsondb": ["JsonDatabase"],
     "nextpy.data.model": ["Model", "model", "session"],
-    "nextpy.interfaces.web.react_components": _ALL_COMPONENTS + ["chakra", "next"],
-    "nextpy.interfaces.web.react_components.framer.motion": ["motion"],
-    "nextpy.interfaces.web.react_components.component": ["memo"],
-    "nextpy.interfaces.web.react_components.el": ["el"],
-    "nextpy.interfaces.web.react_components.moment.moment": ["MomentDelta"],
+    "nextpy.interfaces.web.components": _ALL_COMPONENTS + ["chakra", "next"],
+    "nextpy.interfaces.web.components.framer.motion": ["motion"],
+    "nextpy.interfaces.web.components.component": ["memo"],
+    "nextpy.interfaces.web.components.el": ["el"],
+    "nextpy.interfaces.web.components.moment.moment": ["MomentDelta"],
     "nextpy.frontend.page": ["page"],
-    "nextpy.interfaces.web.react_components.proxy": ["animation", "unstyled"],
+    "nextpy.interfaces.web.components.proxy": ["animation", "unstyled"],
     "nextpy.frontend.style": ["color_mode", "style", "toggle_color_mode"],
-    "nextpy.interfaces.web.react_components.recharts": [
+    "nextpy.interfaces.web.components.recharts": [
         "area_chart", "bar_chart", "line_chart", "composed_chart", "pie_chart",
         "radar_chart", "radial_bar_chart", "scatter_chart", "funnel_chart", "treemap",
         "area", "bar", "line", "scatter", "x_axis", "y_axis", "z_axis", "brush",
@@ -351,12 +351,12 @@ def __getattr__(name: str) -> Type:
     """
     # Custom alias handling
     if name == "animation":
-        module = importlib.import_module("nextpy.interfaces.web.react_components.proxy")
+        module = importlib.import_module("nextpy.interfaces.web.components.proxy")
         return module.animation
 
     # Custom alias handling for 'unstyled'
     if name == "unstyled":
-        return importlib.import_module("nextpy.interfaces.web.react_components.proxy.unstyled")
+        return importlib.import_module("nextpy.interfaces.web.components.proxy.unstyled")
 
     try:
         # Check for import of a module that is not in the mapping.

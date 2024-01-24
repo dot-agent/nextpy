@@ -11,12 +11,12 @@ from nextpy.backend.admin import AdminDash as AdminDash
 from nextpy.base import Base as Base
 from nextpy.build.compiler import compiler as compiler
 from nextpy.build import prerequisites as prerequisites
-from nextpy.interfaces.web.react_components import connection_modal as connection_modal
-from nextpy.interfaces.web.react_components.component import (
+from nextpy.interfaces.web.components import connection_modal as connection_modal
+from nextpy.interfaces.web.components.component import (
     Component as Component,
     ComponentStyle as ComponentStyle,
 )
-from nextpy.interfaces.web.react_components.base.fragment import Fragment as Fragment
+from nextpy.interfaces.web.components.base.fragment import Fragment as Fragment
 from nextpy.build.config import get_config as get_config
 from nextpy.backend.event import (
     Event as Event,

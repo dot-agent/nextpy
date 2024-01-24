@@ -3,7 +3,7 @@
 
 from nextpy.backend.event import EventChain
 from nextpy.backend.vars import BaseVar
-from nextpy.interfaces.web.react_components.chakra.forms.form import Form
+from nextpy.interfaces.web.components.chakra.forms.form import Form
 
 
 def test_render_on_submit():

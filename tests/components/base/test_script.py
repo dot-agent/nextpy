@@ -5,7 +5,7 @@
 import pytest
 
 from nextpy.backend.state import BaseState
-from nextpy.interfaces.web.react_components.base.script import Script
+from nextpy.interfaces.web.components.base.script import Script
 
 
 def test_script_inline():

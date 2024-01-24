@@ -12,9 +12,9 @@ from nextpy.backend.vars import Var, VarData
 from nextpy.base import Base
 from nextpy.constants import EventTriggers
 from nextpy.interfaces.web import imports
-from nextpy.interfaces.web.react_components.base.bare import Bare
-from nextpy.interfaces.web.react_components.chakra.layout.box import Box
-from nextpy.interfaces.web.react_components.component import (
+from nextpy.interfaces.web.components.base.bare import Bare
+from nextpy.interfaces.web.components.chakra.layout.box import Box
+from nextpy.interfaces.web.components.component import (
     Component,
     CustomComponent,
     StatefulComponent,

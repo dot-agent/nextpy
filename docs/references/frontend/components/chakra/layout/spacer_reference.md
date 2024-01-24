@@ -31,7 +31,7 @@ spacer = Spacer.create()
 
 ```python
 # Basic usage of Spacer to push two components apart
-from nextpy.interfaces.web.react_components.chakra import Box, Spacer
+from nextpy.interfaces.web.components.chakra import Box, Spacer
 
 left_component = Box.create("Left Item", style={"width": "100px"})
 right_component = Box.create("Right Item", style={"width": "100px"})
@@ -48,7 +48,7 @@ layout = Box.create(
 
 ```python
 # Advanced usage with multiple spacers for different spacing
-from nextpy.interfaces.web.react_components.chakra import Box, Spacer
+from nextpy.interfaces.web.components.chakra import Box, Spacer
 
 left_component = Box.create("Left Item", style={"width": "100px"})
 middle_component = Box.create("Middle Item", style={"width": "100px"})
