@@ -4,7 +4,7 @@
 import pytest
 
 from nextpy.backend.vars import Var
-from nextpy.frontend.components.framer.motion import (
+from nextpy.interfaces.web.react_components.framer.motion import (
     MotionA,
     MotionArticle,
     MotionAside,

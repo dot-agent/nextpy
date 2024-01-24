@@ -22,7 +22,7 @@ import black
 import black.mode
 
 from nextpy.backend.vars import Var
-from nextpy.frontend.components.component import Component
+from nextpy.interfaces.web.react_components.component import Component
 from nextpy.utils import types as xt_types
 
 logger = logging.getLogger("pyi_generator")

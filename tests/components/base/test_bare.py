@@ -3,7 +3,7 @@
 
 import pytest
 
-from nextpy.frontend.components.base.bare import Bare
+from nextpy.interfaces.web.react_components.base.bare import Bare
 
 
 @pytest.mark.parametrize(

@@ -12,7 +12,7 @@ from __future__ import annotations
 import importlib
 from typing import Type
 
-from nextpy.frontend.page import page as page
+from nextpy.interfaces.web.page import page as page
 from nextpy.utils import console
 from nextpy.utils.format import to_snake_case
 
@@ -283,15 +283,15 @@ _MAPPING = {
     "nextpy.constants": ["Env", "constants"],
     "nextpy.data.jsondb": ["JsonDatabase"],
     "nextpy.data.model": ["Model", "model", "session"],
-    "nextpy.frontend.components": _ALL_COMPONENTS + ["chakra", "next"],
-    "nextpy.frontend.components.framer.motion": ["motion"],
-    "nextpy.frontend.components.component": ["memo"],
-    "nextpy.frontend.components.el": ["el"],
-    "nextpy.frontend.components.moment.moment": ["MomentDelta"],
+    "nextpy.interfaces.web.react_components": _ALL_COMPONENTS + ["chakra", "next"],
+    "nextpy.interfaces.web.react_components.framer.motion": ["motion"],
+    "nextpy.interfaces.web.react_components.component": ["memo"],
+    "nextpy.interfaces.web.react_components.el": ["el"],
+    "nextpy.interfaces.web.react_components.moment.moment": ["MomentDelta"],
     "nextpy.frontend.page": ["page"],
-    "nextpy.frontend.components.proxy": ["animation", "unstyled"],
+    "nextpy.interfaces.web.react_components.proxy": ["animation", "unstyled"],
     "nextpy.frontend.style": ["color_mode", "style", "toggle_color_mode"],
-    "nextpy.frontend.components.recharts": [
+    "nextpy.interfaces.web.react_components.recharts": [
         "area_chart", "bar_chart", "line_chart", "composed_chart", "pie_chart",
         "radar_chart", "radial_bar_chart", "scatter_chart", "funnel_chart", "treemap",
         "area", "bar", "line", "scatter", "x_axis", "y_axis", "z_axis", "brush",
@@ -351,12 +351,12 @@ def __getattr__(name: str) -> Type:
     """
     # Custom alias handling
     if name == "animation":
-        module = importlib.import_module("nextpy.frontend.components.proxy")
+        module = importlib.import_module("nextpy.interfaces.web.react_components.proxy")
         return module.animation
 
     # Custom alias handling for 'unstyled'
     if name == "unstyled":
-        return importlib.import_module("nextpy.frontend.components.proxy.unstyled")
+        return importlib.import_module("nextpy.interfaces.web.react_components.proxy.unstyled")
 
     try:
         # Check for import of a module that is not in the mapping.

@@ -51,7 +51,7 @@ my_icon = Icon.create(
 
 ```python
 from nextpy.components.radix.themes.components.icons import Icon, ICON_LIST
-from nextpy.frontend.components.flex import Flex
+from nextpy.interfaces.web.react_components.flex import Flex
 
 # Displaying a set of icons
 icon_set = Flex.create(

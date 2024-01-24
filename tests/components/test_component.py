@@ -11,17 +11,17 @@ from nextpy.backend.state import BaseState
 from nextpy.backend.vars import Var, VarData
 from nextpy.base import Base
 from nextpy.constants import EventTriggers
-from nextpy.frontend import imports
-from nextpy.frontend.components.base.bare import Bare
-from nextpy.frontend.components.chakra.layout.box import Box
-from nextpy.frontend.components.component import (
+from nextpy.interfaces.web import imports
+from nextpy.interfaces.web.react_components.base.bare import Bare
+from nextpy.interfaces.web.react_components.chakra.layout.box import Box
+from nextpy.interfaces.web.react_components.component import (
     Component,
     CustomComponent,
     StatefulComponent,
     custom_component,
 )
-from nextpy.frontend.imports import ReactImportVar
-from nextpy.frontend.style import Style
+from nextpy.interfaces.web.imports import ReactImportVar
+from nextpy.interfaces.web.style import Style
 
 
 @pytest.fixture
@@ -913,6 +913,10 @@ def test_instantiate_all_components():
     for component_name in xt._ALL_COMPONENTS:  # type: ignore
         if component_name in untested_components:
             continue
-        component = getattr(xt, component_name)
-        if isinstance(component, type) and issubclass(component, Component):
-            component.create()
+        try:
+            component = getattr(xt, component_name)
+            if isinstance(component, type) and issubclass(component, Component):
+                component.create()
+        except AttributeError as e:
+            raise AssertionError(f"Failed to instantiate {component_name}: {e}")
+

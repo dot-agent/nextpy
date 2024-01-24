@@ -27,7 +27,7 @@ For more complex scenarios, you can include multiple child components, custom at
 
 ```python
 from nextpy.components.chakra.layout import Container
-from nextpy.frontend.components.basic import Text
+from nextpy.interfaces.web.react_components.basic import Text
 
 def app():
     return Container.create(

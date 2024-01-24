@@ -38,10 +38,10 @@ import pydantic
 
 from nextpy import constants
 from nextpy.base import Base
-from nextpy.frontend import imports
+from nextpy.interfaces.web import imports
 
 # This module used to export ReactImportVar itself, so we still import it for export here
-from nextpy.frontend.imports import ImportDict, ReactImportVar
+from nextpy.interfaces.web.imports import ImportDict, ReactImportVar
 from nextpy.utils import console, format, serializers, types
 
 if TYPE_CHECKING:

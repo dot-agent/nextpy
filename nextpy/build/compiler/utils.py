@@ -11,7 +11,7 @@ from urllib.parse import urlparse
 from pydantic.fields import ModelField
 
 from nextpy import constants
-from nextpy.frontend.components.base import (
+from nextpy.interfaces.web.react_components.base import (
     Body,
     Description,
     DocumentHead,
@@ -23,11 +23,11 @@ from nextpy.frontend.components.base import (
     NextScript,
     Title,
 )
-from nextpy.frontend.components.component import Component, ComponentStyle, CustomComponent
+from nextpy.interfaces.web.react_components.component import Component, ComponentStyle, CustomComponent
 from nextpy.backend.state import BaseState, Cookie, LocalStorage
-from nextpy.frontend.style import Style
+from nextpy.interfaces.web.style import Style
 from nextpy.utils import console, path_ops
-from nextpy.frontend import imports
+from nextpy.interfaces.web import imports
 from nextpy.utils import format
 
 # To re-export this function.
