@@ -1473,8 +1473,8 @@ class Var:
         state_name = state if isinstance(state, str) else state.get_full_name()
         new_var_data = VarData(
             state=state_name,
-            hooks={
-                "const {0} = useContext(StateContexts.{0})".format(
+            hooks = {
+                "const {0} = useContext(StateContexts.{0});\nconst dispatchers = useContext(DispatchContext)".format(
                     format.format_state_name(state_name)
                 )
             },

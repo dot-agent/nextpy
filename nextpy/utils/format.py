@@ -349,7 +349,28 @@ def format_prop(
 
             chain = ",".join([format_event(event) for event in prop.events])
             event = f"addEvents([{chain}], {arg_def}, {json_dumps(prop.event_actions)})"
-            prop = f"{arg_def} => {event}"
+
+             if isinstance(event, str):
+                event = event.strip("{}")
+
+            parts = chain.split('.')
+            formatted_chain = f'{parts[0]} . {parts[1]}.{parts[2]}'
+
+            # Extract "_e0.target.value"
+            value_match = re.search(r"value:([^,)}]+)", event)
+            if value_match:
+                value = value_match.group(1)
+
+
+            # Extract "state.state"
+            message_match = re.search(r"addEvents\(\[\S+?\(\"([^.]+?\.[^.]+)", event)
+            if message_match:
+                message = message_match.group(1)
+            
+            dispatcher_line = f"const dispatcher = dispatchers['{message}'];\n" \
+                  f"dispatcher({{ message: {value} }});"
+
+            prop = f"{arg_def} =>{{ {dispatcher_line}\n{event} }}"
 
         # Handle other types.
         elif isinstance(prop, str):

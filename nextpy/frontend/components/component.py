@@ -1590,6 +1590,8 @@ class StatefulComponent(BaseComponent):
             if isinstance(rendered_chain, str):
                 rendered_chain = rendered_chain.strip("{}")
 
+            rendered_chain = rendered_chain+'}'
+
             # Hash the rendered EventChain to get a deterministic function name.
             chain_hash = md5(str(rendered_chain).encode("utf-8")).hexdigest()
             memo_name = f"{event_trigger}_{chain_hash}"
