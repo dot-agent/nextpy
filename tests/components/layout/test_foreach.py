@@ -6,8 +6,8 @@ from typing import Dict, List, Set, Tuple
 import pytest
 
 from nextpy.backend.state import BaseState
-from nextpy.frontend.components import box, foreach, text
-from nextpy.frontend.components.core import Foreach
+from nextpy.interfaces.web.components import box, foreach, text
+from nextpy.interfaces.web.components.core import Foreach
 
 
 class ForEachState(BaseState):

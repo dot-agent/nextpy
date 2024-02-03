@@ -3,7 +3,7 @@
 
 from typing import Dict, List, Tuple
 import nextpy as xt
-from nextpy.frontend.components.leaflet import (
+from nextpy.interfaces.web.components.leaflet import (
     map_container,
     tile_layer,
     marker,

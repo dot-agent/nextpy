@@ -19,7 +19,7 @@ The `Spacer` component is essentially a `Div` element with the capability to pro
 ### Basic Usage
 
 ```python
-from nextpy.frontend.components.core.layout import spacer
+from nextpy.interfaces.web.components.core.layout import spacer
 
 # Creating a simple spacer with default properties
 simple_spacer = spacer.create()
@@ -28,7 +28,7 @@ simple_spacer = spacer.create()
 ### Advanced Usage
 
 ```python
-from nextpy.frontend.components.core.layout import spacer
+from nextpy.interfaces.web.components.core.layout import spacer
 from nextpy.frontend.style import Style
 
 # Creating a spacer with a specific height and width

@@ -18,7 +18,7 @@ The `Stack` component in Nextpy is a layout utility designed to stack its child 
 ### Basic Usage
 
 ```python
-from nextpy.frontend.components.core.layout.stack import HStack, VStack
+from nextpy.interfaces.web.components.core.layout.stack import HStack, VStack
 
 # Horizontal Stack
 horizontal_stack = HStack.create(

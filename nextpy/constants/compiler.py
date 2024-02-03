@@ -8,7 +8,7 @@ from types import SimpleNamespace
 
 from nextpy.base import Base
 from nextpy.constants import Dirs
-from nextpy.frontend.imports import ReactImportVar
+from nextpy.interfaces.web.imports import ReactImportVar
 
 # The prefix used to create setters for state vars.
 SETTER_PREFIX = "set_"

@@ -8,8 +8,8 @@ import pytest
 
 from nextpy.backend.event import EventChain, EventHandler, EventSpec, FrontendEvent
 from nextpy.backend.vars import BaseVar, Var
-from nextpy.frontend.components.tags.tag import Tag
-from nextpy.frontend.style import Style
+from nextpy.interfaces.web.components.tags.tag import Tag
+from nextpy.interfaces.web.style import Style
 from nextpy.utils import format
 from tests.test_state import (
     ChildState,

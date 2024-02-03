@@ -4,7 +4,7 @@
 import pytest
 
 import nextpy as xt
-from nextpy.frontend.components.markdown import Markdown
+from nextpy.interfaces.web.components.markdown import Markdown
 
 
 @pytest.mark.parametrize(

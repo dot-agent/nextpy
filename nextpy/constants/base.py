@@ -80,7 +80,7 @@ class Templates(SimpleNamespace):
 
     # Dynamically get the enum values from the templates folder
     template_dir = os.path.join(
-        Nextpy.ROOT_DIR, Nextpy.MODULE_NAME, "frontend/templates/apps"
+        Nextpy.ROOT_DIR, Nextpy.MODULE_NAME, "interfaces/templates/apps"
     )
     template_dirs = next(os.walk(template_dir))[1]
 
@@ -91,7 +91,7 @@ class Templates(SimpleNamespace):
         """Folders used by the template system of Nextpy."""
 
         # The template directory used during nextpy init.
-        BASE = os.path.join(Nextpy.ROOT_DIR, Nextpy.MODULE_NAME, "frontend/templates")
+        BASE = os.path.join(Nextpy.ROOT_DIR, Nextpy.MODULE_NAME, "interfaces/templates")
         # The web subdirectory of the template directory.
         WEB_TEMPLATE = os.path.join(BASE, "web")
         # The jinja template directory.

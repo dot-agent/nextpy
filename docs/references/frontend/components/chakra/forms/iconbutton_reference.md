@@ -25,7 +25,7 @@ The primary purpose of the `IconButton` component is to capture user interaction
 
 ```python
 from nextpy.components.chakra.forms.iconbutton import IconButton
-from nextpy.frontend.components.font_awesome.icon import FaIcon
+from nextpy.interfaces.web.components.font_awesome.icon import FaIcon
 
 # Create an IconButton with a specific icon
 icon_button = IconButton.create(

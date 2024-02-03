@@ -8,7 +8,7 @@ import pytest
 from PIL.Image import Image as Img
 
 import nextpy as xt
-from nextpy.frontend.components.next.image import Image  # type: ignore
+from nextpy.interfaces.web.components.next.image import Image  # type: ignore
 from nextpy.utils.serializers import serialize, serialize_image
 
 
