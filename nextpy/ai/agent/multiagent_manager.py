@@ -161,7 +161,7 @@ class MultiAgentManager:
             next_agent = self._choose_next_agent()
             if self.debug_mode:
                 print(
-                    f'{"-" * 5}Messaging next agent : {next_agent}{"-" * 5}\n\n')
+                    f'{"-" * 5}Messaging next agent : {next_agent.name}{"-" * 5}\n\n')
 
             self._message_next_agent(next_agent)
             if self.debug_mode:
