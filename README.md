@@ -1,3 +1,6 @@
+> [!NOTE]
+> Exciting news! Version 0.4 is coming soon, Backward compatible, with optional AI upgrade assistant (0.3.x to 0.4.x) for a smooth ride.
+
 <div align="center">
 <img src="https://res.cloudinary.com/doojikdqd/image/upload/v1705651891/nextpy_logo_light_theme_ijofia.svg#gh-light-mode-only" alt="Nextpy Logo" width="320px">
 
