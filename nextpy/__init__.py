@@ -289,6 +289,7 @@ _MAPPING = {
     "nextpy.frontend.components.el": ["el"],
     "nextpy.frontend.components.moment.moment": ["MomentDelta"],
     "nextpy.frontend.page": ["page"],
+    "nextpy.frontend.components.proxy": ["animation", "unstyled"],
     "nextpy.frontend.style": ["color_mode", "style", "toggle_color_mode"],
     "nextpy.frontend.components.recharts": [
         "area_chart", "bar_chart", "line_chart", "composed_chart", "pie_chart",
@@ -300,7 +301,6 @@ _MAPPING = {
         "polar_angle_axis", "polar_grid", "polar_radius_axis",
     ],
     "nextpy.utils": ["utils"],
-    "nextpy.frontend.components.proxy": ["animation"],
 }
 
 
@@ -354,6 +354,9 @@ def __getattr__(name: str) -> Type:
         module = importlib.import_module("nextpy.frontend.components.proxy")
         return module.animation
 
+    # Custom alias handling for 'unstyled'
+    if name == "unstyled":
+        return importlib.import_module("nextpy.frontend.components.proxy.unstyled")
 
     try:
         # Check for import of a module that is not in the mapping.
