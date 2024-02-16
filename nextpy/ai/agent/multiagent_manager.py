@@ -1,6 +1,4 @@
-from typing import Tuple, List, Optional, Any
-
-from nextpy.ai.agent.base_agent import BaseAgent
+from typing import Tuple, List, Any
 from nextpy.ai.agent.assistant_agent import AssistantAgent
 from nextpy.ai import engine
 
@@ -25,12 +23,12 @@ class MultiAgentManager:
         debug_mode (bool): A flag indicating whether to enable debug mode.
     """
     DEFAULT_PROMPT = '''   
-    {{#system~}} You are playing a role playing game with the following participants : {{agents}}{{~/system}}
+    {{#system~}} You are playing a role playing game with the following participants : \n{{agents}}{{~/system}}
 
     {{#user~}}
     Read the following conversation and choose who the next speaker will be:
     {{messages}}
-    Simply respond with the NAME of the next speaker. Do not include any numbers. Note, User is not a participant, you cannot choose User.
+    Simply respond with the NAME of the next speaker without any other characters such as numbers or punctuations.
     {{~/user}}
 
     {{#assistant~}}
@@ -70,6 +68,13 @@ class MultiAgentManager:
 
         self.debug_mode = debug_mode
 
+        if not any([isinstance(agent, AssistantAgent)
+                    for agent in agents]):
+            self.DEFAULT_PROMPT = self.DEFAULT_PROMPT[:self.DEFAULT_PROMPT.find(
+                '{{~/system}}')] + '\nNote, User is also a participant, you can choose User.' + self.DEFAULT_PROMPT[self.DEFAULT_PROMPT.find('{{~/system}}'):]
+        else:
+            self.DEFAULT_PROMPT = self.DEFAULT_PROMPT[:self.DEFAULT_PROMPT.find(
+                '{{~/system}}')] + '\nNote, User is not a participant, you cannot choose User.' + self.DEFAULT_PROMPT[self.DEFAULT_PROMPT.find('{{~/system}}'):]
         self.engine = engine(
             self.DEFAULT_PROMPT, llm=llm, memory=memory, async_mode=async_mode)
         self.solution_summarizer = engine(
@@ -90,7 +95,7 @@ class MultiAgentManager:
         """
         Returns a string representation of all the agent names separated by commas.
         """
-        return ','.join([agent.name for agent in self.agents])
+        return '\n\n'.join([f'NAME: {agent.name}\n DESC: {agent.description}' for agent in self.agents])
 
     def run_sequence(self, context):
         """
@@ -103,7 +108,7 @@ class MultiAgentManager:
             A list of messages exchanged between agents during the sequence.
         """
         self.messages.append(['User', context])
-        while self.rounds > 0 and not self._termination_message_received():
+        while self.rounds != 0 and not self._termination_message_received():
             if self.debug_mode:
                 print(
                     f'{"-"*5}Messaging next agent : {self.agents[self.current_agent].name}{"-"*5}\n\n')
@@ -130,7 +135,7 @@ class MultiAgentManager:
             A list of messages exchanged between agents during the sequence.
         """
         self.messages.append(['User', context])
-        while self.rounds > 0 and not self._termination_message_received():
+        while self.rounds != 0 and not self._termination_message_received():
             if self.debug_mode:
                 print(
                     f'{"-"*5}Messaging next agent : {self.agents[self.current_agent].name}{"-"*5}\n\n')
@@ -157,7 +162,7 @@ class MultiAgentManager:
             A list containing the messages exchanged between agents and the final solution.
         """
         self.messages.append(['User', context])
-        while self.rounds > 0 and not self._termination_message_received():
+        while self.rounds != 0 and not self._termination_message_received():
             next_agent = self._choose_next_agent()
             if self.debug_mode:
                 print(

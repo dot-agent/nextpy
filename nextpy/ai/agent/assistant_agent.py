@@ -1,11 +1,11 @@
-from typing import Any, Dict, Union
+from typing import Any, Callable, Tuple
 from nextpy.ai.agent.base_agent import BaseAgent
 import logging
 from pathlib import Path
 from nextpy.ai import engine
-from typing import Callable, Tuple
 import inspect
 import asyncio
+import logging
 
 
 def _call_functions(functions):
@@ -59,7 +59,7 @@ class AssistantAgent(BaseAgent):
     {{#user~}}
     Read the following CONVERSATION :
     {{messages}}
-    Respond. Do not thank any team member or show appreciation."
+    Respond as {{name}}. Do not thank any team member or show appreciation."
     {{~/user}}
     
     {{#assistant~}}
@@ -78,6 +78,7 @@ class AssistantAgent(BaseAgent):
                                               Tuple[Any], Tuple[Any]] | None = None,
                  functions_after_call: Tuple[Callable,
                                              Tuple[Any], Tuple[Any]] | None = None,
+                 description: str = "Helpful AI Assistant Agent",
                  **kwargs):
         """
         Initializes an instance of the AssistantAgent class.
@@ -101,6 +102,7 @@ class AssistantAgent(BaseAgent):
         :param kwargs: Additional keyword arguments.
         """
         super().__init__(llm=llm, **kwargs)
+        self.name = name
         self.prompt = self.DEFAULT_PROMPT
         self.system_message = system_message
         # This is used by multiagent manager to determine whether to use receive or a_receive
@@ -111,18 +113,19 @@ class AssistantAgent(BaseAgent):
                 system_message = Path(system_message).read_text()
             except Exception:
                 pass
-            self.prompt = self.prompt[:self.DEFAULT_PROMPT.find(
-                '{{~/system}}')] + system_message + self.prompt[self.DEFAULT_PROMPT.find('{{~/system}}'):]
+            self.prompt = self.prompt[:self.prompt.find(
+                '{{~/system}}')] + system_message + self.prompt[self.prompt.find('{{~/system}}'):]
 
         # Either llm or engine must be provided
-        assert llm is not None or engine is not None, "Either llm or engine must be provided."
+        if llm is not None or engine is not None:
+            logging.debug("Warning! Either llm or engine must be provided.")
 
         self.engine = custom_engine if custom_engine is not None else engine(
             template=self.prompt, llm=llm, memory=memory, async_mode=async_mode, **kwargs)
         self.output_key = 'answer'
-        self.name = name
         self.functions_before_call = functions_before_call
         self.functions_after_call = functions_after_call
+        self.description = description
 
     @staticmethod
     def function_call_decorator(func):
