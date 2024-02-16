@@ -50,6 +50,23 @@ class AssistantAgent(BaseAgent):
     :type functions_before_call: List[Callable], optional
     :param functions_after_call: List of functions to be called after the main function call. Default is None.
     :type functions_after_call: List[Callable], optional
+
+    The assistant agent is built on top of the existing BaseAgent and serves as a simple interface for creating an AI assistant agent. 
+    It provides a convenient way to define an AI assistant agent that can interact with users in a conversational manner. 
+    The assistant agent can be customized with a name, language model, memory, and other parameters. 
+    It also supports asynchronous mode, allowing it to handle multiple conversations simultaneously. 
+
+    MultiagentManager can be used to manage multiple assistant agents and coordinate their interactions with users.
+
+
+    Example:
+
+
+    tailwind_agent = AssistantAgent(name='Tailwind Class Generator', llm=llm, memory=None, async_mode=False,
+                                  system_message='''automates the creation of Tailwind CSS classes, streamlining the process of building stylish and responsive user interfaces. By leveraging advanced algorithms and design principles, the Tailwind Class Generator analyzes your design elements and dynamically generates the optimal set of Tailwind utility classes. 
+                                  This tool is designed to enhance efficiency in web development, allowing developers to focus more on high-level design decisions and less on manually crafting individual CSS rules. With the Tailwind Class Generator, achieving a visually appealing and consistent design becomes a seamless experience.
+                                  '''
+                                  )
     """
 
     DEFAULT_PROMPT = '''
