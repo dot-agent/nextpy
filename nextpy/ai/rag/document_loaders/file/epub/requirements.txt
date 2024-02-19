@@ -1,2 +1,0 @@
-ebooklib
-html2text
