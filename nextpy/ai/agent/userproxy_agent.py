@@ -3,6 +3,15 @@ from typing import Any, Tuple, Callable
 
 
 class UserProxyAgent(AssistantAgent):
+    """
+    Initializes a UserProxyAgent instance.
+
+    :param async_mode: Indicates if the agent should operate in asynchronous mode.
+    :param functions_before_call: A tuple of functions to be called before the main function call.
+    :param functions_after_call: A tuple of functions to be called after the main function call.
+    :param description: A brief description of the agent's capabilities.
+    :param kwargs: Additional keyword arguments.
+    """
 
     def __init__(self,
                  async_mode: bool = False,
