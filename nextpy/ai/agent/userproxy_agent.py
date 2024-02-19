@@ -75,4 +75,5 @@ class UserProxyAgent(AssistantAgent):
         :return: The user input.
         :rtype: str
         """
-        return input('Provide feedback to chat_manager:')
+        import asyncio
+        return await asyncio.to_thread(input, 'Provide feedback to chat_manager:')
