@@ -32,7 +32,7 @@ class AgentState(Enum):
 
     IDLE = 0
     BUSY = 1
-    USED_AS_skill = 2
+    USED_AS_SKILL = 2
     ERROR = 3
 
 
