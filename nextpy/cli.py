@@ -24,7 +24,7 @@ from tabulate import tabulate
 from nextpy import constants
 from nextpy.build import dependency
 from nextpy.build.config import get_config
-from nextpy.frontend.custom_components.custom_components import custom_components_cli
+from nextpy.interfaces.custom_components.custom_components import custom_components_cli
 from nextpy.utils import console, telemetry
 
 # Disable typer+rich integration for help panels

@@ -69,7 +69,7 @@ from nextpy.interfaces.web.components.core.client_side_routing import (
     wait_for_client_redirect,
 )
 from nextpy.interfaces.web.components.radix import themes
-from nextpy.frontend.imports import ReactImportVar
+from nextpy.interfaces.web.imports import ReactImportVar
 from nextpy.interfaces.web.page import (
     DECORATED_PAGES,
 )

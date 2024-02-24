@@ -9,7 +9,7 @@ import pytest
 
 import nextpy as xt
 from nextpy.backend.vars import Var
-from nextpy.frontend import style
+from nextpy.interfaces import style
 
 test_style = [
     ({"a": 1}, {"a": 1}),

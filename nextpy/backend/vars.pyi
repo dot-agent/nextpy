@@ -9,7 +9,7 @@ from nextpy.base import Base as Base
 from nextpy.backend.state import State as State
 from nextpy.backend.state import BaseState as BaseState
 from nextpy.utils import console as console, format as format, types as types
-from nextpy.frontend.imports import ReactImportVar
+from nextpy.interfaces.web.imports import ReactImportVar
 from types import FunctionType
 from typing import (
     Any,

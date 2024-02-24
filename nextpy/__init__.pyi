@@ -1,4 +1,4 @@
-# This file has been modified by the Nextpy Team in 2023 using AI tools and automation scripts. 
+# This file has been modified by the Nextpy Team in 2023 using AI tools and automation scripts.
 # We have rigorously tested these modifications to ensure reliability and performance. Based on successful test results, we are confident in the quality and stability of these changes.
 
 from nextpy.backend import admin as admin
@@ -54,6 +54,7 @@ from nextpy.interfaces.web.components import Collapse as Collapse
 from nextpy.interfaces.web.components import ColorModeButton as ColorModeButton
 from nextpy.interfaces.web.components import ColorModeIcon as ColorModeIcon
 from nextpy.interfaces.web.components import ColorModeSwitch as ColorModeSwitch
+from nextpy.interfaces.web.components import ColorPicker as ColorPicker
 from nextpy.interfaces.web.components import Component as Component
 from nextpy.interfaces.web.components import Cond as Cond
 from nextpy.interfaces.web.components import ConnectionBanner as ConnectionBanner
@@ -61,6 +62,7 @@ from nextpy.interfaces.web.components import ConnectionModal as ConnectionModal
 from nextpy.interfaces.web.components import Container as Container
 from nextpy.interfaces.web.components import DataTable as DataTable
 from nextpy.interfaces.web.components import DataEditor as DataEditor
+from nextpy.interfaces.web.components import DataFrame as DataFrame
 from nextpy.interfaces.web.components import DataEditorTheme as DataEditorTheme
 from nextpy.interfaces.web.components import DatePicker as DatePicker
 from nextpy.interfaces.web.components import DateTimePicker as DateTimePicker
@@ -79,6 +81,11 @@ from nextpy.interfaces.web.components import EditablePreview as EditablePreview
 from nextpy.interfaces.web.components import EditableTextarea as EditableTextarea
 from nextpy.interfaces.web.components import Editor as Editor
 from nextpy.interfaces.web.components import Email as Email
+from nextpy.interfaces.web.components import Expander as Expander
+from nextpy.interfaces.web.components import ExpanderButton as ExpanderButton
+from nextpy.interfaces.web.components import ExpanderIcon as ExpanderIcon
+from nextpy.interfaces.web.components import ExpanderItem as ExpanderItem
+from nextpy.interfaces.web.components import ExpanderPanel as ExpanderPanel
 from nextpy.interfaces.web.components import Fade as Fade
 from nextpy.interfaces.web.components import Flex as Flex
 from nextpy.interfaces.web.components import Foreach as Foreach
@@ -257,7 +264,9 @@ from nextpy.interfaces.web.components import center as center
 from nextpy.interfaces.web.components import checkbox as checkbox
 from nextpy.interfaces.web.components import checkbox_group as checkbox_group
 from nextpy.interfaces.web.components import circular_progress as circular_progress
-from nextpy.interfaces.web.components import circular_progress_label as circular_progress_label
+from nextpy.interfaces.web.components import (
+    circular_progress_label as circular_progress_label,
+)
 from nextpy.interfaces.web.components import circle as circle
 from nextpy.interfaces.web.components import code as code
 from nextpy.interfaces.web.components import code_block as code_block
@@ -265,6 +274,7 @@ from nextpy.interfaces.web.components import collapse as collapse
 from nextpy.interfaces.web.components import color_mode_button as color_mode_button
 from nextpy.interfaces.web.components import color_mode_icon as color_mode_icon
 from nextpy.interfaces.web.components import color_mode_switch as color_mode_switch
+from nextpy.interfaces.web.components import color_picker as color_picker
 from nextpy.interfaces.web.components import component as component
 from nextpy.interfaces.web.components import cond as cond
 from nextpy.interfaces.web.components import connection_banner as connection_banner
@@ -272,6 +282,7 @@ from nextpy.interfaces.web.components import connection_modal as connection_moda
 from nextpy.interfaces.web.components import container as container
 from nextpy.interfaces.web.components import data_table as data_table
 from nextpy.interfaces.web.components import data_editor as data_editor
+from nextpy.interfaces.web.components import dataframe as dataframe
 from nextpy.interfaces.web.components import data_editor_theme as data_editor_theme
 from nextpy.interfaces.web.components import date_picker as date_picker
 from nextpy.interfaces.web.components import date_time_picker as date_time_picker
@@ -290,6 +301,13 @@ from nextpy.interfaces.web.components import editable_preview as editable_previe
 from nextpy.interfaces.web.components import editable_textarea as editable_textarea
 from nextpy.interfaces.web.components import editor as editor
 from nextpy.interfaces.web.components import email as email
+from nextpy.interfaces.web.components import empty as empty
+from nextpy.interfaces.web.components import error as error
+from nextpy.interfaces.web.components import expander as expander
+from nextpy.interfaces.web.components import expander_button as expander_button
+from nextpy.interfaces.web.components import expander_icon as expander_icon
+from nextpy.interfaces.web.components import expander_item as expander_item
+from nextpy.interfaces.web.components import expander_panel as expander_panel
 from nextpy.interfaces.web.components import fade as fade
 from nextpy.interfaces.web.components import flex as flex
 from nextpy.interfaces.web.components import foreach as foreach
@@ -301,6 +319,7 @@ from nextpy.interfaces.web.components import form_label as form_label
 from nextpy.interfaces.web.components import fragment as fragment
 from nextpy.interfaces.web.components import grid as grid
 from nextpy.interfaces.web.components import grid_item as grid_item
+from nextpy.interfaces.web.components import header as header
 from nextpy.interfaces.web.components import heading as heading
 from nextpy.interfaces.web.components import highlight as highlight
 from nextpy.interfaces.web.components import hstack as hstack
@@ -308,6 +327,7 @@ from nextpy.interfaces.web.components import html as html
 from nextpy.interfaces.web.components import icon as icon
 from nextpy.interfaces.web.components import icon_button as icon_button
 from nextpy.interfaces.web.components import image as image
+from nextpy.interfaces.web.components import info as info
 from nextpy.interfaces.web.components import input as input
 from nextpy.interfaces.web.components import input_group as input_group
 from nextpy.interfaces.web.components import input_left_addon as input_left_addon
@@ -341,8 +361,12 @@ from nextpy.interfaces.web.components import moment as moment
 from nextpy.interfaces.web.components import multi_select as multi_select
 from nextpy.interfaces.web.components import multi_select_option as multi_select_option
 from nextpy.interfaces.web.components import next_link as next_link
-from nextpy.interfaces.web.components import number_decrement_stepper as number_decrement_stepper
-from nextpy.interfaces.web.components import number_increment_stepper as number_increment_stepper
+from nextpy.interfaces.web.components import (
+    number_decrement_stepper as number_decrement_stepper,
+)
+from nextpy.interfaces.web.components import (
+    number_increment_stepper as number_increment_stepper,
+)
 from nextpy.interfaces.web.components import number_input as number_input
 from nextpy.interfaces.web.components import number_input_field as number_input_field
 from nextpy.interfaces.web.components import number_input_stepper as number_input_stepper
@@ -364,14 +388,16 @@ from nextpy.interfaces.web.components import popover_trigger as popover_trigger
 from nextpy.interfaces.web.components import progress as progress
 from nextpy.interfaces.web.components import radio as radio
 from nextpy.interfaces.web.components import radio_group as radio_group
-from nextpy.interfaces.web.components import range_slider as range_slider
-from nextpy.interfaces.web.components import range_slider_filled_track as range_slider_filled_track
-from nextpy.interfaces.web.components import range_slider_thumb as range_slider_thumb
-from nextpy.interfaces.web.components import range_slider_track as range_slider_track
 from nextpy.interfaces.web.components import responsive_grid as responsive_grid
 from nextpy.interfaces.web.components import scale_fade as scale_fade
 from nextpy.interfaces.web.components import script as script
 from nextpy.interfaces.web.components import select as select
+from nextpy.interfaces.web.components import select_slider as select_slider
+from nextpy.interfaces.web.components import (
+    select_slider_filled_track as select_slider_filled_track,
+)
+from nextpy.interfaces.web.components import select_slider_thumb as select_slider_thumb
+from nextpy.interfaces.web.components import select_slider_track as select_slider_track
 from nextpy.interfaces.web.components import skeleton as skeleton
 from nextpy.interfaces.web.components import skeleton_circle as skeleton_circle
 from nextpy.interfaces.web.components import skeleton_text as skeleton_text
@@ -402,6 +428,8 @@ from nextpy.interfaces.web.components import step_separator as step_separator
 from nextpy.interfaces.web.components import step_status as step_status
 from nextpy.interfaces.web.components import step_title as step_title
 from nextpy.interfaces.web.components import stepper as stepper
+from nextpy.interfaces.web.components import subheader as subheader
+from nextpy.interfaces.web.components import success as success
 from nextpy.interfaces.web.components import switch as switch
 from nextpy.interfaces.web.components import tab as tab
 from nextpy.interfaces.web.components import tab_list as tab_list
@@ -430,10 +458,11 @@ from nextpy.interfaces.web.components import upload as upload
 from nextpy.interfaces.web.components import video as video
 from nextpy.interfaces.web.components import visually_hidden as visually_hidden
 from nextpy.interfaces.web.components import vstack as vstack
+from nextpy.interfaces.web.components import warning as warning
 from nextpy.interfaces.web.components import wrap as wrap
 from nextpy.interfaces.web.components import wrap_item as wrap_item
 from nextpy.interfaces.web.components import cancel_upload as cancel_upload
-from nextpy.frontend import components as components
+from nextpy.interfaces.web import components as components
 from nextpy.interfaces.web.components import color_mode_cond as color_mode_cond
 from nextpy.interfaces.web.components import desktop_only as desktop_only
 from nextpy.interfaces.web.components import mobile_only as mobile_only
@@ -455,7 +484,8 @@ from nextpy.build.config import Config as Config
 from nextpy.build.config import DBConfig as DBConfig
 from nextpy import constants as constants
 from nextpy.constants import Env as Env
-# from nextpy.frontend.custom_components import custom_components as custom_components
+
+# from nextpy.interfaces.custom_components import custom_components as custom_components
 from nextpy.interfaces.web.components import el as el
 from nextpy.backend import event as event
 from nextpy.backend.event import EventChain as EventChain
@@ -486,7 +516,7 @@ from nextpy.backend.state import var as var
 from nextpy.backend.state import Cookie as Cookie
 from nextpy.backend.state import LocalStorage as LocalStorage
 from nextpy.backend.state import State as State
-from nextpy.frontend import style as style
+from nextpy.interfaces.web import style as style
 from nextpy.interfaces.web.style import color_mode as color_mode
 from nextpy.interfaces.web.style import toggle_color_mode as toggle_color_mode
 from nextpy.build import testing as testing

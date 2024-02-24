@@ -27,7 +27,7 @@ from nextpy.interfaces.web.components.component import Component, ComponentStyle
 from nextpy.backend.state import BaseState, Cookie, LocalStorage
 from nextpy.interfaces.web.style import Style
 from nextpy.utils import console, path_ops
-from nextpy.frontend import imports
+from nextpy.interfaces.web import imports
 from nextpy.utils import format
 
 # To re-export this function.

@@ -11,7 +11,7 @@ from nextpy.backend.state import BaseState
 from nextpy.backend.vars import Var, VarData
 from nextpy.base import Base
 from nextpy.constants import EventTriggers
-from nextpy.frontend import imports
+from nextpy.interfaces.web import imports
 from nextpy.interfaces.web.components.base.bare import Bare
 from nextpy.interfaces.web.components.chakra.layout.box import Box
 from nextpy.interfaces.web.components.component import (
@@ -20,7 +20,7 @@ from nextpy.interfaces.web.components.component import (
     StatefulComponent,
     custom_component,
 )
-from nextpy.frontend.imports import ReactImportVar
+from nextpy.interfaces.web.imports import ReactImportVar
 from nextpy.interfaces.web.style import Style
 
 

@@ -116,8 +116,8 @@ exclude = ["**/node_modules",
     "nextpy/data/vectordb",
     "nextpy/build/source_reload.py",
     "nextpy/data/jsondb.py",
-    "nextpy/frontend/templates",
-    "nextpy/frontend/components/animation/motion/motion.py",
+    "nextpy/interfaces/templates",
+    "nextpy/interfaces/web/components/animation/motion/motion.py",
 ]
 
 [tool.ruff]
@@ -130,7 +130,7 @@ target-version = "py37"
 "tests/*.py" = ["D100", "D103", "D104"]
 "nextpy/ai/*.py" = ["ALL"]
 "nextpy/data/vectordb/*.py" = ["ALL"]
-"nextpy/frontend/templates/*.py" = ["D100", "D103", "D104"]
+"nextpy/interfaces/templates/*.py" = ["D100", "D103", "D104"]
 "*.pyi" = ["ALL"]
 "app-examples/*.py" = ["ALL"]
 "ai-notebooks/*.py" = ["ALL"]
