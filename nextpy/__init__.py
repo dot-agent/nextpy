@@ -51,7 +51,6 @@ _ALL_COMPONENTS = [
     "CardBody",
     "CardFooter",
     "CardHeader",
-    "ColorPicker"
     "Center",
     "Checkbox",
     "CheckboxGroup",
