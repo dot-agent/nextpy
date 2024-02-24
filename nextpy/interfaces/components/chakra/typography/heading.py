@@ -5,7 +5,7 @@
 
 
 from nextpy.backend.vars import Var
-from nextpy.frontend.components.chakra import ChakraComponent, LiteralHeadingSize
+from nextpy.interfaces.web.components.chakra import ChakraComponent, LiteralHeadingSize
 
 
 class Heading(ChakraComponent):

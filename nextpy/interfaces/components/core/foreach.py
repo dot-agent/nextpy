@@ -10,9 +10,9 @@ from typing import Any, Callable, Iterable, Optional
 
 from nextpy.backend.vars import Var
 from nextpy.constants import MemoizationMode
-from nextpy.frontend.components.base.fragment import Fragment
-from nextpy.frontend.components.component import Component
-from nextpy.frontend.components.tags import IterTag
+from nextpy.interfaces.web.components.base.fragment import Fragment
+from nextpy.interfaces.web.components.component import Component
+from nextpy.interfaces.web.components.tags import IterTag
 
 
 class Foreach(Component):

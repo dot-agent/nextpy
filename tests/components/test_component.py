@@ -12,16 +12,16 @@ from nextpy.backend.vars import Var, VarData
 from nextpy.base import Base
 from nextpy.constants import EventTriggers
 from nextpy.frontend import imports
-from nextpy.frontend.components.base.bare import Bare
-from nextpy.frontend.components.chakra.layout.box import Box
-from nextpy.frontend.components.component import (
+from nextpy.interfaces.web.components.base.bare import Bare
+from nextpy.interfaces.web.components.chakra.layout.box import Box
+from nextpy.interfaces.web.components.component import (
     Component,
     CustomComponent,
     StatefulComponent,
     custom_component,
 )
 from nextpy.frontend.imports import ReactImportVar
-from nextpy.frontend.style import Style
+from nextpy.interfaces.web.style import Style
 
 
 @pytest.fixture

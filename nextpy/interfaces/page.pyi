@@ -3,7 +3,7 @@
 
 """The page decorator and associated variables and functions."""
 
-from nextpy.frontend.components.component import Component
+from nextpy.interfaces.web.components.component import Component
 from nextpy.backend.event import EventHandler
 
 DECORATED_PAGES: list

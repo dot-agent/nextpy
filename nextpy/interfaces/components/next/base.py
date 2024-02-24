@@ -2,7 +2,7 @@
 # We have rigorously tested these modifications to ensure reliability and performance. Based on successful test results, we are confident in the quality and stability of these changes.
 
 """Base for NextJS components."""
-from nextpy.frontend.components.component import Component
+from nextpy.interfaces.web.components.component import Component
 
 
 class NextComponent(Component):

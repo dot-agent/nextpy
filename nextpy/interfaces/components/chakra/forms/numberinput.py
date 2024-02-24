@@ -8,12 +8,12 @@ from typing import Any, Dict
 
 from nextpy.backend.vars import Var
 from nextpy.constants import EventTriggers
-from nextpy.frontend.components.chakra import (
+from nextpy.interfaces.web.components.chakra import (
     ChakraComponent,
     LiteralButtonSize,
     LiteralInputVariant,
 )
-from nextpy.frontend.components.component import Component
+from nextpy.interfaces.web.components.component import Component
 
 
 class NumberInput(ChakraComponent):

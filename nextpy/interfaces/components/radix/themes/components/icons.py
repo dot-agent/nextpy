@@ -6,7 +6,7 @@
 
 from typing import List
 
-from nextpy.frontend.components.component import Component
+from nextpy.interfaces.web.components.component import Component
 from nextpy.utils import format
 
 

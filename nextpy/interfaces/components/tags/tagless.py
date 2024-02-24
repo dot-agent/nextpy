@@ -3,7 +3,7 @@
 
 """A tag with no tag."""
 
-from nextpy.frontend.components.tags import Tag
+from nextpy.interfaces.web.components.tags import Tag
 from nextpy.utils import format
 
 

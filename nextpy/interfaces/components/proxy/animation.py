@@ -2,7 +2,7 @@
 # We have rigorously tested these modifications to ensure reliability and performance. Based on successful test results, we are confident in the quality and stability of these changes.
 
 """Animation."""
-from nextpy.frontend.components.framer.motion import MotionDiv
+from nextpy.interfaces.web.components.framer.motion import MotionDiv
 
 
 def animation(*args, **kwargs):

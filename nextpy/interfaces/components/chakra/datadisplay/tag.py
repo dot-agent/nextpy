@@ -5,13 +5,13 @@
 from typing import Optional
 
 from nextpy.backend.vars import Var
-from nextpy.frontend.components.chakra import (
+from nextpy.interfaces.web.components.chakra import (
     ChakraComponent,
     LiteralTagColorScheme,
     LiteralTagSize,
     LiteralVariant,
 )
-from nextpy.frontend.components.component import Component
+from nextpy.interfaces.web.components.component import Component
 
 
 class TagLabel(ChakraComponent):

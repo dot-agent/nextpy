@@ -8,10 +8,10 @@ from typing import Any, Dict, List, Union
 
 from nextpy.backend.vars import Var
 from nextpy.constants import EventTriggers
-from nextpy.frontend.components.chakra import ChakraComponent
-from nextpy.frontend.components.chakra.typography.text import Text
-from nextpy.frontend.components.component import Component
-from nextpy.frontend.components.core.foreach import Foreach
+from nextpy.interfaces.web.components.chakra import ChakraComponent
+from nextpy.interfaces.web.components.chakra.typography.text import Text
+from nextpy.interfaces.web.components.component import Component
+from nextpy.interfaces.web.components.core.foreach import Foreach
 from nextpy.utils.types import _issubclass
 
 

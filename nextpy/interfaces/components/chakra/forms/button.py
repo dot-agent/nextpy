@@ -5,7 +5,7 @@
 from typing import List
 
 from nextpy.backend.vars import Var
-from nextpy.frontend.components.chakra import (
+from nextpy.interfaces.web.components.chakra import (
     ChakraComponent,
     LiteralButtonSize,
     LiteralButtonVariant,

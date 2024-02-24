@@ -9,9 +9,9 @@
 from typing import Any, Dict, Literal, Optional, Union, overload
 from nextpy.backend.vars import Var, BaseVar, ComputedVar
 from nextpy.backend.event import EventChain, EventHandler, EventSpec
-from nextpy.frontend.style import Style
+from nextpy.interfaces.web.style import Style
 from typing import Literal
-from nextpy.frontend.components.el.elements.inline import A
+from nextpy.interfaces.web.components.el.elements.inline import A
 from nextpy.backend.vars import Var
 from ..base import CommonMarginProps, LiteralAccentColor, RadixThemesComponent
 from .base import LiteralTextSize, LiteralTextTrim, LiteralTextWeight

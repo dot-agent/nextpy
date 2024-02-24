@@ -3,7 +3,7 @@
 
 """Document components."""
 
-from nextpy.frontend.components.component import Component
+from nextpy.interfaces.web.components.component import Component
 
 
 class NextDocumentLib(Component):

@@ -5,7 +5,7 @@
 from typing import Dict
 
 from nextpy.backend.vars import Var
-from nextpy.frontend.components.chakra.layout.box import Box
+from nextpy.interfaces.web.components.chakra.layout.box import Box
 
 
 class Html(Box):

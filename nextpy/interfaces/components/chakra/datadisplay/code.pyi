@@ -9,16 +9,16 @@
 from typing import Any, Dict, Literal, Optional, Union, overload
 from nextpy.backend.vars import Var, BaseVar, ComputedVar
 from nextpy.backend.event import EventChain, EventHandler, EventSpec
-from nextpy.frontend.style import Style
+from nextpy.interfaces.web.style import Style
 import re
 from typing import Dict, Literal, Optional, Union
-from nextpy.frontend.components.chakra import ChakraComponent
-from nextpy.frontend.components.chakra.forms import Button, color_mode_cond
-from nextpy.frontend.components.chakra.layout import Box
-from nextpy.frontend.components.chakra.media import Icon
-from nextpy.frontend.components.component import Component
+from nextpy.interfaces.web.components.chakra import ChakraComponent
+from nextpy.interfaces.web.components.chakra.forms import Button, color_mode_cond
+from nextpy.interfaces.web.components.chakra.layout import Box
+from nextpy.interfaces.web.components.chakra.media import Icon
+from nextpy.interfaces.web.components.component import Component
 from nextpy.backend.event import set_clipboard
-from nextpy.frontend.style import Style
+from nextpy.interfaces.web.style import Style
 from nextpy.utils import format
 from nextpy.frontend.imports import ReactImportVar
 from nextpy.backend.vars import Var

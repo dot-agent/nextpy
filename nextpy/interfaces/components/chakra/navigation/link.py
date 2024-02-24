@@ -6,9 +6,9 @@
 
 from nextpy.backend.vars import BaseVar, Var
 from nextpy.frontend import imports
-from nextpy.frontend.components.chakra import ChakraComponent
-from nextpy.frontend.components.component import Component
-from nextpy.frontend.components.next.link import NextLink
+from nextpy.interfaces.web.components.chakra import ChakraComponent
+from nextpy.interfaces.web.components.component import Component
+from nextpy.interfaces.web.components.next.link import NextLink
 
 next_link = NextLink.create()
 

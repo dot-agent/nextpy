@@ -14,8 +14,8 @@ from __future__ import annotations
 
 from nextpy import constants
 from nextpy.backend.vars import Var
-from nextpy.frontend.components.component import Component
-from nextpy.frontend.components.core.cond import cond
+from nextpy.interfaces.web.components.component import Component
+from nextpy.interfaces.web.components.core.cond import cond
 
 route_not_found: Var = Var.create_safe(constants.ROUTE_NOT_FOUND)
 

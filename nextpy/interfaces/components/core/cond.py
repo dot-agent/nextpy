@@ -9,13 +9,13 @@ from typing import Any, Dict, Optional, overload
 from nextpy.backend.vars import BaseVar, Var, VarData
 from nextpy.constants import Dirs
 from nextpy.frontend import imports
-from nextpy.frontend.components.base.fragment import Fragment
-from nextpy.frontend.components.component import (
+from nextpy.interfaces.web.components.base.fragment import Fragment
+from nextpy.interfaces.web.components.component import (
     BaseComponent,
     Component,
     MemoizationLeaf,
 )
-from nextpy.frontend.components.tags import CondTag, Tag
+from nextpy.interfaces.web.components.tags import CondTag, Tag
 from nextpy.utils import format
 
 _IS_TRUE_IMPORT = {

@@ -6,7 +6,7 @@
 from __future__ import annotations
 
 from nextpy.backend.vars import Var
-from nextpy.frontend.components.component import NoSSRComponent
+from nextpy.interfaces.web.components.component import NoSSRComponent
 
 
 class ReactPlayer(NoSSRComponent):

@@ -3,7 +3,7 @@
 
 """The head component."""
 
-from nextpy.frontend.components.component import Component, MemoizationLeaf
+from nextpy.interfaces.web.components.component import Component, MemoizationLeaf
 
 
 class NextHeadLib(Component):

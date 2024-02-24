@@ -9,7 +9,7 @@ from typing import List, Literal
 
 from nextpy.backend.vars import Var
 from nextpy.frontend import imports
-from nextpy.frontend.components.component import Component
+from nextpy.interfaces.web.components.component import Component
 
 
 class ChakraComponent(Component):

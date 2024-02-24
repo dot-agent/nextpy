@@ -22,7 +22,7 @@ import black
 import black.mode
 
 from nextpy.backend.vars import Var
-from nextpy.frontend.components.component import Component
+from nextpy.interfaces.web.components.component import Component
 from nextpy.utils import types as xt_types
 
 logger = logging.getLogger("pyi_generator")
@@ -132,7 +132,7 @@ def _generate_imports(typing_imports: Iterable[str]) -> list[ast.ImportFrom]:
                 """
                 from nextpy.backend.vars import Var, BaseVar, ComputedVar
                 from nextpy.backend.event import EventChain, EventHandler, EventSpec
-                from nextpy.frontend.style import Style"""
+                from nextpy.interfaces.web.style import Style"""
             )
         ).body,
         # *[

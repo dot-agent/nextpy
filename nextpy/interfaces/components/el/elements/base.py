@@ -5,7 +5,7 @@
 from typing import Union
 
 from nextpy.backend.vars import Var as Var
-from nextpy.frontend.components.el.element import Element
+from nextpy.interfaces.web.components.el.element import Element
 
 
 class BaseHTML(Element):

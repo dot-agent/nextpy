@@ -4,8 +4,8 @@
 """A box component that can contain other components."""
 
 from nextpy.backend.vars import Var
-from nextpy.frontend.components.chakra import ChakraComponent
-from nextpy.frontend.components.tags import Tag
+from nextpy.interfaces.web.components.chakra import ChakraComponent
+from nextpy.interfaces.web.components.tags import Tag
 
 
 class Box(ChakraComponent):

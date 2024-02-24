@@ -44,9 +44,9 @@ from nextpy.constants import (
     PageNames,
 )
 from nextpy.frontend import imports
-from nextpy.frontend.components.tags import Tag
+from nextpy.interfaces.web.components.tags import Tag
 from nextpy.frontend.imports import ReactImportVar
-from nextpy.frontend.style import Style, format_as_emotion
+from nextpy.interfaces.web.style import Style, format_as_emotion
 from nextpy.utils import console, format, types
 from nextpy.utils.serializers import serializer
 
@@ -556,7 +556,7 @@ class Component(BaseComponent, ABC):
             TypeError: If an invalid child is passed.
         """
         # Import here to avoid circular imports.
-        from nextpy.frontend.components.base.bare import Bare
+        from nextpy.interfaces.web.components.base.bare import Bare
 
         # Validate all the children.
         for child in children:
@@ -1384,7 +1384,7 @@ class StatefulComponent(BaseComponent):
         Returns:
             The stateful component or None if the component should not be memoized.
         """
-        from nextpy.frontend.components.core.foreach import Foreach
+        from nextpy.interfaces.web.components.core.foreach import Foreach
 
         if component._memoization_mode.disposition == MemoizationDisposition.NEVER:
             # Never memoize this component.
@@ -1466,9 +1466,9 @@ class StatefulComponent(BaseComponent):
         Returns:
             The Var from the child component or the child itself (for regular cases).
         """
-        from nextpy.frontend.components.base.bare import Bare
-        from nextpy.frontend.components.core.cond import Cond
-        from nextpy.frontend.components.core.foreach import Foreach
+        from nextpy.interfaces.web.components.base.bare import Bare
+        from nextpy.interfaces.web.components.core.cond import Cond
+        from nextpy.interfaces.web.components.core.foreach import Foreach
 
         if isinstance(child, Bare):
             return child.contents

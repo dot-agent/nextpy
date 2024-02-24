@@ -6,9 +6,9 @@
 from typing import Any, Dict, Literal
 
 from nextpy.backend.vars import Var
-from nextpy.frontend.components.component import Component
-from nextpy.frontend.components.radix.primitives.base import RadixPrimitiveComponent
-from nextpy.frontend.style import Style
+from nextpy.interfaces.web.components.component import Component
+from nextpy.interfaces.web.components.radix.primitives.base import RadixPrimitiveComponent
+from nextpy.interfaces.web.style import Style
 
 LiteralSliderOrientation = Literal["horizontal", "vertical"]
 LiteralSliderDir = Literal["ltr", "rtl"]

@@ -3,7 +3,7 @@
 
 """A flexible space component."""
 
-from nextpy.frontend.components.chakra import ChakraComponent
+from nextpy.interfaces.web.components.chakra import ChakraComponent
 
 
 class Spacer(ChakraComponent):

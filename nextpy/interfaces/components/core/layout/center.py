@@ -4,8 +4,8 @@
 """A center component."""
 from __future__ import annotations
 
-from nextpy.frontend.components.component import Component
-from nextpy.frontend.components.el.elements.typography import Div
+from nextpy.interfaces.web.components.component import Component
+from nextpy.interfaces.web.components.el.elements.typography import Div
 
 
 class Center(Div):

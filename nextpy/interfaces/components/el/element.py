@@ -4,7 +4,7 @@
 """Base class definition for raw HTML elements."""
 
 
-from nextpy.frontend.components.component import Component
+from nextpy.interfaces.web.components.component import Component
 
 
 class Element(Component):

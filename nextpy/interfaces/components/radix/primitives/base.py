@@ -5,8 +5,8 @@
 from typing import List
 
 from nextpy.backend.vars import Var
-from nextpy.frontend.components.component import Component
-from nextpy.frontend.components.tags.tag import Tag
+from nextpy.interfaces.web.components.component import Component
+from nextpy.interfaces.web.components.tags.tag import Tag
 from nextpy.utils import format
 
 

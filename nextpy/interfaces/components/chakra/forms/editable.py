@@ -8,7 +8,7 @@ from typing import Any, Union
 
 from nextpy.backend.vars import Var
 from nextpy.constants import EventTriggers
-from nextpy.frontend.components.chakra import ChakraComponent
+from nextpy.interfaces.web.components.chakra import ChakraComponent
 
 
 class Editable(ChakraComponent):

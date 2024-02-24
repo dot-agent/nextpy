@@ -9,10 +9,10 @@
 from typing import Any, Dict, Literal, Optional, Union, overload
 from nextpy.backend.vars import Var, BaseVar, ComputedVar
 from nextpy.backend.event import EventChain, EventHandler, EventSpec
-from nextpy.frontend.style import Style
+from nextpy.interfaces.web.style import Style
 from typing import Literal, Optional
-from nextpy.frontend.components.component import Component
-from nextpy.frontend.components.el.elements.typography import Div
+from nextpy.interfaces.web.components.component import Component
+from nextpy.interfaces.web.components.el.elements.typography import Div
 
 LiteralJustify = Literal["start", "center", "end"]
 LiteralAlign = Literal["start", "center", "end", "stretch"]

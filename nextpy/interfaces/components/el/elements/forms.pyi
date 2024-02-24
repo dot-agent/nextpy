@@ -9,9 +9,9 @@
 from typing import Any, Dict, Literal, Optional, Union, overload
 from nextpy.backend.vars import Var, BaseVar, ComputedVar
 from nextpy.backend.event import EventChain, EventHandler, EventSpec
-from nextpy.frontend.style import Style
+from nextpy.interfaces.web.style import Style
 from typing import Any, Dict, Union
-from nextpy.frontend.components.el.element import Element
+from nextpy.interfaces.web.components.el.element import Element
 from nextpy.constants.event import EventTriggers
 from nextpy.backend.vars import Var
 from .base import BaseHTML

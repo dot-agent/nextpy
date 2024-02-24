@@ -19,7 +19,7 @@ from nextpy.utils.serializers import serialize
 
 if TYPE_CHECKING:
     from nextpy.backend.event import EventChain, EventHandler, EventSpec
-    from nextpy.frontend.components.component import ComponentStyle
+    from nextpy.interfaces.web.components.component import ComponentStyle
 
 WRAP_MAP = {
     "{": "}",

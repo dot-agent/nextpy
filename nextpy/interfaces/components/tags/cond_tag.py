@@ -6,7 +6,7 @@
 from typing import Any, Dict, Optional
 
 from nextpy.backend.vars import Var
-from nextpy.frontend.components.tags.tag import Tag
+from nextpy.interfaces.web.components.tags.tag import Tag
 
 
 class CondTag(Tag):

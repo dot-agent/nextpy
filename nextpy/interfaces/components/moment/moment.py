@@ -8,7 +8,7 @@ from typing import Any, Dict, List, Optional
 from nextpy.backend.vars import Var
 from nextpy.base import Base
 from nextpy.frontend import imports
-from nextpy.frontend.components.component import Component, NoSSRComponent
+from nextpy.interfaces.web.components.component import Component, NoSSRComponent
 
 
 class MomentDelta(Base):

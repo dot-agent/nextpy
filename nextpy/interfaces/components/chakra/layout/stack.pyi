@@ -9,9 +9,9 @@
 from typing import Any, Dict, Literal, Optional, Union, overload
 from nextpy.backend.vars import Var, BaseVar, ComputedVar
 from nextpy.backend.event import EventChain, EventHandler, EventSpec
-from nextpy.frontend.style import Style
+from nextpy.interfaces.web.style import Style
 from typing import List, Union
-from nextpy.frontend.components.chakra import ChakraComponent, LiteralStackDirection
+from nextpy.interfaces.web.components.chakra import ChakraComponent, LiteralStackDirection
 from nextpy.backend.vars import Var
 
 class Stack(ChakraComponent):

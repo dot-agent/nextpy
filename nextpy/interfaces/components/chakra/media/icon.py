@@ -4,7 +4,7 @@
 """An icon component."""
 from typing import List
 
-from nextpy.frontend.components.chakra import ChakraComponent
+from nextpy.interfaces.web.components.chakra import ChakraComponent
 from nextpy.utils import format
 
 

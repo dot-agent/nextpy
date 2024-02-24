@@ -2,7 +2,7 @@
 # We have rigorously tested these modifications to ensure reliability and performance. Based on successful test results, we are confident in the quality and stability of these changes.
 
 """A video component."""
-from nextpy.frontend.components.react_player.react_player import ReactPlayer
+from nextpy.interfaces.web.components.react_player.react_player import ReactPlayer
 
 
 class Video(ReactPlayer):

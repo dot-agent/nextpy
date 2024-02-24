@@ -5,7 +5,7 @@
 from typing import Literal
 
 from nextpy.backend.vars import Var
-from nextpy.frontend.components.chakra import ChakraComponent, LiteralDividerVariant
+from nextpy.interfaces.web.components.chakra import ChakraComponent, LiteralDividerVariant
 
 LiteralLayout = Literal["horizontal", "vertical"]
 

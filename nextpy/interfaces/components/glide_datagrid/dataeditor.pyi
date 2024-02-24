@@ -9,12 +9,12 @@
 from typing import Any, Dict, Literal, Optional, Union, overload
 from nextpy.backend.vars import Var, BaseVar, ComputedVar
 from nextpy.backend.event import EventChain, EventHandler, EventSpec
-from nextpy.frontend.style import Style
+from nextpy.interfaces.web.style import Style
 from enum import Enum
 from typing import Any, Callable, Dict, List, Literal, Optional, Union
 from nextpy.base import Base
-from nextpy.frontend.components.component import Component, NoSSRComponent
-from nextpy.frontend.components.literals import LiteralRowMarker
+from nextpy.interfaces.web.components.component import Component, NoSSRComponent
+from nextpy.interfaces.web.components.literals import LiteralRowMarker
 from nextpy.utils import console, format, types
 from nextpy.frontend import imports
 from nextpy.frontend.imports import ReactImportVar

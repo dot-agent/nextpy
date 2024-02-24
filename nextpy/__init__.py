@@ -12,7 +12,7 @@ from __future__ import annotations
 import importlib
 from typing import Type
 
-from nextpy.frontend.page import page as page
+from nextpy.interfaces.web.page import page as page
 from nextpy.utils import console
 from nextpy.utils.format import to_snake_case
 
@@ -283,14 +283,14 @@ _MAPPING = {
     "nextpy.constants": ["Env", "constants"],
     "nextpy.data.jsondb": ["JsonDatabase"],
     "nextpy.data.model": ["Model", "model", "session"],
-    "nextpy.frontend.components": _ALL_COMPONENTS + ["chakra", "next"],
-    "nextpy.frontend.components.framer.motion": ["motion"],
-    "nextpy.frontend.components.component": ["memo"],
-    "nextpy.frontend.components.el": ["el"],
-    "nextpy.frontend.components.moment.moment": ["MomentDelta"],
-    "nextpy.frontend.page": ["page"],
-    "nextpy.frontend.style": ["color_mode", "style", "toggle_color_mode"],
-    "nextpy.frontend.components.recharts": [
+    "nextpy.interfaces.web.components": _ALL_COMPONENTS + ["chakra", "next"],
+    "nextpy.interfaces.web.components.framer.motion": ["motion"],
+    "nextpy.interfaces.web.components.component": ["memo"],
+    "nextpy.interfaces.web.components.el": ["el"],
+    "nextpy.interfaces.web.components.moment.moment": ["MomentDelta"],
+    "nextpy.interfaces.web.page": ["page"],
+    "nextpy.interfaces.web.style": ["color_mode", "style", "toggle_color_mode"],
+    "nextpy.interfaces.web.components.recharts": [
         "area_chart", "bar_chart", "line_chart", "composed_chart", "pie_chart",
         "radar_chart", "radial_bar_chart", "scatter_chart", "funnel_chart", "treemap",
         "area", "bar", "line", "scatter", "x_axis", "y_axis", "z_axis", "brush",
@@ -300,7 +300,7 @@ _MAPPING = {
         "polar_angle_axis", "polar_grid", "polar_radius_axis",
     ],
     "nextpy.utils": ["utils"],
-    "nextpy.frontend.components.proxy": ["animation"],
+    "nextpy.interfaces.web.components.proxy": ["animation"],
 }
 
 
@@ -351,7 +351,7 @@ def __getattr__(name: str) -> Type:
     """
     # Custom alias handling
     if name == "animation":
-        module = importlib.import_module("nextpy.frontend.components.proxy")
+        module = importlib.import_module("nextpy.interfaces.web.components.proxy")
         return module.animation
 
 

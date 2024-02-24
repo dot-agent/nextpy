@@ -9,12 +9,12 @@ from typing import Optional
 from nextpy.backend.vars import Var, VarData
 from nextpy.constants import Hooks, Imports
 from nextpy.frontend import imports
-from nextpy.frontend.components.base.bare import Bare
-from nextpy.frontend.components.chakra.layout import Box
-from nextpy.frontend.components.chakra.overlay.modal import Modal
-from nextpy.frontend.components.chakra.typography import Text
-from nextpy.frontend.components.component import Component
-from nextpy.frontend.components.core.cond import cond
+from nextpy.interfaces.web.components.base.bare import Bare
+from nextpy.interfaces.web.components.chakra.layout import Box
+from nextpy.interfaces.web.components.chakra.overlay.modal import Modal
+from nextpy.interfaces.web.components.chakra.typography import Text
+from nextpy.interfaces.web.components.component import Component
+from nextpy.interfaces.web.components.core.cond import cond
 
 connect_error_var_data: VarData = VarData(  # type: ignore
     imports=Imports.EVENTS,

@@ -7,7 +7,7 @@ from __future__ import annotations
 from typing import Any, Union
 
 from nextpy.backend.vars import Var
-from nextpy.frontend.components.chakra import ChakraComponent, LiteralChakraDirection
+from nextpy.interfaces.web.components.chakra import ChakraComponent, LiteralChakraDirection
 
 
 class Tooltip(ChakraComponent):

@@ -3,7 +3,7 @@
 
 """A component to display visually hidden text."""
 
-from nextpy.frontend.components.chakra import ChakraComponent
+from nextpy.interfaces.web.components.chakra import ChakraComponent
 
 
 class VisuallyHidden(ChakraComponent):

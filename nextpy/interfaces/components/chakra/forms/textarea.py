@@ -8,9 +8,9 @@ from typing import Any, Union
 
 from nextpy.backend.vars import Var
 from nextpy.constants import EventTriggers
-from nextpy.frontend.components.chakra import ChakraComponent, LiteralInputVariant
-from nextpy.frontend.components.component import Component
-from nextpy.frontend.components.core.debounce import DebounceInput
+from nextpy.interfaces.web.components.chakra import ChakraComponent, LiteralInputVariant
+from nextpy.interfaces.web.components.component import Component
+from nextpy.interfaces.web.components.core.debounce import DebounceInput
 
 
 class TextArea(ChakraComponent):

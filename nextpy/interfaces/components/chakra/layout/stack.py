@@ -6,7 +6,7 @@
 from typing import List, Union
 
 from nextpy.backend.vars import Var
-from nextpy.frontend.components.chakra import ChakraComponent, LiteralStackDirection
+from nextpy.interfaces.web.components.chakra import ChakraComponent, LiteralStackDirection
 
 
 class Stack(ChakraComponent):

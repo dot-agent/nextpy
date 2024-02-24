@@ -13,8 +13,8 @@ from nextpy.backend.vars import BaseVar, Var
 from nextpy.constants.base import Dirs
 from nextpy.constants.event import EventTriggers
 from nextpy.frontend import imports
-from nextpy.frontend.components.component import Component
-from nextpy.frontend.components.tags.tag import Tag
+from nextpy.interfaces.web.components.component import Component
+from nextpy.interfaces.web.components.tags.tag import Tag
 from nextpy.utils.format import format_event_chain, to_camel_case
 
 from .base import RadixPrimitiveComponent

@@ -4,7 +4,7 @@
 """A component that wraps a recharts lib."""
 from typing import Literal
 
-from nextpy.frontend.components.component import (
+from nextpy.interfaces.web.components.component import (
     Component,
     MemoizationLeaf,
     NoSSRComponent,

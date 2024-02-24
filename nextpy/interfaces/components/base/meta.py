@@ -7,8 +7,8 @@ from __future__ import annotations
 
 from typing import Optional
 
-from nextpy.frontend.components.base.bare import Bare
-from nextpy.frontend.components.component import Component
+from nextpy.interfaces.web.components.base.bare import Bare
+from nextpy.interfaces.web.components.component import Component
 
 
 class Title(Component):

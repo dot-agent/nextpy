@@ -9,7 +9,7 @@ from typing import Literal
 
 from nextpy.backend.vars import Var
 from nextpy.frontend import imports
-from nextpy.frontend.components import Component
+from nextpy.interfaces.web.components import Component
 
 LiteralAlign = Literal["start", "center", "end", "baseline", "stretch"]
 LiteralJustify = Literal["start", "center", "end", "between"]

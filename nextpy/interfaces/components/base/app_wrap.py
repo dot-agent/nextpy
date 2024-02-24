@@ -3,8 +3,8 @@
 
 """Top-level component that wraps the entire app."""
 from nextpy.backend.vars import Var
-from nextpy.frontend.components.base.fragment import Fragment
-from nextpy.frontend.components.component import Component
+from nextpy.interfaces.web.components.base.fragment import Fragment
+from nextpy.interfaces.web.components.component import Component
 
 
 class AppWrap(Fragment):

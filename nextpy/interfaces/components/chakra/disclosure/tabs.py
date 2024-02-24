@@ -6,13 +6,13 @@
 from typing import List, Optional, Tuple
 
 from nextpy.backend.vars import Var
-from nextpy.frontend.components.chakra import (
+from nextpy.interfaces.web.components.chakra import (
     ChakraComponent,
     LiteralColorScheme,
     LiteralTabsVariant,
     LiteralTagAlign,
 )
-from nextpy.frontend.components.component import Component
+from nextpy.interfaces.web.components.component import Component
 
 
 class Tabs(ChakraComponent):

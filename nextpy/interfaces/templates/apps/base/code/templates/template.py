@@ -26,7 +26,7 @@ def menu_button() -> xt.Component:
     Returns:
         The menu button component.
     """
-    from nextpy.frontend.page import get_decorated_pages
+    from nextpy.interfaces.web.page import get_decorated_pages
 
     return xt.box(
         xt.menu(

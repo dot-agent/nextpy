@@ -4,7 +4,7 @@
 """A AspectRatio component."""
 
 from nextpy.backend.vars import Var
-from nextpy.frontend.components.chakra import ChakraComponent
+from nextpy.interfaces.web.components.chakra import ChakraComponent
 
 
 class AspectRatio(ChakraComponent):

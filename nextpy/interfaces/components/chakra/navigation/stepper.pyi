@@ -9,10 +9,10 @@
 from typing import Any, Dict, Literal, Optional, Union, overload
 from nextpy.backend.vars import Var, BaseVar, ComputedVar
 from nextpy.backend.event import EventChain, EventHandler, EventSpec
-from nextpy.frontend.style import Style
+from nextpy.interfaces.web.style import Style
 from typing import List, Literal, Optional, Tuple
-from nextpy.frontend.components.chakra import ChakraComponent, LiteralColorScheme
-from nextpy.frontend.components.component import Component
+from nextpy.interfaces.web.components.chakra import ChakraComponent, LiteralColorScheme
+from nextpy.interfaces.web.components.component import Component
 from nextpy.backend.vars import Var
 
 class Stepper(ChakraComponent):

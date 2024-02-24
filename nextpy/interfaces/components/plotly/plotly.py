@@ -6,7 +6,7 @@
 from typing import Any, Dict, List
 
 from nextpy.backend.vars import Var
-from nextpy.frontend.components.component import NoSSRComponent
+from nextpy.interfaces.web.components.component import NoSSRComponent
 
 try:
     from plotly.graph_objects import Figure

@@ -9,12 +9,12 @@
 from typing import Any, Dict, Literal, Optional, Union, overload
 from nextpy.backend.vars import Var, BaseVar, ComputedVar
 from nextpy.backend.event import EventChain, EventHandler, EventSpec
-from nextpy.frontend.style import Style
+from nextpy.interfaces.web.style import Style
 from typing import Any, Dict, List, Optional, Union
 from nextpy import constants
-from nextpy.frontend.components.chakra.forms.input import Input
-from nextpy.frontend.components.chakra.layout.box import Box
-from nextpy.frontend.components.component import Component
+from nextpy.interfaces.web.components.chakra.forms.input import Input
+from nextpy.interfaces.web.components.chakra.layout.box import Box
+from nextpy.interfaces.web.components.component import Component
 from nextpy.constants import Dirs
 from nextpy.backend.event import CallableEventSpec, EventChain, EventSpec, call_script
 from nextpy.frontend import imports

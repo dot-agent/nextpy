@@ -11,9 +11,9 @@ from nextpy.backend.event import CallableEventSpec, EventChain, EventSpec, call_
 from nextpy.backend.vars import BaseVar, CallableVar, Var, VarData
 from nextpy.constants import Dirs
 from nextpy.frontend import imports
-from nextpy.frontend.components.chakra.forms.input import Input
-from nextpy.frontend.components.chakra.layout.box import Box
-from nextpy.frontend.components.component import Component
+from nextpy.interfaces.web.components.chakra.forms.input import Input
+from nextpy.interfaces.web.components.chakra.layout.box import Box
+from nextpy.interfaces.web.components.component import Component
 
 DEFAULT_UPLOAD_ID: str = "default"
 

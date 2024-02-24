@@ -10,16 +10,16 @@ from __future__ import annotations
 from typing import Any, Union
 
 from nextpy.backend.vars import Var
-from nextpy.frontend.components.component import Component
+from nextpy.interfaces.web.components.component import Component
 
 
 class Script(Component):
     """Next.js script component.
 
-    Note that this component differs from nextpy.frontend.components.base.document.NextScript
+    Note that this component differs from nextpy.interfaces.web.components.base.document.NextScript
     in that it is intended for use with custom and user-defined scripts.
 
-    It also differs from nextpy.frontend.components.base.link.ScriptTag, which is the plain
+    It also differs from nextpy.interfaces.web.components.base.link.ScriptTag, which is the plain
     HTML <script> tag which does not work when rendering a component.
     """
 

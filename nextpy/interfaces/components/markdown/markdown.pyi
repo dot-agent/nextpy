@@ -9,23 +9,23 @@
 from typing import Any, Dict, Literal, Optional, Union, overload
 from nextpy.backend.vars import Var, BaseVar, ComputedVar
 from nextpy.backend.event import EventChain, EventHandler, EventSpec
-from nextpy.frontend.style import Style
+from nextpy.interfaces.web.style import Style
 import textwrap
 from functools import lru_cache
 from hashlib import md5
 from typing import Any, Callable, Dict, Union
 from nextpy.build.compiler import utils
-from nextpy.frontend.components.chakra.datadisplay.list import (
+from nextpy.interfaces.web.components.chakra.datadisplay.list import (
     ListItem,
     OrderedList,
     UnorderedList,
 )
-from nextpy.frontend.components.chakra.navigation import Link
-from nextpy.frontend.components.chakra.typography.heading import Heading
-from nextpy.frontend.components.chakra.typography.text import Text
-from nextpy.frontend.components.component import Component, CustomComponent
-from nextpy.frontend.components.tags.tag import Tag
-from nextpy.frontend.style import Style
+from nextpy.interfaces.web.components.chakra.navigation import Link
+from nextpy.interfaces.web.components.chakra.typography.heading import Heading
+from nextpy.interfaces.web.components.chakra.typography.text import Text
+from nextpy.interfaces.web.components.component import Component, CustomComponent
+from nextpy.interfaces.web.components.tags.tag import Tag
+from nextpy.interfaces.web.style import Style
 from nextpy.utils import console, types
 from nextpy.frontend import imports
 from nextpy.frontend.imports import ReactImportVar

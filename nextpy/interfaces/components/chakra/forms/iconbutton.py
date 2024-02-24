@@ -6,8 +6,8 @@
 from typing import Optional
 
 from nextpy.backend.vars import Var
-from nextpy.frontend.components.chakra.typography.text import Text
-from nextpy.frontend.components.component import Component
+from nextpy.interfaces.web.components.chakra.typography.text import Text
+from nextpy.interfaces.web.components.component import Component
 
 
 class IconButton(Text):

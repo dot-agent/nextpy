@@ -8,8 +8,8 @@ from typing import Any, Dict, List, Union
 
 from nextpy.backend.vars import Var
 from nextpy.constants import EventTriggers
-from nextpy.frontend.components.component import Component
-from nextpy.frontend.components.recharts.general import ResponsiveContainer
+from nextpy.interfaces.web.components.component import Component
+from nextpy.interfaces.web.components.recharts.general import ResponsiveContainer
 
 from .recharts import (
     LiteralAnimationEasing,

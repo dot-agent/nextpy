@@ -8,7 +8,7 @@ from typing import Any, Dict, Literal, Union
 
 from nextpy.backend.vars import Var
 from nextpy.constants import EventTriggers
-from nextpy.frontend.components.component import Component
+from nextpy.interfaces.web.components.component import Component
 
 
 class FramerMotion(Component):

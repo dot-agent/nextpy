@@ -3,7 +3,7 @@
 
 """Responsive components."""
 
-from nextpy.frontend.components.chakra.layout.box import Box
+from nextpy.interfaces.web.components.chakra.layout.box import Box
 
 
 # Add responsive styles shortcuts.

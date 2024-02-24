@@ -10,8 +10,8 @@ from typing import Any, Callable, Dict, List, Literal, Optional, Union
 from nextpy.backend.vars import Var, get_unique_variable_name
 from nextpy.base import Base
 from nextpy.frontend import imports
-from nextpy.frontend.components.component import Component, NoSSRComponent
-from nextpy.frontend.components.literals import LiteralRowMarker
+from nextpy.interfaces.web.components.component import Component, NoSSRComponent
+from nextpy.interfaces.web.components.literals import LiteralRowMarker
 from nextpy.frontend.imports import ReactImportVar
 from nextpy.utils import console, format, types
 from nextpy.utils.serializers import serializer
@@ -288,7 +288,7 @@ class DataEditor(NoSSRComponent):
         Returns:
             The DataEditor component.&
         """
-        from nextpy.frontend.components.el import Div
+        from nextpy.interfaces.web.components.el import Div
 
         columns = props.get("columns", [])
         data = props.get("data", [])
@@ -345,7 +345,7 @@ class DataEditor(NoSSRComponent):
         Returns:
             The app wrap components.
         """
-        from nextpy.frontend.components.el import Div
+        from nextpy.interfaces.web.components.el import Div
 
         class Portal(Div):
             def get_ref(self):

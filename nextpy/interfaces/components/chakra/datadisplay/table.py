@@ -5,9 +5,9 @@
 from typing import List, Tuple
 
 from nextpy.backend.vars import Var
-from nextpy.frontend.components.chakra import ChakraComponent
-from nextpy.frontend.components.component import Component
-from nextpy.frontend.components.core.foreach import Foreach
+from nextpy.interfaces.web.components.chakra import ChakraComponent
+from nextpy.interfaces.web.components.component import Component
+from nextpy.interfaces.web.components.core.foreach import Foreach
 from nextpy.utils import types
 
 

@@ -6,8 +6,8 @@
 from typing import List, Literal, Optional, Tuple
 
 from nextpy.backend.vars import Var
-from nextpy.frontend.components.chakra import ChakraComponent, LiteralColorScheme
-from nextpy.frontend.components.component import Component
+from nextpy.interfaces.web.components.chakra import ChakraComponent, LiteralColorScheme
+from nextpy.interfaces.web.components.component import Component
 
 
 class Stepper(ChakraComponent):

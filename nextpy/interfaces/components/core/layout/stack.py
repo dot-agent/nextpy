@@ -6,8 +6,8 @@ from __future__ import annotations
 
 from typing import Literal, Optional
 
-from nextpy.frontend.components.component import Component
-from nextpy.frontend.components.el.elements.typography import Div
+from nextpy.interfaces.web.components.component import Component
+from nextpy.interfaces.web.components.el.elements.typography import Div
 
 LiteralJustify = Literal["start", "center", "end"]
 LiteralAlign = Literal["start", "center", "end", "stretch"]

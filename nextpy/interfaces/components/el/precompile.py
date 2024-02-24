@@ -4,10 +4,10 @@
 """Dynamically compile classes for all HTML elements and output them to the
 elements directory.
 
-This script generates the element classes in the nextpy.frontend.components.el.elements module.
+This script generates the element classes in the nextpy.interfaces.web.components.el.elements module.
 Run as follows:
 
-    python -m nextpy.frontend.components.el.precompile
+    python -m nextpy.interfaces.web.components.el.precompile
 
 Make sure to delete the __init__.py file in the elements directory before
 running this script.
@@ -96,7 +96,7 @@ INIT_PY = [
     '"""Element classes. This is an auto-generated file. Do not edit. See ../precompile.py."""',
     "from typing import Union",
     "",
-"from nextpy.frontend.components.el.element import Element",
+"from nextpy.interfaces.web.components.el.element import Element",
     "from nextpy.backend.vars import Var as Var_",
     "",
 ]

@@ -7,9 +7,9 @@ from __future__ import annotations
 from typing import Any, Literal, Optional, Union
 
 from nextpy.backend.vars import Var
-from nextpy.frontend.components.chakra import ChakraComponent
-from nextpy.frontend.components.chakra.media import Icon
-from nextpy.frontend.components.component import Component
+from nextpy.interfaces.web.components.chakra import ChakraComponent
+from nextpy.interfaces.web.components.chakra.media import Icon
+from nextpy.interfaces.web.components.component import Component
 
 ModalSizes = Literal["xs", "sm", "md", "lg", "xl", "full"]
 

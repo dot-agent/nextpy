@@ -7,7 +7,7 @@ from typing import List, Tuple
 import pytest
 
 from nextpy.backend.state import BaseState
-from nextpy.frontend.components.chakra.datadisplay.table import Tbody, Tfoot, Thead
+from nextpy.interfaces.web.components.chakra.datadisplay.table import Tbody, Tfoot, Thead
 
 PYTHON_GT_V38 = sys.version_info.major >= 3 and sys.version_info.minor > 8
 

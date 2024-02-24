@@ -7,8 +7,8 @@ from __future__ import annotations
 from typing import Any, Optional, Union
 
 from nextpy.backend.vars import Var
-from nextpy.frontend.components.chakra import ChakraComponent, LiteralImageLoading
-from nextpy.frontend.components.component import Component
+from nextpy.interfaces.web.components.chakra import ChakraComponent, LiteralImageLoading
+from nextpy.interfaces.web.components.component import Component
 
 
 class Image(ChakraComponent):

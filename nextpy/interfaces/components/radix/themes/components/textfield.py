@@ -6,9 +6,9 @@ from typing import Any, Dict, Literal
 
 from nextpy.backend.vars import Var
 from nextpy.constants import EventTriggers
-from nextpy.frontend.components import el
-from nextpy.frontend.components.component import Component
-from nextpy.frontend.components.core.debounce import DebounceInput
+from nextpy.interfaces.web.components import el
+from nextpy.interfaces.web.components.component import Component
+from nextpy.interfaces.web.components.core.debounce import DebounceInput
 
 from ..base import (
     CommonMarginProps,

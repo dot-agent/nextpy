@@ -8,7 +8,7 @@ from typing import Any, Type
 
 from nextpy.backend.vars import Var, VarData
 from nextpy.constants import EventTriggers
-from nextpy.frontend.components.component import Component
+from nextpy.interfaces.web.components.component import Component
 
 
 class DebounceInput(Component):

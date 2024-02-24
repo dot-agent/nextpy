@@ -8,14 +8,14 @@ from typing import Any, Dict
 from nextpy.backend.vars import Var
 from nextpy.constants import EventTriggers, MemoizationMode
 from nextpy.frontend import imports
-from nextpy.frontend.components.chakra import (
+from nextpy.interfaces.web.components.chakra import (
     ChakraComponent,
     LiteralButtonSize,
     LiteralInputVariant,
 )
-from nextpy.frontend.components.component import Component
-from nextpy.frontend.components.core.debounce import DebounceInput
-from nextpy.frontend.components.literals import LiteralInputType
+from nextpy.interfaces.web.components.component import Component
+from nextpy.interfaces.web.components.core.debounce import DebounceInput
+from nextpy.interfaces.web.components.literals import LiteralInputType
 
 
 class Input(ChakraComponent):

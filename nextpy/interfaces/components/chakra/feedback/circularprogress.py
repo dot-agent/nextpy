@@ -5,8 +5,8 @@
 from typing import Union
 
 from nextpy.backend.vars import Var
-from nextpy.frontend.components.chakra import ChakraComponent
-from nextpy.frontend.components.component import Component
+from nextpy.interfaces.web.components.chakra import ChakraComponent
+from nextpy.interfaces.web.components.component import Component
 
 
 class CircularProgress(ChakraComponent):

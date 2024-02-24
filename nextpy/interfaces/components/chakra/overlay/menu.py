@@ -7,14 +7,14 @@ from __future__ import annotations
 from typing import Any, List, Optional, Union
 
 from nextpy.backend.vars import Var
-from nextpy.frontend.components.chakra import (
+from nextpy.interfaces.web.components.chakra import (
     ChakraComponent,
     LiteralChakraDirection,
     LiteralMenuOption,
     LiteralMenuStrategy,
 )
-from nextpy.frontend.components.chakra.forms.button import Button
-from nextpy.frontend.components.component import Component
+from nextpy.interfaces.web.components.chakra.forms.button import Button
+from nextpy.interfaces.web.components.component import Component
 
 
 class Menu(ChakraComponent):

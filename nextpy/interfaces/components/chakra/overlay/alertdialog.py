@@ -7,9 +7,9 @@ from __future__ import annotations
 from typing import Any, Union
 
 from nextpy.backend.vars import Var
-from nextpy.frontend.components.chakra import ChakraComponent, LiteralAlertDialogSize
-from nextpy.frontend.components.chakra.media.icon import Icon
-from nextpy.frontend.components.component import Component
+from nextpy.interfaces.web.components.chakra import ChakraComponent, LiteralAlertDialogSize
+from nextpy.interfaces.web.components.chakra.media.icon import Icon
+from nextpy.interfaces.web.components.component import Component
 
 
 class AlertDialog(ChakraComponent):

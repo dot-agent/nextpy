@@ -9,8 +9,8 @@ from typing import Any, Dict, List, Union
 
 from nextpy.backend.vars import BaseVar, ComputedVar, Var
 from nextpy.frontend import imports
-from nextpy.frontend.components.component import Component
-from nextpy.frontend.components.tags import Tag
+from nextpy.interfaces.web.components.component import Component
+from nextpy.interfaces.web.components.tags import Tag
 from nextpy.utils import types
 from nextpy.utils.serializers import serialize
 

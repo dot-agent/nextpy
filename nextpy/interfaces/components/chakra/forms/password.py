@@ -4,7 +4,7 @@
 """A password input component."""
 
 from nextpy.backend.vars import Var
-from nextpy.frontend.components.chakra.forms.input import Input
+from nextpy.interfaces.web.components.chakra.forms.input import Input
 
 
 class Password(Input):

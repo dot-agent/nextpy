@@ -10,7 +10,7 @@ from typing import Iterable, Optional, Type
 
 from nextpy import constants
 from nextpy.build.compiler import templates, utils
-from nextpy.frontend.components.component import (
+from nextpy.interfaces.web.components.component import (
     BaseComponent,
     Component,
     ComponentStyle,

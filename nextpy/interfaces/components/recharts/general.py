@@ -8,7 +8,7 @@ from typing import Any, Dict, List, Union
 
 from nextpy.backend.vars import Var
 from nextpy.constants import EventTriggers
-from nextpy.frontend.components.component import MemoizationLeaf
+from nextpy.interfaces.web.components.component import MemoizationLeaf
 
 from .recharts import (
     LiteralIconType,

@@ -3,8 +3,8 @@
 
 """Leaflet mapping components.""."""
 from nextpy.backend.vars import Var
-from nextpy.frontend.components.component import Component
-from nextpy.frontend.style import Style
+from nextpy.interfaces.web.components.component import Component
+from nextpy.interfaces.web.style import Style
 
 
 class LeafletLib(Component):

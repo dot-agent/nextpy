@@ -9,13 +9,13 @@
 from typing import Any, Dict, Literal, Optional, Union, overload
 from nextpy.backend.vars import Var, BaseVar, ComputedVar
 from nextpy.backend.event import EventChain, EventHandler, EventSpec
-from nextpy.frontend.style import Style
+from nextpy.interfaces.web.style import Style
 from typing import Any
-from nextpy.frontend.components.chakra import ChakraComponent
-from nextpy.frontend.components.chakra.media.icon import Icon
-from nextpy.frontend.components.component import BaseComponent, Component
-from nextpy.frontend.components.core.cond import Cond, cond
-from nextpy.frontend.style import color_mode, toggle_color_mode
+from nextpy.interfaces.web.components.chakra import ChakraComponent
+from nextpy.interfaces.web.components.chakra.media.icon import Icon
+from nextpy.interfaces.web.components.component import BaseComponent, Component
+from nextpy.interfaces.web.components.core.cond import Cond, cond
+from nextpy.interfaces.web.style import color_mode, toggle_color_mode
 from nextpy.backend.vars import Var
 from .button import Button
 from .switch import Switch

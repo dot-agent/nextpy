@@ -13,18 +13,18 @@ from typing import Any, Callable, Dict, Union
 from nextpy.backend.vars import Var
 from nextpy.build.compiler import utils
 from nextpy.frontend import imports
-from nextpy.frontend.components.chakra.datadisplay.list import (
+from nextpy.interfaces.web.components.chakra.datadisplay.list import (
     ListItem,
     OrderedList,
     UnorderedList,
 )
-from nextpy.frontend.components.chakra.navigation import Link
-from nextpy.frontend.components.chakra.typography.heading import Heading
-from nextpy.frontend.components.chakra.typography.text import Text
-from nextpy.frontend.components.component import Component, CustomComponent
-from nextpy.frontend.components.tags.tag import Tag
+from nextpy.interfaces.web.components.chakra.navigation import Link
+from nextpy.interfaces.web.components.chakra.typography.heading import Heading
+from nextpy.interfaces.web.components.chakra.typography.text import Text
+from nextpy.interfaces.web.components.component import Component, CustomComponent
+from nextpy.interfaces.web.components.tags.tag import Tag
 from nextpy.frontend.imports import ReactImportVar
-from nextpy.frontend.style import Style
+from nextpy.interfaces.web.style import Style
 from nextpy.utils import console, types
 
 # Special vars used in the component map.
@@ -53,7 +53,7 @@ def get_base_component_map() -> dict[str, Callable]:
     Returns:
         The base component map.
     """
-    from nextpy.frontend.components.chakra.datadisplay.code import Code, CodeBlock
+    from nextpy.interfaces.web.components.chakra.datadisplay.code import Code, CodeBlock
 
     return {
         "h1": lambda value: Heading.create(
@@ -158,7 +158,7 @@ class Markdown(Component):
 
     def _get_imports(self) -> imports.ImportDict:
         # Import here to avoid circular imports.
-        from nextpy.frontend.components.chakra.datadisplay.code import Code, CodeBlock
+        from nextpy.interfaces.web.components.chakra.datadisplay.code import Code, CodeBlock
 
         imports = super()._get_imports()
 

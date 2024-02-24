@@ -4,7 +4,7 @@
 """Badge component."""
 
 from nextpy.backend.vars import Var
-from nextpy.frontend.components.chakra import ChakraComponent, LiteralVariant
+from nextpy.interfaces.web.components.chakra import ChakraComponent, LiteralVariant
 
 
 class Badge(ChakraComponent):

@@ -6,7 +6,7 @@ from typing import Any, Dict, Union
 
 from nextpy.backend.vars import Var
 from nextpy.constants.event import EventTriggers
-from nextpy.frontend.components.el.element import Element
+from nextpy.interfaces.web.components.el.element import Element
 
 from .base import BaseHTML
 

@@ -119,7 +119,7 @@ def sidebar() -> xt.Component:
         The sidebar component.
     """
     # Get all the decorated pages and add them to the sidebar.
-    from nextpy.frontend.page import get_decorated_pages
+    from nextpy.interfaces.web.page import get_decorated_pages
 
     return xt.box(
         xt.vstack(

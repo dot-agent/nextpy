@@ -8,9 +8,9 @@ from typing import Any, Optional, Union
 
 from nextpy.backend.vars import Var
 from nextpy.constants import EventTriggers
-from nextpy.frontend.components.chakra import ChakraComponent, LiteralInputVariant
-from nextpy.frontend.components.component import Component
-from nextpy.frontend.components.tags.tag import Tag
+from nextpy.interfaces.web.components.chakra import ChakraComponent, LiteralInputVariant
+from nextpy.interfaces.web.components.component import Component
+from nextpy.interfaces.web.components.tags.tag import Tag
 from nextpy.frontend.imports import ImportDict, merge_imports
 from nextpy.utils import format
 

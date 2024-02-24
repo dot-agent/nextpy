@@ -7,13 +7,13 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 
 from nextpy.backend.vars import BaseVar, Var, VarData
 from nextpy.frontend import imports
-from nextpy.frontend.components.base import Fragment
-from nextpy.frontend.components.component import (
+from nextpy.interfaces.web.components.base import Fragment
+from nextpy.interfaces.web.components.component import (
     BaseComponent,
     Component,
     MemoizationLeaf,
 )
-from nextpy.frontend.components.tags import MatchTag, Tag
+from nextpy.interfaces.web.components.tags import MatchTag, Tag
 from nextpy.utils import format, types
 from nextpy.utils.exceptions import MatchTypeError
 
