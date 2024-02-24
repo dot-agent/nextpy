@@ -51,6 +51,8 @@ pyjokes = "^0.6.0"
 pylint = "^3.0.3"
 charset-normalizer = "^3.3.2"
 aiosmtplib = "^3.0.1"
+reacton = "^1.8.2"
+solara = "^1.25.1"
 
 [tool.poetry.group.dev.dependencies]
 pytest = "^7.1.2"
@@ -130,7 +132,7 @@ target-version = "py37"
 "tests/*.py" = ["D100", "D103", "D104"]
 "nextpy/ai/*.py" = ["ALL"]
 "nextpy/data/vectordb/*.py" = ["ALL"]
-"nextpy/interfaces/templates/*.py" = ["D100", "D103", "D104"]
+"nextpy/interfaces/web/templates/*.py" = ["D100", "D103", "D104"]
 "*.pyi" = ["ALL"]
 "app-examples/*.py" = ["ALL"]
 "ai-notebooks/*.py" = ["ALL"]
