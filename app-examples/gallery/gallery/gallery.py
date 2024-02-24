@@ -76,7 +76,6 @@ def gallery_with_no_sidebar():
 @template(route="/", title="GALLERY")
 def gallery() -> xt.Component:
     return xt.vstack(
-        xt.header('Gallery'),
         xt.vstack(
             xt.vstack(
                 xt.image(src="/logo.svg", width="170px"),
