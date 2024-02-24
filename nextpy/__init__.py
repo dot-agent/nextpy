@@ -369,10 +369,6 @@ def __getattr__(name: str) -> Type:
     if name == "animation":
         module = importlib.import_module("nextpy.interfaces.web.components.proxy")
         return module.animation
-    
-    #  TODO - This ColorPickerCenter attribute issue on pytest tests has to be resolved and below 2 lines must be removed.
-    if name=="ColorPickerCenter" or name=="color_picker_center":
-        name="ColorPicker"
 
     # Custom alias handling for 'unstyled'
     if name == "unstyled":
