@@ -10,7 +10,7 @@ from typing import Iterable, Optional, Type
 
 from nextpy import constants
 from nextpy.build.compiler import templates, utils
-from nextpy.frontend.components.component import (
+from nextpy.interfaces.web.components.component import (
     BaseComponent,
     Component,
     ComponentStyle,
@@ -19,7 +19,7 @@ from nextpy.frontend.components.component import (
 )
 from nextpy.build.config import get_config
 from nextpy.backend.state import BaseState
-from nextpy.frontend.imports import ImportDict, ReactImportVar
+from nextpy.interfaces.web.imports import ImportDict, ReactImportVar
 
 
 def _compile_document_root(root: Component) -> str:

@@ -3,7 +3,7 @@
 
 import pytest
 
-from nextpy.frontend.imports import ReactImportVar, merge_imports
+from nextpy.interfaces.web.imports import ReactImportVar, merge_imports
 
 
 @pytest.mark.parametrize(

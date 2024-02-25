@@ -1,0 +1,71 @@
+<div class="jupyter-widget-checks-container">
+    <script>
+        (function () {
+            console.log("Checking for jupyter-widgets extensions")
+            const inLab = window._JUPYTERLAB !== undefined;
+            const silent = jupyter_widget_checks_silent;
+            const containers = document.getElementsByClassName('jupyter-widget-checks-container');
+            const rootEl = containers[containers.length - 1];
+            const libraries = window.jupyter_widget_checks_libraries;
+
+            function getBaseUrl() {
+                const labConfigData = document.getElementById("jupyter-config-data");
+                if (labConfigData) {
+                    /* lab and Voila */
+                    return JSON.parse(labConfigData.textContent).baseUrl;
+                }
+                let base = document.body.dataset.baseUrl || document.baseURI;
+                return base;
+            }
+
+            function checkLibrary(extensions, library) {
+                let installed = false;
+                let ok = true;
+                if (inLab) {
+                    installed = _JUPYTERLAB[library.lab] !== undefined
+                } else {
+                    installed = extensions[library.classic] !== undefined;
+                    let enabled = extensions[library.classic] === true;
+                }
+                const div = document.createElement("div")
+                if (installed) {
+                    if (!silent) {
+                        div.innerHTML = `Extension ${library.python} is installed at the server ✅`
+                        rootEl.appendChild(div)
+                    }
+                } else {
+                    div.innerHTML = `Extension ${library.python} is <b>NOT</b> installed at the server ❌.`
+                    rootEl.appendChild(div)
+                    ok = false;
+                }
+                return ok;
+            }
+
+            async function check() {
+                const url = `${getBaseUrl()}api/config/notebook`
+                const response = (await fetch(url));
+                const data = await response.json()
+                const extensions = data["load_extensions"];
+                var ok = true;
+                let needsInstall = [];
+                libraries.forEach((library) => {
+                    if (!checkLibrary(extensions, library)) {
+                        ok = false;
+                        needsInstall.push(library.python)
+                        console.log("Needs install", library.python)
+                    }
+                })
+                console.log(ok, needsInstall)
+                if (!ok) {
+                    const div = document.createElement("div")
+                    const div2 = document.createElement("div")
+                    div.innerHTML = `Run <code>${jupyter_python_executable} -m pip install ${needsInstall.join(" ")}</code>. Refresh the page after installation.`
+                    div2.innerHTML = `Visit <a href="https://solara.dev/docs/troubleshoot" target="_blank">https://solara/dev/docs/troubleshoot</a> for more information.`
+                    rootEl.appendChild(div)
+                    rootEl.appendChild(div2)
+                }
+            }
+            check()
+        })();
+    </script>
+</div>

@@ -11,12 +11,12 @@ from nextpy.backend.admin import AdminDash as AdminDash
 from nextpy.base import Base as Base
 from nextpy.build.compiler import compiler as compiler
 from nextpy.build import prerequisites as prerequisites
-from nextpy.frontend.components import connection_modal as connection_modal
-from nextpy.frontend.components.component import (
+from nextpy.interfaces.web.components import connection_modal as connection_modal
+from nextpy.interfaces.web.components.component import (
     Component as Component,
     ComponentStyle as ComponentStyle,
 )
-from nextpy.frontend.components.base.fragment import Fragment as Fragment
+from nextpy.interfaces.web.components.base.fragment import Fragment as Fragment
 from nextpy.build.config import get_config as get_config
 from nextpy.backend.event import (
     Event as Event,
@@ -28,7 +28,7 @@ from nextpy.backend.middleware import (
     Middleware as Middleware,
 )
 from nextpy.data.model import Model as Model
-from nextpy.frontend.page import DECORATED_PAGES as DECORATED_PAGES
+from nextpy.interfaces.web.page import DECORATED_PAGES as DECORATED_PAGES
 from nextpy.backend.route import (
     catchall_in_route as catchall_in_route,
     catchall_prefix as catchall_prefix,

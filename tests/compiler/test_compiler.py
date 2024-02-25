@@ -7,8 +7,8 @@ from typing import List
 import pytest
 
 from nextpy.build.compiler import compiler, utils
-from nextpy.frontend import imports
-from nextpy.frontend.imports import ReactImportVar
+from nextpy.interfaces.web import imports
+from nextpy.interfaces.web.imports import ReactImportVar
 
 
 @pytest.mark.parametrize(

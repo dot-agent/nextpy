@@ -1,7 +1,7 @@
 [tool.poetry]
 name = "nextpy"
-version = "0.3.3"
-description = "⚡The Pure Python Framework for Web Apps, Meticulously Optimized for 🤖AI agents🤖. World's first AMS🥇"
+version = "0.4.0"
+description = "🔮Pythonic App Framework from Future: Build ⚡Blazing Fast , 🤖Self-Modifying Apps!"
 license = "Apache-2.0"
 authors = ["Team dotagent <anurag@dotagent.ai>"]
 readme = "README.md"
@@ -51,6 +51,8 @@ pyjokes = "^0.6.0"
 pylint = "^3.0.3"
 charset-normalizer = "^3.3.2"
 aiosmtplib = "^3.0.1"
+reacton = "^1.8.2"
+solara = "^1.25.1"
 
 [tool.poetry.group.dev.dependencies]
 pytest = "^7.1.2"
@@ -62,7 +64,14 @@ pytest-asyncio = "^0.20.1"
 pytest-cov = "^4.0.0"
 black = "^22.10.0"
 ruff = "^0.0.244"
-pandas = "*"
+pandas = [
+    { version = "^2.1.1", python = ">=3.9,<3.13" },
+    { version = "^1.1.5", python = ">=3.8,<3.9" } 
+]
+numpy = [
+    { version = "^1.21.0", python = ">=3.9,<3.13" },
+    { version = "^1.19.5", python = ">=3.8,<3.9" } 
+]
 pillow = [
     {version = "^10.0.0", python = ">=3.8,<4.0"}
 ]
@@ -116,8 +125,8 @@ exclude = ["**/node_modules",
     "nextpy/data/vectordb",
     "nextpy/build/source_reload.py",
     "nextpy/data/jsondb.py",
-    "nextpy/frontend/templates",
-    "nextpy/frontend/components/animation/motion/motion.py",
+    "nextpy/interfaces/templates",
+    "nextpy/interfaces/web/components/animation/motion/motion.py",
 ]
 
 [tool.ruff]
@@ -130,7 +139,7 @@ target-version = "py37"
 "tests/*.py" = ["D100", "D103", "D104"]
 "nextpy/ai/*.py" = ["ALL"]
 "nextpy/data/vectordb/*.py" = ["ALL"]
-"nextpy/frontend/templates/*.py" = ["D100", "D103", "D104"]
+"nextpy/interfaces/web/templates/*.py" = ["D100", "D103", "D104"]
 "*.pyi" = ["ALL"]
 "app-examples/*.py" = ["ALL"]
 "ai-notebooks/*.py" = ["ALL"]

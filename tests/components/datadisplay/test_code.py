@@ -3,7 +3,7 @@
 
 import pytest
 
-from nextpy.frontend.components.chakra.datadisplay.code import CodeBlock
+from nextpy.interfaces.web.components.chakra.datadisplay.code import CodeBlock
 
 
 @pytest.mark.parametrize(

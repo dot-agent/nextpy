@@ -12,9 +12,11 @@ from __future__ import annotations
 import importlib
 from typing import Type
 
-from nextpy.frontend.page import page as page
+from nextpy.interfaces.web.page import page as page
 from nextpy.utils import console
 from nextpy.utils.format import to_snake_case
+
+
 
 _ALL_COMPONENTS = [
     "Accordion",
@@ -61,6 +63,7 @@ _ALL_COMPONENTS = [
     "ColorModeButton",
     "ColorModeIcon",
     "ColorModeSwitch",
+    "ColorPicker",
     "Component",
     "Cond",
     "ConnectionBanner",
@@ -86,6 +89,12 @@ _ALL_COMPONENTS = [
     "EditableTextarea",
     "Editor",
     "Email",
+    "Error",
+    "Expander",
+    "ExpanderButton",
+    "ExpanderIcon",
+    "ExpanderItem",
+    "ExpanderPanel",
     "Fade",
     "Flex",
     "Foreach",
@@ -97,6 +106,7 @@ _ALL_COMPONENTS = [
     "Fragment",
     "Grid",
     "GridItem",
+    "Header",
     "Heading",
     "Highlight",
     "Hstack",
@@ -104,6 +114,7 @@ _ALL_COMPONENTS = [
     "Icon",
     "IconButton",
     "Image",
+    "Info",
     "Input",
     "InputGroup",
     "InputLeftAddon",
@@ -158,12 +169,12 @@ _ALL_COMPONENTS = [
     "PopoverHeader",
     "PopoverTrigger",
     "Progress",
-    "Radio",
-    "RadioGroup",
     "RangeSlider",
+    "RangeSliderTrack",
     "RangeSliderFilledTrack",
     "RangeSliderThumb",
-    "RangeSliderTrack",
+    "Radio",
+    "RadioGroup",
     "ResponsiveGrid",
     "ScaleFade",
     "Script",
@@ -198,6 +209,7 @@ _ALL_COMPONENTS = [
     "StepStatus",
     "StepTitle",
     "Stepper",
+    "Success",
     "Switch",
     "Tab",
     "TabList",
@@ -219,6 +231,7 @@ _ALL_COMPONENTS = [
     "Tfoot",
     "Th",
     "Thead",
+    "Title",
     "Tooltip",
     "Tr",
     "UnorderedList",
@@ -226,6 +239,7 @@ _ALL_COMPONENTS = [
     "Video",
     "VisuallyHidden",
     "Vstack",
+    "Warning",
     "Wrap",
     "WrapItem",
 ]
@@ -246,6 +260,12 @@ _ALL_COMPONENTS += [
     "EditorButtonList",
     "EditorOptions",
     "NoSSRComponent",
+    "dataframe",
+    "empty",
+    'select_slider',
+    'select_slider_filled_track',
+    'select_slider_thumb',
+    'select_slider_track'
 ]
 
 # _MAPPING: Maps module paths as keys to lists of their attributes (classes, functions, variables) as values for dynamic imports.
@@ -283,14 +303,15 @@ _MAPPING = {
     "nextpy.constants": ["Env", "constants"],
     "nextpy.data.jsondb": ["JsonDatabase"],
     "nextpy.data.model": ["Model", "model", "session"],
-    "nextpy.frontend.components": _ALL_COMPONENTS + ["chakra", "next"],
-    "nextpy.frontend.components.framer.motion": ["motion"],
-    "nextpy.frontend.components.component": ["memo"],
-    "nextpy.frontend.components.el": ["el"],
-    "nextpy.frontend.components.moment.moment": ["MomentDelta"],
-    "nextpy.frontend.page": ["page"],
-    "nextpy.frontend.style": ["color_mode", "style", "toggle_color_mode"],
-    "nextpy.frontend.components.recharts": [
+    "nextpy.interfaces.web.components": _ALL_COMPONENTS + ["chakra", "next"],
+    "nextpy.interfaces.web.components.framer.motion": ["motion"],
+    "nextpy.interfaces.web.components.component": ["memo"],
+    "nextpy.interfaces.web.components.el": ["el"],
+    "nextpy.interfaces.web.components.moment.moment": ["MomentDelta"],
+    "nextpy.interfaces.page": ["page"],
+    "nextpy.interfaces.web.components.proxy": ["animation", "unstyled"],
+    "nextpy.interfaces.web.style": ["color_mode", "style", "toggle_color_mode"],
+    "nextpy.interfaces.web.components.recharts": [
         "area_chart", "bar_chart", "line_chart", "composed_chart", "pie_chart",
         "radar_chart", "radial_bar_chart", "scatter_chart", "funnel_chart", "treemap",
         "area", "bar", "line", "scatter", "x_axis", "y_axis", "z_axis", "brush",
@@ -300,7 +321,6 @@ _MAPPING = {
         "polar_angle_axis", "polar_grid", "polar_radius_axis",
     ],
     "nextpy.utils": ["utils"],
-    "nextpy.frontend.components.proxy": ["animation"],
 }
 
 
@@ -351,10 +371,12 @@ def __getattr__(name: str) -> Type:
     """
     # Custom alias handling
     if name == "animation":
-        module = importlib.import_module("nextpy.frontend.components.proxy")
+        module = importlib.import_module("nextpy.interfaces.web.components.proxy")
         return module.animation
 
-
+    # Custom alias handling for 'unstyled'
+    if name == "unstyled":
+        return importlib.import_module("nextpy.interfaces.web.components.proxy.unstyled")
     try:
         # Check for import of a module that is not in the mapping.
         if name not in _MAPPING:

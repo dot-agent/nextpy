@@ -60,17 +60,17 @@ from nextpy.build.compiler import utils as compiler_utils
 from nextpy.build.compiler.compiler import ExecutorSafeFunctions
 from nextpy.build.config import get_config
 from nextpy.data.model import Model
-from nextpy.frontend.components import connection_modal
-from nextpy.frontend.components.base.app_wrap import AppWrap
-from nextpy.frontend.components.base.fragment import Fragment
-from nextpy.frontend.components.component import Component, ComponentStyle
-from nextpy.frontend.components.core.client_side_routing import (
+from nextpy.interfaces.web.components import connection_modal
+from nextpy.interfaces.web.components.base.app_wrap import AppWrap
+from nextpy.interfaces.web.components.base.fragment import Fragment
+from nextpy.interfaces.web.components.component import Component, ComponentStyle
+from nextpy.interfaces.web.components.core.client_side_routing import (
     Default404Page,
     wait_for_client_redirect,
 )
-from nextpy.frontend.components.radix import themes
-from nextpy.frontend.imports import ReactImportVar
-from nextpy.frontend.page import (
+from nextpy.interfaces.web.components.radix import themes
+from nextpy.interfaces.web.imports import ReactImportVar
+from nextpy.interfaces.web.page import (
     DECORATED_PAGES,
 )
 from nextpy.utils import console, exceptions, format, types
