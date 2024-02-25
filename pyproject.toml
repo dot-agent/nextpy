@@ -1,7 +1,7 @@
 [tool.poetry]
 name = "nextpy"
-version = "0.3.3"
-description = "⚡The Pure Python Framework for Web Apps, Meticulously Optimized for 🤖AI agents🤖. World's first AMS🥇"
+version = "0.4.0"
+description = "🔮Pythonic App Framework from Future: Build ⚡Blazing Fast , 🤖Self-Modifying Apps!"
 license = "Apache-2.0"
 authors = ["Team dotagent <anurag@dotagent.ai>"]
 readme = "README.md"
@@ -64,7 +64,14 @@ pytest-asyncio = "^0.20.1"
 pytest-cov = "^4.0.0"
 black = "^22.10.0"
 ruff = "^0.0.244"
-pandas = "*"
+pandas = [
+    { version = "^2.1.1", python = ">=3.9,<3.13" },
+    { version = "^1.1.5", python = ">=3.8,<3.9" } 
+]
+numpy = [
+    { version = "^1.21.0", python = ">=3.9,<3.13" },
+    { version = "^1.19.5", python = ">=3.8,<3.9" } 
+]
 pillow = [
     {version = "^10.0.0", python = ">=3.8,<4.0"}
 ]

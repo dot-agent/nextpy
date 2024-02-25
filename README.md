@@ -1,6 +1,3 @@
-> [!NOTE]
-> Exciting news! Version 0.4 is coming soon, Backward compatible, with optional AI upgrade assistant (0.3.x to 0.4.x) for a smooth ride.
-
 <div align="center">
 <img src="https://res.cloudinary.com/doojikdqd/image/upload/v1705651891/nextpy_logo_light_theme_ijofia.svg#gh-light-mode-only" alt="Nextpy Logo" width="320px">
 
@@ -37,14 +34,11 @@
   </p>
 <br>
 
-<a href="https://discord.gg/asTZktHrcH" target="blank">
-<img alt="Discord" src="https://img.shields.io/discord/1111984809821089883?style=for-the-badge&logo=discord&logoColor=white&label=Live%20Support%20%26%20Coding%20Bots%20on%20Discord&labelColor=%23684DFF&link=https%3A%2F%2Fdiscord.gg%2FasTZktHrcH">
-
 </a>
 
 ![-----------------------------------------------------](https://res.cloudinary.com/dzznkbdrb/image/upload/v1694798498/divider_1_rej288.gif)
 
-<h3><i>Streamlit's simplicity (but 4-10x faster) + FastAPI's full power + (Pydantic & SQL Alchemy)'s robustness</i></h3>
+<h3><i>Build ⚡Blazing Fast, 🤖Self-Modifying Apps in Pure Python!</i></h3>
    
 
 ```diff
@@ -53,9 +47,9 @@
 
 </div>
 
-## 🤩 Nextpy : Fast, Pure Pythonic Web Apps
+## 🤩 Nextpy : Build apps that write themselves 
 
-Build any web app —effortlessly and quickly ⚡. It simplifies Pythonic development for everything from backends to frontends (yes, visually 🦚stunning frontends in Python!), AI integrations, APIs, and beyond—empowering both humans and AI agents.
+Build apps —effortlessly and quickly ⚡. It simplifies Pythonic development for everything from backends to frontends (yes, visually 🦚stunning frontends in Python!), AI integrations, APIs, and beyond—empowering both humans and AI agents.
 
 Nextpy is designed to solve compatibility issues and improve code generation. It is built on our insight🔍 that the choice of underlying frameworks significantly affects the efficiency of AI code generation, regardless of other factors such as LLMs, prompts, or fine-tuning methods.
 
@@ -314,9 +308,9 @@ Initially, reflex's flexibility seemed promising, aligning with several of our r
 
 For months, we resisted the urge to reinvent the wheel and tried to assemble different tools to bring our vision to life. Instead of creating a framework from scratch, we aimed to create an opinionated app starter kit by selectively incorporating the best features from top frameworks. Although we still view this project as a **full stack app starter kit** rather than a framework, the distinction is becoming somewhat blurred as we have developed several custom modules and made specific design decisions.
 
-This novel framework merges the simplicity of Streamlit with the speed and adaptability of Next.js. For the backend, we opted for FastAPI for its simplicity, coupled with Pydantic for robust type-checking. Our frontend was crafted using a tailored version of the Reflex library, incorporating new components. Currently, we are in the process of overhauling the core Python-to-JavaScript compiler to optimize speed. Additionally, we embraced SQLModel & SQLAlchemy for database connectivity. Furthermore, we have developed selected features specifically for generative AI. We have created a JSON-based database that uses JSON as the data storage medium, while also providing SQL-like capabilities.
+This framework combines Streamlit's simplicity with Next.js's speed and flexibility. For the backend, FastAPI's ease of use is enhanced by Pydantic's strong type-checking. The frontend utilizes Reflex, Reacton, and Solara libraries, enabling not just web app support but also GUI integration within Jupyter, adding new components seamlessly. We're currently refining our Python-to-JavaScript compiler for improved speed. SQLModel and SQLAlchemy have been integrated for database management. Additionally, we've tailored features for generative AI and introduced a JSON-based database, offering SQL-like functionalities with JSON as the storage format.
 
-**Our mission?** Make Next.py the most efficient app framework, for humans and AI alike!
+**Our mission?** Make Next.py the most efficient app framework, for building self writing applications!
 
 Want to know more? Check out our manifesto! https://nextpy.org/manifesto/
 
