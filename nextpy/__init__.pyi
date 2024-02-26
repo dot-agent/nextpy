@@ -398,6 +398,8 @@ from nextpy.interfaces.web.components import (
 )
 from nextpy.interfaces.web.components import select_slider_thumb as select_slider_thumb
 from nextpy.interfaces.web.components import select_slider_track as select_slider_track
+from nextpy.interfaces.web.components import sidebar as sidebar
+from nextpy.interfaces.web.components import sidebar_item as sidebar_item
 from nextpy.interfaces.web.components import skeleton as skeleton
 from nextpy.interfaces.web.components import skeleton_circle as skeleton_circle
 from nextpy.interfaces.web.components import skeleton_text as skeleton_text
