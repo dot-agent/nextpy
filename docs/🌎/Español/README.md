@@ -278,7 +278,7 @@ Configura la aplicación, agrega la página principal. Para ver el frontend, nav
 En nuestra búsqueda para crear aplicaciones que se escriban a sí mismas, nos sumergimos profundamente en un laberinto de herramientas de codificación, frameworks y bibliotecas. Nuestros experimentos abarcaron todos los principales modelos de lenguaje grande (LLMs), miles de prompts y cada uno de los principales frameworks de desarrollo web, desde React hasta Streamlit.
 
 Perspectiva
-> [!CONSEJO]
+> [!TIP]
 > Hemos descubierto que la elección del marco de aplicación fundamental influye significativamente en la eficiencia de la generación de código, independientemente de los modelos de lenguaje de máquina (LLMs), los comandos o los métodos de ajuste fino.
 
 Inicialmente, la flexibilidad de Reflex parecía prometedora, alineándose con varios de nuestros requisitos. Sin embargo, a medida que experimentamos con diferentes aplicaciones web, surgieron brechas en las características cruciales. Cubrir estas brechas requirió un extenso "código de pegamento", lo que ralentizó dramáticamente el desarrollo.

@@ -279,7 +279,7 @@ Vuoi fare la differenza? Inizia facendo il fork del nostro repository e inviando
 Nella nostra ricerca per creare app che si scrivono da sole, abbiamo esplorato profondamente un labirinto di strumenti di codifica, framework e librerie. I nostri esperimenti hanno abbracciato tutti i principali modelli di linguaggio di grandi dimensioni (LLM), migliaia di prompt e ogni principale framework di sviluppo web, da React a Streamlit.
 
 Comprensione
-> [!CONSIGLIO]
+> [!TIP]
 > Abbiamo scoperto che la scelta del framework applicativo di base influenza significativamente l'efficienza della generazione del codice, indipendentemente dai LLM (modelli di linguaggio), dai prompt o dai metodi di fine-tuning.
 
 Inizialmente, la flessibilità di Reflex sembrava promettente, allineandosi con diversi dei nostri requisiti. Tuttavia, mentre sperimentavamo con diverse applicazioni web, sono emerse lacune cruciali nelle funzionalità. Colmare queste lacune ha richiesto l'uso estensivo di "codice di collegamento", che ha notevolmente rallentato lo sviluppo.

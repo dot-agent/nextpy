@@ -278,7 +278,7 @@ Fark yaratmak mı istiyorsunuz? Topluluğumuza katılarak depomuzu çatallamak v
 Kendilerini yazan uygulamalar yaratma arayışımızda, kodlama araçları, çatı yapıları ve kütüphanelerinin bir labirentine daldık. Deneylerimiz, React'ten Streamlit'e kadar tüm büyük web geliştirme çatı yapılarından, binlerce komut dosyasına ve tüm büyük dil modellerine (LLM'ler) kadar uzandı.
 
 İçgörü
-> [!İPUCU]
+> [!TIP]
 > Temel uygulama çatısının seçiminin, kullanılan LLM'ler, komutlar veya ince ayar yöntemlerinden bağımsız olarak, kod üretim verimliliğini önemli ölçüde etkilediğini gördük.
 
 Başlangıçta, Reflex'in esnekliği umut verici görünüyordu ve birçok gereksinimimizle uyumlu hale geliyordu. Ancak, farklı web uygulamalarıyla deneyler yaptıkça, kritik özellik eksiklikleri ortaya çıktı. Bu eksiklikleri kapatmak, geniş kapsamlı "yapıştırıcı kod" yazılmasını gerektirdi ve bu da geliştirme sürecini önemli derecede yavaşlattı.
