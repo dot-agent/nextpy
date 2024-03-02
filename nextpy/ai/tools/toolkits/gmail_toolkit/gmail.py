@@ -26,13 +26,11 @@ else:
     except ImportError:
         pass
 
-
 SCOPES = ["https://mail.google.com/"]
 
-
+#This is base Toolkit for GmailTool which returns all Gmail functionalities into a list
 class GmailToolkit(BaseToolkit):
     """Toolkit for interacting with Gmail."""
-
     api_resource: Resource = Field(default_factory=build_resource_service)
 
     class Config:
