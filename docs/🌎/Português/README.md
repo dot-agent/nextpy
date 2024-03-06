@@ -279,7 +279,7 @@ Quer fazer a diferença? Comece fazendo um fork do nosso repositório e enviando
 Em nossa busca para criar aplicativos que se escrevem, mergulhamos profundamente em um labirinto de ferramentas de codificação, frameworks e bibliotecas. Nossos experimentos abrangeram todos os principais modelos de linguagem de grande escala (LLMs), milhares de prompts e todos os principais frameworks de desenvolvimento web, de React a Streamlit.
 
 Visão Geral
-> [!DICA]
+> [!TIP]
 > Descobrimos que a escolha da plataforma de aplicativo fundamental influencia significativamente a eficiência da geração de código, independentemente dos modelos de linguagem de máquina (LLMs), dos prompts ou dos métodos de ajuste fino.
 
 Inicialmente, a flexibilidade do Reflex parecia promissora, alinhando-se com várias de nossas exigências. Contudo, à medida que experimentávamos com diferentes aplicativos web, lacunas de funcionalidades cruciais surgiram. Preencher essas lacunas exigiu um extenso "código de cola", que desacelerou dramaticamente o desenvolvimento.

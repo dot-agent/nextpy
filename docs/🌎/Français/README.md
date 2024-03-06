@@ -279,7 +279,7 @@ Vous souhaitez faire une différence ? Commencez par forker notre dépôt et env
 Dans notre quête de création d'applications qui s'écrivent elles-mêmes, nous avons plongé profondément dans un labyrinthe d'outils de codage, de frameworks et de bibliothèques. Nos expériences ont couvert tous les principaux modèles de langage de grande taille (LLM), des milliers de prompts et chaque grand framework de développement web, de React à Streamlit.
 
 Perspective
-> [!CONSEIL]
+> [!TIP]
 > Nous avons découvert que le choix du framework applicatif de base influence considérablement l'efficacité de la génération de code, indépendamment des LLMs, des invites ou des méthodes de fine-tuning.
 
 Initialement, la flexibilité de Reflex semblait prometteuse, en accord avec plusieurs de nos exigences. Cependant, à mesure que nous expérimentions avec différentes applications web, des lacunes de fonctionnalités cruciales sont apparues. Combler ces lacunes nécessitait un code "colle" considérable, ce qui a considérablement ralenti le développement.
