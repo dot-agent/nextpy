@@ -359,19 +359,19 @@ def format_prop(
                 formatted_chain = f'{parts[0]}.{parts[1]}.{parts[2]}'
 
                 # Extract "_e0.target.value"
-                    value_match = re.search(r"value:([^,)}]+)", event)
-                    if value_match:
-                        value = value_match.group(1)
+                value_match = re.search(r"value:([^,)}]+)", event)
+                if value_match:
+                    value = value_match.group(1)
 
                 # Extract "state.state"
-                    message_match = re.search(r"addEvents\(\[\S+?\(\"([^.]+?\.[^.]+)", event)
-                    if message_match:
-                        message = message_match.group(1)
+                message_match = re.search(r"addEvents\(\[\S+?\(\"([^.]+?\.[^.]+)", event)
+                if message_match:
+                    message = message_match.group(1)
 
-                    dispatcher_line = f"const dispatcher = dispatchers['{message}'];\n" \
-                                      f"dispatcher({{ message: {value} }});"
+                dispatcher_line = f"const dispatcher = dispatchers['{message}'];\n" \
+                                  f"dispatcher({{ message: {value} }});"
 
-                    prop = f"{arg_def} =>{{ {dispatcher_line}\n{event} }}"
+                prop = f"{arg_def} =>{{ {dispatcher_line}\n{event} }}"
 
             # Handle other types.
             else:
