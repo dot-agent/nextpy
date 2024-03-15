@@ -1,3 +1,5 @@
+> [!NOTE]  
+> We are currently in the process of simplifying abstractions.
 <div align="center">
 <img src="https://res.cloudinary.com/doojikdqd/image/upload/v1705651891/nextpy_logo_light_theme_ijofia.svg#gh-light-mode-only" alt="Nextpy Logo" width="320px">
 
