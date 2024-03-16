@@ -1,7 +1,7 @@
 
 # What are Components?
 
-- Components are like building blocks for crafting a app's interface, allowing modular and reusable design elements.
+- Components are like building blocks for crafting an app's interface, allowing modular and reusable design elements.
 - Components in Nextpy are defined using Python functions. They encapsulate React components, providing a Pythonic development experience without requiring JavaScript knowledge.
 - A component can range from simple text to interactive buttons or dynamic progress bars.
 

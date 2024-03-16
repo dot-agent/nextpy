@@ -149,7 +149,7 @@ Check out your app by visiting [http://localhost:3000](http://localhost:3000)
 
 ## 🎨 Start with a template!
 
-We speedup your development with a [ever growing list of community templates](https://github.com/dot-agent/nextpy/tree/main/app-examples). Some examples:
+We speedup your development with an [ever growing list of community templates](https://github.com/dot-agent/nextpy/tree/main/app-examples). Some examples:
 
 <table border="0">
   <tr>
@@ -319,6 +319,6 @@ Want to know more? Check out our manifesto! https://nextpy.org/manifesto/
 ## 🙏 Thanks
 
 
-Nextpy Framework is a state-of-the-art app development framerwork optimized for AI-based code generation, built on the open-source community’s spirit of cooperation. It integrates key components from landmark projects like Guidance, Llama-Index, FastAPI-Mail, LangChain, ReactPy, Reflex, Chakra, Radix, Numpy and Next.js, while also drawing insights from the React and Rust ecosystems. This fusion ideas has been pivotal in shaping Nextpy into a framework that's not just AI-friendly but also a trailblazer in generative web development tools.
+Nextpy Framework is a state-of-the-art app development framework optimized for AI-based code generation, built on the open-source community’s spirit of cooperation. It integrates key components from landmark projects like Guidance, Llama-Index, FastAPI-Mail, LangChain, ReactPy, Reflex, Chakra, Radix, Numpy and Next.js, while also drawing insights from the React and Rust ecosystems. This fusion ideas has been pivotal in shaping Nextpy into a framework that's not just AI-friendly but also a trailblazer in generative web development tools.
 
 We are deeply grateful to the open-source creators, contributors, and maintainers whose work has provided the basis for Nextpy. Your commitment to innovation and openness has been vital for shaping this framework. Your contributions have not only enhanced Nextpy but are also advancing the new era of AI-powered software development. Thank you for being the catalysts and enablers of this transformational journey.

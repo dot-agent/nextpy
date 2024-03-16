@@ -2,9 +2,9 @@
    
 The engine is designed to process prompts efficiently for large language models (LLMs), offering users the ability to create very controlled text generation . This tool integrates the flexibility of regular expressions and context-free grammars (CFGs) to restrict and guide output. Additionally, it provides mechanisms to interweave control structures like conditionals and loops with text generation, allowing for more complex interactions.  
    
-For opensource models using key-value (KV) caches, the engine can maintain state across interactions with LLMs, which is particularly useful when dealing with long and complicated prompts. This stateful approach minimizes redundant generation steps, leading to faster responses when handling detailed prompts. 
+For open-weight models using key-value (KV) caches, the engine can maintain state across interactions with LLMs, which is particularly useful when dealing with long and complicated prompts. This stateful approach minimizes redundant generation steps, leading to faster responses when handling detailed prompts. 
 
-This module furthers the development of what is now an depricated version of guidance. It leverages templating mechanisms to centralize the logic of prompt creation, leading to a workflow that is both more streamlined and maintainable. 
+This module furthers the development of what is now a deprecated version of guidance. It leverages templating mechanisms to centralize the logic of prompt creation, leading to a workflow that is both more streamlined and maintainable. 
    
 Key Features:  
 - **Prompt Templates**: These are the core of the engine, allowing for dynamic text generation by using placeholders that can be filled with variable content.  
@@ -262,7 +262,7 @@ program()
 ```  
 In the example above, we enclose all of the text in one of the valid role tags for the model. The role tags are `system`, `user`, and `assistant`.  
    
-### Multistep  
+### Multi-step  
    
 ```python  
 experts = engine('''\n  

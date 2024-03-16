@@ -1,5 +1,5 @@
 > [!CAUTION]
-> This is LLM geenrated translation. If you are proficient in 繁體中文, please consider submitting a pull request with improvements
+> This is an LLM generated translation. If you are proficient in 繁體中文, please consider submitting a pull request with improvements
 <div align="center">
 <img src="https://raw.githubusercontent.com/dotagent-ai/assets/main/nextpy_logo_light_theme.svg#gh-light-mode-only" alt="Nextpy 標誌" width="320px">
 <img src="https://raw.githubusercontent.com/dotagent-ai/assets/main/nextpy_logo_dark_theme.svg#gh-dark-mode-only" alt="Nextpy 標誌" width="320px">

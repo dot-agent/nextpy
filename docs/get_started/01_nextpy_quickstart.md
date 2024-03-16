@@ -47,7 +47,7 @@ Check out your app by visiting [http://localhost:3000](http://localhost:3000)
 
 ## 🎨 Start with a template!
 
-We speedup your development with a [ever growing list of community templates](https://github.com/dot-agent/nextpy/tree/main/app-examples). Some examples:
+We speedup your development with an [ever growing list of community templates](https://github.com/dot-agent/nextpy/tree/main/app-examples). Some examples:
 
 <table border="0">
   <tr>
