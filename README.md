@@ -40,7 +40,7 @@
 
 ![-----------------------------------------------------](https://res.cloudinary.com/dzznkbdrb/image/upload/v1694798498/divider_1_rej288.gif)
 
-<h3><i>Build ⚡Blazing Fast, 🤖Self-Modifying Apps in Pure Python!</i></h3>
+<h3><i>🤖Self-Modifying Apps in Pure Python!</i></h3>
    
 
 ```diff
