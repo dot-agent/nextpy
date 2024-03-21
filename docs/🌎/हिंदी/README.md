@@ -1,6 +1,6 @@
 > [!CAUTION] 
 
-> This is LLM generated translation. If you are proficient in Hindi, please consider submitting a pull request with improvements 
+> This is an LLM generated translation. If you are proficient in Hindi, please consider submitting a pull request with improvements 
 
   
 
