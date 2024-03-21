@@ -243,7 +243,7 @@ def index():
 The `index` function arranges a joke display and a button. `vstack` is used to stack components vertically, while `hstack` is used to stack components horizontally.
 
 #### 4. Optional Styling
-```md
+```python
 def index():
     layout = xt.vstack(
         xt.text(State.joke, font_size="2em"),
