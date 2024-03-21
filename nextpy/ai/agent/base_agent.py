@@ -1,4 +1,4 @@
-# This file has been modified by the Nextpy Team in 2023 using AI tools and automation scripts. 
+# This file has been modified by the Nextpy Team in 2023 using AI skills and automation scripts.
 # We have rigorously tested these modifications to ensure reliability and performance. Based on successful test results, we are confident in the quality and stability of these changes.
 
 import argparse
@@ -7,6 +7,7 @@ import importlib
 import json
 import logging
 from enum import Enum
+from nextpy.ai.skills.base import BaseSkill
 from typing import Any, Dict, List, Optional, Union
 
 import nest_asyncio
@@ -16,7 +17,6 @@ from nextpy.ai import engine
 from nextpy.ai.engine._program import extract_text
 from nextpy.ai.memory.base import BaseMemory
 from nextpy.ai.rag.doc_loader import document_loader
-from nextpy.ai.tools.basetool import BaseTool
 
 log = logging.getLogger(__name__)
 
@@ -32,7 +32,7 @@ class AgentState(Enum):
 
     IDLE = 0
     BUSY = 1
-    USED_AS_TOOL = 2
+    USED_AS_SKILL = 2
     ERROR = 3
 
 
@@ -40,8 +40,8 @@ class BaseAgent:
     def __init__(
         self,
         rag: Optional[Any] = None,
-        tools: Optional[List[BaseTool]] = None,
         llm: Optional[Any] = None,
+        skills: Optional[List[BaseSkill]] = None,
         prompt_template: str = None,
         input_variables: Dict[str, Any] = {},
         agent_id: str = "default",
@@ -52,8 +52,8 @@ class BaseAgent:
     ):
         self.agent_id = agent_id
         self.rag = rag
-        self.tools = tools
         self.llm = llm
+        self.skills = skills
         self.prompt_template = prompt_template
         self.input_variables = input_variables
         self.memory = memory
@@ -98,14 +98,14 @@ class BaseAgent:
     def default_llm_model(self):
         pass
 
-    def add_tool(self, tool: BaseTool) -> None:
-        """Add a tool to the agent's tool list."""
-        self.tools.append(tool)
+    def add_skill(self, skill: BaseSkill) -> None:
+        """Add a skill to the agent's skill list."""
+        self.skills.append(skill)
 
-    def remove_tool(self, tool: BaseTool) -> None:
-        """Remove a tool from the agent's tool list."""
-        if tool in self.tools:
-            self.tools.remove(tool)
+    def remove_skill(self, skill: BaseSkill) -> None:
+        """Remove a skill from the agent's skill list."""
+        if skill in self.skills:
+            self.skills.remove(skill)
 
     def llm_instance(self) -> engine.llms.OpenAI:
         """Create an instance of the language model."""
@@ -146,7 +146,8 @@ class BaseAgent:
                     RETRIEVED_KNOWLEDGE=retrieved_knowledge, **kwargs, silent=True
                 )
             else:
-                raise ValueError("knowledge_variable not found in input kwargs")
+                raise ValueError(
+                    "knowledge_variable not found in input kwargs")
         else:
             output = self.engine(**kwargs, silent=True, from_agent=True)
 
@@ -166,7 +167,8 @@ class BaseAgent:
         if output.variables().get(_output_key):
             return output[_output_key]
         else:
-            logging.warning("Output key not found in output, so full output returned")
+            logging.warning(
+                "Output key not found in output, so full output returned")
             return output
 
     async def arun(self, **kwargs) -> Union[str, Dict[str, Any]]:
@@ -188,7 +190,8 @@ class BaseAgent:
                     RETRIEVED_KNOWLEDGE=retrieved_knowledge, **kwargs, silent=True
                 )
             else:
-                raise ValueError("knowledge_variable not found in input kwargs")
+                raise ValueError(
+                    "knowledge_variable not found in input kwargs")
         else:
             output = await self.engine(**kwargs, silent=True, from_agent=True)
             # Handle memory here
@@ -207,7 +210,8 @@ class BaseAgent:
         if output.variables().get(_output_key):
             return output[_output_key]
         else:
-            logging.warning("Output key not found in output, so full output returned")
+            logging.warning(
+                "Output key not found in output, so full output returned")
             return output
 
     def _handle_memory(self, new_program):
@@ -260,7 +264,8 @@ class BaseAgent:
         )
 
         for var in _vars:
-            parser.add_argument(f"--{var}", help=f"Pass {var} as an input variable")
+            parser.add_argument(
+                f"--{var}", help=f"Pass {var} as an input variable")
 
         args = parser.parse_args()
 
@@ -329,7 +334,7 @@ class BaseAgent:
             "prompt_template": self.prompt_template,
             "input_variables": self.input_variables,
             "output_key": self.output_key,
-            # 'tools': None if self.tools is None else self.tools
+            # 'skills': None if self.skills is None else self.skills
         }
         with open(config_path, "w") as f:
             yaml.dump(config, f)
@@ -352,7 +357,8 @@ class BaseAgent:
 
         rag = None
         if config["rag"] is not None:
-            rag_module_name, rag_class_name = config["rag"]["type"].rsplit(".", 1)
+            rag_module_name, rag_class_name = config["rag"]["type"].rsplit(
+                ".", 1)
             rag_module = importlib.import_module(rag_module_name)
             rag_class = getattr(rag_module, rag_class_name)
 
@@ -391,9 +397,12 @@ class BaseAgent:
             vector_store_module_name, vector_store_class_name = config["rag"][
                 "vector_store"
             ]["type"].rsplit(".", 1)
-            vector_store_module = importlib.import_module(vector_store_module_name)
-            vector_store_class = getattr(vector_store_module, vector_store_class_name)
-            vector_store = vector_store_class(embedding_function=embedding_function)
+            vector_store_module = importlib.import_module(
+                vector_store_module_name)
+            vector_store_class = getattr(
+                vector_store_module, vector_store_class_name)
+            vector_store = vector_store_class(
+                embedding_function=embedding_function)
 
             rag = rag_class(
                 raw_data=raw_data,

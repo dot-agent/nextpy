@@ -1,6 +1,0 @@
-transformers
-Pillow
-torch
-torchvision
-sentencepiece
-pytesseract

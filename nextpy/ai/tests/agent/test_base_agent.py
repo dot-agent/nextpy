@@ -1,4 +1,4 @@
-# This file has been modified by the Nextpy Team in 2023 using AI tools and automation scripts. 
+# This file has been modified by the Nextpy Team in 2023 using AI tools and automation scripts.
 # We have rigorously tested these modifications to ensure reliability and performance. Based on successful test results, we are confident in the quality and stability of these changes.
 
 from unittest.mock import MagicMock
@@ -7,11 +7,11 @@ import pytest
 
 from nextpy.ai.agent.base_agent import AgentState, BaseAgent
 from nextpy.ai.memory.base import BaseMemory
-from nextpy.ai.tools.basetool import BaseTool
+from nextpy.ai.skills.base import BaseSkill
 
 
-class MockBaseTool(BaseTool):
-    # Assuming BaseTool does not have any mandatory methods
+class MockBaseSkill(BaseSkill):
+    # Assuming BaseSkill does not have any mandatory methods
     pass
 
 
@@ -64,15 +64,17 @@ class MockMemory(BaseMemory):
 
 @pytest.fixture
 def base_agent_obj():
-    """Return a BaseAgent object with mock base tools and memory. This is a context manager to allow unit tests to run."""
-    tools = [
-        MockBaseTool(name="MockTool1", description="Mock description for tool 1"),
-        MockBaseTool(name="MockTool2", description="Mock description for tool 2"),
+    """Return a BaseAgent object with mock base skills and memory. This is a context manager to allow unit tests to run."""
+    skills = [
+        MockBaseSkill(name="Mockskill1",
+                      description="Mock description for skill 1"),
+        MockBaseSkill(name="Mockskill2",
+                      description="Mock description for skill 2"),
     ]
     memory = MockMemory()
     agent = BaseAgent(
         rag=MagicMock(),
-        tools=tools,
+        skills=skills,
         llm=MagicMock(),
         prompt_template="Test Prompt",
         input_variables={"knowledge_variable": "knowledge_variable"},
@@ -85,42 +87,43 @@ def base_agent_obj():
     yield agent  # use yield to ensure cleanup after tests have run
 
 
-def test_init_with_tools(base_agent_obj):
-    """Tests init with tools. This is a test to make sure we don't accidentally get the tools from the Agent object after it has been initialized.
+def test_init_with_skills(base_agent_obj):
+    """Tests init with skills. This is a test to make sure we don't accidentally get the skills from the Agent object after it has been initialized.
 
 
     Args:
     base_agent_obj: An instance of the
     """
-    assert len(base_agent_obj.tools) == 2
+    assert len(base_agent_obj.skills) == 2
     assert base_agent_obj.state == AgentState.IDLE
     # assert base_agent_obj.get_knowledge_variable == "Test"
 
 
-def test_add_tool(base_agent_obj):
-    """Tests adding a tool to the base agent. This is a convenience method to make sure we don't accidentally add tools that are already in the list.
+def test_add_skill(base_agent_obj):
+    """Tests adding a skill to the base agent. This is a convenience method to make sure we don't accidentally add skills that are already in the list.
 
 
     Args:
     base_agent_obj: An instance of BaseAgent
     """
-    new_tool = MockBaseTool(name="MockTool3", description="Mock description for tool 3")
-    base_agent_obj.add_tool(new_tool)
-    assert len(base_agent_obj.tools) == 3
-    assert new_tool in base_agent_obj.tools
+    new_skill = MockBaseSkill(
+        name="Mockskill3", description="Mock description for skill 3")
+    base_agent_obj.add_skill(new_skill)
+    assert len(base_agent_obj.skills) == 3
+    assert new_skill in base_agent_obj.skills
 
 
-def test_remove_tool(base_agent_obj):
-    """Remove a tool from the base agent. Checks that it is removed and no more tools are added.
+def test_remove_skill(base_agent_obj):
+    """Remove a skill from the base agent. Checks that it is removed and no more skills are added.
 
 
     Args:
     base_agent_obj: An instance of : class : ` yum. manufacturers. base_agent. YumAgent
     """
-    tool = base_agent_obj.tools[0]
-    base_agent_obj.remove_tool(tool)
-    assert len(base_agent_obj.tools) == 1
-    assert tool not in base_agent_obj.tools
+    skill = base_agent_obj.skills[0]
+    base_agent_obj.remove_skill(skill)
+    assert len(base_agent_obj.skills) == 1
+    assert skill not in base_agent_obj.skills
 
 
 # @patch('llms.agent.base_agent.engine')
