@@ -1589,6 +1589,9 @@ class StatefulComponent(BaseComponent):
             rendered_chain = format.format_prop(event)
             if isinstance(rendered_chain, str):
                 rendered_chain = rendered_chain.strip("{}")
+            
+            if tag_name.startswith("Input_"):
+                rendered_chain = rendered_chain+'}'
 
             # Hash the rendered EventChain to get a deterministic function name.
             chain_hash = md5(str(rendered_chain).encode("utf-8")).hexdigest()
@@ -1613,7 +1616,8 @@ class StatefulComponent(BaseComponent):
                 Var.create_safe(memo_name)._replace(
                     _var_type=EventChain, merge_var_data=memo_var_data
                 ),
-                f"const {memo_name} = useCallback({rendered_chain}, [{', '.join(var_deps)}])",
+                # Move the dispatchers line to the right place.
+                f"const dispatchers = useContext(DispatchContext);const {memo_name} = useCallback({rendered_chain}, [{', '.join(var_deps)}])",
             )
         return trigger_memo
 
