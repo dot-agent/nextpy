@@ -13,6 +13,7 @@ from .grid import Grid, GridItem, ResponsiveGrid
 from .html import Html
 from .spacer import Spacer
 from .stack import Hstack, Stack, Vstack
+from .sidebar import Sidebar, SidebarItem
 from .wrap import Wrap, WrapItem
 
 __all__ = [f for f in dir() if f[0].isupper()]  # type: ignore

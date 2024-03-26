@@ -179,6 +179,8 @@ _ALL_COMPONENTS = [
     "ScaleFade",
     "Script",
     "Select",
+    "Sidebar",
+    "SidebarItem",
     "Skeleton",
     "SkeletonCircle",
     "SkeletonText",
