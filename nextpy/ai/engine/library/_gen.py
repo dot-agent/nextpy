@@ -1,4 +1,4 @@
-# This file has been modified by the Nextpy Team in 2023 using AI tools and automation scripts. 
+# This file has been modified by the Nextpy Team in 2023 using AI tools and automation scripts.
 # We have rigorously tested these modifications to ensure reliability and performance. Based on successful test results, we are confident in the quality and stability of these changes.
 
 import asyncio
@@ -9,6 +9,7 @@ import types
 from .._utils import escape_template_block, AsyncIter
 
 log = logging.getLogger(__name__)
+
 
 async def gen(name=None, stop=None, stop_regex=None, save_stop_text=False, max_tokens=500, n=1, stream=None,
               temperature=0.0, top_p=1.0, logprobs=None, pattern=None, hidden=False, list_append=False,
@@ -71,7 +72,8 @@ async def gen(name=None, stop=None, stop_regex=None, save_stop_text=False, max_t
     next_next_node = _parser_context["next_next_node"]
     prev_node = _parser_context["prev_node"]
     # partial_output = _parser_context["partial_output"]
-    pos = len(variable_stack["@raw_prefix"]) # save the current position in the prefix
+    # save the current position in the prefix
+    pos = len(variable_stack["@raw_prefix"])
 
     if hidden:
         variable_stack.push({"@raw_prefix": variable_stack["@raw_prefix"]})
@@ -82,8 +84,10 @@ async def gen(name=None, stop=None, stop_regex=None, save_stop_text=False, max_t
     # if stop is None then we use the text of the node after the generate command
     if stop is None:
 
-        next_text = getattr(next_node, "text", next_node) if next_node is not None else ""
-        prev_text = getattr(prev_node, "text", prev_node) if prev_node is not None else ""
+        next_text = getattr(next_node, "text",
+                            next_node) if next_node is not None else ""
+        prev_text = getattr(prev_node, "text",
+                            prev_node) if prev_node is not None else ""
         if next_next_node and next_text == "":
             next_text = getattr(next_next_node, "text", next_next_node)
 
@@ -96,7 +100,8 @@ async def gen(name=None, stop=None, stop_regex=None, save_stop_text=False, max_t
 
         # auto-detect role stop tags
         if stop is None:
-            m = re.match(r"^{{~?/\w*(user|assistant|system|role|function)\w*~?}}.*", next_text)
+            m = re.match(
+                r"^{{~?/\w*(user|assistant|system|role|function)\w*~?}}.*", next_text)
             if m:
                 stop = parser.program.llm.role_end(m.group(1))
 
@@ -107,7 +112,7 @@ async def gen(name=None, stop=None, stop_regex=None, save_stop_text=False, max_t
                 end_tag = "</"+m.group(1)+">"
                 if next_text.startswith(end_tag):
                     stop = end_tag
-        
+
         # fall back to the next node's text (this was too easy to accidentally trigger, so we disable it now)
         # if stop is None:
         #     stop = next_text
@@ -127,7 +132,8 @@ async def gen(name=None, stop=None, stop_regex=None, save_stop_text=False, max_t
         stream = parser.program.stream or parser.program._displaying or stop_regex is not None if n == 1 else False
 
     # we can't stream batches right now TODO: fix this
-    assert not (stream and n > 1), "You can't stream batches of completions right now."
+    assert not (stream and n >
+                1), "You can't stream batches of completions right now."
     # stream_generation = parser.program.stream if n == 1 else False
 
     # save the prompt if requested
@@ -159,21 +165,27 @@ async def gen(name=None, stop=None, stop_regex=None, save_stop_text=False, max_t
             variable_stack[name].append("")
             list_ind = len(variable_stack[name])-1
             if logprobs is not None:
-                variable_stack[name+"_logprobs"] = variable_stack.get(name+"_logprobs", [])
+                variable_stack[name +
+                               "_logprobs"] = variable_stack.get(name+"_logprobs", [])
                 variable_stack[name+"_logprobs"].append([])
-                assert len(len(variable_stack[name])) == len(len(variable_stack[name+"_logprobs"]))
+                assert len(len(variable_stack[name])) == len(
+                    len(variable_stack[name+"_logprobs"]))
         async for resp in gen_obj:
-            await asyncio.sleep(0) # allow other tasks to run
-            #log("parser.should_stop = " + str(parser.should_stop))
+            await asyncio.sleep(0)  # allow other tasks to run
+            # log("parser.should_stop = " + str(parser.should_stop))
             if parser.should_stop:
-                #log("Stopping generation")
+                # log("Stopping generation")
                 break
             # log.debug("resp", resp)
-            new_text = resp["choices"][0].get("text", "")
-            generated_value += new_text
-            variable_stack["@raw_prefix"] += new_text
+            try:
+                new_text = resp["choices"][0].get("text", "")
+                generated_value += new_text
+                variable_stack["@raw_prefix"] += new_text
+            except IndexError:
+                pass
             if logprobs is not None:
-                logprobs_out.extend(resp["choices"][0]["logprobs"]["top_logprobs"])
+                logprobs_out.extend(
+                    resp["choices"][0]["logprobs"]["top_logprobs"])
             if list_append:
                 variable_stack[name][list_ind] = generated_value
                 if logprobs is not None:
@@ -182,13 +194,14 @@ async def gen(name=None, stop=None, stop_regex=None, save_stop_text=False, max_t
                 variable_stack[name] = generated_value
                 if logprobs is not None:
                     variable_stack[name+"_logprobs"] = logprobs_out
-        
+
         # save the final stopping text if requested
         if save_stop_text is not False:
             if save_stop_text is True:
                 save_stop_text = name+"_stop_text"
-            variable_stack[save_stop_text] = resp["choices"][0].get('stop_text', None)
-        
+            variable_stack[save_stop_text] = resp["choices"][0].get(
+                'stop_text', None)
+
         if hasattr(gen_obj, 'close'):
             gen_obj.close()
         generated_value += suffix
@@ -201,26 +214,31 @@ async def gen(name=None, stop=None, stop_regex=None, save_stop_text=False, max_t
         if hidden:
             new_content = variable_stack["@raw_prefix"][pos:]
             variable_stack.pop()
-            variable_stack["@raw_prefix"] += "{{!--GHIDDEN:"+new_content.replace("--}}", "--_END_END")+"--}}"
-        
+            variable_stack["@raw_prefix"] += "{{!--GHIDDEN:" + \
+                new_content.replace("--}}", "--_END_END")+"--}}"
+
         # stop executing if we were interrupted
         if parser.should_stop:
             parser.executing = False
             parser.should_stop = False
         return
     else:
-        assert not isinstance(gen_obj, list), "Streaming is only supported for n=1"
-        generated_values = [prefix+choice["text"]+suffix for choice in gen_obj["choices"]]
+        assert not isinstance(
+            gen_obj, list), "Streaming is only supported for n=1"
+        generated_values = [prefix+choice["text"] +
+                            suffix for choice in gen_obj["choices"]]
         if list_append:
             value_list = variable_stack.get(name, [])
             value_list.append(generated_values)
             if logprobs is not None:
                 logprobs_list = variable_stack.get(name+"_logprobs", [])
-                logprobs_list.append([choice["logprobs"]["top_logprobs"] for choice in gen_obj["choices"]])
+                logprobs_list.append([choice["logprobs"]["top_logprobs"]
+                                     for choice in gen_obj["choices"]])
         elif name is not None:
             variable_stack[name] = generated_values
             if logprobs is not None:
-                variable_stack[name+"_logprobs"] = [choice["logprobs"]["top_logprobs"] for choice in gen_obj["choices"]]
+                variable_stack[name+"_logprobs"] = [choice["logprobs"]
+                                                    ["top_logprobs"] for choice in gen_obj["choices"]]
 
         if not hidden:
             # TODO: we could enable the parsing to branch into multiple paths here, but for now we just complete the program with the first prefix
@@ -231,7 +249,7 @@ async def gen(name=None, stop=None, stop_regex=None, save_stop_text=False, max_t
             # we mostly support this so that the echo=False hiding behavior does not make multiple outputs more complicated than it needs to be in the UX
             # if echo:
             #     variable_stack["@raw_prefix"] += generated_value
-            
+
             id = uuid.uuid4().hex
             l = len(generated_values)
             out = "{{!--" + f"GMARKERmany_generate_start_{not hidden}_{l}${id}$" + "--}}"
@@ -239,11 +257,14 @@ async def gen(name=None, stop=None, stop_regex=None, save_stop_text=False, max_t
                 if i > 1:
                     out += "--}}"
                 if i > 0:
-                    out += "{{!--" + f"GMARKERmany_generate_{not hidden}_{i}${id}$" + "--}}{{!--G "
+                    out += "{{!--" + \
+                        f"GMARKERmany_generate_{not hidden}_{i}${id}$" + \
+                        "--}}{{!--G "
                     out += escape_template_block(value)
                 else:
                     out += value
-            variable_stack["@raw_prefix"] += out + "--}}{{!--" + f"GMARKERmany_generate_end${id}$" + "--}}"
+            variable_stack["@raw_prefix"] += out + \
+                "--}}{{!--" + f"GMARKERmany_generate_end${id}$" + "--}}"
             return
             # return "{{!--GMARKERmany_generate_start$$}}" + "{{!--GMARKERmany_generate$$}}".join([v for v in generated_values]) + "{{!--GMARKERmany_generate_end$$}}"
             # return "".join([v for v in generated_values])
