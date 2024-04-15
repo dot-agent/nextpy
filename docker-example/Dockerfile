@@ -25,7 +25,8 @@ RUN \
 
     # Copy static files out of /app to save space in backend image
     mv .web/_static /tmp/_static && \
-    rm -rf .web && mkdir .web && \
+    rm -rf .web && \
+    mkdir .web && \
     mv /tmp/_static .web/_static 
 
 # Stage 2: copy artifacts into slim image 
@@ -37,4 +38,4 @@ COPY --chown=nextpy --from=init /app /app
 USER nextpy
 ENV PATH="/app/.venv/bin:$PATH" API_URL=$API_URL
 
-CMD nextpy db migrate && nextpy run --env prod --backend-only
+CMD ["sh","-c","nextpy db migrate && nextpy run --env prod --backend-only"]
