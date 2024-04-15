@@ -11,21 +11,22 @@ COPY . .
 # Create virtualenv which will be copied into final container
 ENV VIRTUAL_ENV=/app/.venv
 ENV PATH="$VIRTUAL_ENV/bin:$PATH"
-RUN python3.11 -m venv $VIRTUAL_ENV
+RUN \
+    python3.11 -m venv $VIRTUAL_ENV && \
 
-# Install app requirements and nextpy inside virtualenv
-RUN pip install -r requirements.txt
+    # Install app requirements and nextpy inside virtualenv
+    pip install --no-cache-dir -r requirements.txt && \
+    
+    # Deploy templates and prepare app
+    nextpy init && \
+    
+    # Export static copy of frontend to /app/.web/_static
+    nextpy export --frontend-only --no-zip && \
 
-# Deploy templates and prepare app
-RUN nextpy init
-
-# Export static copy of frontend to /app/.web/_static
-RUN nextpy export --frontend-only --no-zip
-
-# Copy static files out of /app to save space in backend image
-RUN mv .web/_static /tmp/_static
-RUN rm -rf .web && mkdir .web
-RUN mv /tmp/_static .web/_static
+    # Copy static files out of /app to save space in backend image
+    mv .web/_static /tmp/_static && \
+    rm -rf .web && mkdir .web && \
+    mv /tmp/_static .web/_static 
 
 # Stage 2: copy artifacts into slim image 
 FROM python:3.11-slim
