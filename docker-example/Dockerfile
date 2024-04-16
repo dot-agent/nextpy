@@ -38,4 +38,4 @@ COPY --chown=nextpy --from=init /app /app
 USER nextpy
 ENV PATH="/app/.venv/bin:$PATH" API_URL=$API_URL
 
-CMD ["sh","-c","nextpy db migrate && nextpy run --env prod --backend-only"]
+CMD nextpy db migrate && nextpy run --env prod --backend-only
