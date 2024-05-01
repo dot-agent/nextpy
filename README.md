@@ -2,9 +2,12 @@
 ><p><em>Hey there, Friend!</em></p>
 ><p><em>This project is still in the "just for friends" stage. If you want to see what we're messing with and have some thoughts, take a look at the code. We'd love your feedback or contributions.</em></p>
 
+![image](https://github.com/dot-agent/nextpy/assets/25473195/e4159e57-8b03-4b02-8235-d52b4055fc29)
+
+
 # What is Nextpy?
 
-Nextpy is a library of modular components and an orchestration framework for building self-modifying apps.
+Nextpy is a framework for building self-modifying software.
 
 ## Key Features
 
@@ -58,13 +61,15 @@ The philosophy is to handle more processing at compile time and maintain better 
 
 ## Performance
 
-- ⚡ **4-10x faster than your Streamlit app:** Our compiled app achieves a staggering 4-10x performance leap over Streamlit. See the difference for yourself at nextpy.org, boasting a PageSpeed score of 99/100.
+- ⚡ **4-10x faster than your Streamlit app:** Our compiled software achieves a staggering 4-10x performance leap over Streamlit. See the difference for yourself at nextpy.org, boasting a PageSpeed score of 99/100.
 
 ![image](https://res.cloudinary.com/doojikdqd/image/upload/v1704975583/github_nextpy/file_2024-01-11_11.30.21_dqfcx3.png)
 
 
 ## 🙏 Thanks
 
-Nextpy Framework is a state-of-the-art app development framework optimized for AI-based code generation, built on the open-source community's spirit of cooperation. It integrates key components from landmark projects like Guidance, Llama-Index, FastAPI-Mail, LangChain, ReactPy, Reflex, Chakra, Radix, Numpy and Next.js, while also drawing insights from the React and Rust ecosystems. This fusion of ideas has been pivotal in shaping Nextpy into a framework that's not just AI-friendly but also a trailblazer in generative web development tools.
+NextPy Framework is a cutting-edge software development framework optimized for AI-based code generation, built on the spirit of cooperation within the open-source community. It seamlessly integrates key components from landmark projects like Guidance, DSPy, Llama-Index, FastAPI-Mail, LangChain, ReactPy, Reflex, Chakra, Radix, NumPy, and Next.js, while also drawing insights from the React and Rust ecosystems. 
 
-We are deeply grateful to the open-source creators, contributors, and maintainers whose work has provided the basis for Nextpy. Your commitment to innovation and openness has been vital for shaping this framework. Your contributions have not only enhanced Nextpy but are also advancing the new era of AI-powered software development. Thank you for being the catalysts and enablers of this transformational journey.
+One of the interesting modules is the generative UI module, which currently uses a forked version of Reflex, Reacton, and Solara. 
+
+We are deeply grateful to the open-source creators, contributors, and maintainers whose work has provided the foundation for NextPy. Your commitment to innovation and openness has been vital in shaping this framework. Your contributions have not only enhanced NextPy but are also advancing the new era of AI-powered software development. Thank you for being the catalysts and enablers of this transformational journey.
